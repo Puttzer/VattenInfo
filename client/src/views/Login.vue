@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="login">
       <div class="login-box">
@@ -8,36 +7,26 @@
         <input type="text" name="" id="email" />
         <label class="label" for="password">password</label>
         <input type="password" name="" id="password" />
-        <!-- <Togglebar /> -->
-        <toolbar :value="true" :position="left" :height="64" :width="64" />
+
+
       </div>
       <button class="login-btn">logga in</button>
-      <toolbar :value="true" :position="left" :height="64" :width="64" />
-    </div>
-    <button class="change-lang">
-		Svenska
-	</button>
 
-  <div class="login">
-    <div class="login-box">
-      <input type="text" />
-      <input type="password" />
     </div>
-    <button>logga in</button>
+    <button class="change-lang">Svenska</button>
 
   </div>
 </template>
 
 <script>
 
-// import Togglebar from '../components/ui/Togglebar.vue';
-import Toolbar from "vue-js-toolbar";
+
 export default {
-  components: { Toolbar },
+
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
@@ -85,24 +74,10 @@ input {
   /* background: #00000075; */
 }
 
-.change-lang{
-	width: 186px;
-	height: 36px;
-	border-radius: 25px;
-
-export default {};
-</script>
-
-<style scoped>
-@media screen and (max-width: 992px) {
-  /* body {
-  } */
-}
-
-@media screen and (min-width: 600px) {
-  body {
-    background-color: olive;
-  }
-
+.change-lang {
+  width: 186px;
+  height: 36px;
+  border-radius: 25px;
+  background: #898989;
 }
 </style>
