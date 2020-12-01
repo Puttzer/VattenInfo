@@ -79,5 +79,6 @@ input {
 	width: 186px;
 	height: 36px;
 	border-radius: 25px;
+	background: #898989;
 }
 </style>
