@@ -1,17 +1,25 @@
 <template>
   <div class="home">
-    <navigation-bar></navigation-bar>
+    <navigation-bar />
+    <hello-world></hello-world>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import NavigationBar from '../components/ui/NavigationBar.vue'
+import NavigationBar from '@/components/ui/NavigationBar.vue'
+import HelloWorld from '../components/HelloWorld.vue'
 
 export default {
   name: 'Home',
   components: {
-    NavigationBar
+    NavigationBar,
+    HelloWorld
   }
 }
 </script>
+
+<style scoped>
+
+  
+</style>
