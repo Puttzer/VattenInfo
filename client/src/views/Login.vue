@@ -1,4 +1,5 @@
 <template>
+
   <div class="container">
     <div class="login">
       <div class="login-box">
@@ -16,10 +17,19 @@
     <button class="change-lang">
 		Svenska
 	</button>
+
+  <div class="login">
+    <div class="login-box">
+      <input type="text" />
+      <input type="password" />
+    </div>
+    <button>logga in</button>
+
   </div>
 </template>
 
 <script>
+
 // import Togglebar from '../components/ui/Togglebar.vue';
 import Toolbar from "vue-js-toolbar";
 export default {
