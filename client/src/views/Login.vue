@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="login">
       <div class="login-box">
@@ -14,22 +13,19 @@
       <button class="login-btn">logga in</button>
       <toolbar :value="true" :position="left" :height="64" :width="64" />
     </div>
-    <button class="change-lang">
-		Svenska
-	</button>
+    <button class="change-lang">Svenska</button>
 
-  <div class="login">
-    <div class="login-box">
-      <input type="text" />
-      <input type="password" />
+    <div class="login">
+      <div class="login-box">
+        <input type="text" />
+        <input type="password" />
+      </div>
+      <button>logga in</button>
     </div>
-    <button>logga in</button>
-
   </div>
 </template>
 
 <script>
-
 // import Togglebar from '../components/ui/Togglebar.vue';
 import Toolbar from "vue-js-toolbar";
 export default {
@@ -37,7 +33,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   display: flex;
   flex-direction: column;
@@ -85,24 +81,9 @@ input {
   /* background: #00000075; */
 }
 
-.change-lang{
-	width: 186px;
-	height: 36px;
-	border-radius: 25px;
-
-export default {};
-</script>
-
-<style scoped>
-@media screen and (max-width: 992px) {
-  /* body {
-  } */
-}
-
-@media screen and (min-width: 600px) {
-  body {
-    background-color: olive;
-  }
-
+.change-lang {
+  width: 186px;
+  height: 36px;
+  border-radius: 25px;
 }
 </style>
