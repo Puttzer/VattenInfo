@@ -7,28 +7,10 @@
         <input type="text" name="" id="email" />
         <label class="label" for="password">password</label>
         <input type="password" name="" id="password" />
-
-
       </div>
       <button class="login-btn">logga in</button>
-<<<<<<< HEAD
-      <toolbar :value="true" :position="left" :height="64" :width="64" />
     </div>
     <button class="change-lang">Svenska</button>
-
-    <div class="login">
-      <div class="login-box">
-        <input type="text" />
-        <input type="password" />
-      </div>
-      <button>logga in</button>
-    </div>
-=======
-
-    </div>
-    <button class="change-lang">Svenska</button>
-
->>>>>>> main
   </div>
 </template>
 
@@ -88,9 +70,6 @@ input {
   width: 186px;
   height: 36px;
   border-radius: 25px;
-<<<<<<< HEAD
-=======
   background: #898989;
->>>>>>> main
 }
 </style>
