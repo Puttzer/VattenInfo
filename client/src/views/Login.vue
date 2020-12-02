@@ -3,31 +3,78 @@
     <div class="login">
       <div class="login-box">
         <h1>Logga In!</h1>
-        <label class="label" for="email">email</label>
-        <input type="text" name="" id="email" />
-        <label class="label" for="password">password</label>
-        <input type="password" name="" id="password" />
+        <form>
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            v-model="email"
+            placeholder="me@example.com"
+            autocomplete="off"
+          />
 
+          <label for="password">Password</label>&nbsp;
+          <i
+            class="fas"
+            :class="[passwordIcon]"
+            @click="hidePassword = !hidePassword"
+          ></i>
+          <input
+            :type="passwordType"
+            id="password"
+            v-model="password"
 
+          />
+        </form>
       </div>
       <button class="login-btn">logga in</button>
-
+      <label class="remember-label" for="rememberMe"> Kom Ihåg</label>
+      <input
+        @click="rememberTheName = !rememberTheName"
+        class="remember-me"
+        type="checkbox"
+        name=""
+        id="rememberMe"
+      />
     </div>
     <button class="change-lang">Svenska</button>
-
   </div>
 </template>
 
+
 <script>
-
-
 export default {
-
+  data() {
+    return {
+      email: "",
+      password: "",
+      hidePassword: true,
+      rememberTheName: false,
+    };
+  },
+  computed: {
+    passwordType() {
+      return this.hidePassword ? "password" : "text";
+    },
+    passwordIcon() {
+      return this.hidePassword ? "fa-eye" : "fa-eye-slash";
+    },
+  },
 };
 </script>
 
 <style scoped>
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: black; */
+  height: 100vh;
+  width: 100vw;
+}
+
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -43,6 +90,7 @@ export default {
   border-radius: 15px;
   border: none;
   color: #fff;
+  /* border: solid 2px orangered; */
 }
 
 input {
@@ -53,7 +101,7 @@ input {
   color: #fff;
 }
 
-.label {
+label {
   background: #1565c0;
   color: #fff;
   padding: 0 20px;
@@ -64,11 +112,20 @@ input {
   float: left;
 }
 
+.remember-label {
+  color: #fff;
+  font-size: 12px;
+}
+
+.remember-me {
+  height: 32px;
+  width: 32px;
+}
 .login-btn {
   height: 36px;
   width: 97px;
   background: #1565c0;
-  border-radius: 25px;
+  border-radius: 15px;
   border: none;
   color: #fff;
   /* background: #00000075; */
@@ -79,5 +136,6 @@ input {
   height: 36px;
   border-radius: 25px;
   background: #898989;
+  margin-top: 55px;
 }
 </style>
