@@ -7,10 +7,11 @@
         <input type="text" name="" id="email" />
         <label class="label" for="password">password</label>
         <input type="password" name="" id="password" />
-        <!-- <Togglebar /> -->
-        <toolbar :value="true" :position="left" :height="64" :width="64" />
+
+
       </div>
       <button class="login-btn">logga in</button>
+<<<<<<< HEAD
       <toolbar :value="true" :position="left" :height="64" :width="64" />
     </div>
     <button class="change-lang">Svenska</button>
@@ -22,15 +23,17 @@
       </div>
       <button>logga in</button>
     </div>
+=======
+
+    </div>
+    <button class="change-lang">Svenska</button>
+
+>>>>>>> main
   </div>
 </template>
 
 <script>
-// import Togglebar from '../components/ui/Togglebar.vue';
-import Toolbar from "vue-js-toolbar";
-export default {
-  components: { Toolbar },
-};
+export default {};
 </script>
 
 <style scoped>
@@ -85,5 +88,9 @@ input {
   width: 186px;
   height: 36px;
   border-radius: 25px;
+<<<<<<< HEAD
+=======
+  background: #898989;
+>>>>>>> main
 }
 </style>
