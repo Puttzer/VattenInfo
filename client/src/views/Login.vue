@@ -7,23 +7,15 @@
         <input type="text" name="" id="email" />
         <label class="label" for="password">password</label>
         <input type="password" name="" id="password" />
-
-
       </div>
       <button class="login-btn">logga in</button>
-
     </div>
     <button class="change-lang">Svenska</button>
-
   </div>
 </template>
 
 <script>
-
-
-export default {
-
-};
+export default {};
 </script>
 
 <style scoped>
