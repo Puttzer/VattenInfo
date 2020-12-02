@@ -1,9 +1,9 @@
 <template>
   <v-app>
     <navigation-bar></navigation-bar>
-     <v-content fluid>
+     <v-main class="grey darken-2">
       <router-view></router-view>
-     </v-content>
+     </v-main>
   
   </v-app>
 </template>

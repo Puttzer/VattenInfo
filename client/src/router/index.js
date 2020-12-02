@@ -10,6 +10,7 @@ import PriceDetails from '../views/PriceDetails.vue'
 import NewsPage from '../views/NewsPage.vue'
 import ContactUs from '../views/ContactUs.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
+import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
 
 
 Vue.use(VueRouter)
@@ -26,6 +27,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/en',
+    name: 'HomeEnglish',
+    component: HomeEnglish
   },
   {
     path: '/about',
