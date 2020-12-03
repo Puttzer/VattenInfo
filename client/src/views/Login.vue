@@ -29,10 +29,12 @@
           hide-details
           label="KOm Ihåg"
         ></v-switch>
+
       </div>
       <button class="login-btn">logga in</button>
     </div>
     <button class="change-lang">Svenska</button>
+
     <transition name="drop" type="animation">
 
     </transition>
@@ -59,6 +61,12 @@ export default {
     },
   },
 };
+
+
+
+
+
+
 </script>
 
 <style scoped>
