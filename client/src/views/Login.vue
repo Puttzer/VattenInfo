@@ -19,25 +19,23 @@
             :class="[passwordIcon]"
             @click="hidePassword = !hidePassword"
           ></i>
-          <input
-            :type="passwordType"
-            id="password"
-            v-model="password"
-
-          />
+          <input :type="passwordType" id="password" v-model="password" />
         </form>
+        <v-switch
+          v-model="autoUpdate"
+          :disabled="isUpdating"
+          class="mt-0"
+          color="blue lighten-2"
+          hide-details
+          label="KOm Ihåg"
+        ></v-switch>
       </div>
       <button class="login-btn">logga in</button>
-      <label class="remember-label" for="rememberMe"> Kom Ihåg</label>
-      <input
-        @click="rememberTheName = !rememberTheName"
-        class="remember-me"
-        type="checkbox"
-        name=""
-        id="rememberMe"
-      />
     </div>
     <button class="change-lang">Svenska</button>
+    <transition name="drop" type="animation">
+
+    </transition>
   </div>
 </template>
 
@@ -87,6 +85,8 @@ export default {
   height: 364px;
   width: 304px;
   /* background: #00000075; */
+  background: #00990075;
+
   border-radius: 15px;
   border: none;
   color: #fff;
@@ -137,5 +137,23 @@ label {
   border-radius: 25px;
   background: #898989;
   margin-top: 55px;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-away {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(20px);
+  }
 }
 </style>
