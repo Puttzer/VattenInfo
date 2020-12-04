@@ -14,12 +14,16 @@
           />
 
           <label for="password">Password</label>&nbsp;
-          <i
-            class="fas"
-            :class="[passwordIcon]"
-            @click="hidePassword = !hidePassword"
-          ></i>
-          <input :type="passwordType" id="password" v-model="password" />
+          <div class="inputtag">
+            <input :type="passwordType" id="password" v-model="password" />
+            <i
+              class="fas"
+              :class="[passwordIcon]"
+              @click="hidePassword = !hidePassword"
+            ></i>
+          </div>
+
+          <!-- <input :type="passwordType" id="password" v-model="password" /> -->
         </form>
         <v-switch
           v-model="autoUpdate"
@@ -29,15 +33,12 @@
           hide-details
           label="KOm Ihåg"
         ></v-switch>
-
       </div>
       <button class="login-btn">logga in</button>
     </div>
     <button class="change-lang">Svenska</button>
 
-    <transition name="drop" type="animation">
-
-    </transition>
+    <transition name="drop" type="animation"> </transition>
   </div>
 </template>
 
@@ -61,12 +62,6 @@ export default {
     },
   },
 };
-
-
-
-
-
-
 </script>
 
 <style scoped>
@@ -108,6 +103,8 @@ input {
   background: none;
   color: #fff;
 }
+
+
 
 label {
   background: #1565c0;
