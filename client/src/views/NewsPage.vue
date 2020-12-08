@@ -1,16 +1,14 @@
 <template>
   <div class="newspage">
-      <latest-news>
-
-      </latest-news>
+      <test-selectnew></test-selectnew>
   </div>
 </template>
 
 <script>
-import LatestNews from '../components/latestnews/LatestNews.vue'
+import TestSelectnew from '../components/testpages/TestSelectNew.vue'
 export default {
 components:{
-    LatestNews
+    TestSelectnew
 }
 }
 </script>

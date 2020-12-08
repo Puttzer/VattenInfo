@@ -1,5 +1,19 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+<div>
+  <test-expansion></test-expansion>
+</div>
+  
 </template>
+
+<script>
+import TestExpansion from '../components/testpages/TestExpansion.vue'
+export default {
+components:{
+  TestExpansion
+}
+}
+</script>
+
+<style>
+
+</style>
