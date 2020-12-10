@@ -3,7 +3,6 @@
 
   </div> -->
   <div class="test">
-	  
     <label for="CompanyName">Företagsname</label>
     <input
       type="text"
