@@ -1,15 +1,15 @@
 <template>
   <div class="container">
     <div class="register-box">
-      <v-btn x-small color="secondary" @click="isAPerson = !isAPerson">
+      <v-btn x-small color="secondary" @click="isAPerson = false">
         <!-- F;retag -->
         företag
       </v-btn>
-      <v-btn x-small color="secondary" @click="isAPerson = !isAPerson">
+      <v-btn x-small color="secondary" @click="isAPerson = true">
         privat
       </v-btn>
-      <PersonRegister v-if="isAPerson" />
-      <CompanyRegister v-if="!isAPerson" />
+      <PersonRegister v-show="isAPerson" />
+      <CompanyRegister v-show="!isAPerson" />
      
       <v-btn class="reg-btn" rounded color="primary" dark> Register </v-btn>
     </div>
