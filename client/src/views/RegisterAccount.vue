@@ -2,7 +2,6 @@
   <div class="container">
     <div class="register-box">
       <v-btn x-small color="secondary" @click="isAPerson = false">
-        <!-- F;retag -->
         företag
       </v-btn>
       <v-btn x-small color="secondary" @click="isAPerson = true">
