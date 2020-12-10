@@ -1,6 +1,5 @@
 <template>
   <div class="test">
-	  
     <label for="name">Full Name</label>
     <input
       type="text"
@@ -34,7 +33,7 @@
       placeholder=""
       autocomplete="on"
     />
-	  <label for="areaCode">City</label>
+    <label for="areaCode">City</label>
     <input
       type="name"
       id="city"
@@ -67,7 +66,7 @@ label {
   border-radius: 5px 5px 0 0;
   margin-top: 20px;
   display: inline;
-  float: left;
+	margin: 0;
 }
 /* 
 .container {
