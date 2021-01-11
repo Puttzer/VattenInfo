@@ -9,8 +9,7 @@
         privat
       </v-btn>
       <PersonRegister v-if="isAPerson" />
-      <CompanyRegister v-if="!isAPerson" />
-     
+      <CompanyRegister v-if="!isAPerson" />     
       <v-btn class="reg-btn" rounded color="primary" dark> Register </v-btn>
     </div>
   </div>
@@ -41,6 +40,8 @@ export default {
   justify-content: center;
   align-items: center;
   /* background: red; */
+  /* background: url(../assets/pexels-kellie-churchman-1001682.jpg); */
+
   height: 100vh;
   width: 100%;
 }

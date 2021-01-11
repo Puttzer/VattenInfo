@@ -1,45 +1,5 @@
 <template>
-  <div class="container">
-    <div class="login">
-      <div class="login-box">
-        <h1>Logga In!</h1>
-        <form>
-          <label for="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            v-model="email"
-            placeholder="me@example.com"
-            autocomplete="off"
-          />
-
-          <label for="password">Password</label>&nbsp;
-          <div class="inputtag">
-            <input :type="passwordType" id="password" v-model="password" />
-            <i
-              class="fas"
-              :class="[passwordIcon]"
-              @click="hidePassword = !hidePassword"
-            ></i>
-          </div>
-
-          <!-- <input :type="passwordType" id="password" v-model="password" /> -->
-        </form>
-        <v-switch
-          v-model="autoUpdate"
-          :disabled="isUpdating"
-          class="mt-0"
-          color="blue lighten-2"
-          hide-details
-          label="KOm Ihåg"
-        ></v-switch>
-      </div>
-      <button class="login-btn">logga in</button>
-    </div>
-    <button class="change-lang">Svenska</button>
-
-    <transition name="drop" type="animation"> </transition>
-  </div>
+  <div class="container"></div>
 </template>
 
 
@@ -66,11 +26,18 @@ export default {
 
 <style scoped>
 .container {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background: black; */
+  /* background: url(../assets/bg2.jpg); */
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat;	 */
+  background: tomato;
   height: 100vh;
   width: 100vw;
 }
@@ -103,8 +70,6 @@ input {
   background: none;
   color: #fff;
 }
-
-
 
 label {
   background: #1565c0;
