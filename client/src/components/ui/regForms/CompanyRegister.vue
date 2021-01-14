@@ -1,8 +1,12 @@
 <template>
   <!-- <div class="container">
 
-  </div> -->
   <div class="test">
+    
+  </div>
+  </div> 
+  -->
+  <v-form>
     <label for="CompanyName">Företagsname</label>
     <input
       type="text"
@@ -14,8 +18,8 @@
     <label for="Email">Email</label>
     <input
       type="email"
-      id="Email"
-      v-model="Email"
+      id="email"
+      v-model="email"
       placeholder=""
       autocomplete="on"
     />
@@ -43,7 +47,7 @@
       placeholder=""
       autocomplete="on"
     />
-  </div>
+  </v-form>
 </template>
 
 <script>
@@ -51,13 +55,15 @@ export default {};
 </script>
 
 <style scoped>
+/* 
 .test {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* height: 100vh;
-  width: 100vw; */
+  height: 100vh;
+  width: 100vw; 
+  
 }
 
 label {
@@ -70,7 +76,6 @@ label {
   display: inline;
   float: left;
 }
-/* 
 .container {
   display: flex;
   flex-direction: row;
@@ -84,7 +89,7 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+} 
 
 input {
   border: #1565c0 2px solid;
@@ -101,4 +106,7 @@ input {
   border: none;
   color: #fff;
 }
+
+
+*/
 </style>
