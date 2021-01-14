@@ -11,7 +11,7 @@
             alt="vatteninfo Logo"
             class="shrink mr-2 pa-md-2 mx-lg-4"
             contain
-
+            src="@/assets/vatteninfo-logo.png"
             transition="scale-transition"
             width="200"
           />
@@ -73,7 +73,7 @@
               alt="vatteninfo Logo"
               class="shrink mr-2 pa-md-4 mx-lg-4"
               contain
-
+              src="@/assets/vatteninfo-logo.png"
               transition="scale-transition"
               width="200"
             />
