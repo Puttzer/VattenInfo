@@ -11,6 +11,8 @@ import NewsPage from '../views/NewsPage.vue'
 import ContactUs from '../views/ContactUs.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
 import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
+import Test from '../views/Test.vue'
+
 
 
 Vue.use(VueRouter)
@@ -21,6 +23,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+
+  {
+    path: '/test',
+    name: 'Test',
+    component: Test
   },
 
   {
