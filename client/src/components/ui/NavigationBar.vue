@@ -1,9 +1,9 @@
 <template>
-  <v-card>
-    <v-app-bar app class="orange darken-3 black--text" dark height="130">
+  <v-card >
+    <v-app-bar app class="white darken-3 black--text" dark height="130">
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
-        class="pa-md-6"
+        class="pa-md-6 green lighten-1"
       ></v-app-bar-nav-icon>
       <div class="d-flex align-center md-6" @click="moveToHome">
         <div>
@@ -24,34 +24,25 @@
       <v-spacer></v-spacer>
       <div>
         <div class="d-flex justify-end align-center">
-          <v-btn text @click="moveToSwedishversion">SV</v-btn>
+          <v-btn class="grey darken-2" text @click="moveToSwedishversion">SV</v-btn>
           <span>|</span>
-          <v-btn text @click="moveToEnglishversion">EN</v-btn>
+          <v-btn class="grey darken-2" text @click="moveToEnglishversion">EN</v-btn>
         </div>
-        <div>
-          <v-list flat class="d-flex align-center orange darken-3">
+        <!-- <div>
+          <v-list flat class="d-flex align-center white">
             <v-list-item
               v-for="link in navLinks"
               :key="link.text"
               router
               :to="link.route"
             >
-              <v-btn text class="hidden-xs-only normal">
-                <v-icon>{{ link.icon }}</v-icon>
+              <v-btn text class="success hidden-xs-only normal">
+                <v-icon class="green">{{ link.icon }}</v-icon>
                 <span class="mr-1 black--text">{{ link.text }}</span>
               </v-btn>
             </v-list-item>
           </v-list>
-
-          <!-- <v-btn text class="hidden-xs-only">
-            <v-icon>help_center</v-icon>
-            <span class="mr-1 black--text text-darken-4">Help Center</span>
-          </v-btn>
-          <v-btn text class="hidden-xs-only" @click="moveToNews">
-            <v-icon>mdi-open-in-new</v-icon>
-            <span class="mr-1 black--text text-darken-4">Latest News</span>
-          </v-btn> -->
-        </div>
+        </div> -->
       </div>
     </v-app-bar>
 

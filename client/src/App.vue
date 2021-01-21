@@ -1,7 +1,7 @@
 <template>
-  <v-app>
-    <navigation-bar></navigation-bar>
-     <v-main class="grey darken-2">
+  <v-app ma-0 pa-3>
+    <navigation-bar ></navigation-bar>
+     <v-main ma='0' class="grey lighten-2">
       <router-view></router-view>
      </v-main>
   
