@@ -11,6 +11,7 @@ import NewsPage from '../views/NewsPage.vue'
 import ContactUs from '../views/ContactUs.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
 import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
+import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 
 
 Vue.use(VueRouter)
@@ -70,6 +71,11 @@ const routes = [
     path: '/register',
     name: 'RegisterAccount',
     component: RegisterAccount
+  },
+  {
+    path: '/payment',
+    name: 'PaymentInfo',
+    component: PaymentInfo
   },
   {
     path: '/*',
