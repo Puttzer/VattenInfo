@@ -1,23 +1,24 @@
 <template>
   <v-card >
-    <v-app-bar app class="white darken-3 black--text" dark height="130">
+    <v-app-bar app class="white darken-3 black--text" dark flat height="100">
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
-        class="pa-md-6 green lighten-1"
+        class="pa-md-6 green lighten-1 ml-3"
       ></v-app-bar-nav-icon>
       <div class="d-flex align-center md-6" @click="moveToHome">
         <div>
           <v-img
             alt="vatteninfo Logo"
-            class="shrink mr-2 pa-md-2 mx-lg-4"
+            class="shrink mt-3 pa-2 mx-lg-4 "
             contain
             src="@/assets/vatteninfo-logo.png"
             transition="scale-transition"
-            width="200"
+            width="150"
+
           />
-          <v-card-title color="black" class="subtitle-2 font-weight-bold"
-            >En mötesplats för vatten- och avloppsfrågor</v-card-title
-          >
+          <!-- <span color="black" class="subtitle-2 font-weight-light"
+            >En mötesplats för vatten- och avloppsfrågor</span
+          > -->
         </div>
       </div>
 
@@ -52,7 +53,7 @@
       absolute
       temporary
       height="100vh"
-      width="500px"
+      width="20vw"
     >
       <v-list nav dense>
         <v-list-item-group
@@ -85,12 +86,13 @@
             :to="link.route"
           >
             <v-list-item-icon>
-              <v-icon fab color="red" x-large>{{ link.icon }}</v-icon>
+              <v-icon fab color="green ligthen-3" medium>{{ link.icon }}</v-icon>
             </v-list-item-icon>
             <v-list-item-title
               class="font-weight-bold black--text text-darken-8"
               ><h3>{{ link.text }}</h3></v-list-item-title
             >
+            <v-divider inset></v-divider>
           </v-list-item>
         </v-list-item-group>
       </v-list>

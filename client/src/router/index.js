@@ -6,13 +6,14 @@ import Login from '../views/Login.vue'
 
 import PrivatePerson from '../views/PrivatePerson.vue'
 import CompanyPage from '../views/CompanyPage.vue'
-import PriceDetails from '../views/PriceDetails.vue'
+// import PriceDetails from '../views/PriceDetails.vue'
 import NewsPage from '../views/NewsPage.vue'
 import ContactUs from '../views/ContactUs.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
 import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
 import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import Test from '../views/Test.vue'
+import TestExpansion from '../components/testpages/TestExpansion.vue'
 
 
 Vue.use(VueRouter)
@@ -61,8 +62,8 @@ const routes = [
   },
   {
     path: '/priser',
-    name: 'PriceDetails',
-    component: PriceDetails
+    name: 'TestExpansion',
+    component: TestExpansion
   },
   {
     path: '/news',
