@@ -11,7 +11,6 @@
         >
           <v-expansion-panels
             border
-            color="red"
             xs12
             sm9
             md6
@@ -20,15 +19,16 @@
           >
             <v-expansion-panel
               class="mb-1"
+              width="10vh"
               border="bottom"
               dark
               v-for="item in packets"
               :key="item.title"
             >
-              <v-expansion-panel-header class="grey lighten">{{
+              <v-expansion-panel-header class="grey lighten-3">{{
                 item.title
               }}</v-expansion-panel-header>
-              <v-expansion-panel-content class="grey lighten-2">
+              <v-expansion-panel-content class="grey lighten-3">
                 <h2 class="ma-3">Ingår i {{ item.title }} Paket</h2>
                 <div class="d-flex flex-wrap ma-1">
                   <div v-for="(test, index) in item.tests" :key="index">
@@ -57,12 +57,7 @@
               voluptatibus natus autem assumenda molestiae, consequatur commodi
               nam! Porro totam voluptatem fugit quis molestiae.
             </h3>
-            <h3>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Inventore fugiat possimus praesentium? Obcaecati culpa rerum
-              possimus distinctio. Magni recusandae, eius, omnis modi
-              distinctio, reprehenderit aliquam cum labore dolorum quo quae.
-            </h3>
+            
           </div>
         </v-col>
       </v-row>

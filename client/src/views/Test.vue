@@ -6,7 +6,7 @@
           <v-card>
             <v-img width="100vw" height="45vh" src="../assets/bg.jpg">
               <v-card-title class="justify-center">
-                <span class="title font-weight-light">Lorem, ipsum dolor.</span>
+                <span class="title font-weight-light white--text">En mötesplats för vatten- och avloppsfrågor</span>
               </v-card-title>
               <v-card-actions class="justify-center">
                 <v-btn flat color="white">
