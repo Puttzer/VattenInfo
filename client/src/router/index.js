@@ -14,6 +14,7 @@ import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
 import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import Test from '../views/Test.vue'
 import TestExpansion from '../components/testpages/TestExpansion.vue'
+import AddNyheter from '../views/addNyheter.vue'
 
 
 Vue.use(VueRouter)
@@ -84,6 +85,11 @@ const routes = [
     path: '/payment',
     name: 'PaymentInfo',
     component: PaymentInfo
+  },
+  {
+    path: '/addnews',
+    name: 'addNews',
+    component: AddNyheter
   },
   {
     path: '/*',
