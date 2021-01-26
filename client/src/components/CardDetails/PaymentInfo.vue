@@ -20,8 +20,6 @@
             <v-card class="ma-2 pa-4">
 
         <form>
-
-
         <v-row>
            <v-col
           cols="12"

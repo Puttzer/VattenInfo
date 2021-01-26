@@ -1,26 +1,34 @@
 <template>
-  <v-app ma-0 pa-3>
-    <navigation-bar ></navigation-bar>
-     <v-main ma='0' class="grey lighten-2">
+  <v-app class="ma-0 pa-0">
+    <NavigationBar />
+    <v-main class="ma-0 pa-0 lighten-2">
       <router-view></router-view>
-     </v-main>
-  
+    </v-main>
   </v-app>
 </template>
 
 <script>
-import NavigationBar from './components/ui/NavigationBar.vue'
+import NavigationBar from "./components/ui/TESTnavbar.vue";
+// import bajs from "./components/ui/bajs.vue";
+// import test from "./components/ui/test.vue";
+
+// NavigationBar
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
     NavigationBar
-    
-  },
-
-  data: () => ({
-    //
-  }),
+    // test
+  }
 };
 </script>
+
+<style>
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+</style>

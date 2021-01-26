@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <div class="register-box">
-      <v-btn x-small color="secondary" @click="isAPerson = false">
+      <v-btn  x-small color="secondary" @click="isAPerson = false">
         företag
       </v-btn>
       <v-btn x-small color="secondary" @click="isAPerson = true">
         privat
       </v-btn>
-      <PersonRegister v-show="isAPerson" />
-      <CompanyRegister v-show="!isAPerson" />
+      <TestPerson v-show="isAPerson" />
+      <TestCompany v-show="!isAPerson" />
      
       <v-btn class="reg-btn" rounded color="primary" dark> Register </v-btn>
     </div>
@@ -16,8 +16,9 @@
 </template>
 
 <script>
-import PersonRegister from "../components/ui/regForms/PersonRegister";
-import CompanyRegister from "../components/ui/regForms/CompanyRegister";
+// import PersonRegister from "../components/ui/regForms/PersonRegister";
+import TestPerson from "../components/ui/regForms/TestPerson";
+import TestCompany from "../components/ui/regForms/TestCompany";
 
 export default {
   data() {
@@ -27,8 +28,8 @@ export default {
     };
   },
   components: {
-    PersonRegister,
-    CompanyRegister,
+    TestCompany,
+    TestPerson,
   },
 };
 </script>
@@ -53,7 +54,9 @@ export default {
   flex-direction: column;
   /* justify-content: center; */
   /* align-items: center; */
-  background: #00000075;
+  /* background: #00000075; */
+  background: #fff;
+
   border-radius: 15px;
   border: none;
   color: #fff;
