@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="pink white--text">
       <h1> Information for private person </h1>
   </v-card>
 </template>
@@ -11,6 +11,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

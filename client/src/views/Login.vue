@@ -116,9 +116,9 @@ label {
   padding: 0 20px;
   font-size: 16px;
   border-radius: 5px 5px 0 0;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   display: inline;
-  float: left;
+  /* float: left; */
 }
 
 .remember-label {
