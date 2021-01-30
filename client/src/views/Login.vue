@@ -4,34 +4,57 @@
       <div class="login-box">
         <h1>Logga In!</h1>
         <form>
-          <label for="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            v-model="email"
-            placeholder="me@example.com"
-            autocomplete="off"
-          />
+          <div class="forminput">
+            <label for="email">Email</label>
+            <input
+              type="text"
+              id="email"
+              v-model="email"
+              placeholder="placeholder@example.com"
+              autocomplete="off"
+            />
+          </div>
+          <div class="forminput">
+            <label for="password">Password</label>&nbsp;
+            <div class="passwordinput">
+              <input :type="passwordType" id="password" v-model="password" placeholder="*******" 
+              />
+              <i
+                class="fas"
+                :class="[passwordIcon]"
+                @click="hidePassword = !hidePassword"
+              ></i>
+            </div>
+            <!-- <v-text-field
+            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+            :type="show3 ? 'text' : 'password'"
+            value="*********"
+            color="white"
+            solo
+            background-color="#042e5e"            
+            @click:append="show3 = !show3"
+          ></v-text-field> -->
+          </div>
 
-          <label for="password">Password</label>&nbsp;
-          <i
-            class="fas"
-            :class="[passwordIcon]"
-            @click="hidePassword = !hidePassword"
-          ></i>
-          <input :type="passwordType" id="password" v-model="password" />
         </form>
-        <v-switch
-          v-model="autoUpdate"
-          :disabled="isUpdating"
-          class="mt-0"
-          color="blue lighten-2"
-          hide-details
-          label="KOm Ihåg"
-        ></v-switch>
+        <div class="switchinput">
+          <v-switch
+            v-model="autoUpdate"
+            :disabled="isUpdating"
+            class="mt-0"
+            color="blue lighten-2"
+            hide-details
+            justify="end"
+            label="Kom Ihåg"
+          ></v-switch>
+        </div>
 
       </div>
-      <button class="login-btn">logga in</button>
+      <div class="form-submit">
+
+        <button class="login-btn">logga in</button>
+        <button class="forgot-password">Glömt Losenord<span>|</span></button>
+      </div>
     </div>
     <button class="change-lang">Svenska</button>
 
@@ -50,6 +73,7 @@ export default {
       password: "",
       hidePassword: true,
       rememberTheName: false,
+      show3:false,
     };
   },
   computed: {
@@ -73,15 +97,20 @@ export default {
   justify-content: center;
   align-items: center;
   /* background: url(../assets/bg2.jpg); */
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
   /* background-repeat: no-repeat;	 */
-  background: tomato;
+  background:#05427a;
   height: 100vh;
   width: 100vw;
 }
+/* .v-input{
+  border-radius:0px;
+  border:#1565c0 3px solid;
+  height:54px;
+} */
 
-.login {
+/* .login {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,46 +118,82 @@ export default {
   background: black;
   height: 100vh;
   width: 100wv;
-}
+} */
 .login-box {
-  height: 364px;
+  display:flex;
+  flex-direction:column;
+  padding:20px;
+  height: 350px;
   width: 304px;
+  background: rgba(0, 0, 0, 0.4);
   /* background: #00000075; */
-  background: #00990075;
-
-  border-radius: 15px;
+  border-radius: 5px;
   border: none;
   color: #fff;
   /* border: solid 2px orangered; */
 }
+.login-box,h1{
+  display:flex;
+  justify-content:center;
+}
 
 input {
-  border: #1565c0 2px solid;
+  border: #1565c0 3px solid;
   height: 54px;
   width: 261px;
-  background: none;
-  color: #fff;
+  padding:5px;
+  color:rgb(172, 114, 94);
+  margin-top:-5px;
+  font-weight:400;
 }
 
 label {
   background: #1565c0;
   color: #fff;
   padding: 0 20px;
-  font-size: 16px;
+  font-size: 18px;
   border-radius: 5px 5px 0 0;
+  height:50px;
+  margin-bottom:-5px;
   /* margin-top: 50px; */
-  display: inline;
   /* float: left; */
 }
+.forminput{
+  margin-top:10px;
+}
 
-.remember-label {
+/* .remember-label {
   color: #fff;
   font-size: 12px;
+} */
+.passwordinput{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  border:#1565c0 3px solid;
+  padding-right:15px;
+  font-size:18px;
+  margin-top:-4px;
+}
+.passwordinput>input{
+  border:none;
+  padding:5px;
+}
+.switchinput{
+  display:flex;
+  flex-direction:row-reverse;
+  
+  margin-top:15px;
 }
 
 .remember-me {
   height: 32px;
   width: 32px;
+}
+
+.form-submit{
+  display:flex;
+  flex-direction:row-reverse;
 }
 .login-btn {
   height: 36px;
@@ -137,7 +202,21 @@ label {
   border-radius: 15px;
   border: none;
   color: #fff;
+  margin:15px;
+  display:float;
+  float:center;
   /* background: #00000075; */
+}
+.forgot-password{
+  text-decoration-line: underline;
+}
+.forgot-password:hover{
+  color:orangered;
+  font-size:18px;
+  
+}
+span{
+  margin:10px;
 }
 
 .change-lang {
