@@ -42,12 +42,12 @@
       app
       v-model="drawer"
       class="bass"
-      color="#00000085"
+      color="#222222"
       absolute
       flat
       temporary
       height="100vh"
-      width="300px"
+      width="500px"
     >
       <v-list shaped class="pt-10">
         <v-list-group no-action sub-group>
@@ -59,11 +59,13 @@
 
           <v-list-item
             class="font-weight-light pl-4"
-            v-for="([title, icon], i) in admins"
-            :key="i"
+            v-for="(link) in links"
+            router
+            :to="link.route"
+            :key="link.text"
             link
           >
-            <v-list-item-title class="white--text" v-text="title"></v-list-item-title>
+            <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
@@ -89,30 +91,31 @@
       <v-col>
         <div class="d-flex align-end justify-end">
           <v-btn
-            @click="swedish = !swedish"
+            @click="english = !english"
             :style="{
-           background : swedish ? 'black !important' : 'white',
-           color: swedish ? 'black !important' : 'white',
+
+
+		opacity: english ? '1 !important' : '0.15' 
            }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-icon dark></v-icon>
+            <v-img src="../../assets/flags/gb.svg"></v-img>
           </v-btn>
 
           <v-btn
             @click="swedish = !swedish"
             :style="{
-           backgroundColor : swedish ? 'white !important' : 'black',
-           color: swedish ? 'white !important' : 'black',}"
+				blur: swedish ? '0px !important': '14px',
+		opacity: swedish ? '1 !important' : '0.15' }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-icon dark></v-icon>
+            <v-img src="../../assets/flags/sweden.svg"></v-img>
           </v-btn>
         </div>
 
@@ -134,16 +137,15 @@ export default {
     return {
       drawer: false,
       swedish: true,
-      admins: [
-        ["Vatten och avloppsrådgivning"],
-        ["Vattenbiblioteket"],
-        ["Laboratorietjänster"],
-        ["Vattenexpo"],
-        ["Vattendagar"],
-        ["Kurser"],
-        ["GemVA"],
-        ["Produkter"],
-        ["Nyttiga sidor"]
+      english: false,
+      links: [
+        { text: "Laboratorietjänster", route: "/" },
+        { text: "Vattenexpo", route: "/" },
+        { text: "Vattendagar", route: "/" },
+        { text: "Kurser", route: "/" },
+        { text: "GemVA", route: "/" },
+        { text: "Produkter", route: "/" },
+        { text: "Nyttiga sidor", route: "/" }
       ]
     };
   }
