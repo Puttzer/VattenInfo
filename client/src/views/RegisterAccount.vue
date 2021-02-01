@@ -1,23 +1,29 @@
 <template>
   <div class="container">
-    <div class="register-box">
-      <v-btn x-small color="secondary" @click="isAPerson = false">
-        företag
-      </v-btn>
-      <v-btn x-small color="secondary" @click="isAPerson = true">
-        privat
-      </v-btn>
-      <PersonRegister v-show="isAPerson" />
-      <CompanyRegister v-show="!isAPerson" />
-     
-      <v-btn class="reg-btn" rounded color="primary" dark> Register </v-btn>
-    </div>
+    <v-card >
+      <v-row>
+        <v-col cols="12">
+
+          <v-btn  class="ml-4" small color="white" text @click="isAPerson = false" >
+            företag
+          </v-btn>
+          <span>|</span>
+          <v-btn small color="white" text @click="isAPerson = true" :class="{active:isAPerson}">
+            privat
+          </v-btn>
+        </v-col>
+      </v-row>
+      <TestPerson  v-show="isAPerson" class="personbgcolor" />
+      <TestCompany  v-show="!isAPerson"  class="personbgcolor" />
+
+    </v-card>
   </div>
 </template>
 
 <script>
-import PersonRegister from "../components/ui/regForms/PersonRegister";
-import CompanyRegister from "../components/ui/regForms/CompanyRegister";
+// import PersonRegister from "../components/ui/regForms/PersonRegister";
+import TestPerson from "../components/ui/regForms/TestPerson";
+import TestCompany from "../components/ui/regForms/TestCompany";
 
 export default {
   data() {
@@ -27,8 +33,8 @@ export default {
     };
   },
   components: {
-    PersonRegister,
-    CompanyRegister,
+    TestCompany,
+    TestPerson,
   },
 };
 </script>
@@ -37,36 +43,48 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   /* background: red; */
   /* background: url(../assets/pexels-kellie-churchman-1001682.jpg); */
 
-  height: 100vh;
+  height: 1200px;
   width: 100%;
+  background:#05427a;
 }
 
-.register-box {
-  height: 100vh;
-  width: 461px;
+.v-card {
+  height:80vh;
+  width: 33vw;
   display: flex;
   flex-direction: column;
+  background-color:#051f38 ;
   /* justify-content: center; */
   /* align-items: center; */
-  background: #00000075;
-  border-radius: 15px;
-  border: none;
-  color: #fff;
-  overflow: scroll;
+  /* background: #00000075; */
+  margin-top:75px;
+  border-radius: 5px;
+}
+.personbgcolor{
+  background:#2176c0 ;
+}
+.active{
+  color:orangered;
+}
+.inactive{
+  color:black;
 }
 
-.reg-btn {
+.companybgcolor{
+  background:#1d66a7 ;
+}
+/* .reg-btn {
   /* height: 36px;
   width: 97px; */
   /* background: #1565c0; */
-  /* border-radius: 15px; */
+  /* border-radius: 15px; 
   border: none;
   color: #fff;
   margin: 25px;
-}
+} */
 </style>

@@ -1,69 +1,33 @@
-<template>
-  <!-- <div class="container">
-
-  <div class="test">
-    
+	<template>
+  <div class="container">
+    <form>
+      <label for="CompanyName">Företagsname</label>
+      <input type="text" id="CompanyName" v-model="CompanyName" placeholder autocomplete="on" />
+      <label for="Email">Email</label>
+      <input type="email" id="email" v-model="email" placeholder autocomplete="on" />
+      <label for="orgNumber">org number</label>
+      <input type="text" id="orgNumber" v-model="orgNumber" placeholder autocomplete="on" />
+      <label for="street">Street</label>
+      <input type="text" id="street" v-model="street" placeholder autocomplete="on" />
+      <label for="areaCode">Area Code</label>
+      <input type="name" id="areaCode" v-model="areaCode" placeholder autocomplete="on" />
+    </form>
   </div>
-  </div> 
-  -->
-  <v-form>
-    <label for="CompanyName">Företagsname</label>
-    <input
-      type="text"
-      id="CompanyName"
-      v-model="CompanyName"
-      placeholder=""
-      autocomplete="on"
-    />
-    <label for="Email">Email</label>
-    <input
-      type="email"
-      id="email"
-      v-model="email"
-      placeholder=""
-      autocomplete="on"
-    />
-    <label for="orgNumber">org number</label>
-    <input
-      type="text"
-      id="orgNumber"
-      v-model="orgNumber"
-      placeholder=""
-      autocomplete="on"
-    />
-    <label for="street">Street</label>
-    <input
-      type="text"
-      id="street"
-      v-model="street"
-      placeholder=""
-      autocomplete="on"
-    />
-    <label for="areaCode">Area Code</label>
-    <input
-      type="name"
-      id="areaCode"
-      v-model="areaCode"
-      placeholder=""
-      autocomplete="on"
-    />
-  </v-form>
 </template>
+
 
 <script>
 export default {};
 </script>
 
 <style scoped>
-/* 
 .test {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw; 
-  
+  width: 100vw;
 }
 
 label {
@@ -72,9 +36,9 @@ label {
   padding: 0 20px;
   font-size: 16px;
   border-radius: 5px 5px 0 0;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: inline;
-  float: left;
+  /* float: left; */
 }
 .container {
   display: flex;
@@ -83,13 +47,13 @@ label {
   align-items: center;
   height: 100vh;
   width: 100vw;
-} 
+}
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} 
+}
 
 input {
   border: #1565c0 2px solid;
@@ -106,7 +70,7 @@ input {
   border: none;
   color: #fff;
 }
-
-
-*/
 </style>
+
+
+

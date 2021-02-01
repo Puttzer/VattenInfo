@@ -64,7 +64,7 @@ label {
   padding: 0 20px;
   font-size: 16px;
   border-radius: 5px 5px 0 0;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: inline;
 	margin: 0;
 }
