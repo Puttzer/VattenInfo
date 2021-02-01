@@ -1,22 +1,23 @@
 <template>
   <v-app ma-0 pa-3>
-    <navigation-bar ></navigation-bar>
-     <v-main ma='0' class="grey lighten-2">
+    <navigation-bar></navigation-bar>
+    <v-main ma="0" class="grey lighten-2">
       <router-view></router-view>
-     </v-main>
-  
+    </v-main>
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
-import NavigationBar from './components/ui/NavigationBar.vue'
+import NavigationBar from "./components/ui/NavigationBar.vue";
+import Footer from "./components/constants/Footer.vue";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
-    NavigationBar
-    
+    NavigationBar,
+    Footer,
   },
 
   data: () => ({
