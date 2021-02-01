@@ -50,7 +50,7 @@ export default {
 
   height: 1200px;
   width: 100%;
-  background:#05427a;
+  /* background:#05427a; */
 }
 
 .v-card {
