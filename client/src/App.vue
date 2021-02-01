@@ -18,9 +18,9 @@ export default {
   name: "App",
 
   components: {
-    NavigationBar
+    NavigationBar,
     // test
-  }
+  },
 };
 </script>
 
