@@ -14,7 +14,7 @@
         </p>
         <p>08-428 431 50</p>
       </v-col>
-      <v-col d-flex class="d-flex align-end mb-6">copyright</v-col>
+      <v-col d-flex class="d-flex align-end mb-6">COPYRIGHT PLACED HERE</v-col>
       <v-col></v-col>
       <v-col d-flex class="d-flex align-end mb-6">
         <v-img
@@ -49,7 +49,5 @@ export default {};
 <style lang="scss" scoped>
 .v-container {
   max-height: 160px;
-  background-color: #e0e0e0;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
 }
 </style>
