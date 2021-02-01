@@ -1,7 +1,7 @@
 <template>
   <v-app class="ma-0 pa-0">
     <NavigationBar />
-    <v-main class="ma-0 pa-0 lighten-2">
+    <v-main class="ma-0 pa-0 lighten-2 blue">
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -10,7 +10,7 @@
 <script>
 import NavigationBar from "./components/ui/TESTnavbar.vue";
 // import bajs from "./components/ui/bajs.vue";
-// import test from "./components/ui/test.vue";
+// import test from "./components/ui/test2.vue";
 
 // NavigationBar
 
@@ -30,5 +30,4 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-
 </style>
