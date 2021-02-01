@@ -4,13 +4,13 @@
     <v-main class="ma-0 pa-0 lighten-2 blue">
       <router-view></router-view>
     </v-main>
+    <Footer></Footer>
   </v-app>
 </template>
 
 <script>
 import NavigationBar from "./components/ui/TESTnavbar.vue";
-// import bajs from "./components/ui/bajs.vue";
-// import test from "./components/ui/test2.vue";
+import Footer from "./components/constants/Footer";
 
 // NavigationBar
 
@@ -19,6 +19,7 @@ export default {
 
   components: {
     NavigationBar,
+    Footer,
     // test
   },
 };
