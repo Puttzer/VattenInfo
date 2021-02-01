@@ -1,7 +1,7 @@
 <template>
   <v-app class="ma-0 pa-0">
     <NavigationBar />
-    <v-main class="ma-0 pa-0 lighten-2 blue">
+    <v-main class="ma-0 pa-0 primary"  >
       <router-view></router-view>
     </v-main>
   </v-app>
@@ -29,5 +29,8 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+.v-main{
+  width:100vw;
 }
 </style>

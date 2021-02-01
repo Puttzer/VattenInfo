@@ -107,6 +107,52 @@ export default {
   components: {
     // HelloWorld
     // NavigationBar
+  },
+  data(){
+    return{
+      events:[{
+        title:'Vatten-priset till Anders Finnson',
+        image:'../assets',
+        new_date:'27-01-2021',
+        description:'Svenskt Vattens miljöexpert Anders Finnson har tilldelats Föreningen Vattens VATTEN-pris för år 2021. Priset delas ut till person eller grupp av personer verksamma inom de nordiska länderna.',
+        company:'Slussen Building Services'
+      },
+      {
+        title:'Nya medarbetare till BAGA',
+        image:'',
+        new_date:'20-01-2021',
+        description:'Vi har fått två nya kollegor; Robert Omarsson och Alexander Hjalmarsson.',
+        company:'BAGA Water Technology AB'
+      },
+      {
+        title:'Tyck till om de kommande sex årens vattenförvaltning',
+        image:'',
+        new_date:'13-01-2021',
+        description:'Vattenmyndigheterna föreslår sextio åtgärder för hur vi tillsammans ska ta hand om Sveriges vatten under de närmsta sex åren. Fram till den 30 april 2021 kan du lämna dina synpunkter om dessa.',
+        company:'Vatteninfo Sverige AB'
+      },
+      {
+        title:'Vinterns nyhetsbrev från Vatteninfo 2020',
+        image:'',
+        new_date:'22-12-2020',
+        description:'2020 var ett år som är svårt att beskriva i korta drag, men som minst sagt varit utöver det vanliga. Läs om året som gått och vad som är aktuellt hos oss just nu i julens nyhetsbrev från Vatteninfo.',
+        company:'Vatteninfo Sverige AB'
+      },
+      {
+        title:'Ny kartläggning av mikroplaster i Östersjön',
+        image:'',
+        new_date:'18-12-2020',
+        description:'Över hälften av den mikroplast som finns i Östersjön transporteras dit via dagvatten och avloppsvatten. Det visar ny forskning från det Vinnova- och EU-finansierade projektet Bonus Micropoll.',
+        company:'Slussen Building Services'
+      },
+      {
+        title:'Tillskottsvatten i avloppssystem – nya tankar om nyckeltal',
+        image:'',
+        new_date:'24-12-2020',
+        description:'Svenskt Vatten presenterar rapporten Tillskottsvatten i avloppssystem – nya tankar om nyckeltal.',
+        company:'Slussen Building Services'
+      }]
+    }
   }
 };
 </script>

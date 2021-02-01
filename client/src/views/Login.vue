@@ -2,8 +2,8 @@
   <div class="container">
     <div class="login">
       <div class="login-box">
-        <h1>Logga In!</h1>
-        <form>
+        <h1 class="font-weight-light">Logga In!</h1>
+        <form class="mt-7">
           <div class="forminput">
             <label for="email">Email</label>
             <input
@@ -14,9 +14,9 @@
               autocomplete="off"
             />
           </div>
-          <div class="forminput">
+          <div class="forminput mt-6">
             <label for="password">Password</label>&nbsp;
-            <div class="passwordinput">
+            <!-- <div class="passwordinput">
               <input :type="passwordType" id="password" v-model="password" placeholder="*******" 
               />
               <i
@@ -24,16 +24,17 @@
                 :class="[passwordIcon]"
                 @click="hidePassword = !hidePassword"
               ></i>
-            </div>
-            <!-- <v-text-field
-            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+            </div> -->
+            <v-text-field
+            class="borderPassword mt-n1"
+            :append-icon="show3 ? 'visibility' : 'visibility_off'"
             :type="show3 ? 'text' : 'password'"
             value="*********"
-            color="white"
-            solo
-            background-color="#042e5e"            
+            solo 
+            color="transparent"
+            transparent   
             @click:append="show3 = !show3"
-          ></v-text-field> -->
+          ></v-text-field>
           </div>
 
         </form>
@@ -41,7 +42,7 @@
           <v-switch
             v-model="autoUpdate"
             :disabled="isUpdating"
-            class="mt-0"
+            class="mt-0 mb-8"
             color="blue lighten-2"
             hide-details
             justify="end"
@@ -56,7 +57,6 @@
         <button class="forgot-password">Glömt Losenord<span>|</span></button>
       </div>
     </div>
-    <button class="change-lang">Svenska</button>
 
     <transition name="drop" type="animation">
 
@@ -73,7 +73,7 @@ export default {
       password: "",
       hidePassword: true,
       rememberTheName: false,
-      show3:false,
+      show3:true,
     };
   },
   computed: {
@@ -81,7 +81,7 @@ export default {
       return this.hidePassword ? "password" : "text";
     },
     passwordIcon() {
-      return this.hidePassword ? "fa-eye" : "fa-eye-slash";
+      return this.hidePassword ? "visibility" : "visibility_off";
     },
   },
 };
@@ -90,17 +90,15 @@ export default {
 <style scoped>
 .container {
   padding: 0;
-  margin: 0;
+  margin-left: 150px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* background: url(../assets/bg2.jpg); */
   /* background-size: cover;
   background-position: center; */
   /* background-repeat: no-repeat;	 */
-  background:#05427a;
   height: 100vh;
   width: 100vw;
 }
@@ -110,15 +108,14 @@ export default {
   height:54px;
 } */
 
-/* .login {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: black;
   height: 100vh;
   width: 100wv;
-} */
+}
 .login-box {
   display:flex;
   flex-direction:column;
@@ -142,10 +139,19 @@ input {
   height: 54px;
   width: 261px;
   padding:5px;
-  color:rgb(172, 114, 94);
   margin-top:-5px;
   font-weight:400;
+  
 }
+.borderPassword{
+  border: #1565c0 3px solid;
+  height: 54px;
+  width: 261px;
+  padding:5px;
+  font-weight:400;
+  border-radius:0;
+  background: rgba(0, 0, 0, 0.4);
+  }
 
 label {
   background: #1565c0;
