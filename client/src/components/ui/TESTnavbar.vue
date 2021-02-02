@@ -27,8 +27,9 @@
             color="black"
             class="subtitle-2 font-weight-bold"
           >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
-          <v-icon color="blue mr-2" x-large>mdi-water</v-icon>
+          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
         </div>
+        <v-img class="ml-2" width="34px" height="34px" src="../../assets/logga.svg"></v-img>
       </div>
 
       <v-spacer></v-spacer>
@@ -88,7 +89,7 @@
       </v-list>
       <v-row></v-row>
       <v-col class="mb-2 flex d-flex align-end justify-end">
-        <div class=" mt-16 d-flex align-end justify-end">
+        <div class="mt-16 d-flex align-end justify-end">
           <v-btn
             @click="setLanguage()"
             :style="{
