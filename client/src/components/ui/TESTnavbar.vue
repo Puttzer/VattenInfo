@@ -47,89 +47,83 @@
       flat
       temporary
       height="100vh"
-      width="500px"
+      width="300px"
     >
-      <v-list shaped class="pt-10">
-        <v-list-group no-action sub-group>
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title color="green" class="white--text">Start</v-list-item-title>
-            </v-list-item-content>
-          </template>
+      <v-row>
+        <v-list shaped class="pt-10">
+          <v-list-group no-action sub-group>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title color="green" class="white--text">Start</v-list-item-title>
+              </v-list-item-content>
+            </template>
 
-          <v-list-item
-            class="font-weight-light pl-4"
-            v-for="(link) in links"
-            router
-            :to="link.route"
-            :key="link.text"
-            link
-          >
-            <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
+            <v-list-item
+              class="font-weight-light pl-4"
+              v-for="(link) in links"
+              router
+              :to="link.route"
+              :key="link.text"
+              link
+            >
+              <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
 
-            <v-list-item-icon>
-              <v-icon v-text="icon"></v-icon>
-            </v-list-item-icon>
+              <v-list-item-icon>
+                <v-icon v-text="icon"></v-icon>
+              </v-list-item-icon>
+            </v-list-item>
+          </v-list-group>
+          <v-list-item>
+            <!-- <v-list-item-icon>
+            <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>-->
+
+            <v-list-item-title class="pl-14 white--text">Om oss</v-list-item-title>
           </v-list-item>
-        </v-list-group>
-        <v-list-item>
-          <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>-->
 
-          <v-list-item-title class="pl-14 white--text">Om oss</v-list-item-title>
-        </v-list-item>
-
-        <v-list-item>
-          <!-- <v-list-item-icon>
+          <v-list-item>
+            <!-- <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>-->
-          <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
-        </v-list-item>
-      </v-list>
-      <v-row></v-row>
-      <v-col class="mb-2 flex d-flex align-end justify-end">
-        <div class="mt-16 d-flex align-end justify-end">
-          <v-btn
-            @click="setLanguage()"
-            :style="{
+            </v-list-item-icon>-->
+            <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-row>
+      <v-row class="pt-16 mt-16 flex d-flex align-end justify-space-between">
+        <v-col class="pt-16 mt-16 flex d-flex align-end justify-end">
+            <v-btn
+              @click="setLanguage()"
+              :style="{
 				filter: english ? 'blur(0px) !important': 'blur(2px)',
 		opacity: english ? '1 !important' : '0.55' 
            }"
-            class="mx-2"
-            fab
-            dark
-            small
-          >
-            <v-avatar>
-              <v-img fab src="../../assets/flags/gb.svg"></v-img>
-            </v-avatar>
-          </v-btn>
+              class="mx-2"
+              fab
+              dark
+              small
+            >
+              <v-avatar>
+                <v-img fab src="../../assets/flags/gb.svg"></v-img>
+              </v-avatar>
+            </v-btn>
 
-          <v-btn
-            @click="setLanguage()"
-            :style="{
+            <v-btn
+              @click="setLanguage()"
+              :style="{
 		filter: swedish ? 'blur(0) !important': 'blur(2px)',
 		opacity: swedish ? '1 !important' : '0.55' }"
-            class="mx-2"
-            fab
-            dark
-            small
-          >
-            <v-avatar>
-              <v-img src="../../assets/flags/sweden.svg"></v-img>
-            </v-avatar>
-          </v-btn>
-        </div>
+              class="mx-2"
+              fab
+              dark
+              small
+            >
+              <v-avatar>
+                <v-img src="../../assets/flags/sweden.svg"></v-img>
+              </v-avatar>
+            </v-btn>
 
-        <!-- <v-btn
-          @click="swedish = !swedish"
-          :style="{
-           backgroundColor : swedish ? 'red !important' : '',
-           color: swedish ? 'white !important' : 'red',
-           }"
-        ></v-btn>-->
-      </v-col>
+        </v-col>
+      </v-row>
     </v-navigation-drawer>
   </v-card>
 </template>
@@ -173,5 +167,11 @@ v-list-item-title {
 
 v-list-item-title:active {
   background: mediumseagreen;
+}
+
+.anyName {
+  display: flex;
+  align-content: space-between;
+  /* background: mediumspringgreen; */
 }
 </style>
