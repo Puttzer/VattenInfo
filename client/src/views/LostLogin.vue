@@ -5,7 +5,7 @@
         <v-form class="mt-4 pa-4">
             <v-row justify="center">
                 <v-col class="lostlogin1" cols="12" md="9">
-                <h2>Beställ Nya Lösenord</h2>
+                <h2>Beställ Nytt Lösenord</h2>
                 </v-col>
             </v-row>
             <v-row justify="center">
