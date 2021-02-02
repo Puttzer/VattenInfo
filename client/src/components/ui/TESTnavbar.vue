@@ -27,8 +27,9 @@
             color="black"
             class="subtitle-2 font-weight-bold"
           >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
-          <v-icon color="blue mr-2" x-large>mdi-water</v-icon>
+          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
         </div>
+        <v-img class="ml-2" width="34px" height="34px" src="../../assets/logga.svg"></v-img>
       </div>
 
       <v-spacer></v-spacer>
@@ -41,13 +42,12 @@
     <v-navigation-drawer
       app
       v-model="drawer"
-      class="bass"
-      color="#00000085"
+      color="#222222"
       absolute
       flat
       temporary
       height="100vh"
-      width="300px"
+      width="500px"
     >
       <v-list shaped class="pt-10">
         <v-list-group no-action sub-group>
@@ -59,11 +59,13 @@
 
           <v-list-item
             class="font-weight-light pl-4"
-            v-for="([title, icon], i) in admins"
-            :key="i"
+            v-for="(link) in links"
+            router
+            :to="link.route"
+            :key="link.text"
             link
           >
-            <v-list-item-title class="white--text" v-text="title"></v-list-item-title>
+            <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
 
             <v-list-item-icon>
               <v-icon v-text="icon"></v-icon>
@@ -86,33 +88,37 @@
         </v-list-item>
       </v-list>
       <v-row></v-row>
-      <v-col>
-        <div class="d-flex align-end justify-end">
+      <v-col class="mb-2 flex d-flex align-end justify-end">
+        <div class="mt-16 d-flex align-end justify-end">
           <v-btn
-            @click="swedish = !swedish"
+            @click="setLanguage()"
             :style="{
-           background : swedish ? 'black !important' : 'white',
-           color: swedish ? 'black !important' : 'white',
+				filter: english ? 'blur(0px) !important': 'blur(2px)',
+		opacity: english ? '1 !important' : '0.55' 
            }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-icon dark></v-icon>
+            <v-avatar>
+              <v-img fab src="../../assets/flags/gb.svg"></v-img>
+            </v-avatar>
           </v-btn>
 
           <v-btn
-            @click="swedish = !swedish"
+            @click="setLanguage()"
             :style="{
-           backgroundColor : swedish ? 'white !important' : 'black',
-           color: swedish ? 'white !important' : 'black',}"
+		filter: swedish ? 'blur(0) !important': 'blur(2px)',
+		opacity: swedish ? '1 !important' : '0.55' }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-icon dark></v-icon>
+            <v-avatar>
+              <v-img src="../../assets/flags/sweden.svg"></v-img>
+            </v-avatar>
           </v-btn>
         </div>
 
@@ -134,18 +140,22 @@ export default {
     return {
       drawer: false,
       swedish: true,
-      admins: [
-        ["Vatten och avloppsrådgivning"],
-        ["Vattenbiblioteket"],
-        ["Laboratorietjänster"],
-        ["Vattenexpo"],
-        ["Vattendagar"],
-        ["Kurser"],
-        ["GemVA"],
-        ["Produkter"],
-        ["Nyttiga sidor"]
+      english: false,
+      links: [
+        { text: "Laboratorietjänster", route: "/" },
+        { text: "Vattenexpo", route: "/" },
+        { text: "Vattendagar", route: "/" },
+        { text: "Kurser", route: "/" },
+        { text: "GemVA", route: "/" },
+        { text: "Produkter", route: "/" },
+        { text: "Nyttiga sidor", route: "/" }
       ]
     };
+  },
+  methods: {
+    setLanguage() {
+      (this.english = !this.english), (this.swedish = !this.swedish);
+    }
   }
 };
 </script>
