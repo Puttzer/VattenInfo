@@ -6,13 +6,21 @@
         <form class="mt-7">
           <div class="forminput">
             <label for="email">Email</label>
-            <input
+            <v-text-field
+            v-model="user.email"
+            class="borderPassword mt-n1 text--white font-weight-bold"
+            placeholder="test@test.com"
+            solo
+            text
+            background-color=#031830
+          ></v-text-field>
+            <!-- <input
               type="text"
               id="email"
-              v-model="email"
+              v-model="user.email"
               placeholder="placeholder@example.com"
               autocomplete="off"
-            />
+            /> -->
           </div>
           <div class="forminput mt-6">
             <label for="password">Password</label>&nbsp;
@@ -26,13 +34,13 @@
               ></i>
             </div> -->
             <v-text-field
-            class="borderPassword mt-n1"
+            v-model="user.password"
+            class="borderPassword mt-n1 text--white"
             :append-icon="show3 ? 'visibility' : 'visibility_off'"
             :type="show3 ? 'text' : 'password'"
-            value="*********"
-            solo 
-            color="transparent"
-            transparent   
+            placeholder="*********"
+            solo  
+            background-color=#031830
             @click:append="show3 = !show3"
           ></v-text-field>
           </div>
@@ -54,7 +62,7 @@
       <div class="form-submit">
 
         <button class="login-btn">logga in</button>
-        <button class="forgot-password">Glömt Losenord<span>|</span></button>
+        <button class="forgot-password" @click="moveToLostLogin">Glömt Losenord<span>|</span></button>
       </div>
     </div>
 
@@ -69,8 +77,11 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      user:{
+
+        email: "",
+        password: "",
+      },
       hidePassword: true,
       rememberTheName: false,
       show3:true,
@@ -84,6 +95,11 @@ export default {
       return this.hidePassword ? "visibility" : "visibility_off";
     },
   },
+  methods:{
+     moveToLostLogin(){
+       this.$router.push('/lostlogin')
+     }
+  }
 };
 </script>
 
@@ -150,7 +166,6 @@ input {
   padding:5px;
   font-weight:400;
   border-radius:0;
-  background: rgba(0, 0, 0, 0.4);
   }
 
 label {
