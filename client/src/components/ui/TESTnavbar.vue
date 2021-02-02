@@ -54,7 +54,7 @@
           <v-list-group no-action sub-group>
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title color="green" class="white--text">Start</v-list-item-title>
+                <v-list-item-title>Start</v-list-item-title>
               </v-list-item-content>
             </template>
 
