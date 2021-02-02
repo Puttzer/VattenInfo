@@ -41,7 +41,6 @@
     <v-navigation-drawer
       app
       v-model="drawer"
-      class="bass"
       color="#222222"
       absolute
       flat
@@ -88,34 +87,37 @@
         </v-list-item>
       </v-list>
       <v-row></v-row>
-      <v-col>
-        <div class="d-flex align-end justify-end">
+      <v-col class="mb-2 flex d-flex align-end justify-end">
+        <div class=" mt-16 d-flex align-end justify-end">
           <v-btn
-            @click="english = !english"
+            @click="setLanguage()"
             :style="{
-
-
-		opacity: english ? '1 !important' : '0.15' 
+				filter: english ? 'blur(0px) !important': 'blur(2px)',
+		opacity: english ? '1 !important' : '0.55' 
            }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-img src="../../assets/flags/gb.svg"></v-img>
+            <v-avatar>
+              <v-img fab src="../../assets/flags/gb.svg"></v-img>
+            </v-avatar>
           </v-btn>
 
           <v-btn
-            @click="swedish = !swedish"
+            @click="setLanguage()"
             :style="{
-				blur: swedish ? '0px !important': '14px',
-		opacity: swedish ? '1 !important' : '0.15' }"
+		filter: swedish ? 'blur(0) !important': 'blur(2px)',
+		opacity: swedish ? '1 !important' : '0.55' }"
             class="mx-2"
             fab
             dark
             small
           >
-            <v-img src="../../assets/flags/sweden.svg"></v-img>
+            <v-avatar>
+              <v-img src="../../assets/flags/sweden.svg"></v-img>
+            </v-avatar>
           </v-btn>
         </div>
 
@@ -148,6 +150,11 @@ export default {
         { text: "Nyttiga sidor", route: "/" }
       ]
     };
+  },
+  methods: {
+    setLanguage() {
+      (this.english = !this.english), (this.swedish = !this.swedish);
+    }
   }
 };
 </script>
