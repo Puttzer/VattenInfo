@@ -9,11 +9,11 @@
       flat
       hide-on-scroll
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 darken-2 white--text"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 darken-2 black--text"></v-app-bar-nav-icon>
       <div class="d-flex align-center darken md-6">
-        <div>
-          <v-app-bar-title class="ml-3 blue--text">VATTEN</v-app-bar-title>
-          <v-app-bar-title class="green--text">INFO</v-app-bar-title>
+        <div @click="moveToHome" class="pointerHome">
+          <v-app-bar-title class="ml-3 blue--text heading">VATTEN</v-app-bar-title>
+          <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
           <!-- <v-img
             alt="vatteninfo Logo"
             class="shrink mr-3 pa-md-2 mx-lg-4"
@@ -28,15 +28,15 @@
             class="subtitle-2 font-weight-bold"
           >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
           <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
+        <v-img  class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
         </div>
-        <v-img class="ml-2" width="34px" height="34px" src="../../assets/logga.svg"></v-img>
       </div>
 
       <v-spacer></v-spacer>
       <div class="sidelinks mr-5">
-        <v-icon color="blue mr-2" size="32">mdi-login</v-icon>
+        <v-icon @click="moveToLogin" color="black dark mr-2" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
-        <v-icon color="blue mr-2" size="32">mdi-home</v-icon>
+        <v-icon @click="moveToHome" color="black dark mr-2" size="32">mdi-home</v-icon>
       </div>
     </v-app-bar>
     <v-navigation-drawer
@@ -47,13 +47,14 @@
       flat
       temporary
       height="100vh"
-      width="500px"
+      width="300px"
     >
+      <div class="spaceBetween">
       <v-list shaped class="pt-10">
         <v-list-group no-action sub-group>
           <template v-slot:activator>
             <v-list-item-content>
-              <v-list-item-title color="green" class="white--text">Start</v-list-item-title>
+              <v-list-item-title class="white--text">Start</v-list-item-title>
             </v-list-item-content>
           </template>
 
@@ -87,7 +88,6 @@
           <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
         </v-list-item>
       </v-list>
-      <v-row></v-row>
       <v-col class="mb-2 flex d-flex align-end justify-end">
         <div class="mt-16 d-flex align-end justify-end">
           <v-btn
@@ -121,15 +121,9 @@
             </v-avatar>
           </v-btn>
         </div>
-
-        <!-- <v-btn
-          @click="swedish = !swedish"
-          :style="{
-           backgroundColor : swedish ? 'red !important' : '',
-           color: swedish ? 'white !important' : 'red',
-           }"
-        ></v-btn>-->
       </v-col>
+      </div>
+
     </v-navigation-drawer>
   </v-card>
 </template>
@@ -155,6 +149,12 @@ export default {
   methods: {
     setLanguage() {
       (this.english = !this.english), (this.swedish = !this.swedish);
+    },
+    moveToHome(){
+      this.$router.push('/')
+    },
+    moveToLogin(){
+      this.$router.push('/login')
     }
   }
 };
@@ -163,6 +163,19 @@ export default {
 <style scoped>
 .span {
   font-size: 100px;
+}
+.pointerHome{
+  cursor: pointer;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  font-size:24px;
+}
+.spaceBetween{
+  display:flex;
+  flex-direction:column;
+  align-content:space-between;
+  height:95vh;
 }
 
 v-list-item-title {
