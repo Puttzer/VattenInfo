@@ -15,6 +15,7 @@ import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import Test from '../views/Test.vue'
 import TestExpansion from '../components/testpages/TestExpansion.vue'
 import AddNyheter from '../views/addNyheter.vue'
+import LostLogin from '../views/LostLogin.vue'
 
 
 Vue.use(VueRouter)
@@ -25,6 +26,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/lostlogin',
+    name: 'LostLogin',
+    component: LostLogin
   },
 
   {
