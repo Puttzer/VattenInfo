@@ -10,6 +10,7 @@
             </v-row>
             <v-row justify="center">
                 <v-col cols="12" md="9">
+
                 <v-text-field dense color="#051f38" text class="mt-6" v-model="user.fullName" append-icon="person" label="First Namn" outlined placeholder="krishna Mohan" ></v-text-field>
                 </v-col>
             </v-row>
@@ -70,4 +71,8 @@ export default {
   font-weight: 400;
    color:chocolate;
 }
+
+/* .amos input {
+      color: white !important;
+    } */
 </style>

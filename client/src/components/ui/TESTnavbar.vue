@@ -28,7 +28,7 @@
             class="subtitle-2 font-weight-bold"
           >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
           <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
-        <v-img  class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
+          <v-img class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
         </div>
       </div>
 
@@ -48,16 +48,15 @@
       temporary
       height="100vh"
       width="300px"
- >
+    >
       <div class="spaceBetween">
-      <v-list shaped class="pt-10">
-        <v-list-group no-action sub-group>
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title class="white--text">Start</v-list-item-title>
-            </v-list-item-content>
-          </template>
-
+        <v-list shaped class="pt-10">
+          <v-list-group no-action sub-group>
+            <template v-slot:activator>
+              <v-list-item-content>
+                <v-list-item-title class="white--text">Start</v-list-item-title>
+              </v-list-item-content>
+            </template>
 
             <v-list-item
               class="font-weight-light pl-4"
@@ -85,22 +84,23 @@
           <v-list-item>
             <!-- <v-list-item-icon>
             <v-icon>mdi-home</v-icon>
-          </v-list-item-icon>-->
-          <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
-        </v-list-item>
-      </v-list>
-      <v-col class="mb-2 flex d-flex align-end justify-end">
-        <div class="mt-16 d-flex align-end justify-end">
-          <v-btn
-            @click="setLanguage()"
-            :style="{
+            </v-list-item-icon>-->
+            <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
+          </v-list-item>
+        </v-list>
+        <v-col class="mb-2 flex d-flex align-end justify-end">
+          <div class="mt-16 d-flex align-end justify-end">
+            <v-btn
+              @click="setLanguage()"
+              :style="{
 				filter: english ? 'blur(0px) !important': 'blur(2px)',
 		opacity: english ? '1 !important' : '0.55' 
            }"
-              class="mx-2"
+              class="mx-3"
               fab
               dark
               small
+
             >
               <v-avatar>
                 <v-img fab src="../../assets/flags/gb.svg"></v-img>
@@ -112,17 +112,18 @@
               :style="{
 		filter: swedish ? 'blur(0) !important': 'blur(2px)',
 		opacity: swedish ? '1 !important' : '0.55' }"
-            class="mx-2"
-            fab
-            dark
-            small
-          >
-            <v-avatar>
-              <v-img src="../../assets/flags/sweden.svg"></v-img>
-            </v-avatar>
-          </v-btn>
-        </div>
-      </v-col>
+              class="mx-3"
+              fab
+              dark
+              small
+
+            >
+              <v-avatar>
+                <v-img src="../../assets/flags/sweden.svg"></v-img>
+              </v-avatar>
+            </v-btn>
+          </div>
+        </v-col>
       </div>
     </v-navigation-drawer>
   </v-card>
@@ -150,11 +151,11 @@ export default {
     setLanguage() {
       (this.english = !this.english), (this.swedish = !this.swedish);
     },
-    moveToHome(){
-      this.$router.push('/')
+    moveToHome() {
+      this.$router.push("/");
     },
-    moveToLogin(){
-      this.$router.push('/login')
+    moveToLogin() {
+      this.$router.push("/login");
     }
   }
 };
@@ -164,18 +165,18 @@ export default {
 .span {
   font-size: 100px;
 }
-.pointerHome{
+.pointerHome {
   cursor: pointer;
-  display:flex;
-  flex-direction:row;
-  align-items:center;
-  font-size:24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
 }
-.spaceBetween{
-  display:flex;
-  flex-direction:column;
-  align-content:space-between;
-  height:95vh;
+.spaceBetween {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 95vh;
 }
 
 v-list-item-title {
