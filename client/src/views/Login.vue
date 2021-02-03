@@ -1,22 +1,47 @@
 <template>
   <div class="container">
     <div class="login">
-      <div class="login-box">
-        <h1>Logga In!</h1>
-        <form>
+      <div class="login-box mt-12">
+        <h1 class="font-weight-light">Logga In!</h1>
+        <form class="mt-7">
+
+          <v-col
+            class="d-flex"
+            cols="12"
+            sm="12"
+          >
+            <v-select
+              background-color="rgba(108, 121, 182, 0.4)"
+              color=white
+              :items="user.role"
+              label="kund"
+              height=45px
+              solo
+              dense
+              class="selectItem"
+            ></v-select>
+          </v-col>
           <div class="forminput">
             <label for="email">Email</label>
-            <input
+            <v-text-field
+            v-model="user.email"
+            class="borderPassword mt-n1 text--white font-weight-bold"
+            placeholder="test@test.com"
+            solo
+            text
+            background-color=#061d36
+          ></v-text-field>
+            <!-- <input
               type="text"
               id="email"
-              v-model="email"
+              v-model="user.email"
               placeholder="placeholder@example.com"
               autocomplete="off"
-            />
+            /> -->
           </div>
-          <div class="forminput">
+          <div class="forminput mt-6">
             <label for="password">Password</label>&nbsp;
-            <div class="passwordinput">
+            <!-- <div class="passwordinput">
               <input :type="passwordType" id="password" v-model="password" placeholder="*******" 
               />
               <i
@@ -24,16 +49,17 @@
                 :class="[passwordIcon]"
                 @click="hidePassword = !hidePassword"
               ></i>
-            </div>
-            <!-- <v-text-field
-            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
+            </div> -->
+            <v-text-field
+            v-model="user.password"
+            class="borderPassword mt-n1 text--white"
+            :append-icon="show3 ? 'visibility' : 'visibility_off'"
             :type="show3 ? 'text' : 'password'"
-            value="*********"
-            color="white"
-            solo
-            background-color="#042e5e"            
+            placeholder="*********"
+            solo  
+            background-color=#061d36
             @click:append="show3 = !show3"
-          ></v-text-field> -->
+          ></v-text-field>
           </div>
 
         </form>
@@ -41,7 +67,7 @@
           <v-switch
             v-model="autoUpdate"
             :disabled="isUpdating"
-            class="mt-0"
+            class="mt-0 mb-8"
             color="blue lighten-2"
             hide-details
             justify="end"
@@ -53,10 +79,9 @@
       <div class="form-submit">
 
         <button class="login-btn">logga in</button>
-        <button class="forgot-password">Glömt Losenord<span>|</span></button>
+        <button class="forgot-password" @click="moveToLostLogin">Glömt Losenord<span>|</span></button>
       </div>
     </div>
-    <button class="change-lang">Svenska</button>
 
     <transition name="drop" type="animation">
 
@@ -69,11 +94,14 @@
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      user:{
+        role:['Privat','Företag'],
+        email: "",
+        password: "",
+      },
       hidePassword: true,
       rememberTheName: false,
-      show3:false,
+      show3:true,
     };
   },
   computed: {
@@ -81,26 +109,29 @@ export default {
       return this.hidePassword ? "password" : "text";
     },
     passwordIcon() {
-      return this.hidePassword ? "fa-eye" : "fa-eye-slash";
+      return this.hidePassword ? "visibility" : "visibility_off";
     },
   },
+  methods:{
+     moveToLostLogin(){
+       this.$router.push('/lostlogin')
+     }
+  }
 };
 </script>
 
 <style scoped>
 .container {
   padding: 0;
-  margin: 0;
+  margin-left: 150px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   /* background: url(../assets/bg2.jpg); */
   /* background-size: cover;
   background-position: center; */
   /* background-repeat: no-repeat;	 */
-  background:#05427a;
   height: 100vh;
   width: 100vw;
 }
@@ -110,20 +141,19 @@ export default {
   height:54px;
 } */
 
-/* .login {
+.login {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: black;
   height: 100vh;
   width: 100wv;
-} */
+}
 .login-box {
   display:flex;
   flex-direction:column;
   padding:20px;
-  height: 350px;
+  height: 450px;
   width: 304px;
   background: rgba(0, 0, 0, 0.4);
   /* background: #00000075; */
@@ -142,10 +172,18 @@ input {
   height: 54px;
   width: 261px;
   padding:5px;
-  color:rgb(172, 114, 94);
   margin-top:-5px;
   font-weight:400;
+  
 }
+.borderPassword{
+  border: #1565c0 3px solid;
+  height: 54px;
+  width: 261px;
+  padding:5px;
+  font-weight:400;
+  border-radius:0;
+  }
 
 label {
   background: #1565c0;
@@ -226,7 +264,12 @@ span{
   background: #898989;
   margin-top: 55px;
 }
-
+.selectItem{
+  font-weight:500;
+  font-size:18px;
+  color:white;
+  border-radius:0;
+}
 @keyframes slide-in {
   from {
     transform: translateY(20px);

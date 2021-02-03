@@ -5,18 +5,19 @@ import Vuetify from 'vuetify/lib';
 Vue.use(Vuetify);
 
 export default new Vuetify({
-    icons: {
+	icons: {
 		iconfont: 'md',
-		
+
 	},
 	theme: {
-        themes: {
-          light: {
-            primary: '#3f51b5',
-            secondary: '#b0bec5',
-            accent: '#8c9eff',
-            error: '#b71c1c',
-          },
-        },
-      },
+		themes: {
+			light: {
+				primary: '#2F4A64',
+				secondary: '#b0bec5',
+				accent: '#8c9eff',
+				error: '#b71c1c',
+				gris: '#D1878A' // just for test
+			},
+		},
+	},
 });
