@@ -1,9 +1,26 @@
 <template>
   <div class="container">
     <div class="login">
-      <div class="login-box">
+      <div class="login-box mt-12">
         <h1 class="font-weight-light">Logga In!</h1>
         <form class="mt-7">
+
+          <v-col
+            class="d-flex"
+            cols="12"
+            sm="12"
+          >
+            <v-select
+              background-color="rgba(108, 121, 182, 0.4)"
+              color=white
+              :items="user.role"
+              label="kund"
+              height=45px
+              solo
+              dense
+              class="selectItem"
+            ></v-select>
+          </v-col>
           <div class="forminput">
             <label for="email">Email</label>
             <v-text-field
@@ -12,7 +29,7 @@
             placeholder="test@test.com"
             solo
             text
-            background-color=#031830
+            background-color=#061d36
           ></v-text-field>
             <!-- <input
               type="text"
@@ -40,7 +57,7 @@
             :type="show3 ? 'text' : 'password'"
             placeholder="*********"
             solo  
-            background-color=#031830
+            background-color=#061d36
             @click:append="show3 = !show3"
           ></v-text-field>
           </div>
@@ -78,7 +95,7 @@ export default {
   data() {
     return {
       user:{
-
+        role:['Privat','Företag'],
         email: "",
         password: "",
       },
@@ -136,7 +153,7 @@ export default {
   display:flex;
   flex-direction:column;
   padding:20px;
-  height: 350px;
+  height: 450px;
   width: 304px;
   background: rgba(0, 0, 0, 0.4);
   /* background: #00000075; */
@@ -247,7 +264,12 @@ span{
   background: #898989;
   margin-top: 55px;
 }
-
+.selectItem{
+  font-weight:500;
+  font-size:18px;
+  color:white;
+  border-radius:0;
+}
 @keyframes slide-in {
   from {
     transform: translateY(20px);
