@@ -5,27 +5,33 @@
         <v-col cols="12" md="12">
           <h1 class="white--text mt-3">Kontakta oss</h1>
         </v-col>
+		
         <v-col cols="12" md="6" sm="12">
           <v-text-field
             dense
             color="#051f38"
             text
             class="mt-3"
-            v-model="user.lastName"
+            v-model="user.subject"
             append-icon="comment"
             label="Ämne"
             outlined
           ></v-text-field>
-          <v-text-field
+          <v-textarea
             dense
             color="#051f38"
             text
-            class="mt-3"
-            v-model="user.lastName"
+            class="mess mt-3"
+            v-model="user.message"
             append-icon="comment"
-            label="Ämne"
+            label="Medelande"
             outlined
-          ></v-text-field>
+            no-resize
+          >
+            <template>
+              <div></div>
+            </template>
+          </v-textarea>
         </v-col>
 
         <v-col cols="12" md="6" sm="12">
@@ -51,6 +57,9 @@
             outlined
             placeholder="name@mail.com "
           ></v-text-field>
+          <v-card  md="4" flat color="transparent" class="d-flex mt-12 justify-end algin-end">
+            <v-btn class=" font-weight-light white">skicka</v-btn>
+          </v-card>
         </v-col>
       </v-row>
     </v-form>
@@ -73,5 +82,5 @@ export default {
 };
 </script>
 
-<style sco>
+<style scoped>
 </style>
