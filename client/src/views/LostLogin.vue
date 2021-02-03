@@ -15,7 +15,7 @@
             </v-row>
             <v-row justify="center" >
                 <v-col cols="12" md="9">
-                <v-text-field dense color="#051f38" text class="mt-n3" v-model="user.lastName" append-icon="person" label="Last Namn" outlined placeholder="krishna Mohan" ></v-text-field>
+                <v-text-field dense color="white"  text class="mt-n3" v-model="user.lastName" append-icon="person" label="Last Namn" outlined placeholder="krishna Mohan" ></v-text-field>
                 </v-col>
             </v-row>
             <v-row justify="center">
@@ -76,4 +76,8 @@ export default {
   font-weight: 400;
    color:chocolate;
 }
+
+/* .amos input {
+      color: white !important;
+    } */
 </style>
