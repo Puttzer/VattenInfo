@@ -6,8 +6,8 @@
                 <v-col cols="12" md="12">
 
                     <v-text-field
-                    color="#051f38" text class="custom-placeholer-color"
-                    v-model="user.email"
+                    color="white" text class="custom-placeholer-color"
+                    v-model="company.email"
                     placeholder="test@test.com"
                     label="Email"
                     outlined
@@ -18,8 +18,8 @@
         <v-row d-flex justify="center" class="mt-n4">
             <v-col cols="12" md="12">
                 <v-text-field
-                v-model="user.password"
-                color="#051f38" text class="custom-placeholer-color"
+                v-model="company.password"
+                color="white" text class="custom-placeholer-color"
                 :append-icon="show3 ? 'visibility' : 'visibility_off'"
                 :type="show3 ? 'text' : 'password'"
                 placeholder="*********"
@@ -51,7 +51,7 @@
 
                 <div class="form-submit">
 
-                    <v-btn class="btnColor" >logga in</v-btn>
+                    <v-btn class="btnColor">logga in</v-btn>
                     <button class="forgot-password" @click="moveToLostLogin">Glömt Losenord<span>|</span></button>
                 </div>
             </v-col>
@@ -68,7 +68,7 @@ export default {
     name:'PrivateLogin',
      data() {
     return {
-        user:{
+        company:{
             email: "",
             password: "",
         },

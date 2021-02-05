@@ -8,7 +8,7 @@
       </v-row>
       <v-row>
         <v-col cols="12" md="12">
-          <v-text-field dense color="#051f38" text class="mt-6 custom-placeholer-color" v-model="user.name" append-icon="person" label="Namn" outlined placeholder="krishna Mohan" ></v-text-field>
+          <v-text-field dense color="#051f38" text class="mt-6" v-model="user.name" append-icon="person" label="Namn" outlined placeholder="krishna Mohan" ></v-text-field>
         </v-col>
       </v-row>
       <v-row justify="center">
@@ -46,7 +46,7 @@
       </v-row>
       <v-row justify="center">
         <v-col cols="12" md="3">
-          <v-btn> Register </v-btn>
+          <v-btn class="btnColor"> Register </v-btn>
         </v-col>
       </v-row>
 
@@ -73,8 +73,4 @@ export default {
 </script>
 
 <style scoped>
-.custom-placeholer-color input::placeholder {
-  color: red!important;
-  opacity: 1;
-}
 </style>
