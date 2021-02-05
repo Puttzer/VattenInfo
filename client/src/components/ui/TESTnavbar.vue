@@ -61,7 +61,7 @@
       flat
       temporary
       height="100vh"
-      width="500px"
+      width="300px"
     >
       <div class="spaceBetween">
         <v-list shaped class="pt-10">
