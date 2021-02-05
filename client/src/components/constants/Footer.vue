@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="footer">
     <v-row d-flex flex-row>
       <v-col class="mx-16"
@@ -68,6 +68,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
 .footer {
   max-height: 160px;
   //   height: 160px;

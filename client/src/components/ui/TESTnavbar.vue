@@ -53,6 +53,7 @@
         >
       </div>
     </v-app-bar>
+
     <v-navigation-drawer
       app
       v-model="drawer"
@@ -61,10 +62,12 @@
       flat
       temporary
       height="100vh"
-      width="300px"
+      cols="12"
+      sm="12"
+      md="4"
     >
       <div class="spaceBetween">
-        <v-list shaped class="pt-10">
+        <v-list shaped>
           <v-list-group no-action sub-group>
             <template v-slot:activator>
               <v-list-item-content>
@@ -121,7 +124,8 @@
               dark
               small
             >
-              <v-avatar>
+              >
+              <v-avatar x-small>
                 <v-img fab src="../../assets/flags/gb.svg"></v-img>
               </v-avatar>
             </v-btn>
@@ -137,7 +141,7 @@
               dark
               small
             >
-              <v-avatar>
+              <v-avatar size="34">
                 <v-img src="../../assets/flags/sweden.svg"></v-img>
               </v-avatar>
             </v-btn>
@@ -189,28 +193,12 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 24px;
+  font-size: 18px;
 }
 .spaceBetween {
   display: flex;
   flex-direction: column;
   align-content: space-between;
   height: 95vh;
-}
-
-v-list-item-title {
-  background: rgb(114, 17, 106);
-  /* font-weight: lighter; */
-  color: blue !important;
-}
-
-v-list-item-title:active {
-  background: mediumseagreen;
-}
-
-.anyName {
-  display: flex;
-  align-content: space-between;
-  /* background: mediumspringgreen; */
 }
 </style>

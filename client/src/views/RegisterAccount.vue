@@ -4,7 +4,7 @@
       <v-row>
         <v-col cols="12">
 
-          <v-btn  class="ml-4" small color="white" text @click="isAPerson = false" >
+          <v-btn  class="ml-4" small color="white" text @click="isAPerson = false" :class="{active:!isAPerson}" >
             företag
           </v-btn>
           <span>|</span>
@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       isAPerson: true,
-      userType: ["Privat", "Företag"],
     };
   },
   components: {
@@ -69,7 +68,9 @@ export default {
   background:#2176c0 ;
 }
 .active{
-  color:orangered;
+  /* background-color:rgb(177, 80, 44); */
+  background-color:rgb(168, 123, 24);
+  font-size:16px;
 }
 .inactive{
   color:black;
