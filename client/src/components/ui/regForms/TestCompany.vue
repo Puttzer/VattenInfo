@@ -56,7 +56,7 @@
       </v-row>
       <v-row justify="center">
         <v-col cols="12" md="3">
-          <v-btn> Register </v-btn>
+          <v-btn class="btnColor"> Register </v-btn>
         </v-col>
       </v-row>
     </form>
