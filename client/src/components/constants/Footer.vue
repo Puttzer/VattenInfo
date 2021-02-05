@@ -1,6 +1,7 @@
 <template>
-  <v-container>
-    <v-row d-flex flex-row>
+  <v-container class="">
+    <v-card blue height='160px'>
+		<v-row d-flex flex-row>
       <v-col
         ><v-img
           max-height="60px"
@@ -39,6 +40,7 @@
         ></v-img>
       </v-col>
     </v-row>
+	</v-card>
   </v-container>
 </template>
 
@@ -48,6 +50,8 @@ export default {};
 
 <style lang="scss" scoped>
 .v-container {
-  max-height: 160px;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 </style>

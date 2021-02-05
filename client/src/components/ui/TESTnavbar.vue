@@ -9,36 +9,24 @@
       flat
       hide-on-scroll
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 darken-2 black--text"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 darken-2 white--text"></v-app-bar-nav-icon>
       <div class="d-flex align-center darken md-6">
         <div @click="moveToHome" class="pointerHome">
-          <v-app-bar-title class="ml-3 blue--text heading">VATTEN</v-app-bar-title>
-          <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
-          <!-- <v-img
-            alt="vatteninfo Logo"
-            class="shrink mr-3 pa-md-2 mx-lg-4"
-            contain
-            src="@/assets/vatteninfo-logo.png"
-            transition="scale-transition"
-            width="200"
-          />-->
+          <v-app-bar-title class="ml-3 blue--text">VATTEN</v-app-bar-title>
+          <v-app-bar-title class="green--text">INFO</v-app-bar-title>
 
-          <!-- <v-card-title
-            color="black"
-            class="subtitle-2 font-weight-bold"
-          >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
-          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
-          <v-img class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
+
         </div>
       </div>
 
       <v-spacer></v-spacer>
-      <div class="sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="black dark mr-2" size="32">mdi-login</v-icon>
+      <div class=" d-none d-md-flex d-lg-none sidelinks mr-5">
+        <v-icon @click="moveToLogin" color="white dark mr-2" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
-        <v-icon @click="moveToHome" color="black dark mr-2" size="32">mdi-home</v-icon>
+        <v-icon @click="moveToHome" color="white dark mr-2" size="32">mdi-home</v-icon>
       </div>
     </v-app-bar>
+
     <v-navigation-drawer
       app
       v-model="drawer"
@@ -47,10 +35,14 @@
       flat
       temporary
       height="100vh"
-      width="300px"
+      cols="12"
+      sm="12"
+      md="4"
     >
+
+
       <div class="spaceBetween">
-        <v-list shaped class="pt-10">
+        <v-list shaped>
           <v-list-group no-action sub-group>
             <template v-slot:activator>
               <v-list-item-content>
@@ -74,17 +66,10 @@
             </v-list-item>
           </v-list-group>
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>-->
-
             <v-list-item-title class="pl-14 white--text">Om oss</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>-->
             <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -99,10 +84,9 @@
               class="mx-3"
               fab
               dark
-              small
-
+			  
             >
-              <v-avatar>
+              <v-avatar x-small>
                 <v-img fab src="../../assets/flags/gb.svg"></v-img>
               </v-avatar>
             </v-btn>
@@ -115,10 +99,10 @@
               class="mx-3"
               fab
               dark
-              small
-
+			  size='34'
+			  
             >
-              <v-avatar>
+              <v-avatar size='34'>
                 <v-img src="../../assets/flags/sweden.svg"></v-img>
               </v-avatar>
             </v-btn>
@@ -170,28 +154,12 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 24px;
+  font-size: 18px;
 }
 .spaceBetween {
   display: flex;
   flex-direction: column;
   align-content: space-between;
   height: 95vh;
-}
-
-v-list-item-title {
-  background: rgb(114, 17, 106);
-  /* font-weight: lighter; */
-  color: blue !important;
-}
-
-v-list-item-title:active {
-  background: mediumseagreen;
-}
-
-.anyName {
-  display: flex;
-  align-content: space-between;
-  /* background: mediumspringgreen; */
 }
 </style>
