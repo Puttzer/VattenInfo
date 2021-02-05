@@ -11,44 +11,22 @@
     >
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
-        class="ml-1 mc-3 darken-2 black--text"
+        class="ml-1 mc-3 darken-2 white--text"
       ></v-app-bar-nav-icon>
       <div class="d-flex align-center darken md-6">
         <div @click="moveToHome" class="pointerHome">
-          <v-app-bar-title class="ml-3 blue--text heading"
-            >VATTEN</v-app-bar-title
-          >
-          <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
-          <!-- <v-img
-            alt="vatteninfo Logo"
-            class="shrink mr-3 pa-md-2 mx-lg-4"
-            contain
-            src="@/assets/vatteninfo-logo.png"
-            transition="scale-transition"
-            width="200"
-          />-->
-
-          <!-- <v-card-title
-            color="black"
-            class="subtitle-2 font-weight-bold"
-          >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
-          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
-          <v-img
-            class="ml-4"
-            width="50px"
-            height="50px"
-            src="../../assets/logga.svg"
-          ></v-img>
+          <v-app-bar-title class="ml-3 blue--text">VATTEN</v-app-bar-title>
+          <v-app-bar-title class="green--text">INFO</v-app-bar-title>
         </div>
       </div>
 
       <v-spacer></v-spacer>
-      <div class="sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="black dark mr-2" size="32"
+      <div class="d-none d-md-flex sidelinks mr-5">
+        <v-icon @click="moveToLogin" color="white dark mr-2" size="32"
           >mdi-login</v-icon
         >
         <span class="white--text mx-3">/</span>
-        <v-icon @click="moveToHome" color="black dark mr-2" size="32"
+        <v-icon @click="moveToHome" color="white dark mr-2" size="32"
           >mdi-home</v-icon
         >
       </div>
@@ -93,19 +71,12 @@
             </v-list-item>
           </v-list-group>
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>-->
-
             <v-list-item-title class="pl-14 white--text"
               >Om oss</v-list-item-title
             >
           </v-list-item>
 
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-            </v-list-item-icon>-->
             <v-list-item-title class="pl-14 white--text"
               >Kontakt</v-list-item-title
             >
@@ -122,9 +93,7 @@
               class="mx-3"
               fab
               dark
-              small
             >
-              >
               <v-avatar x-small>
                 <v-img fab src="../../assets/flags/gb.svg"></v-img>
               </v-avatar>
@@ -139,7 +108,7 @@
               class="mx-3"
               fab
               dark
-              small
+              size="34"
             >
               <v-avatar size="34">
                 <v-img src="../../assets/flags/sweden.svg"></v-img>

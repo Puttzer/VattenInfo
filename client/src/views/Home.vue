@@ -7,7 +7,8 @@
           <v-card color="transparent" flat>
             <v-card-title class="justify-center">
               <p class="font-weight-light white--text mt-16">
-                En mötesplats för vatten- och avloppsfrågor
+                En mötesplats för <span class="d-none d-md-flex" />
+                vatten- och avloppsfrågor
               </p>
             </v-card-title>
           </v-card>
