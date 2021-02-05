@@ -5,28 +5,12 @@
         <v-row class="m-0 p-0">
           <v-col col="12" md="12">
             <v-card>
-              <!-- <navigation-bar fixed="top"></navigation-bar> -->
-              <v-img width="100vw" height="65vh" src="../assets/bg.jpg">
+              <!-- <v-img width="100vw" height="65vh" src="">
                 <v-card-title class="justify-center pb-16 mt-14">
                   <span
                     class="h1 font-weight-light white--text mt-16"
                   >En mötesplats för vatten- och avloppsfrågor</span>
-                </v-card-title>
-                <!-- <v-card-actions class="justify-center">
-                <v-row class="mt-6 justify-center">
-                  <v-btn flat cla color="white">
-                    <span>login</span>
-                  </v-btn>
-                  <v-btn flat outlined color="white">
-                    <span>register</span>
-                  </v-btn>
-                </v-row>
-                </v-card-actions>-->
-                <!-- <v-spacer ></v-spacer> -->
-                <v-row class="justify-center mt-16 pt-16">
-                  <v-icon color="white" class="mt-16 pt-16" x-large>mdi mdi-chevron-double-down</v-icon>
-                </v-row>
-              </v-img>
+                </v-card-title> -->
             </v-card>
           </v-col>
         </v-row>
@@ -97,10 +81,10 @@
 
           <v-col md="4">
             <v-row justify="center">
-              <v-date-picker class="hidden-xs-only normal" color="green" v-model="picker"></v-date-picker>
+              <v-date-picker class="hidden-xs-only normal" color="btnColor" v-model="picker"></v-date-picker>
             </v-row>
             <v-row cols="12" md="4" align="center" justify="space-around">
-              <v-btn px="2" md="3" class="mt-4 rounded" dark white--text x-large tile color="green">
+              <v-btn px="2" md="3" class="mt-4 rounded" dark white--text x-large tile color="btnColor">
                 <v-icon color="white" class="font-weight-light" left>mdi mdi-newspaper</v-icon>Prenumerera på
                 <br />vårt nyhetsbrev
               </v-btn>

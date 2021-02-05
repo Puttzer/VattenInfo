@@ -1,4 +1,4 @@
-<template>
+<template>  
   <div class="footer">
     <v-row d-flex flex-row>
       <v-col
@@ -52,6 +52,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+
 .footer {
   height: 160px;
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
