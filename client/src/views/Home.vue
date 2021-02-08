@@ -3,7 +3,7 @@
     <!-- <hello-world></hello-world> -->
     <v-container fluid>
       <v-row>
-        <v-col cols="12" md="12" sm="9" class="red">
+        <v-col cols="12" md="12" sm="9">
           <v-card color="transparent" flat>
             <v-card-title class="justify-center">
               <p class="font-weight-light white--text mt-16">

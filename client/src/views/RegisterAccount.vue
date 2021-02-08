@@ -1,22 +1,31 @@
 <template>
   <div class="container">
-    <v-card >
-      <v-row>
-        <v-col cols="12">
-
-          <v-btn  class="ml-4" small color="white" text @click="isAPerson = false" :class="{active:!isAPerson}" >
-            företag
-          </v-btn>
-          <span>|</span>
-          <v-btn small color="white" text @click="isAPerson = true" :class="{active:isAPerson}">
-            privat
-          </v-btn>
-        </v-col>
-      </v-row>
-      <TestPerson  v-show="isAPerson" class="personbgcolor" />
-      <TestCompany  v-show="!isAPerson"  class="personbgcolor" />
-
-    </v-card>
+    <v-row class="bgColor">
+      <v-col cols="12" sm="12" md="12">
+        <v-btn
+          class="ml-4"
+          small
+          color="white"
+          text
+          @click="isAPerson = false"
+          :class="{ active: !isAPerson }"
+        >
+          företag
+        </v-btn>
+        <span class="ma-2">|</span>
+        <v-btn
+          small
+          color="white"
+          text
+          @click="isAPerson = true"
+          :class="{ active: isAPerson }"
+        >
+          privat
+        </v-btn>
+      </v-col>
+    </v-row>
+    <TestPerson v-show="isAPerson" class="personbgcolor" />
+    <TestCompany v-show="!isAPerson" class="personbgcolor" />
   </div>
 </template>
 
@@ -40,52 +49,21 @@ export default {
 
 <style scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  /* background: red; */
-  /* background: url(../assets/pexels-kellie-churchman-1001682.jpg); */
-
-  height: 1200px;
+  height: 1100px;
+  width: 90%;
+  margin-top: 150px;
+}
+.bgColor {
+  background-color: #051f38;
+  height: 60px;
   width: 100%;
-  /* background:#05427a; */
 }
-
-.v-card {
-  height:80vh;
-  width: 33vw;
-  display: flex;
-  flex-direction: column;
-  background-color:#051f38 ;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* background: #00000075; */
-  margin-top:75px;
-  border-radius: 5px;
+.personbgcolor {
+  background: #2176c0;
+  width: 100%;
 }
-.personbgcolor{
-  background:#2176c0 ;
+.active {
+  background-color: rgb(168, 123, 24);
+  font-size: 16px;
 }
-.active{
-  /* background-color:rgb(177, 80, 44); */
-  background-color:rgb(168, 123, 24);
-  font-size:16px;
-}
-.inactive{
-  color:black;
-}
-
-.companybgcolor{
-  background:#1d66a7 ;
-}
-/* .reg-btn {
-  /* height: 36px;
-  width: 97px; */
-  /* background: #1565c0; */
-  /* border-radius: 15px; 
-  border: none;
-  color: #fff;
-  margin: 25px;
-} */
 </style>
