@@ -18,11 +18,19 @@
       </div>
 
       <v-spacer></v-spacer>
-      <div class="sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="white dark mr-2" size="32">mdi-login</v-icon>
+      <div v-if="showLogout" class="d-none d-md-flex sidelinks mr-5">
+        <v-icon @click="moveToLogin" color="white dark mr-2" size="32"
+          >mdi-login</v-icon
+        >
+
         <span class="white--text mx-3">/</span>
         <v-icon @click="moveToHome" color="white dark mr-2" size="32">mdi-home</v-icon>
       </div>
+      <log-out
+        v-else-if="!showLogout"
+        :showLogout="showLogout"
+        @changeStatus="removeLogout"
+      />
     </v-app-bar>
 	<v-navigation-drawer
         app
@@ -117,10 +125,17 @@
 </template>
 
 <script>
+import LogOut from "../privateperson/LogOut.vue";
 export default {
+  components: { LogOut },
+  name: "NavigationBar",
+  componnets: {
+    LogOut,
+  },
   data() {
     return {
       drawer: false,
+      showLogout: false,
       swedish: true,
       english: false,
       links: [
@@ -140,11 +155,16 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
+      this.showLogout = true;
     },
     moveToLogin() {
       this.$router.push("/login");
-    }
-  }
+    },
+    removeLogout() {
+      this.$router.push("/");
+      this.showLogout = true;
+    },
+  },
 };
 </script>
 
