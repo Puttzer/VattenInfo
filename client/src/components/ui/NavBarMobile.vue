@@ -1,6 +1,6 @@
 <template>
-  <div>
-	  <v-app-bar
+  <v-card class="ma-0 pa-0" fluid width="100vw">
+    <v-app-bar
       app
       class="mr-1 lighten-3 black--text"
       color="transparent"
@@ -9,30 +9,49 @@
       flat
       hide-on-scroll
     >
-      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 -2 white--text"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mc-3 darken-2 black--text"></v-app-bar-nav-icon>
       <div class="d-flex align-center darken md-6">
         <div @click="moveToHome" class="pointerHome">
           <v-app-bar-title class="ml-3 blue--text heading">VATTEN</v-app-bar-title>
           <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
+          <!-- <v-img
+            alt="vatteninfo Logo"
+            class="shrink mr-3 pa-md-2 mx-lg-4"
+            contain
+            src="@/assets/vatteninfo-logo.png"
+            transition="scale-transition"
+            width="200"
+          />-->
+
+          <!-- <v-card-title
+            color="black"
+            class="subtitle-2 font-weight-bold"
+          >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
+          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
+          <v-img class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
         </div>
       </div>
 
       <v-spacer></v-spacer>
       <div class="sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="white dark mr-2" size="32">mdi-login</v-icon>
+        <v-icon @click="moveToLogin" color="black dark mr-2" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
-        <v-icon @click="moveToHome" color="white dark mr-2" size="32">mdi-home</v-icon>
+        <v-icon @click="moveToHome" color="black dark mr-2" size="32">mdi-home</v-icon>
       </div>
     </v-app-bar>
-	<v-navigation-drawer
+      <v-navigation-drawer
         app
         v-model="drawer"
-        color="#222222"
+        color="#222"
         absolute
         flat
         temporary
+		width='100%'
       >
         <div class="spaceBetween">
+			<div @click="drawer = !drawer" class="close">
+				X
+			</div>
           <v-list shaped>
             <v-list-group no-action sub-group>
               <template v-slot:activator>
@@ -74,6 +93,7 @@
               </v-list-item-icon>-->
               <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
             </v-list-item>
+
           </v-list>
           <v-col class="mb-2 flex d-flex align-end justify-end">
             <div class="mt-16 d-flex align-end justify-end">
@@ -112,8 +132,8 @@
             </div>
           </v-col>
         </div>
-      </v-navigation-drawer>Í
-  </div>
+      </v-navigation-drawer>
+  </v-card>
 </template>
 
 <script>
