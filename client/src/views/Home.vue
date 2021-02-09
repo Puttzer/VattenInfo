@@ -1,20 +1,30 @@
 <template>
   <div class="home mt-12">
     <!-- <hello-world></hello-world> -->
-    <v-container fluid>
+    <v-content>
       <v-row>
         <v-col cols="12" md="12" sm="9">
-          <v-card color="transparent" flat>
-            <v-card-title class="justify-center">
-              <p class="font-weight-light white--text mt-16">
-                En mötesplats för <span class="d-none d-md-flex" />
+          <v-card
+            d-flex
+            justify="center"
+            align="center"
+            color="transparent"
+            flat
+          >
+            <v-card-title
+              class="justify-center font-weight-bold green--text"
+              elevation="4"
+            >
+              <p class="fontSize">
+                En mötesplats för
+                <br /><br />
                 vatten- och avloppsfrågor
               </p>
             </v-card-title>
           </v-card>
         </v-col>
       </v-row>
-      <v-row class="mt-8 ml-10">
+      <v-row class="mt-16 ml-10">
         <v-col class="pl-1" cols="12" md="8" sm="12">
           <v-row d-flex justify="center">
             <h2 class="white--text font-weight-bold">Vatten Nyhetrena</h2>
@@ -122,7 +132,7 @@
           </v-row>
         </v-col>
       </v-row>
-    </v-container>
+    </v-content>
   </div>
 </template>
 
@@ -211,8 +221,11 @@ export default {
   height: 50vh;
 }
 
-span {
+.fontSize {
   font-size: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .newslist {
   display: flex;

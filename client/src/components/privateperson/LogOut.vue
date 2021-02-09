@@ -1,9 +1,10 @@
 <template>
-  <div class="logoutflex">
-    <h3>
+  <div d-flex align="center" class="logoutflex">
+    <p>
       Logged in as :
-      <span class="orange--text font-weight-bold"> {{ user.name }}</span>
-    </h3>
+      <span class="orange--text font-weight-bold mr-2"> {{ user.name }}</span>
+    </p>
+    <v-icon large color="white">shopping_basket</v-icon>
     <v-btn @click="change_status" class="ml-2">
       <v-icon medium>logout</v-icon>
     </v-btn>
