@@ -35,7 +35,7 @@
           <v-list-group class="pt-3" no-action sub-group>
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title class="white--text">Start</v-list-item-title>
+                <v-list-item-title class="white--text">Meny</v-list-item-title>
               </v-list-item-content>
             </template>
 
@@ -118,13 +118,11 @@ export default {
       swedish: true,
       english: false,
       links: [
-        { text: "Laboratorietjänster", route: "/" },
-        { text: "Vattenexpo", route: "/" },
-        { text: "Vattendagar", route: "/" },
-        { text: "Kurser", route: "/" },
-        { text: "GemVA", route: "/" },
-        { text: "Produkter", route: "/" },
-        { text: "Nyttiga sidor", route: "/" }
+        { text: "Enskillt Drickvatten", route: "/enskillt_vatten" },
+        { text: "Avloppsanalyser", route: "/avlopps_analyser" },
+        { text: "Bygglovstillstånd", route: "/bygglovs_tillstand" },
+        { text: "Verksmhet & SamFällighet", route: "/verksamhet" },
+
       ]
     };
   },
