@@ -23,7 +23,7 @@
           <v-col justify="center" cols="12" sm="12" md="12">
             <v-list-item  v-for="event in events" :key="event.title">
               <v-card class="ma-1" outlined>
-                <v-col cols="12" sm="12" md="12" class=" mt-2" d-flex align="center" justify="center">
+                <v-col cols="12" sm="12" md="12" class="mt-2" d-flex align="center" justify="center">
                   <v-img
                     :src="require('@/assets/homeimages/' + event.image)"
                     width="200px"
@@ -81,6 +81,7 @@
           </v-row>
         </v-col>
       </v-row>
+
   </div>
 </template>
 
