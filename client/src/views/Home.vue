@@ -1,6 +1,5 @@
 <template>
   <div class="home mt-12">
-
       <!-- <v-row>
         <v-col cols="12" md="12" sm="9" class="red">
           <v-card color="transparent" flat>
@@ -8,6 +7,7 @@
               <p class="font-weight-light white--text mt-16">
                 En mötesplats för
                 <span class="d-none d-md-flex" />
+
                 vatten- och avloppsfrågor
               </p>
             </v-card-title>
@@ -16,6 +16,7 @@
       </v-row>-->
       <v-row class="mt-16" justify="center">
         <v-col class='mt-16' cols="12" md="6" sm="12">
+
           <v-row d-flex justify="center">
             <h2 class="white--text font-weight-bold">Vatten Nyhetrena</h2>
           </v-row>
@@ -169,8 +170,11 @@ export default {
   height: 50vh;
 }
 
-span {
+.fontSize {
   font-size: 43px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* .newslist {
   display: flex;

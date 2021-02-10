@@ -9,20 +9,30 @@
       flat
       hide-on-scroll
     >
+    
       <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mx-3 white--text"></v-app-bar-nav-icon>
+
       <div class="d-flex align-center darken md-6">
         <div @click="moveToHome" class="pointerHome">
-          <v-app-bar-title class="ml-3 blue--text heading">VATTEN</v-app-bar-title>
+          <v-app-bar-title class="ml-3 blue--text heading"
+            >VATTEN</v-app-bar-title
+          >
           <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
         </div>
       </div>
 
       <v-spacer></v-spacer>
+      
       <div class="sidelinks mr-5">
         <v-icon @click="moveToLogin" color="white dark" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
         <v-icon @click="moveToHome" color="white dark" size="32">mdi-home</v-icon>
       </div>
+      <log-out
+        v-else-if="!showLogout"
+        :showLogout="showLogout"
+        @changeStatus="removeLogout"
+      />
     </v-app-bar>
     <v-navigation-drawer app v-model="drawer" color="#222222" absolute flat temporary width="300">
       <v-card color="#222" flat>
@@ -48,6 +58,7 @@
               link
             >
               <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
+
 
               <v-list-item-icon>
                 <v-icon v-text="icon"></v-icon>
@@ -106,15 +117,23 @@
           </v-col>
         </v-row>
       </v-card>
+
     </v-navigation-drawer>
   </div>
 </template>
 
 <script>
+import LogOut from "../privateperson/LogOut.vue";
 export default {
+  components: { LogOut },
+  name: "NavigationBar",
+  componnets: {
+    LogOut,
+  },
   data() {
     return {
       drawer: false,
+      showLogout: false,
       swedish: true,
       english: false,
       links: [
@@ -132,14 +151,19 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
+      this.showLogout = true;
     },
     moveToLogin() {
       this.$router.push("/login");
     },
     moveToUser() {
       this.$router.push("/user");
-    }
-  }
+    },
+    removeLogout() {
+      this.$router.push("/");
+      this.showLogout = true;
+    },
+  },
 };
 </script>
 

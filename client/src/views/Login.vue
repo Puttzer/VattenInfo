@@ -4,18 +4,13 @@
       <div class="login-box mt-12">
         <h1 class="font-weight-light">Logga In!</h1>
         <form class="mt-7">
-
-          <v-col
-            class="d-flex"
-            cols="12"
-            sm="12"
-          >
+          <v-col class="d-flex" cols="12" sm="12">
             <v-select
               background-color="rgba(108, 121, 182, 0.4)"
-              color=white
+              color="white"
               :items="user.role"
               label="kund"
-              height=45px
+              height="45px"
               solo
               dense
               class="selectItem"
@@ -24,13 +19,13 @@
           <div class="forminput">
             <label for="email">Email</label>
             <v-text-field
-            v-model="user.email"
-            class="borderPassword mt-n1 text--white font-weight-bold"
-            placeholder="test@test.com"
-            solo
-            text
-            background-color=#061d36
-          ></v-text-field>
+              v-model="user.email"
+              class="borderPassword mt-n1 text--white font-weight-bold"
+              placeholder="test@test.com"
+              solo
+              text
+              background-color="#061d36"
+            ></v-text-field>
             <!-- <input
               type="text"
               id="email"
@@ -51,17 +46,16 @@
               ></i>
             </div> -->
             <v-text-field
-            v-model="user.password"
-            class="borderPassword mt-n1 text--white"
-            :append-icon="show3 ? 'visibility' : 'visibility_off'"
-            :type="show3 ? 'text' : 'password'"
-            placeholder="*********"
-            solo  
-            background-color=#061d36
-            @click:append="show3 = !show3"
-          ></v-text-field>
+              v-model="user.password"
+              class="borderPassword mt-n1 text--white"
+              :append-icon="show3 ? 'visibility' : 'visibility_off'"
+              :type="show3 ? 'text' : 'password'"
+              placeholder="*********"
+              solo
+              background-color="#061d36"
+              @click:append="show3 = !show3"
+            ></v-text-field>
           </div>
-
         </form>
         <div class="switchinput">
           <v-switch
@@ -74,18 +68,16 @@
             label="Kom Ihåg"
           ></v-switch>
         </div>
-
       </div>
       <div class="form-submit">
-
-        <button class="login-btn">logga in</button>
-        <button class="forgot-password" @click="moveToLostLogin">Glömt Losenord<span>|</span></button>
+        <button class="login-btn" @click="moveToUserLogin">logga in</button>
+        <button class="forgot-password" @click="moveToLostLogin">
+          Glömt Losenord<span>|</span>
+        </button>
       </div>
     </div>
 
-    <transition name="drop" type="animation">
-
-    </transition>
+    <transition name="drop" type="animation"> </transition>
   </div>
 </template>
 
@@ -94,14 +86,14 @@
 export default {
   data() {
     return {
-      user:{
-        role:['Privat','Företag'],
+      user: {
+        role: ["Privat", "Företag"],
         email: "",
         password: "",
       },
       hidePassword: true,
       rememberTheName: false,
-      show3:true,
+      show3: true,
     };
   },
   computed: {
@@ -112,11 +104,14 @@ export default {
       return this.hidePassword ? "visibility" : "visibility_off";
     },
   },
-  methods:{
-     moveToLostLogin(){
-       this.$router.push('/lostlogin')
-     }
-  }
+  methods: {
+    moveToLostLogin() {
+      this.$router.push("/lostlogin");
+    },
+    moveToUserLogin() {
+      this.$router.push("/login/user");
+    },
+  },
 };
 </script>
 
@@ -150,9 +145,9 @@ export default {
   width: 100wv;
 }
 .login-box {
-  display:flex;
-  flex-direction:column;
-  padding:20px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   height: 450px;
   width: 304px;
   background: rgba(0, 0, 0, 0.4);
@@ -162,28 +157,28 @@ export default {
   color: #fff;
   /* border: solid 2px orangered; */
 }
-.login-box,h1{
-  display:flex;
-  justify-content:center;
+.login-box,
+h1 {
+  display: flex;
+  justify-content: center;
 }
 
 input {
   border: #1565c0 3px solid;
   height: 54px;
   width: 261px;
-  padding:5px;
-  margin-top:-5px;
-  font-weight:400;
-  
+  padding: 5px;
+  margin-top: -5px;
+  font-weight: 400;
 }
-.borderPassword{
+.borderPassword {
   border: #1565c0 3px solid;
   height: 54px;
   width: 261px;
-  padding:5px;
-  font-weight:400;
-  border-radius:0;
-  }
+  padding: 5px;
+  font-weight: 400;
+  border-radius: 0;
+}
 
 label {
   background: #1565c0;
@@ -191,37 +186,37 @@ label {
   padding: 0 20px;
   font-size: 18px;
   border-radius: 5px 5px 0 0;
-  height:50px;
-  margin-bottom:-5px;
+  height: 50px;
+  margin-bottom: -5px;
   /* margin-top: 50px; */
   /* float: left; */
 }
-.forminput{
-  margin-top:10px;
+.forminput {
+  margin-top: 10px;
 }
 
 /* .remember-label {
   color: #fff;
   font-size: 12px;
 } */
-.passwordinput{
-  display:flex;
+.passwordinput {
+  display: flex;
   flex-direction: row;
   align-items: center;
-  border:#1565c0 3px solid;
-  padding-right:15px;
-  font-size:18px;
-  margin-top:-4px;
+  border: #1565c0 3px solid;
+  padding-right: 15px;
+  font-size: 18px;
+  margin-top: -4px;
 }
-.passwordinput>input{
-  border:none;
-  padding:5px;
+.passwordinput > input {
+  border: none;
+  padding: 5px;
 }
-.switchinput{
-  display:flex;
-  flex-direction:row-reverse;
-  
-  margin-top:15px;
+.switchinput {
+  display: flex;
+  flex-direction: row-reverse;
+
+  margin-top: 15px;
 }
 
 .remember-me {
@@ -229,9 +224,9 @@ label {
   width: 32px;
 }
 
-.form-submit{
-  display:flex;
-  flex-direction:row-reverse;
+.form-submit {
+  display: flex;
+  flex-direction: row-reverse;
 }
 .login-btn {
   height: 36px;
@@ -240,21 +235,20 @@ label {
   border-radius: 15px;
   border: none;
   color: #fff;
-  margin:15px;
-  display:float;
-  float:center;
+  margin: 15px;
+  display: float;
+  float: center;
   /* background: #00000075; */
 }
-.forgot-password{
+.forgot-password {
   text-decoration-line: underline;
 }
-.forgot-password:hover{
-  color:orangered;
-  font-size:18px;
-  
+.forgot-password:hover {
+  color: orangered;
+  font-size: 18px;
 }
-span{
-  margin:10px;
+span {
+  margin: 10px;
 }
 
 .change-lang {
@@ -264,11 +258,11 @@ span{
   background: #898989;
   margin-top: 55px;
 }
-.selectItem{
-  font-weight:500;
-  font-size:18px;
-  color:white;
-  border-radius:0;
+.selectItem {
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+  border-radius: 0;
 }
 @keyframes slide-in {
   from {
