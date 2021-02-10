@@ -3,7 +3,7 @@
     <v-app-bar
       app
       class="mr-1 lighten-3 black--text"
-      color="#ffffff80"
+      color="transparent"
       lighten-4
       height="100"
       flat
@@ -23,7 +23,7 @@
 
       <v-spacer></v-spacer>
       
-      <div class="sidelinks mr-5">
+      <div class="sidelinks mr-5" v-if='showLogout'>
         <v-icon @click="moveToLogin" color="white dark" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
         <v-icon @click="moveToHome" color="white dark" size="32">mdi-home</v-icon>
