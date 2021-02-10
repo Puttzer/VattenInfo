@@ -1,5 +1,5 @@
 <template>
-  <v-card class="ma-0 pa-0" fluid width="100vw">
+  <div>
     <v-app-bar
       app
       class="mr-1 lighten-3 black--text"
@@ -14,126 +14,55 @@
         <div @click="moveToHome" class="pointerHome">
           <v-app-bar-title class="ml-3 blue--text heading">VATTEN</v-app-bar-title>
           <v-app-bar-title class="green--text heading">INFO</v-app-bar-title>
-          <!-- <v-img
-            alt="vatteninfo Logo"
-            class="shrink mr-3 pa-md-2 mx-lg-4"
-            contain
-            src="@/assets/vatteninfo-logo.png"
-            transition="scale-transition"
-            width="200"
-          />-->
-
-          <!-- <v-card-title
-            color="black"
-            class="subtitle-2 font-weight-bold"
-          >En mötesplats för vatten- och avloppsfrågor</v-card-title>-->
-          <!-- <v-icon color="blue mr-2" x-large>mdi-water</v-icon> -->
-          <v-img class="ml-4" width="50px" height="50px" src="../../assets/logga.svg"></v-img>
         </div>
       </div>
 
       <v-spacer></v-spacer>
-      <div class="sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="black dark mr-2" size="32">mdi-login</v-icon>
-        <span class="white--text mx-3">/</span>
-        <v-icon @click="moveToHome" color="black dark mr-2" size="32">mdi-home</v-icon>
-      </div>
     </v-app-bar>
-      <v-navigation-drawer
-        app
-        v-model="drawer"
-        color="#222"
-        absolute
-        flat
-        temporary
-		width='100%'
-      >
-        <div class="spaceBetween">
-			<div @click="drawer = !drawer" class="close">
-				X
-			</div>
-          <v-list shaped>
-            <v-list-group no-action sub-group>
-              <template v-slot:activator>
-                <v-list-item-content>
-                  <v-list-item-title class="white--text">Start</v-list-item-title>
-                </v-list-item-content>
-              </template>
-
-              <v-list-item
-                class="font-weight-light pl-4"
-                v-for="link in links"
-                router
-                :to="link.route"
-                :key="link.text"
-                link
-              >
-                <v-list-item-title class="white--text" v-text="link.text">
-                  {{
-                  link.text
-                  }}
-                </v-list-item-title>
-
-                <v-list-item-icon>
-                  <v-icon v-text="icon"></v-icon>
-                </v-list-item-icon>
-              </v-list-item>
-            </v-list-group>
-            <v-list-item>
-              <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-              </v-list-item-icon>-->
-
-              <v-list-item-title class="pl-14 white--text">Om oss</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item>
-              <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-              </v-list-item-icon>-->
-              <v-list-item-title class="pl-14 white--text">Kontakt</v-list-item-title>
-            </v-list-item>
-
-          </v-list>
-          <v-col class="mb-2 flex d-flex align-end justify-end">
-            <div class="mt-16 d-flex align-end justify-end">
-              <v-btn
-                @click="setLanguage()"
-                :style="{
+    <v-navigation-drawer app v-model="drawer" color="#222" absolute flat temporary width="100%">
+      <v-icon @click="drawer = !drawer">mdi-close</v-icon>
+      <v-row class="d-flex  jusify-center">>
+        <v-card class="d-flex  jusify-center">hejsan amos</v-card>
+      </v-row>
+      <v-row>
+        <v-col class="mb-2 flex d-flex align-end justify-end">
+          <div class="mt-16 d-flex align-end justify-end">
+            <v-btn
+              @click="setLanguage()"
+              :style="{
                 filter: english ? 'blur(0px) !important' : 'blur(2px)',
                 opacity: english ? '1 !important' : '0.55',
               }"
-                class="mx-3"
-                fab
-                dark
-                small
-              >
-                >
-                <v-avatar size="34">
-                  <v-img fab src="../../assets/flags/gb.svg"></v-img>
-                </v-avatar>
-              </v-btn>
+              class="mx-3"
+              fab
+              dark
+              small
+            >
+              <v-avatar size="34">
+                <v-img fab src="../../assets/flags/gb.svg"></v-img>
+              </v-avatar>
+            </v-btn>
 
-              <v-btn
-                @click="setLanguage()"
-                :style="{
+            <v-btn
+              @click="setLanguage()"
+              :style="{
                 filter: swedish ? 'blur(0) !important' : 'blur(2px)',
                 opacity: swedish ? '1 !important' : '0.55',
               }"
-                class="mx-3"
-                fab
-                dark
-                small
-              >
-                <v-avatar size="34">
-                  <v-img src="../../assets/flags/sweden.svg"></v-img>
-                </v-avatar>
-              </v-btn>
-            </div>
-          </v-col>
-        </div>
-      </v-navigation-drawer>
-  </v-card>
+              class="mx-3"
+              fab
+              dark
+              small
+            >
+              <v-avatar size="34">
+                <v-img src="../../assets/flags/sweden.svg"></v-img>
+              </v-avatar>
+            </v-btn>
+          </div>
+        </v-col>``
+      </v-row>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script>
@@ -179,10 +108,10 @@ export default {
   align-items: center;
   font-size: 18px;
 }
-.spaceBetween {
+/* .spaceBetween {
   display: flex;
   flex-direction: column;
   align-content: space-between;
   height: 95vh;
-}
+} */
 </style>

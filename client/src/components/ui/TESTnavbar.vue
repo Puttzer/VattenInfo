@@ -3,16 +3,15 @@
     <v-app-bar
       app
       class="mr-1 lighten-3 black--text"
-      color="transparent"
+      color="#ffffff80"
       lighten-4
       height="100"
       flat
       hide-on-scroll
     >
-      <v-app-bar-nav-icon
-        @click="drawer = !drawer"
-        class="ml-1 mc-3 -2 white--text"
-      ></v-app-bar-nav-icon>
+    
+      <v-app-bar-nav-icon @click="drawer = !drawer" class="ml-1 mx-3 white--text"></v-app-bar-nav-icon>
+
       <div class="d-flex align-center darken md-6">
         <div @click="moveToHome" class="pointerHome">
           <v-app-bar-title class="ml-3 blue--text heading"
@@ -23,15 +22,11 @@
       </div>
 
       <v-spacer></v-spacer>
-      <div v-if="showLogout" class="d-none d-md-flex sidelinks mr-5">
-        <v-icon @click="moveToLogin" color="white dark mr-2" size="32"
-          >mdi-login</v-icon
-        >
-
+      
+      <div class="sidelinks mr-5">
+        <v-icon @click="moveToLogin" color="white dark" size="32">mdi-login</v-icon>
         <span class="white--text mx-3">/</span>
-        <v-icon @click="moveToHome" color="white dark mr-2" size="32"
-          >mdi-home</v-icon
-        >
+        <v-icon @click="moveToHome" color="white dark" size="32">mdi-home</v-icon>
       </div>
       <log-out
         v-else-if="!showLogout"
@@ -39,17 +34,15 @@
         @changeStatus="removeLogout"
       />
     </v-app-bar>
-    <v-navigation-drawer
-      app
-      v-model="drawer"
-      color="#222222"
-      absolute
-      flat
-      temporary
-    >
-      <div class="spaceBetween">
-        <v-list shaped>
-          <v-list-group no-action sub-group>
+    <v-navigation-drawer app v-model="drawer" color="#222222" absolute flat temporary width="300">
+      <v-card color="#222" flat>
+        <!-- <v-row>
+          <v-col class="green d-flex justify-center">glass</v-col>
+        </v-row> -->
+        <v-row>
+          <v-col class="d-flex justify-center">
+           <v-list class="mt-4 ml-3">
+          <v-list-group class="pt-3" no-action sub-group>
             <template v-slot:activator>
               <v-list-item-content>
                 <v-list-item-title class="white--text">Start</v-list-item-title>
@@ -64,9 +57,8 @@
               :key="link.text"
               link
             >
-              <v-list-item-title class="white--text" v-text="link.text">
-                {{ link.text }}
-              </v-list-item-title>
+              <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
+
 
               <v-list-item-icon>
                 <v-icon v-text="icon"></v-icon>
@@ -74,61 +66,58 @@
             </v-list-item>
           </v-list-group>
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-              </v-list-item-icon>-->
-
-            <v-list-item-title class="pl-14 white--text"
-              >Om oss</v-list-item-title
-            >
+            <v-list-item-title class="pl-14 white--text">Beställ</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
-            <!-- <v-list-item-icon>
-            <v-icon>mdi-home</v-icon>
-              </v-list-item-icon>-->
-            <v-list-item-title class="pl-14 white--text"
-              >Kontakt</v-list-item-title
-            >
+            <v-list-item-title class="pl-14 white--text">Instruktioner & Blanketter</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title class="pl-14 white--text">Hjälp med ditt vatten</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item>
+            <v-list-item-title class="pl-14 white--text">Om Laboratoriet</v-list-item-title>
           </v-list-item>
         </v-list>
-        <v-col class="mb-2 flex d-flex align-end justify-end">
-          <div class="mt-16 d-flex align-end justify-end">
-            <v-btn
+          </v-col>
+        </v-row>
+        <v-row class="d-flex flex-column ">
+          <v-col class="d-flex justify-end mb-n9">
+            <v-card-title class=" white--text" @click="moveToUser">
+              <v-icon color="white" size="32">mdi-account</v-icon>Mikael Holmberg
+            </v-card-title>
+          </v-col>
+    
+          <v-col class="d-flex justify-end" color="#222">
+            <v-avatar
+              class="mx-2"
               @click="setLanguage()"
               :style="{
                 filter: english ? 'blur(0px) !important' : 'blur(2px)',
                 opacity: english ? '1 !important' : '0.55',
               }"
-              class="mx-3"
-              fab
-              dark
-              small
+              size="34"
             >
-              >
-              <v-avatar size="34">
-                <v-img fab src="../../assets/flags/gb.svg"></v-img>
-              </v-avatar>
-            </v-btn>
+              <v-img fab src="../../assets/flags/gb.svg"></v-img>
+            </v-avatar>
 
-            <v-btn
+            <v-avatar
+              class="mx-2"
               @click="setLanguage()"
               :style="{
                 filter: swedish ? 'blur(0) !important' : 'blur(2px)',
                 opacity: swedish ? '1 !important' : '0.55',
               }"
-              class="mx-3"
-              fab
-              dark
-              small
+              size="34"
             >
-              <v-avatar size="34">
-                <v-img src="../../assets/flags/sweden.svg"></v-img>
-              </v-avatar>
-            </v-btn>
-          </div>
-        </v-col>
-      </div>
+              <v-img src="../../assets/flags/sweden.svg"></v-img>
+            </v-avatar>
+          </v-col>
+        </v-row>
+      </v-card>
+
     </v-navigation-drawer>
   </div>
 </template>
@@ -169,6 +158,9 @@ export default {
     moveToLogin() {
       this.$router.push("/login");
     },
+    moveToUser() {
+      this.$router.push("/user");
+    },
     removeLogout() {
       this.$router.push("/");
       this.showLogout = true;
@@ -183,10 +175,10 @@ export default {
 }
 .pointerHome {
   cursor: pointer;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 18px;
+  font-size: 18px; */
 }
 .spaceBetween {
   display: flex;
