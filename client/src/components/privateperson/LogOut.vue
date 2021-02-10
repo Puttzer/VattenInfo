@@ -1,7 +1,6 @@
 <template>
   <div d-flex align="center" class="logoutflex">
     <p>
-      Logged in as :
       <span class="orange--text font-weight-bold mr-2"> {{ user.name }}</span>
     </p>
     <v-icon large color="white">shopping_basket</v-icon>
