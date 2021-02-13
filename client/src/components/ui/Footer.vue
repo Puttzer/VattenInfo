@@ -1,4 +1,4 @@
-<template>  
+<template>
   <div class="footer">
     <v-row d-flex flex-row>
       <v-col class="mx-16"
@@ -46,12 +46,14 @@
           max-height="48px"
           max-width="48px"
         ></v-img>
+
         <v-img
           class="mx-3"
           src="@/assets/footer/InstagramNegative.svg"
           max-height="48px"
           max-width="48px"
         ></v-img>
+
         <v-img
           class="mx-3"
           src="@/assets/footer/YouTubeNegative.svg"
@@ -68,7 +70,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-
 .footer {
   max-height: 160px;
   //   height: 160px;
