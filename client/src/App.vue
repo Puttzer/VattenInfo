@@ -1,8 +1,8 @@
 <template>
   <v-app class="ma-0 pa-0">
-    <NavigationBar class="d-sm-none d-md-flex" />
-    <NavBarMobile class="d-xs-flex d-md-none" />
-    <v-main class="ma-0 pa-0 primary">
+    <NavigationBar class='d-xs-none d-md-flex' />
+    <NavBarMobile class='d-xs-flex d-md-none'  />
+    <v-main class="ma-0 pa-0 primary"  >
       <router-view></router-view>
     </v-main>
     <Footer></Footer>
