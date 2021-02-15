@@ -1,6 +1,13 @@
 <template>
-  <div class="d-flex d-flex-column container align-center justify-space-between">
-    <v-card class="d-flex d-flex-column align-center" height="100" flat color="transparent">
+  <div
+    class="d-flex d-flex-column container align-center justify-space-between"
+  >
+    <v-card
+      class="d-flex d-flex-column align-center"
+      height="100"
+      flat
+      color="transparent"
+    >
       <v-icon @click="drawer = !drawer" size="32" color="blue">mdi-menu</v-icon>
       <nav>
         <ol class="blue--text">
@@ -9,14 +16,16 @@
           <li>Kontakt</li>
           <li>Om Oss</li>
         </ol>
-
       </nav>
-
-	
     </v-card>
-
-		<v-spacer></v-spacer>
-        <v-img src="@/assets/V-info-logotyp.png" class='d-flex align-right' max-height="160px" max-width="163px"></v-img>
+    <v-spacer></v-spacer>
+    <cart-component class="d-flex align-right" />
+    <v-img
+      src="@/assets/V-info-logotyp.png"
+      class="d-flex align-right"
+      max-height="160px"
+      max-width="163px"
+    ></v-img>
     <v-navigation-drawer
       app
       v-model="drawer"
@@ -31,12 +40,16 @@
 </template>
 
 <script>
+import CartComponent from "../cart/CartComponent.vue";
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
     };
-  }
+  },
+  components: {
+    CartComponent,
+  },
 };
 </script>
 
@@ -50,13 +63,13 @@ li {
   /* color: rgb(54, 85, 104); */
   text-transform: uppercase;
   font-size: 18px;
-	font-weight: bold;
+  font-weight: bold;
 }
 
-li:hover{
-text-decoration: underline wavy;
-/* font-weight: normal; */
-cursor: pointer;
+li:hover {
+  text-decoration: underline wavy;
+  /* font-weight: normal; */
+  cursor: pointer;
 }
 
 /* .logga{
