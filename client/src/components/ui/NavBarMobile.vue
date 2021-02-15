@@ -20,9 +20,49 @@
       <v-spacer></v-spacer>
     </v-app-bar>
     <v-navigation-drawer app v-model="drawer" color="#222" absolute flat temporary width="100%">
-      <v-icon @click="drawer = !drawer">mdi-close</v-icon>
-      <v-row class="d-flex  jusify-center">>
-        <v-card class="d-flex  jusify-center">hejsan amos</v-card>
+      <v-icon large color='white' class="mx-6 mt-7" @click="drawer = !drawer">mdi-close</v-icon>
+      <v-row class="pl-12">
+        <v-col class="pl-12">
+          <v-list class="pl-12">
+            <v-list-group class="pt-3" no-action sub-group>
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-list-item-title class="pr-9 white--text">Meny</v-list-item-title>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                class=" pl-12 font-weight-light"
+                v-for="link in links"
+                router
+                :to="link.route"
+                :key="link.text"
+                link
+              >
+                <v-list-item-title class="white--text" v-text="link.text">{{link.text}}</v-list-item-title>
+
+                <v-list-item-icon>
+                  <v-icon v-text="icon"></v-icon>
+                </v-list-item-icon>
+              </v-list-item>
+            </v-list-group>
+            <v-list-item>
+              <v-list-item-title class="white--text">Beställ</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title class="white--text">Instruktioner & Blanketter</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title class="white--text">Hjälp med ditt vatten</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item>
+              <v-list-item-title class="white--text">Om Laboratoriet</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-col>
       </v-row>
       <v-row>
         <v-col class="mb-2 flex d-flex align-end justify-end">
@@ -73,13 +113,10 @@ export default {
       swedish: true,
       english: false,
       links: [
-        { text: "Laboratorietjänster", route: "/" },
-        { text: "Vattenexpo", route: "/" },
-        { text: "Vattendagar", route: "/" },
-        { text: "Kurser", route: "/" },
-        { text: "GemVA", route: "/" },
-        { text: "Produkter", route: "/" },
-        { text: "Nyttiga sidor", route: "/" }
+        { text: "Enskillt Drickvatten", route: "/enskillt_vatten" },
+        { text: "Avloppsanalyser", route: "/avlopps_analyser" },
+        { text: "Bygglovstillstånd", route: "/bygglovs_tillstand" },
+        { text: "Verksmhet & SamFällighet", route: "/verksamhet" },
       ]
     };
   },
