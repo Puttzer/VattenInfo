@@ -3,7 +3,7 @@ const User = require('../../models/user')
 module.exports = function (router) {
     router.get('/user/:id', async function (req, res) {
         console.log(req.params['id'])
-        await User.findById(req.params['id']).exec()
+        await User.findById({ _id: req.params['id'] }).exec()
             .then(docs => res.status(200)
                 .json(docs))
             .catch(err => res.status(500)
@@ -36,9 +36,9 @@ module.exports = function (router) {
             res.status(500).json('unable to insert the newuser')
         }
     })
-    router.get('/user_admin', function (req, res) {
+    router.get('/user_admin', async function (req, res) {
 
-        User.find({}).exec()
+        await User.find({}).exec()
             .then(docs =>
                 res.status(200).json(docs))
             .catch(err => res.status(500)
@@ -49,9 +49,9 @@ module.exports = function (router) {
     })
 
 
-    router.get('/user', function (req, res) {
+    router.get('/user', async function (req, res) {
 
-        User.findOne({ _id: req.body.id }).exec()
+        await User.findOne({ _id: req.body.id }).exec()
             .then(docs =>
                 res.status(200).json(docs))
             .catch(err => res.status(500)
@@ -60,8 +60,8 @@ module.exports = function (router) {
                     error: err
                 }))
     })
-    router.get('/user/email/:email', function (req, res) {
-        User.findOne({ email: req.params.email }).exec()
+    router.get('/user/email/:email', async function (req, res) {
+        await User.findOne({ email: req.params.email }).exec()
             .then(docs => res.status(200)
                 .json(docs))
             .catch(err => res.status(500)

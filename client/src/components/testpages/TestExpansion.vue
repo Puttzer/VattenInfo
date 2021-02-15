@@ -3,20 +3,13 @@
     <v-layout class="d-flex flex-column justify-center">
       <v-row align="center" cols="9" md="9" class="d-flex justify-center">
         <v-col
-          class="d-flex align-start justify-start"
+          class="d-flex align-center justify-center heightTest"
           cols="12"
           xs="12"
           sm="6"
           md="6"
         >
-          <v-expansion-panels
-            border
-            xs12
-            sm9
-            md6
-            class="ma-4"
-            focusable
-          >
+          <v-expansion-panels border xs12 sm9 md6 class="ma-4" focusable>
             <v-expansion-panel
               class="mb-1"
               width="10vh"
@@ -57,12 +50,16 @@
               voluptatibus natus autem assumenda molestiae, consequatur commodi
               nam! Porro totam voluptatem fugit quis molestiae.
             </h3>
-            
           </div>
         </v-col>
       </v-row>
 
-      <v-row align="center" cols="12" md="9" class="d-flex justify-center ma-4">
+      <v-row
+        align="center"
+        cols="12"
+        md="9"
+        class="d-flex justify-center ma-4 heightIndividuel"
+      >
         <v-col class="d-flex" cols="12" xs="12" sm="6" md="6">
           <div>
             <h1 class="align-center">Individuell Tester</h1>
@@ -205,5 +202,11 @@ export default {
 <style scoped>
 v-expansion-panel {
   border-bottom-width: 2px solid blue;
+}
+.heightTest {
+  height: 400px;
+}
+.heightIndividuel {
+  height: 400px;
 }
 </style>
