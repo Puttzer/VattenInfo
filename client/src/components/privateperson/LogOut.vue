@@ -1,20 +1,23 @@
 <template>
   <div d-flex align="center" class="logoutflex">
     <p>
-      Logged in as :
       <span class="orange--text font-weight-bold mr-2"> {{ user.name }}</span>
     </p>
-    <v-icon large color="white">shopping_basket</v-icon>
-    <v-btn @click="change_status" class="ml-2">
-      <v-icon medium>logout</v-icon>
-    </v-btn>
+    <cart-component />
+    <v-icon @click="change_status" class="mr-8" color="white" large
+      >logout</v-icon
+    >
   </div>
 </template>
 
 <script>
+import CartComponent from "../cart/CartComponent.vue";
 export default {
   name: "LogOut",
   props: ["showLogout"],
+  components: {
+    CartComponent,
+  },
   data() {
     return {
       user: {
