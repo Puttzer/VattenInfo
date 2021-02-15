@@ -2,13 +2,14 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let newCompany = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    fullName: { type: String, required: true },
     email: { type: String, required: true },
+    phonenumber: { type: Number, required: true },
+    alternateNumber: { type: Number, required: false },
     password: { type: String, required: true },
     isActive: { type: Boolean, default: true },
     createdOn: { type: Date, default: Date.now },
-    userRole: { type: String, required: true },
+    userRole: { type: String, default: 'Company' },
     organizationNummer: { type: String, required: true }
 })
 

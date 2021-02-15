@@ -1,7 +1,7 @@
 const Company = require('../../models/company')
 
 module.exports = function (router) {
-    router.post('/register_company', async (req, res) => {
+    router.post('/company/register', async (req, res) => {
         // const { firstName, lastName, email, userRole, password, organizationNummer } = req.body;
         // let company = {}
         // company.firstName = firstName
@@ -21,9 +21,9 @@ module.exports = function (router) {
         }
     })
 
-    router.get('/company/admin', async (req, res) => {
+    router.get('/company/login', async (req, res) => {
 
-        Company.find({}).exec()
+        await Company.find({ _id: req.body.id }).exec()
             .then(docs =>
                 res.status(200).json(docs))
             .catch(err => res.status(500)

@@ -1,11 +1,24 @@
 <template>
   <v-content>
-    <h1>Beställ tester till vätten</h1>
+    <v-flex>
+      <v-row class="justify-center mt-12">
+        <h1>Tester till vatten</h1>
+      </v-row>
+      <v-row>
+        <test-expansion />
+      </v-row>
+    </v-flex>
   </v-content>
 </template>
 
 <script>
-export default {};
+import TestExpansion from "../components/testpages/TestExpansion.vue";
+export default {
+  name: "BestallSidan",
+  components: {
+    TestExpansion,
+  },
+};
 </script>
 
 <style>
