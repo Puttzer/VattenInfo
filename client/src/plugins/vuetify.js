@@ -16,8 +16,11 @@ export default new Vuetify({
 				secondary: '#b0bec5',
 				accent: '#8c9eff',
 				error: '#b71c1c',
-				btnColor: '#11446e',
-				gris: '#D1878A' // just for test
+				btnColor: '#12669c',
+				gris: '#D1878A', // just for test
+				background: 'e9e9e9',
+				blue: '#449ace',
+				green: '#449a63'
 			},
 		},
 	},
