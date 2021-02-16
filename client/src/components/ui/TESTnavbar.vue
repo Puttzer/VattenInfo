@@ -19,7 +19,7 @@
       </nav>
     </v-card>
     <v-spacer></v-spacer>
-    <v-icon size="45" color="green">mdi-basket</v-icon>
+    <cart-component />
     <v-img
       src="@/assets/V-info-logotyp.png"
       class="d-flex align-right ml-6"
@@ -39,17 +39,17 @@
   </div>
 </template>
 
-<script>
-// import CartComponent from "../cart/CartComponent.vue";
+<script scoped>
+import CartComponent from "../cart/CartComponent.vue";
 export default {
   data() {
     return {
       drawer: false,
     };
   },
-  //   components: {
-  //     CartComponent,
-  //   },
+  components: {
+    CartComponent,
+  },
 };
 </script>
 

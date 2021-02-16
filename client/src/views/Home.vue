@@ -1,22 +1,49 @@
 <template>
-  <div class="container background">
-    <div class="labb blue--text">VATTENINFO LABBTJÄNSTER</div>
-    <div class="rubrik">
-      <p class="green--text mb-0 pt-0">kvalitetssäkra</p>
-      <p class="blue--text mt-0 pt-0">ditt vatten.</p>
-      <div class="bread">
-        <p>Vi erbjuder mikrobiologiska och kemiska analyser för enskilt vatten, livsmedelsklassat vatten samt avlopp</p>
-      </div>
-      <v-btn class="btnColor white--text">läs mer</v-btn>
-    </div>
-    <div class="wave">
-      <v-img src="@/assets/landing/waves.png" max-height="100" max-width="100" border-radius="100"></v-img>
-    </div>
-    <div class="logo"></div>
-
+  <div class="background container mt-6">
     <v-row>
-      <v-col class="d-flex d-flex-column" cols="12" md="12">
-        <svg md="6" viewBox="0 0 500 500">
+      <v-col
+        height="200px"
+        cols="12"
+        md="2"
+        class="d-flex align-center justify-start"
+      >
+        <div class="wave">
+          <v-img
+            src="@/assets/landing/waves.png"
+            max-height="100"
+            max-width="100"
+            border-radius="100"
+          ></v-img>
+        </div>
+      </v-col>
+      <v-col cols="12" md="7" class="d-flex justify-center">
+        <div class="middle_section">
+          <div class="labb blue--text ma-2">VATTENINFO LABBTJÄNSTER</div>
+          <div class="rubrik ma-0 pa-0">
+            <p class="green--text ma-0 pa-0">kvalitetssäkra</p>
+            <p class="blue--text mt-0 pt-0">ditt vatten.</p>
+          </div>
+          <div class="bread">
+            <p class="body-2">
+              Vi erbjuder mikrobiologiska och kemiska analyser för enskilt
+              vatten, livsmedelsklassat vatten samt avlopp
+            </p>
+          </div>
+          <v-btn class="btnColor white--text">läs mer</v-btn>
+          <div class="social-media d-flex flex-row align-center mt-16">
+            <div class="facebook">
+              <v-icon size="52">mdi-facebook</v-icon>
+              <!-- <v-img src="@/assets/landing/facebook.png" max-height="32" max-width="32"></v-img> -->
+            </div>
+            <div class="instagram">
+              <v-icon size="42">mdi-instagram</v-icon>
+            </div>
+          </div>
+        </div>
+      </v-col>
+
+      <v-col cols="12" md="3" class="d-flex flex-row align-start">
+        <svg viewBox="0 0 500 500">
           <path
             id="curve"
             fill="transparent"
@@ -26,20 +53,15 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
-        <v-img src="@/assets/landing/OmtankeH20.png" md="6" contain max-height="300" max-width="300"></v-img>
-		<div class="logo"></div>
+        <v-img
+          src="@/assets/landing/OmtankeH20.png"
+          md="6"
+          contain
+          max-height="500"
+          max-width="500"
+        ></v-img>
       </v-col>
     </v-row>
-
-    <div class="social-media">
-      <div class="facebook">
-        <v-icon size="52">mdi-facebook</v-icon>
-        <!-- <v-img src="@/assets/landing/facebook.png" max-height="32" max-width="32"></v-img> -->
-      </div>
-      <div class="instagram">
-        <v-icon size="42">mdi-instagram</v-icon>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -47,9 +69,15 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
 .labb {
-  letter-spacing: 3px;
+  letter-spacing: 5px;
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
   font-size: 14px;
@@ -76,10 +104,10 @@ export default {};
 
 /* curved text starts here */
 
-.logo {
-  /* display: block; */
-  background: url('../assets/landing/OmtankeH20.png');
-}
+/* .logo {
+  
+  background: url("../assets/landing/OmtankeH20.png");
+} */
 path {
   fill: transparent;
 }
