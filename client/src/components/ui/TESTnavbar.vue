@@ -1,14 +1,7 @@
 <template>
-  <div
-    class="d-flex d-flex-column container align-center justify-space-between"
-  >
-    <v-card
-      class="d-flex d-flex-column align-center"
-      height="100"
-      flat
-      color="transparent"
-    >
-      <v-icon @click="drawer = !drawer" size="32" color="blue">mdi-menu</v-icon>
+  <div class="d-flex d-flex-column container align-center justify-space-between">
+    <v-card class="d-flex d-flex-column align-center" height="100" flat color="transparent">
+      <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon>
       <nav>
         <ol class="blue--text">
           <li>Beställ</li>
@@ -19,10 +12,11 @@
       </nav>
     </v-card>
     <v-spacer></v-spacer>
-    <cart-component class="d-flex align-right" />
+    <v-icon size="45" color="green">mdi-basket</v-icon>
     <v-img
       src="@/assets/V-info-logotyp.png"
-      class="d-flex align-right"
+      class="d-flex align-right ml-6"
+
       max-height="160px"
       max-width="163px"
     ></v-img>
@@ -62,8 +56,10 @@ li {
   padding: 25px;
   /* color: rgb(54, 85, 104); */
   text-transform: uppercase;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+
 }
 
 li:hover {
