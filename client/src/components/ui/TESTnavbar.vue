@@ -1,6 +1,13 @@
 <template>
-  <div class="d-flex d-flex-column container align-center justify-space-between">
-    <v-card class="d-flex d-flex-column align-center" height="100" flat color="transparent">
+  <div
+    class="d-flex d-flex-column container align-center justify-space-between"
+  >
+    <v-card
+      class="d-flex d-flex-column align-center"
+      height="100"
+      flat
+      color="transparent"
+    >
       <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon>
       <nav>
         <ol class="blue--text">
@@ -16,7 +23,6 @@
     <v-img
       src="@/assets/V-info-logotyp.png"
       class="d-flex align-right ml-6"
-
       max-height="160px"
       max-width="163px"
     ></v-img>
@@ -34,16 +40,16 @@
 </template>
 
 <script>
-import CartComponent from "../cart/CartComponent.vue";
+// import CartComponent from "../cart/CartComponent.vue";
 export default {
   data() {
     return {
       drawer: false,
     };
   },
-  components: {
-    CartComponent,
-  },
+  //   components: {
+  //     CartComponent,
+  //   },
 };
 </script>
 
@@ -59,7 +65,6 @@ li {
   font-size: 14px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-
 }
 
 li:hover {
