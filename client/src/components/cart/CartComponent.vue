@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex flex-row justify-center align-center">
-    <p class="mr-n6 d-flex justify-center align-center countClass">
+    <p
+      class="white--text mr-n6 d-flex justify-center align-center countClass green"
+    >
       {{ this.count }}
     </p>
-    <v-icon class="ma-1 pa-2" large color="blue darken-4"
-      >shopping_basket</v-icon
-    >
+    <v-icon class="ma-1 pa-2" size="56" color="green">shopping_basket</v-icon>
   </div>
 </template>
 
@@ -23,7 +23,6 @@ export default {
 <style scoped>
 .countClass {
   z-index: 2;
-  background-color: rgb(218, 106, 32);
   border-radius: 50%;
   width: 25px;
   height: 25px;
