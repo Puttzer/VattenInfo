@@ -11,13 +11,12 @@
         </ol>
       </nav>
     </v-card>
-
     <v-spacer></v-spacer>
     <v-icon size="45" color="green">mdi-basket</v-icon>
-
     <v-img
       src="@/assets/V-info-logotyp.png"
       class="d-flex align-right ml-6"
+
       max-height="160px"
       max-width="163px"
     ></v-img>
@@ -35,12 +34,16 @@
 </template>
 
 <script>
+import CartComponent from "../cart/CartComponent.vue";
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
     };
-  }
+  },
+  components: {
+    CartComponent,
+  },
 };
 </script>
 
@@ -56,6 +59,7 @@ li {
   font-size: 14px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+
 }
 
 li:hover {
