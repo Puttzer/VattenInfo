@@ -37,51 +37,8 @@ app.use(function (req, res, next) {
 //connecting the localhost:Mongodb
 
 connectDB();
-// async function databaseConnection() {
-
-//     const uri = `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@test-cluster.15htl.mongodb.net/${process.env.MONGODB_DATABASE}?retryWrites=true&w=majority`
-
-//     const uri1 = `mongodb+srv://vatteninfo_krishna:${process.env.MONGODB_PASSWORD}@test-cluster.15htl.mongodb.net/vatteninfo?retryWrites=true&w=majority`
-
-//     const { MongoClient } = require('mongodb')
-
-//     const client = new MongoClient(uri1, { useUnifiedTopology: true, useNewUrlParser: true })
-//     try {
-
-//         await client.connect();
-//         await listDatabases(client)
-//     } catch (e) {
-//         console.log(e);
-//     } finally {
-//         await client.close()
-//     }
-// }
-
-// async function listDatabases(client) {
-//     databasesList = await client.db().admin().listDatabases();
-
-//     console.log("Databases:");
-//     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-// };
-
-// databaseConnection().catch(console.error);
 
 app.listen(app.get('port'), function () {
     console.log('API Server Listening on port ' + app.get('port') + '!')
 })
 
-// const mongoose = require('mongoose')
-// mongoose.connect('mongodb://localhost:27017/vatteninfo', { useNewUrlParser: true, useUnifiedTopology: true })
-// const db = mongoose.connection
-
-// //error information
-// db.on('error', console.error.bind(console, 'connection error:'))
-
-// //connection is open
-// db.once('open', function () {
-//     console.log('Connected to MongoDB')
-
-//     app.listen(app.get('port'), function () {
-//         console.log('API Server Listening on port ' + app.get('port') + '!')
-//     })
-// })
