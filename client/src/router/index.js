@@ -5,15 +5,12 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 
 import PrivatePerson from '../views/PrivatePerson.vue'
-import CompanyPage from '../views/CompanyPage.vue'
-// import PriceDetails from '../views/PriceDetails.vue
+import AnalysKatalog from '../views/Analyskatalog.vue'
 import ContactUs from '../views/ContactUs.vue'
 import RegisterAccount from '../views/RegisterAccount.vue'
-import HomeEnglish from '../views/englishversion/HomeEnglish.vue'
 import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import Test from '../views/Test.vue'
 import TestExpansion from '../components/testpages/TestExpansion.vue'
-import AddNyheter from '../views/addNyheter.vue'
 import LostLogin from '../views/LostLogin.vue'
 import BestallSidan from '../views/BestallSidan.vue'
 import InstruktionOchBlanketter from '../views/InstruktionOchBlanketter.vue'
@@ -52,17 +49,9 @@ const routes = [
         component: Home
     },
     {
-        path: '/en',
-        name: 'HomeEnglish',
-        component: HomeEnglish
-    },
-    {
-        path: '/about',
-        name: 'About',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+        path: '/analyskatalog',
+        name: 'AnalysKatalog',
+        component: AnalysKatalog
     },
     {
         path: '/login/user',
@@ -76,11 +65,6 @@ const routes = [
         path: '/private',
         name: 'PrivatePerson',
         component: PrivatePerson
-    },
-    {
-        path: '/company',
-        name: 'CompanyPage',
-        component: CompanyPage
     },
     {
         path: '/priser',
@@ -141,11 +125,6 @@ const routes = [
         path: '/payment',
         name: 'PaymentInfo',
         component: PaymentInfo
-    },
-    {
-        path: '/addnews',
-        name: 'addNews',
-        component: AddNyheter
     },
     {
         path: '/*',

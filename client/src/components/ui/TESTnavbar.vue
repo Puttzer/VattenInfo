@@ -11,8 +11,9 @@
       <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon>
       <nav>
         <ol class="blue--text">
+          <li @click="moveToHome">Hem</li>
           <li>Beställ</li>
-          <li>Analyskatalog</li>
+          <li @click="moveToAnalysKatalog">Analyskatalog</li>
           <li>Kontakt</li>
           <li>Om Oss</li>
         </ol>
@@ -49,6 +50,14 @@ export default {
   },
   components: {
     CartComponent,
+  },
+  methods: {
+    moveToAnalysKatalog() {
+      this.$router.push("/analyskatalog");
+    },
+    moveToHome() {
+      this.$router.push("/");
+    },
   },
 };
 </script>
