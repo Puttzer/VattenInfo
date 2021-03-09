@@ -19,20 +19,23 @@ module.exports = function (router) {
     })
 
     router.post('/admin/register', async function (req, res) {
-        console.log(req.body.email)
+
         const adminFind = await Admin.findOne({ email: req.body.email })
         if (adminFind) {
             res.json({
                 message: 'Admin with email already exists, Create with other email'
             })
         } else {
-            const { firstName, lastName, email, password } = req.body;
+            const { firstName, lastName, email, password, username } = req.body;
             let admin = {}
             admin.firstName = firstName
             admin.lastName = lastName
             admin.email = email
             admin.password = password
+            admin.username = username
             let newAdmin = new Admin(req.body)
+
+            console.log(newAdmin)
             try {
 
                 await newAdmin.save()
