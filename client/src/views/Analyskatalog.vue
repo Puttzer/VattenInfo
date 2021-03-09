@@ -49,15 +49,51 @@
 
     <v-row class="d-flex justify-center align-center mb-12">
       <v-col cols="2" class="d-flex justify-center align-center">
-        <v-btn height="100px" width="250px" color="light-blue darken-3">
+        <v-btn
+          height="70px"
+          width="250px"
+          color="light-blue darken-3"
+          class="rounded-0"
+        >
           <div class="d-flex flex-column justify-center align-center">
-            <h1 class="subtitle font-weight-medium white--text text-capitalize">
+            <h1
+              class="pt-3 subtitle font-weight-medium white--text text-capitalize"
+            >
               Snabbguide
             </h1>
             <p class="white--text caption text-capitalize mt-1">
               Vilken analys passar mig?
             </p>
           </div>
+        </v-btn>
+      </v-col>
+    </v-row>
+
+    <v-row class="mt-12 mb-12">
+      <v-col cols="3" class="d-flex align-center">
+        <img src="@/assets/wave.png" height="125px" width="100px"
+      /></v-col>
+      <v-col cols="3" class="d-flex flex-column justify-start align-center">
+        <img src="@/assets/waterdroplet.png" />
+        <img
+          src="@/assets/droplet.png"
+          class="moveRight"
+          height="70px"
+          width="70px"
+        />
+      </v-col>
+      <v-col cols="4" class="d-flex flex-column">
+        <h1 class="blue--text font-weight-bold">Boka rådgivning</h1>
+        <p class="text--secondary">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.<br />
+          Aspernatur eum dolorem. <span class="linkText">BOKA LÄNK</span>
+        </p>
+        <v-btn
+          height="50px"
+          width="100px"
+          color="white--text light-blue darken-3"
+          class="rounded-0"
+          >LÄS MER
         </v-btn>
       </v-col>
     </v-row>
@@ -69,4 +105,12 @@ export default {};
 </script>
 
 <style scoped>
+.linkText {
+  color: red;
+  font-size: 16px;
+  font-weight: 800;
+}
+.moveRight {
+  margin-left: 250px;
+}
 </style>
