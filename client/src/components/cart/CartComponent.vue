@@ -1,11 +1,9 @@
 <template>
-  <div class="d-flex flex-row justify-center align-center">
-    <p
-      class="white--text mr-n6 d-flex justify-center align-center countClass green"
-    >
-      {{ this.count }}
-    </p>
+  <div class="d-flex flex-row justify-center align-center testCase">
     <v-icon class="ma-1 pa-2" size="56" color="green">shopping_basket</v-icon>
+    <p
+      class="countClass white--text ml-n6 d-flex justify-center align-center green"
+    >{{ this.count }}</p>
   </div>
 </template>
 
@@ -14,17 +12,24 @@ export default {
   name: "CartComponent",
   data() {
     return {
-      count: 0,
+      count: 0
     };
-  },
+  }
 };
 </script>
 
 <style scoped>
 .countClass {
-  z-index: 2;
-  border-radius: 50%;
+  z-index: 999;
+  border-radius: 99rem;
   width: 25px;
   height: 25px;
+  /* border: 1px solid red; */
+  border: 5px solid blue;
+  /* position: absolute; */
+}
+
+.testCase {
+  /* position: relative; */
 }
 </style>

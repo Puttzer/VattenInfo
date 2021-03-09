@@ -1,12 +1,7 @@
 <template>
   <div class="background container mt-6">
     <v-row>
-      <v-col
-        height="200px"
-        cols="12"
-        md="2"
-        class="d-flex align-center justify-start"
-      >
+      <v-col height="200px" cols="12" md="2" class="d-flex align-center justify-start">
         <div class="wave">
           <v-img
             src="@/assets/landing/waves.png"
@@ -30,15 +25,14 @@
             </p>
           </div>
           <v-btn class="btnColor white--text">läs mer</v-btn>
-          <div class="social-media d-flex flex-row align-center mt-16">
+          <!-- <div class="social-media d-flex flex-row align-center mt-16">
             <div class="facebook">
               <v-icon size="52">mdi-facebook</v-icon>
-              <!-- <v-img src="@/assets/landing/facebook.png" max-height="32" max-width="32"></v-img> -->
             </div>
             <div class="instagram">
               <v-icon size="42">mdi-instagram</v-icon>
             </div>
-          </div>
+          </div>-->
         </div>
       </v-col>
 
@@ -62,6 +56,77 @@
         ></v-img>
       </v-col>
     </v-row>
+    <!-- landning fort -->
+
+    <v-row>
+      <v-col class="d-flex align-center" cols="2">
+        <div class="wave">
+          <v-img
+            src="@/assets/landing/waves.png"
+            max-height="100"
+            max-width="100"
+            border-radius="100"
+          ></v-img>
+        </div>
+      </v-col>
+      <v-col cols="5" class>
+        <v-row class="d-flex justify-center align-center">
+          <h1 class="blue--text font-weight-class text-uppercase text-center">
+            Ta hand om vattnet
+            <br />så tar vattnet hand om dig
+          </h1>
+          <p
+            class="text-center"
+          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur doloremque voluptatem dignissimos soluta incidunt non velit recusandae quia amet quibusdam.</p>
+        </v-row>
+        <v-row class="d-flex justify-space-between">
+          <v-col class cols="3">
+            <div class="provVal d-flex flex-column justify-start align-center">
+              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+              <div class="provInfo d-flex flex-column pt-6 align-center blue">
+                <h5>name</h5>
+                <p class="caption-1">Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+
+              </div>
+            </div>
+          </v-col>
+          <v-col cols="3">
+            <div class="provVal d-flex flex-column justify-start align-center">
+              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+              <div class="provInfo d-flex flex-column pt-6 align-center blue">
+                <h5>name</h5>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+              </div>
+            </div>
+          </v-col>
+          <v-col cols="3">
+            <div class="provVal d-flex flex-column justify-start align-center">
+              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+              <div class="provInfo d-flex flex-column pt-6 align-center blue">
+                <h5>name</h5>
+                <p >Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+              </div>
+            </div>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-btn color="blue" class="white--text">FLER PROVER</v-btn>
+        </v-row>
+        <v-row>
+          <div class="social-media d-flex flex-row align-center mt-16">
+            <div class="facebook">
+              <v-icon size="52">mdi-facebook</v-icon>
+            </div>
+            <div class="instagram">
+              <v-icon size="42">mdi-instagram</v-icon>
+            </div>
+          </div>
+        </v-row>
+      </v-col>
+      <v-col cols="5" class="green">
+        <h1>hej</h1>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -72,7 +137,6 @@ export default {};
 <style scoped>
 .container {
   width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -120,4 +184,27 @@ text {
 }
 
 /* curved text ends here */
+
+/* landingfort starts here */
+.heading-fort {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.bread-fort {
+  /* width: 300px; */
+  /* text-align: center; */
+  font-weight: 300;
+  /* width: 200px; */
+}
+
+/* .provInfo {
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  color: white;
+} */
+
+/* landingfort ends here */
 </style>
