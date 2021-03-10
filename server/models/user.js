@@ -2,14 +2,27 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let newUser = new Schema({
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
+    firstname: { type: String, required: true },
+    lastname: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    phonenumber: { type: Number, required: true },
     isActive: { type: Boolean, default: true },
-    createdOn: { type: Date, default: Date.now },
-    userRole: { type: String, default: 'PrivatePerson' }
-})
+    streetname: {
+        type: String,
+        required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    postcode: {
+        type: Number,
+        required: true
+    }
+    ,
+    userRole: { type: String, default: 'Private person' }
+}, { timestamps: true })
 
 const User = mongoose.model('User', newUser)
 

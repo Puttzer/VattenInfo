@@ -10,6 +10,13 @@ const generateToken = async (payload) => {
     return token
 }
 
+const verifyToken = async (token) => {
+
+    return await jwt.verify(token, process.env.JWT_SECRET_KEY, jwtSettings)
+}
+
 module.exports = {
-    generateToken
+    generateToken,
+    verifyToken
+
 }
