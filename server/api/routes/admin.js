@@ -59,9 +59,6 @@ module.exports = function (router) {
             })
             return
         }
-
-
-
     })
 
     router.post('/admin/register', async function (req, res) {
@@ -95,7 +92,17 @@ module.exports = function (router) {
             }
         }
     })
+
     router.get('/admin/users', async function (req, res) {
+
+        const token = await JWT.verifyToken(req.headers[Authorization])
+
+        if (!token) {
+            res.status(422)
+            res.json({
+                message: 'Invalid credetials'
+            })
+        }
 
         await User.find({}).exec()
             .then(docs =>

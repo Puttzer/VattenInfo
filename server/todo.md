@@ -10,24 +10,30 @@ backend
 
 <!-- login admin(validation) -->
 
-create a new user
-add a product
-get the list of all users
-get the list of all products
+<!-- create a new user -->
 
-     user
+get the list of all users
+
+<!-- user
        name
        password
        email
        address
+       phonenumber
+       address
+         streetname
+         city
+         postcode -->
 
-     products
-      name
-      price
-      category
-      short description
-      detail description
-      image
+add a product
+products
+name
+price
+category
+short description
+detail description
+image
+get the list of all products
 
 front end
 create a view for admin
