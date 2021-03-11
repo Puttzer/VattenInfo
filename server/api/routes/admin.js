@@ -2,6 +2,7 @@ const User = require('../../models/user')
 const Company = require('../../models/company')
 const Test = require('../../models/test')
 const Admin = require('../../models/admin')
+const AuthMiddleware = require('../../Middleware/Auth.middleware')
 const bcrypt = require('../../Lib/Bcrypt.password')
 const JWT = require('../../Lib/Auth.token')
 
@@ -93,16 +94,7 @@ module.exports = function (router) {
         }
     })
 
-    router.get('/admin/users', async function (req, res) {
-
-        const token = await JWT.verifyToken(req.headers[Authorization])
-
-        if (!token) {
-            res.status(422)
-            res.json({
-                message: 'Invalid credetials'
-            })
-        }
+    router.get('/admin/users', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
 
         await User.find({}).exec()
             .then(docs =>
@@ -126,7 +118,7 @@ module.exports = function (router) {
                 }))
     })
 
-    router.get('/admin/tests', async function (req, res) {
+    router.get('/admin/tests', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
 
         await Test.find({}).exec()
             .then(docs =>
