@@ -23,12 +23,11 @@ backend
        address
          streetname
          city
-         postcode -->	
+         postcode -->
 
-create a companyuser	 
+<!-- create a companyuser	  -->
 
-
-add a product
+<!-- add a product
 products
 name
 price
@@ -36,9 +35,10 @@ category
 short description
 detail description
 image
-get the list of all products
+get the list of all products -->
 
 front end
 create a view for admin
 users
+company
 products

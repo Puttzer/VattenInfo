@@ -20,6 +20,7 @@ import EnsikltDricksVatten from '../views/EnsikltDricksVatten.vue'
 import AvloppsAnalyser from '../views/AvloppsAnalyser.vue'
 import BygglovTillstand from '../views/BygglovTillstand.vue'
 import VerksamhetSamfallighet from '../views/VerksamhetSamfallighet.vue'
+import AdminLogin from '../views/AdminLogin.vue'
 
 
 Vue.use(VueRouter)
@@ -60,6 +61,11 @@ const routes = [
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../views/PrivateAccount.vue')
+    },
+    {
+        path: '/admin',
+        name: 'AdminLogin',
+        component: AdminLogin
     },
     {
         path: '/private',

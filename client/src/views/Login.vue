@@ -4,56 +4,28 @@
       <div class="login-box mt-12">
         <h1 class="font-weight-light">Logga In!</h1>
         <form class="mt-7">
-          <v-col class="d-flex" cols="12" sm="12">
-            <v-select
-              background-color="rgba(108, 121, 182, 0.4)"
-              color="white"
-              :items="user.role"
-              label="kund"
-              height="45px"
-              solo
-              dense
-              class="selectItem"
-            ></v-select>
-          </v-col>
           <div class="forminput">
-            <label for="email">Email</label>
+            <label for="email">Username</label>
             <v-text-field
-              v-model="user.email"
+              v-model="username"
               class="borderPassword mt-n1 text--white font-weight-bold"
               placeholder="test@test.com"
               solo
               text
               background-color="#061d36"
             ></v-text-field>
-            <!-- <input
-              type="text"
-              id="email"
-              v-model="user.email"
-              placeholder="placeholder@example.com"
-              autocomplete="off"
-            /> -->
           </div>
           <div class="forminput mt-6">
             <label for="password">Password</label>&nbsp;
-            <!-- <div class="passwordinput">
-              <input :type="passwordType" id="password" v-model="password" placeholder="*******" 
-              />
-              <i
-                class="fas"
-                :class="[passwordIcon]"
-                @click="hidePassword = !hidePassword"
-              ></i>
-            </div> -->
             <v-text-field
-              v-model="user.password"
+              v-model="password"
               class="borderPassword mt-n1 text--white"
-              :append-icon="show3 ? 'visibility' : 'visibility_off'"
-              :type="show3 ? 'text' : 'password'"
+              :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+              :type="showPassword ? 'text' : 'password'"
               placeholder="*********"
               solo
               background-color="#061d36"
-              @click:append="show3 = !show3"
+              @click:append="showPassword = !showPassword"
             ></v-text-field>
           </div>
         </form>
@@ -86,14 +58,11 @@
 export default {
   data() {
     return {
-      user: {
-        role: ["Privat", "Företag"],
-        email: "",
-        password: "",
-      },
+      username: "",
+      password: "",
       hidePassword: true,
       rememberTheName: false,
-      show3: true,
+      showPassword: true,
     };
   },
   computed: {
