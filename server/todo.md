@@ -23,7 +23,10 @@ backend
        address
          streetname
          city
-         postcode -->
+         postcode -->	
+
+create a companyuser	 
+
 
 add a product
 products

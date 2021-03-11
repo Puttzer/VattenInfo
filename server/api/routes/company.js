@@ -1,35 +1,61 @@
 const Company = require('../../models/company')
+const bcrypt = require('../../Lib/Bcrypt.password')
+const JWT = require('../../Lib/Auth.token')
+
 
 module.exports = function (router) {
-    router.post('/company/register', async (req, res) => {
-        // const { firstName, lastName, email, userRole, password, organizationNummer } = req.body;
-        // let company = {}
-        // company.firstName = firstName
-        // company.lastName = lastName
-        // company.email = email
-        // company.password = password
-        // company.userRole = userRole
-        // company.organizationNummer = organizationNummer
-        let newCompany = new Company(req.body)
-        console.log(newCompany)
-        try {
+	router.post('/company/register', async (req, res) => {
+		const findCompany = await Company.findOne({
+			email: req.body.email
+		}).exec()
+		console.log(findCompany)
 
-            await newCompany.save()
-            res.status(200).json({ message: 'user is inserted', _id: newCompany._id })
-        } catch (e) {
-            res.status(500).json('unable to insert the newuser')
-        }
-    })
+		if (findCompany) {
+			res.status(404),
+				res.json({
+					message: 'this email already exists'
+				})
+			return
+		} else {
+			const { companyname, fullname, email, password, organizationnumber, phonenumber, alternatenumber } = req.body;
 
-    router.get('/company/login', async (req, res) => {
 
-        await Company.find({ _id: req.body.id }).exec()
-            .then(docs =>
-                res.status(200).json(docs))
-            .catch(err => res.status(500)
-                .json({
-                    message: 'Error finding user',
-                    error: err
-                }))
-    })
+			const hashedpassword = await bcrypt.haschPassword(password)
+			console.log(hashedpassword)
+
+			let company = {}
+			company.companyname = companyname
+			company.fullname = fullname
+			company.email = email
+			company.password = hashedpassword
+			company.organizationnumber = organizationnumber
+			company.phonenumber = phonenumber,
+				company.alternatenumber = alternatenumber
+
+			let newCompany = new Company(company)
+			console.log(newCompany)
+			try {
+
+				await newCompany.save()
+				res.status(200).json({ message: `${newCompany.companyname} is inserted`, _id: newCompany._id })
+			} catch (e) {
+				res.status(500).json('unable to insert the comapny')
+			}
+		}
+
+
+
+	})
+
+	router.get('/company/login', async (req, res) => {
+
+		await Company.find({ _id: req.body.id }).exec()
+			.then(docs =>
+				res.status(200).json(docs))
+			.catch(err => res.status(500)
+				.json({
+					message: 'Error finding user',
+					error: err
+				}))
+	})
 }
