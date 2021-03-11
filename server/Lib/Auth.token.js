@@ -12,7 +12,20 @@ const generateToken = async (payload) => {
 
 const verifyToken = async (token) => {
 
-    return await jwt.verify(token, process.env.JWT_SECRET_KEY, jwtSettings)
+    return new Promise((resolve, reject) => {
+
+        jwt.verify(token, process.env.JWT_SECRET_KEY, jwtSettings, function (err, decoded) {
+            if (err) {
+                reject(err)
+                return
+            }
+
+            resolve(decoded)
+            console.log(decoded)
+        })
+
+
+    })
 }
 
 module.exports = {

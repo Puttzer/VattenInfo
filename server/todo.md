@@ -12,7 +12,7 @@ backend
 
 <!-- create a new user -->
 
-get the list of all users
+<!-- get the list of all users -->
 
 <!-- user
        name
