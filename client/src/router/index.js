@@ -1,16 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
-
 import Login from '../views/Login.vue'
-
-import PrivatePerson from '../views/PrivatePerson.vue'
+import KundStartsidan from '../views/KundStartsidan.vue'
 import AnalysKatalog from '../views/Analyskatalog.vue'
-import ContactUs from '../views/ContactUs.vue'
-import RegisterAccount from '../views/RegisterAccount.vue'
+import KontaktSidan from '../views/KontaktSidan.vue'
+import RegistreraKund from '../views/RegistreraKund.vue'
 import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
-import Test from '../views/Test.vue'
-import TestExpansion from '../components/testpages/TestExpansion.vue'
 import LostLogin from '../views/LostLogin.vue'
 import BestallSidan from '../views/BestallSidan.vue'
 import InstruktionOchBlanketter from '../views/InstruktionOchBlanketter.vue'
@@ -28,6 +25,11 @@ Vue.use(VueRouter)
 const routes = [
 
     {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
         path: '/login',
         name: 'Login',
         component: Login
@@ -37,18 +39,6 @@ const routes = [
         name: 'LostLogin',
         component: LostLogin
     },
-
-    {
-        path: '/test',
-        name: 'Test',
-        component: Test
-    },
-
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
     {
         path: '/analyskatalog',
         name: 'AnalysKatalog',
@@ -57,10 +47,7 @@ const routes = [
     {
         path: '/login/user',
         name: 'PrivateAccount',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../views/PrivateAccount.vue')
+        component: KundStartsidan
     },
     {
         path: '/admin',
@@ -69,13 +56,8 @@ const routes = [
     },
     {
         path: '/private',
-        name: 'PrivatePerson',
-        component: PrivatePerson
-    },
-    {
-        path: '/priser',
-        name: 'TestExpansion',
-        component: TestExpansion
+        name: 'KundStartsidan',
+        component: KundStartsidan
     },
     {
         path: '/bestall',
@@ -106,6 +88,7 @@ const routes = [
         path: '/avlopp_analyser',
         name: 'AvloppsAnalyser',
         component: AvloppsAnalyser
+
     },
     {
         path: '/bygglov_tillstand',
@@ -118,14 +101,14 @@ const routes = [
         component: VerksamhetSamfallighet
     },
     {
-        path: '/contact',
-        name: 'ContactUs',
-        component: ContactUs
+        path: '/kontakt',
+        name: 'KontaktSidan',
+        component: KontaktSidan
     },
     {
-        path: '/register',
-        name: 'RegisterAccount',
-        component: RegisterAccount
+        path: '/registrera',
+        name: 'RegistreraKund',
+        component: RegistreraKund
     },
     {
         path: '/payment',

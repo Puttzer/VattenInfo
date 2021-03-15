@@ -1,8 +1,8 @@
 <template>
   <v-app class="ma-0 pa-0">
-    <NavigationBar class='d-xs-none d-md-flex' />
-    <NavBarMobile class='d-xs-flex d-md-none'  />
-    <v-main class="ma-0 pa-0 background" flat  >
+    <NavigationBar class="d-xs-none d-md-flex" />
+    <NavBarMobile class="d-xs-flex d-md-none" />
+    <v-main class="ma-0 pa-0 background" flat>
       <router-view></router-view>
     </v-main>
     <Footer></Footer>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import NavigationBar from "./components/ui/TESTnavbar.vue";
+import NavigationBar from "./components/ui/NavigationBar.vue";
 import NavBarMobile from "./components/ui/NavBarMobile.vue";
 
 import Footer from "./components/ui/Footer";
