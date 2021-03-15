@@ -1,4 +1,5 @@
 const Test = require('../../models/test')
+const AuthMiddleware = require('../../Middleware/Auth.middleware')
 
 module.exports = function (router) {
     router.get('/test/:id', async function (req, res) {
@@ -12,24 +13,29 @@ module.exports = function (router) {
                     error: err
                 }))
     })
-    router.post('/test', async function (req, res) {
+    router.post('/test/create', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
 
-        const testFind = await Test.findOne({ testName: req.body.testName })
+        // query for unique test name  with category
+        const testFind = await Test.findOne({ $and: [{ testname: req.body.testname }, { category: req.body.category }] })
+        console.log(testFind)
         if (testFind) {
+            res.status(404)
             res.json({
-                message: 'Test Name already exists, Create with a new Test Name'
+                message: 'Test Name already exists, Create with a new Test type'
             })
+            return
         } else {
 
-            const { testName, testType, price, short_description, long_description, testKlass } = req.body;
+            const { testname, testtype, price, short_description, long_description, category } = req.body;
             let test = {}
-            test.testName = testName
-            test.testType = testType
+            test.testname = testname
+            test.testtype = testtype
             test.short_description = short_description
             test.long_description = long_description
-            test.testKlass = testKlass
+            test.category = category
             test.price = price
-            let newTest = new Test(req.body)
+            let newTest = new Test(test)
+            console.log(newTest)
             try {
 
                 await newTest.save()
@@ -40,6 +46,10 @@ module.exports = function (router) {
         }
 
     })
+
+
+
+
     router.get('/test', function (req, res) {
 
         Test.find({}).exec()

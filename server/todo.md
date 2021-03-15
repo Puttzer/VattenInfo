@@ -34,11 +34,16 @@ price
 category
 short description
 detail description
-image
 get the list of all products -->
 
 front end
+
 create a view for admin
-users
-company
-products
+users view
+
+company view
+products view
+
+login view
+-- make componets for private and company (switch between roles)
+--add lostlogin button move to (lostlogin view)
