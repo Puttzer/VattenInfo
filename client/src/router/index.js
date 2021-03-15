@@ -18,6 +18,7 @@ import AvloppsAnalyser from '../views/AvloppsAnalyser.vue'
 import BygglovTillstand from '../views/BygglovTillstand.vue'
 import VerksamhetSamfallighet from '../views/VerksamhetSamfallighet.vue'
 import AdminLogin from '../views/AdminLogin.vue'
+import AdminStartsidan from '../views/AdminStartsidan.vue'
 
 
 Vue.use(VueRouter)
@@ -50,9 +51,14 @@ const routes = [
         component: KundStartsidan
     },
     {
-        path: '/admin',
+        path: '/login/admin',
         name: 'AdminLogin',
         component: AdminLogin
+    },
+    {
+        path: '/adminpage',
+        name: 'AdminStartsidan',
+        component: AdminStartsidan
     },
     {
         path: '/private',
