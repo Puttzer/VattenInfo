@@ -2,7 +2,8 @@
 export default {
     state: {
         username: "",
-        isLoggedIn: false,
+        isLoggedIn: null,
+        isAdmin: null,
         token: ""
     },
     getters: {
@@ -21,14 +22,28 @@ export default {
 
             const data = await response.json();
             console.log(data)
-            ctx.commit('UPDATE_TOKEN', data.Token);
+            ctx.commit('UPDATE_ISADMIN', data.isAdmin, { module: 'admin' });
+            ctx.commit('UPDATE_USERNAME', data.username, { module: 'admin' });
+            ctx.commit('UPDATE_TOKEN', data.Token, { module: 'admin' });
+            ctx.commit('UPDATE_ISLOGGEDIN', true, { module: 'admin' });
+
         },
 
     },
     mutations: {
+        // after geeting response from server, token has to be stored in localstorage
         UPDATE_TOKEN(state, token) {
             localStorage.setItem("token", token)
-            this.state.token = token
+            state.token = token
+        },
+        UPDATE_ISLOGGEDIN(state, isLoggedIn) {
+            state.isLoggedIn = isLoggedIn
+        },
+        UPDATE_USERNAME(state, username) {
+            state.username = username
+        },
+        UPDATE_ISADMIN(state, value) {
+            state.isAdmin = value
         }
 
     }, namespaced: true

@@ -44,11 +44,14 @@ module.exports = function (router) {
                 res.json({
                     message: `User is logged in as ${reqUser.userName}`,
                     Token: token,
+                    username: reqUser.userName,
+                    isAdmin: true
                 })
             } else {
                 res.status(404)
                 res.json({
-                    message: 'Credentials password does not match'
+                    message: 'Credentials password does not match',
+                    isAdmin: false,
                 })
                 return
             }

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-content>
+    <v-main>
       <v-row class="d-flex justify-center">
         <v-col cols="4">
           <h1>Admin Konto</h1>
@@ -26,12 +26,13 @@
           </form>
         </v-col>
       </v-row>
-    </v-content>
+    </v-main>
   </div>
 </template>
 
 
 <script>
+import { mapState } from "vuex";
 import store from "../store";
 export default {
   data() {
@@ -41,13 +42,20 @@ export default {
       showPassword: false,
     };
   },
-  computed: {},
+  computed: {
+    ...mapState(["admin"]),
+  },
   methods: {
-    moveToAdminAccount() {
-      store.dispatch("admin/login", {
+    async moveToAdminAccount() {
+      await store.dispatch("admin/login", {
         userName: this.userName,
         password: this.password,
       });
+      if (this.admin.isLoggedIn && this.admin.isAdmin) {
+        this.$router.push("/adminpage");
+      } else {
+        this.$router.push("/login/admin");
+      }
     },
     clearTheInputdata() {
       (this.userName = ""), (this.password = "");
