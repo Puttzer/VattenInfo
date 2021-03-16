@@ -4,7 +4,6 @@ export default {
         username: "",
         isLoggedIn: null,
         isAdmin: null,
-        token: ""
     },
     getters: {
 
@@ -24,18 +23,22 @@ export default {
             console.log(data)
             ctx.commit('UPDATE_ISADMIN', data.isAdmin, { module: 'admin' });
             ctx.commit('UPDATE_USERNAME', data.username, { module: 'admin' });
-            ctx.commit('UPDATE_TOKEN', data.Token, { module: 'admin' });
             ctx.commit('UPDATE_ISLOGGEDIN', true, { module: 'admin' });
+            // after geeting response from server, token has to be stored in localstorage
+            localStorage.setItem("token", data.Token)
 
         },
+
+        logout({ commit },) {
+            commit('UPDATE_ISADMIN', false, { module: 'admin' });
+            commit('UPDATE_USERNAME', '', { module: 'admin' });
+            commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+            localStorage.removeItem('token')
+        }
 
     },
     mutations: {
         // after geeting response from server, token has to be stored in localstorage
-        UPDATE_TOKEN(state, token) {
-            localStorage.setItem("token", token)
-            state.token = token
-        },
         UPDATE_ISLOGGEDIN(state, isLoggedIn) {
             state.isLoggedIn = isLoggedIn
         },
@@ -44,7 +47,8 @@ export default {
         },
         UPDATE_ISADMIN(state, value) {
             state.isAdmin = value
-        }
+        },
+
 
     }, namespaced: true
 }

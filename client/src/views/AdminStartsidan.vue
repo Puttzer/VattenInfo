@@ -1,6 +1,6 @@
 <template>
   <v-main>
-    <v-row>
+    <!-- <v-row>
       <v-col cols="2">
         <v-row class="ma-1">
           <v-btn @click="displayProducts">produkter</v-btn>
@@ -22,7 +22,7 @@
         <h3 v-if="showCompanyusers">foretags kunder</h3>
         <h3 v-if="showOrders">bestallningar</h3>
       </v-col>
-    </v-row>
+    </v-row> -->
   </v-main>
 </template>
 
@@ -30,38 +30,44 @@
 export default {
   data() {
     return {
-      showProducts: false,
-      showPrivateusers: false,
-      showCompanyusers: false,
-      showOrders: false,
+      //   showProducts: false,
+      //   showPrivateusers: false,
+      //   showCompanyusers: false,
+      //   showOrders: false,
     };
   },
+
   methods: {
-    displayProducts() {
-      this.showProducts = true;
-      this.showPrivateusers = false;
-      this.showCompanyusers = false;
-      this.showOrders = false;
-    },
-    displayPrivateusers() {
-      this.showProducts = false;
-      this.showPrivateusers = true;
-      this.showCompanyusers = false;
-      this.showOrders = false;
-    },
-    displayCompanyusers() {
-      this.showProducts = false;
-      this.showPrivateusers = false;
-      this.showCompanyusers = true;
-      this.showOrders = false;
-    },
-    displayOrders() {
-      this.showProducts = false;
-      this.showPrivateusers = false;
-      this.showCompanyusers = false;
-      this.showOrders = true;
-    },
+    // displayProducts() {
+    //   this.showProducts = true;
+    //   this.showPrivateusers = false;
+    //   this.showCompanyusers = false;
+    //   this.showOrders = false;
+    // },
+    // displayPrivateusers() {
+    //   this.showProducts = false;
+    //   this.showPrivateusers = true;
+    //   this.showCompanyusers = false;
+    //   this.showOrders = false;
+    // },
+    // displayCompanyusers() {
+    //   this.showProducts = false;
+    //   this.showPrivateusers = false;
+    //   this.showCompanyusers = true;
+    //   this.showOrders = false;
+    // },
+    // displayOrders() {
+    //   this.showProducts = false;
+    //   this.showPrivateusers = false;
+    //   this.showCompanyusers = false;
+    //   this.showOrders = true;
+    // },
   },
+  //   mounted() {
+  //     if (this.admin.isAdmin) {
+  //       this.$router.push("/adminpage");
+  //     }
+  //   },
 };
 </script>
 

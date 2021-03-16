@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '../store'
+
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
@@ -58,7 +60,15 @@ const routes = [
     {
         path: '/adminpage',
         name: 'AdminStartsidan',
-        component: AdminStartsidan
+        component: AdminStartsidan,
+        beforeEnter: (to, from, next) => {
+            console.log(store.state.admin.isLoggedIn)
+            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+                next()
+            } else {
+                next('/')
+            }
+        }
     },
     {
         path: '/private',
