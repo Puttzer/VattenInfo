@@ -1,5 +1,5 @@
 <template>
-  <v-content class="ma-0 pa-0">
+  <v-main class="ma-0 pa-0">
     <v-row class="d-flex flex-column justify-center align-center mt-6">
       <v-col
         class="d-flex flex-column justify-center align-center mt-2"
@@ -20,14 +20,18 @@
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <img src="@/assets/kran.png" height="200px" width="250px" />
-        <h3 class="blue--text">Enskilt dricksvatten</h3>
-        <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        <div class="pointer" @click="moveToEnsikltdricksvatten">
+          <img src="@/assets/kran.png" height="200px" width="250px" />
+          <h3 class="blue--text">Enskilt dricksvatten</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        </div>
       </v-col>
       <v-col cols="5" class="d-flex flex-column">
-        <img src="@/assets/Samfalligheter.png" height="200px" width="200px" />
-        <h3 class="blue--text">Verksamhet & samfällighet</h3>
-        <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        <div class="pointer" @click="moveToVerksamhet">
+          <img src="@/assets/Samfalligheter.png" height="200px" width="200px" />
+          <h3 class="blue--text">Verksamhet & samfällighet</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        </div>
       </v-col>
     </v-row>
 
@@ -35,15 +39,27 @@
       <v-col cols="2" class="d-flex align-center">
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
-      <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <img src="@/assets/Avtal.png" height="170px" width="180px" />
-        <h3 class="blue--text">Enskilt dricksvatten</h3>
-        <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+      <v-col
+        @click="moveToBygglovTillstand"
+        cols="5"
+        class="d-flex flex-column justify-center align-center pointer"
+      >
+        <div @click="moveToBygglovTillstand" class="pointer">
+          <img src="@/assets/Avtal.png" height="170px" width="180px" />
+          <h3 class="blue--text">Bygglov & tillstånd</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        </div>
       </v-col>
-      <v-col cols="5" class="d-flex flex-column">
-        <img src="@/assets/analys.png" height="170px" width="180px" />
-        <h3 class="blue--text">Verksamhet & samfällighet</h3>
-        <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+      <v-col
+        @click="moveToAvloppAnalyser"
+        cols="5"
+        class="d-flex flex-column pointer"
+      >
+        <div @click="moveToAvloppAnalyser" class="pointer">
+          <img src="@/assets/analys.png" height="170px" width="180px" />
+          <h3 class="blue--text">Avloppanalyser</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+        </div>
       </v-col>
     </v-row>
 
@@ -97,11 +113,26 @@
         </v-btn>
       </v-col>
     </v-row>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    moveToEnsikltdricksvatten() {
+      this.$router.push("/enskilt_vatten");
+    },
+    moveToAvloppAnalyser() {
+      this.$router.push("/avlopp_analyser");
+    },
+    moveToBygglovTillstand() {
+      this.$router.push("/bygglov_tillstand");
+    },
+    moveToVerksamhet() {
+      this.$router.push("/verksamhet");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -112,5 +143,13 @@ export default {};
 }
 .moveRight {
   margin-left: 250px;
+}
+.pointer {
+  cursor: pointer;
+  transition: all 1s ease-out;
+}
+
+.pointer:hover {
+  transform: scale(1.08);
 }
 </style>
