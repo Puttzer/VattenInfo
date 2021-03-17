@@ -5,7 +5,7 @@ const dotenv = require('dotenv')
 
 // morgan for devtools
 const morgan = require('morgan')
-const bodyParser = require('body-parser')
+
 // allowing cross origin allow access
 const cors = require('cors')
 dotenv.config()
@@ -17,10 +17,11 @@ const api = require('./api')
 const connectDB = require('./DB/Connection')
 
 //middlewares
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(express.static('static'))
+app.use('/uploads', express.static('uploads'));
 app.use(morgan('dev'))
 
 //routing middleware

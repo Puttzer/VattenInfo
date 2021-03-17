@@ -1,75 +1,89 @@
 <template>
-  <v-main>
-    <!-- <v-row>
-      <v-col cols="2">
-        <v-row class="ma-1">
-          <v-btn @click="displayProducts">produkter</v-btn>
-        </v-row>
-        <v-row class="ma-1">
-          <v-btn @click="displayPrivateusers">Privatkunder </v-btn>
-        </v-row>
-        <v-row class="ma-1">
-          <v-btn @click="displayCompanyusers">Företagskunder</v-btn>
-        </v-row>
-        <v-row class="ma-1">
-          <v-btn @click="displayOrders">Beställningar</v-btn>
-        </v-row>
-      </v-col>
-      <v-col cols="10">
-        <h1>Admin kontrollpanel</h1>
-        <h3 v-if="showProducts">producter</h3>
-        <h3 v-if="showPrivateusers">privatkunder</h3>
-        <h3 v-if="showCompanyusers">foretags kunder</h3>
-        <h3 v-if="showOrders">bestallningar</h3>
-      </v-col>
-    </v-row> -->
-  </v-main>
+<div class="admin-container">
+    <v-navigation-drawer app v-model="drawer">
+      <v-list dense>
+        <v-list-item link to="/admin/products">
+          <v-list-item-content>
+            <v-list-item-title>Tester</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link to="/admin/private">
+          <v-list-item-content>
+            <v-list-item-title>Privatkund</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link to="/admin/comapny">
+          <v-list-item-content>
+            <v-list-item-title>Företagskund</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item link to="/admin/orders">
+          <v-list-item-content>
+            <v-list-item-title>Beställningar</v-list-item-title>
+            <v-list>
+              <v-list-item link to="">
+                <v-list-item-content>
+                  <v-list-item-title>Privat</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+
+              <v-list-item link to="">
+                <v-list-item-content>
+                  <v-list-item-title>Företag</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar app color="dark" dark>
+      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <div class="d-flex align-center">
+        <b text class="font-weight-bold"> Admin Manager </b>
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn text @click="logout()" v-if="admin.isLoggedIn">
+        <span class="mr-2">Logout</span>
+        <v-icon>logout</v-icon>
+      </v-btn>
+    </v-app-bar>
+	<v-main>
+		hej
+	</v-main>
+  </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      //   showProducts: false,
-      //   showPrivateusers: false,
-      //   showCompanyusers: false,
-      //   showOrders: false,
+      drawer: false,
     };
   },
-
-  methods: {
-    // displayProducts() {
-    //   this.showProducts = true;
-    //   this.showPrivateusers = false;
-    //   this.showCompanyusers = false;
-    //   this.showOrders = false;
-    // },
-    // displayPrivateusers() {
-    //   this.showProducts = false;
-    //   this.showPrivateusers = true;
-    //   this.showCompanyusers = false;
-    //   this.showOrders = false;
-    // },
-    // displayCompanyusers() {
-    //   this.showProducts = false;
-    //   this.showPrivateusers = false;
-    //   this.showCompanyusers = true;
-    //   this.showOrders = false;
-    // },
-    // displayOrders() {
-    //   this.showProducts = false;
-    //   this.showPrivateusers = false;
-    //   this.showCompanyusers = false;
-    //   this.showOrders = true;
-    // },
+  computed: {
+    ...mapState(["admin"]),
   },
-  //   mounted() {
-  //     if (this.admin.isAdmin) {
-  //       this.$router.push("/adminpage");
-  //     }
-  //   },
+  methods: {
+    async logout() {
+      console.log("logout");
+      await this.$store.dispatch("admin/logout");
+      this.$router.push("/login/admin");
+      // if (!localStorage.token) {
+      //   this.$router.push("/");
+      // }
+    },
+  },
+
 };
 </script>
 
-<style>
+<style scoped>
+.admin-container {
+  height: 960px;
+  min-height: 90%;
+}
 </style>
