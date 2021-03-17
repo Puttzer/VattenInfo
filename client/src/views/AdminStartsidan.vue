@@ -51,7 +51,7 @@
       </v-btn>
     </v-app-bar>
 	<v-main>
-		hej
+
 	</v-main>
   </div>
 </template>
