@@ -1,33 +1,33 @@
 <template>
-<div class="admin-container">
+  <div class="admin-container">
     <v-navigation-drawer app v-model="drawer">
       <v-list dense>
-        <v-list-item link to="/admin/products">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Tester</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/admin/private">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Privatkund</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/admin/comapny">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Företagskund</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link to="/admin/orders">
+        <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Beställningar</v-list-item-title>
             <v-list>
-              <v-list-item link to="">
+              <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>Privat</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
 
-              <v-list-item link to="">
+              <v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>Företag</v-list-item-title>
                 </v-list-item-content>
@@ -40,7 +40,7 @@
     <v-app-bar app color="dark" dark>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
-        <b text class="font-weight-bold"> Admin Manager </b>
+        <b text class="font-weight-bold">Admin Manager</b>
       </div>
 
       <v-spacer></v-spacer>
@@ -50,22 +50,31 @@
         <v-icon>logout</v-icon>
       </v-btn>
     </v-app-bar>
-	<v-main>
-
-	</v-main>
+    <v-main>
+      <Tests />
+    </v-main>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
+
+import Tests from "../components/adminStuff/tests.vue";
 export default {
   data() {
     return {
-      drawer: false,
+      drawer: false
     };
   },
+  components: {
+    Tests
+  },
+  mounted() {
+    this.$store.dispatch("tests/getTests");
+  },
+
   computed: {
-    ...mapState(["admin"]),
+    ...mapState(["admin"])
   },
   methods: {
     async logout() {
@@ -75,9 +84,8 @@ export default {
       // if (!localStorage.token) {
       //   this.$router.push("/");
       // }
-    },
-  },
-
+    }
+  }
 };
 </script>
 

@@ -56,13 +56,15 @@ module.exports = function (router) {
 
 
 
-	router.get('/test', function (req, res) {
+	router.get('/tests', function (req, res) {
 
 		Test.find({}).exec()
 			.then(docs =>
-				res.status(200).json(docs))
+				res.status(200).json({ message:'list of tests',
+			tests:docs}))
 			.catch(err => res.status(500)
 				.json({
+
 					message: 'Error finding user',
 					error: err
 				}))
