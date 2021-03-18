@@ -52,6 +52,7 @@
     </v-app-bar>
     <v-main>
       <Tests />
+      <h1>nbriu</h1>
     </v-main>
   </div>
 </template>
@@ -63,18 +64,18 @@ import Tests from "../components/adminStuff/tests.vue";
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
     };
   },
   components: {
-    Tests
+    Tests,
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
   },
 
   computed: {
-    ...mapState(["admin"])
+    ...mapState(["admin"]),
   },
   methods: {
     async logout() {
@@ -84,8 +85,8 @@ export default {
       // if (!localStorage.token) {
       //   this.$router.push("/");
       // }
-    }
-  }
+    },
+  },
 };
 </script>
 
