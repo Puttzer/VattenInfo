@@ -1,6 +1,6 @@
 <template>
   <v-app class="ma-0 pa-0">
-    <AdminControlpanel v-if="this.admin.isAdmin === true" />
+    <AdminStartsidan v-if="this.admin.isAdmin === true" />
     <NavigationBar v-else class="d-xs-none d-md-flex" />
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
     <v-main class="ma-0 pa-0 background" flat>
@@ -12,7 +12,8 @@
 
 <script>
 import NavigationBar from "./components/ui/NavigationBar.vue";
-import AdminControlpanel from "./components/ui/AdminContropanel";
+import AdminStartsidan from "./views/AdminStartsidan.vue";
+
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
 
 import Footer from "./components/ui/Footer";
@@ -27,15 +28,15 @@ export default {
   },
   components: {
     NavigationBar,
-    AdminControlpanel,
+    AdminStartsidan,
     // NavBarMobile,
-    Footer,
+    Footer
     // test
   },
   computed: {
-    ...mapState(["admin"]),
+    ...mapState(["admin"])
   },
-  methods: {},
+  methods: {}
 };
 </script>
 

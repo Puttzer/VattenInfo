@@ -123,8 +123,8 @@
           </div>
         </v-row>
       </v-col>
-      <v-col cols="5" class="green">
-        <h1>hej</h1>
+      <v-col cols="5" class="">
+
       </v-col>
     </v-row>
   </div>
