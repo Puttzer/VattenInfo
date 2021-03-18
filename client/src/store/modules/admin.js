@@ -4,6 +4,7 @@ export default {
         username: "",
         isLoggedIn: null,
         isAdmin: null,
+        showNavbar: true,
     },
     getters: {
 
@@ -24,6 +25,7 @@ export default {
             ctx.commit('UPDATE_ISADMIN', data.isAdmin, { module: 'admin' });
             ctx.commit('UPDATE_USERNAME', data.username, { module: 'admin' });
             ctx.commit('UPDATE_ISLOGGEDIN', true, { module: 'admin' });
+            ctx.commit('UPDATE_NAVBAR', false, { module: 'admin' });
             // after geeting response from server, token has to be stored in localstorage
             localStorage.setItem("token", data.Token)
 
@@ -33,6 +35,7 @@ export default {
             commit('UPDATE_ISADMIN', false, { module: 'admin' });
             commit('UPDATE_USERNAME', '', { module: 'admin' });
             commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+            commit('UPDATE_NAVBAR', true, { module: 'admin' });
             localStorage.removeItem('token')
         }
 
@@ -48,6 +51,9 @@ export default {
         UPDATE_ISADMIN(state, value) {
             state.isAdmin = value
         },
+        UPDATE_NAVBAR(state, value) {
+            state.showNavbar = value
+        }
 
 
     }, namespaced: true

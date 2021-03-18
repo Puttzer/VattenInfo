@@ -51,7 +51,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <Tests />
+      <Tests class="ml-12" />
     </v-main>
   </div>
 </template>
@@ -63,18 +63,18 @@ import Tests from "../components/adminStuff/tests.vue";
 export default {
   data() {
     return {
-      drawer: false
+      drawer: false,
     };
   },
   components: {
-    Tests
+    Tests,
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
   },
 
   computed: {
-    ...mapState(["admin"])
+    ...mapState(["admin"]),
   },
   methods: {
     async logout() {
@@ -84,8 +84,8 @@ export default {
       // if (!localStorage.token) {
       //   this.$router.push("/");
       // }
-    }
-  }
+    },
+  },
 };
 </script>
 
