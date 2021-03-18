@@ -4,10 +4,11 @@
       <v-row class="d-flex flex-row">
         <h1>Tester</h1>
         <v-spacer></v-spacer>
-        <v-btn class="mr-12 mt-6"
+        <v-btn class="mr-12 mt-6" @click="showAddTest = !showAddTest"
           >Lägg till <br />
           Test</v-btn
         >
+        <AddTest v-show="showAddTest === true" />
       </v-row>
       <v-col class="d-flex flex-row">
         <v-card
@@ -50,8 +51,17 @@
 
 <script>
 import { mapState } from "vuex";
+import AddTest from "./AddTest.vue";
 export default {
+  data() {
+    return {
+      showAddTest: false,
+    };
+  },
   name: "tests",
+  components: {
+    AddTest,
+  },
   computed: {
     ...mapState(["tests"]),
   },
@@ -67,4 +77,7 @@ export default {
 </script>
 
 <style scoped>
+.dontshow {
+  display: none;
+}
 </style>
