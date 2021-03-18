@@ -51,7 +51,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <Tests />
+      <Tests class="ml-12" />
     </v-main>
   </div>
 </template>
