@@ -25,7 +25,7 @@ module.exports = function (router) {
                 })
             return
         }
-        //user exists and check the password is matched
+        //user exists and check the password is matched!
         if (findAdmin.userName = reqUser.userName) {
 
             const isMatched = await bcrypt.verifyPassword(reqUser.password, findAdmin.password)
