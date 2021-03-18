@@ -52,7 +52,6 @@
     </v-app-bar>
     <v-main>
       <Tests />
-      <h1>nbriu</h1>
     </v-main>
   </div>
 </template>
