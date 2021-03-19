@@ -14,13 +14,16 @@
           v-if="showAddTest === true"
           class="placement"
           :showAddTest="showAddTest"
+          :addtestButton="addtestButton"
+          :addsaveButton="addsaveButton"
+          :test="test"
           v-on:closeAddTest="closeAddtestModal"
         />
       </v-row>
       <v-col class="d-flex flex-row">
         <v-card
-          v-for="test in this.tests.tests"
-          :key="test._id"
+          v-for="(test, index) in this.tests.tests"
+          :key="index"
           width="200px"
           height="250px"
           class="ma-2"
@@ -58,6 +61,17 @@ export default {
   data() {
     return {
       showAddTest: false,
+      addtestButton: false,
+      addsaveButton: false,
+      test: {
+        testname: "",
+        testtype: "",
+        description: "",
+        price: "",
+        image: "",
+        category: "",
+        id: "",
+      },
     };
   },
   name: "tests",
@@ -66,19 +80,45 @@ export default {
   },
   computed: {
     ...mapState(["tests"]),
+    testInfo(id) {
+      const test = this.tests.tests.find((test) => test._id === id);
+      console.log(test);
+      return test;
+    },
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
   },
   methods: {
+    // testInfo(id) {
+    //   const test = this.tests.tests.find((test) => test._id === id);
+    //   console.log(test);
+    //   return test;
+    // },
     deleteTest(_id) {
       this.$store.dispatch("tests/deleteTest", _id);
     },
     showPopup() {
       this.showAddTest = true;
+      this.addtestButton = true;
+      this.addsaveButton = false;
     },
     closeAddtestModal() {
       this.showAddTest = false;
+    },
+    editTest(id) {
+      const test = this.tests.tests.find((test) => test._id === id);
+      console.log(test);
+      this.showAddTest = true;
+      this.addtestButton = false;
+      this.addsaveButton = true;
+
+      this.test.testname = test.testname;
+      this.test.testtype = test.testtype;
+      this.test.price = test.price;
+      this.test.description = test.description;
+      this.test.id = test._id;
+      this.test.image = test.image;
     },
   },
 };

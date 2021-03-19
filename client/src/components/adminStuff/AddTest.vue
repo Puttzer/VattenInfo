@@ -72,7 +72,19 @@
                   no-resize
                   rows="5"
                 ></v-textarea>
-                <v-btn dark @click.prevent="addTest()">Skapa test</v-btn>
+                <v-btn
+                  dark
+                  v-show="this.addtestButton === true"
+                  @click.prevent="addTest()"
+                  >Skapa test</v-btn
+                >
+                <v-btn
+                  v-model="id"
+                  dark
+                  v-show="this.addsaveButton === true"
+                  @click.prevent="updateTest(test.id)"
+                  >Spara test</v-btn
+                >
               </v-col>
             </v-row>
           </form>
@@ -104,9 +116,28 @@ export default {
       description: "",
       price: "",
       image: "",
+      id: "",
     };
   },
-  props: ["showAddtest"],
+  props: ["showAddtest", "addtestButton", "addsaveButton", "test"],
+  mounted() {
+    if (this.addsaveButton) {
+      this.testname = this.test.testname;
+      this.testtype = this.test.testtype;
+      this.description = this.test.description;
+      this.category = this.test.category;
+      this.price = this.test.price;
+      this.image = this.test.image;
+      this.id = this.test.id;
+    } else {
+      this.testname = "";
+      this.testtype = "";
+      this.description = "";
+      this.category = "";
+      this.price = "";
+      this.image = "";
+    }
+  },
   methods: {
     async addTest() {
       let formData = new FormData();
@@ -121,30 +152,26 @@ export default {
 
       await this.$store.dispatch("tests/createNewTest", formData);
       this.$emit("closeAddTest");
-
-      //   const newTest = {
-      //     testname: this.testname,
-      //     category: this.category,
-      //     testtype: this.testtype,
-      //     description: this.description,
-      //     price: this.price,
-      //     // image: this.image,
-      //   };
-      //   console.log(newTest);
-      //   await this.$store.dispatch("tests/createNewTest", newTest);
-      //   this.$emit("closeAddTest");
-
-      //   (this.testname = ""),
-      //     (this.category = ""),
-      //     (this.testtype = ""),
-      //     (this.description = ""),
-      //     (this.price = "");
-      // (this.image = "");
     },
     selectFile() {
       this.image = this.$refs.file.files[0];
     },
     closeModal() {
+      this.$emit("closeAddTest");
+    },
+    async updateTest(id) {
+      console.log(id);
+      let formData = new FormData();
+      formData.append("testname", this.testname);
+      formData.append("category", this.category);
+      formData.append("testtype", this.testtype);
+      formData.append("description", this.description);
+      formData.append("price", this.price);
+      formData.append("image", this.image);
+
+      console.log(formData);
+
+      await this.$store.dispatch("tests/updateTest", formData);
       this.$emit("closeAddTest");
     },
   },
