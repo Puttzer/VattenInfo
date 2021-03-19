@@ -7,6 +7,43 @@ export default {
 
     },
     actions: {
+        async createNewTest({ commit }, formData) {
+            console.log(formData)
+            const token = localStorage.getItem('token')
+            const response = await fetch('http://localhost:4000/api/test/create', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('INSERT_TEST', data.newTest, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        },
+
+
+        // async createNewTest({ commit }, newTest) {
+        //     const token = localStorage.getItem('token')
+        //     const response = await fetch('http://localhost:4000/api/test/create', {
+        //         method: 'POST',
+        //         body: JSON.stringify(newTest),
+        //         headers: {
+        //             'authorization': token,
+        //             'Content-Type': 'application/json',
+
+        //         }
+        //     });
+        //     const data = await response.json();
+        //     console.log(data)
+        //     commit('INSERT_TEST', data.newTest, { module: 'tests' })
+        //     // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        // },
         async getTests({ commit }) {
             const token = localStorage.getItem('token')
             const response = await fetch('http://localhost:4000/api/tests', {
@@ -48,7 +85,10 @@ export default {
             const remainingTests = state.tests.filter((test) => test._id != value)
             state.tests = remainingTests
             console.log(state.tests)
-        }
+        },
+        INSERT_TEST(state, value) {
+            return state.tests.push(value)
+        },
 
     },
     namespaced: true
