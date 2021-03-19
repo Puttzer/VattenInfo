@@ -74,20 +74,32 @@ module.exports = function (router) {
     })
 
 
-    router.put('/test/:id', async function (req, res) {
+    router.put('/test/update/:id', AuthMiddleware.isAdminLoggedIn, ImageUpload.single('image'), async function (req, res) {
+        console.log(req.file)
         let qry = { _id: req.params.id }
         let doc = {
-            testName: req.body.testName,
-            testTitle: req.body.testTitle,
-            testKlass: req.body.testKlass,
+            testname: req.body.testname,
+            testtype: req.body.testtype,
+            category: req.body.category,
             short_description: req.body.short_description,
-            long_description: req.body.long_description,
-            price: req.body.price
+            description: req.body.description,
+            price: req.body.price,
+            image: req.file.path
+
         }
 
         await Test.findByIdAndUpdate(qry, doc, function (err, newResp) {
             if (err) return console.log(err)
-            res.status(200).json(newResp)
+            console.log(newResp)
+            res.status(200).json({
+                message: 'test details has been updated',
+                testDetailsBeforeupdate: newResp,
+                updatedTest: {
+                    _id: req.params.id,
+                    updatedTestInfo: doc
+                }
+
+            })
         })
 
     })
