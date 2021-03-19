@@ -18,8 +18,9 @@ module.exports = function (router) {
                     error: err
                 }))
     })
-    router.post('/test/create', AuthMiddleware.isAdminLoggedIn, ImageUpload.single('testimage'), async function (req, res) {
+    router.post('/test/create', AuthMiddleware.isAdminLoggedIn, ImageUpload.single('image'), async function (req, res) {
         console.log(req.file);
+        console.log(req.body)
         // query for unique test name with category
 
         const testFind = await Test.findOne({ $and: [{ testname: req.body.testname }, { category: req.body.category }] })
@@ -32,12 +33,12 @@ module.exports = function (router) {
             return
         } else {
 
-            const { testname, testtype, price, short_description, long_description, category } = req.body;
+            const { testname, testtype, price, short_description, description, category } = req.body;
             let test = {}
             test.testname = testname
             test.testtype = testtype
             test.short_description = short_description
-            test.long_description = long_description
+            test.description = description
             test.category = category
             test.price = price
             test.image = req.file.path
@@ -45,7 +46,7 @@ module.exports = function (router) {
             console.log(newTest)
             try {
                 await newTest.save()
-                res.status(200).json({ message: 'new test is created in Database', _id: newTest._id })
+                res.status(200).json({ message: 'new test is created in Database', newTest: newTest })
             } catch (e) {
                 res.status(500).json('unable to insert the new test')
             }
