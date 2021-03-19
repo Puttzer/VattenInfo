@@ -22,10 +22,12 @@ export default {
             commit('INSERT_TEST', data.newTest, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
         },
-        async updateTest({ commit }, formData) {
+        async updateTest({ commit }, { formData, id }) {
+            console.log('move to actions');
             console.log(formData)
+            console.log(id)
             const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/test/create', {
+            const response = await fetch(`http://localhost:4000/api/test/update/${id}`, {
                 method: 'PUT',
                 body: formData,
                 headers: {
@@ -34,7 +36,7 @@ export default {
             });
             const data = await response.json();
             console.log(data)
-            commit('INSERT_TEST', data.newTest, { module: 'tests' })
+            commit('EDIT_TEST', data.updatedTest, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
         },
 
@@ -101,6 +103,21 @@ export default {
         },
         INSERT_TEST(state, value) {
             return state.tests.push(value)
+        },
+        EDIT_TEST(state, { updatedTestInfo, _id }) {
+            console.log(_id, updatedTestInfo)
+            const findTest = state.tests.find(test => test._id === _id)
+            console.log(findTest)
+            findTest.testname = updatedTestInfo.testname
+            findTest.testtype = updatedTestInfo.testtype
+            findTest.category = updatedTestInfo.category
+            findTest.price = updatedTestInfo.price
+            findTest.description = updatedTestInfo.description
+            findTest._id = _id
+            findTest.image = updatedTestInfo.image
+
+            state.tests.filter(test => test._id === _id).push(findTest)
+
         },
 
     },

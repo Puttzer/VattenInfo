@@ -154,6 +154,7 @@ export default {
       this.$emit("closeAddTest");
     },
     selectFile() {
+      console.log(this.$refs.file.files);
       this.image = this.$refs.file.files[0];
     },
     closeModal() {
@@ -168,10 +169,15 @@ export default {
       formData.append("description", this.description);
       formData.append("price", this.price);
       formData.append("image", this.image);
+      //   formData.append("_id", id);
 
       console.log(formData);
-
-      await this.$store.dispatch("tests/updateTest", formData);
+      console.log(id);
+      console.log("move to actions");
+      await this.$store.dispatch("tests/updateTest", {
+        formData,
+        id,
+      });
       this.$emit("closeAddTest");
     },
   },
