@@ -21,8 +21,21 @@ export default {
             console.log(data)
             commit('INSERT_TEST', data.newTest, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
-
-
+        },
+        async updateTest({ commit }, formData) {
+            console.log(formData)
+            const token = localStorage.getItem('token')
+            const response = await fetch('http://localhost:4000/api/test/create', {
+                method: 'PUT',
+                body: formData,
+                headers: {
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('INSERT_TEST', data.newTest, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
         },
 
 
