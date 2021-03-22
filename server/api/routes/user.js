@@ -1,6 +1,7 @@
 const User = require('../../models/user')
 const bcrypt = require('../../Lib/Bcrypt.password')
 const JWT = require('../../Lib/Auth.token')
+const AuthMiddleware = require('../../Middleware/Auth.middleware')
 
 module.exports = function (router) {
     router.post('/user/login', async function (req, res, next) {
@@ -70,12 +71,6 @@ module.exports = function (router) {
                 }))
     })
 
-    router.get('/', function (req, res) {
-        res.status(200).json({
-            user: 'krishna',
-            email: 'paruchurikris@gmail.com'
-        })
-    })
     router.post('/user/create', async function (req, res) {
 
         const findUser = await User.findOne({ email: req.body.email }).exec()
@@ -114,11 +109,28 @@ module.exports = function (router) {
             }
         }
     })
-    router.get('/user_admin', async function (req, res) {
+    // router.get('/user_admin', async function (req, res) {
 
-        await User.find({}).exec()
-            .then(docs =>
-                res.status(200).json(docs))
+    //     await User.find({}).exec()
+    //         .then(docs =>
+    //             res.status(200).json(docs))
+    //         .catch(err => res.status(500)
+    //             .json({
+    //                 message: 'Error finding user',
+    //                 error: err
+    //             }))
+    // })
+
+    router.delete('/user/:id', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
+        await User.findByIdAndDelete(req.params.id).exec()
+            .then(docs => {
+
+                res.status(200)
+                    .json({
+                        message: "Uer is deleted",
+                        user: docs
+                    })
+            })
             .catch(err => res.status(500)
                 .json({
                     message: 'Error finding user',

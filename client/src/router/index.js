@@ -21,6 +21,8 @@ import BygglovTillstand from '../views/BygglovTillstand.vue'
 import VerksamhetSamfallighet from '../views/VerksamhetSamfallighet.vue'
 import AdminLogin from '../views/AdminLogin.vue'
 import AdminStartsidan from '../views/AdminStartsidan.vue'
+import Tests from '../components/adminStuff/tests.vue'
+import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 
 
 Vue.use(VueRouter)
@@ -57,9 +59,22 @@ const routes = [
         name: 'AdminLogin',
         component: AdminLogin
     },
+    // {
+    //     path: '/adminpage',
+    //     name: 'AdminStartsidan',
+    //     component: AdminStartsidan,
+    //     beforeEnter: (to, from, next) => {
+    //         console.log(store.state.admin.isLoggedIn)
+    //         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+    //             next()
+    //         } else {
+    //             next('/')
+    //         }
+    //     }
+    // },
     {
         path: '/adminpage',
-        name: 'AdminStartsidan',
+        // You could also have named views at the top
         component: AdminStartsidan,
         beforeEnter: (to, from, next) => {
             console.log(store.state.admin.isLoggedIn)
@@ -68,7 +83,15 @@ const routes = [
             } else {
                 next('/')
             }
-        }
+        },
+        children: [{
+            path: 'tests',
+            component: Tests
+        }, {
+            path: 'privatecustomer',
+            component: PrivateCustomer
+
+        }]
     },
     {
         path: '/private',

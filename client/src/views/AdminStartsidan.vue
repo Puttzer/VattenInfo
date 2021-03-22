@@ -3,12 +3,12 @@
     <v-navigation-drawer app v-model="drawer">
       <v-list dense>
         <v-list-item>
-          <v-list-item-content>
+          <v-list-item-content @click="moveToTests">
             <v-list-item-title>Tester</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item>
-          <v-list-item-content>
+          <v-list-item-content @click="moveToPrivateCustomers">
             <v-list-item-title>Privatkund</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -51,7 +51,7 @@
       </v-btn>
     </v-app-bar>
     <v-main>
-      <Tests class="ml-12" />
+      <router-view></router-view>
     </v-main>
   </div>
 </template>
@@ -59,19 +59,16 @@
 <script>
 import { mapState } from "vuex";
 
-import Tests from "../components/adminStuff/tests.vue";
 export default {
   data() {
     return {
       drawer: false,
     };
   },
-  components: {
-    Tests,
-  },
-  mounted() {
-    this.$store.dispatch("tests/getTests");
-  },
+  components: {},
+  //   mounted() {
+  //     this.$store.dispatch("tests/getTests");
+  //   },
 
   computed: {
     ...mapState(["admin"]),
@@ -84,6 +81,12 @@ export default {
       // if (!localStorage.token) {
       //   this.$router.push("/");
       // }
+    },
+    moveToTests() {
+      this.$router.push("/adminpage/tests");
+    },
+    moveToPrivateCustomers() {
+      this.$router.push("/adminpage/privatecustomer");
     },
   },
 };
