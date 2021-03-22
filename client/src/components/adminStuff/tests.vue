@@ -1,5 +1,5 @@
 <template>
-  <div class="page-contaier">
+  <div class="page-contaier ma-8">
     <v-row class="d-flex flex-column">
       <v-row class="d-flex flex-row">
         <h1>Tester</h1>
