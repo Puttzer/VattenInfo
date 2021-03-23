@@ -1,9 +1,11 @@
 <template>
   <div class="d-flex flex-row justify-center align-center testCase">
-    <v-icon class="ma-1 pa-2" size="56" color="green">shopping_basket</v-icon>
+    <v-icon class="ma-1 pa-2" size="48" color="green">shopping_basket</v-icon>
     <p
       class="countClass white--text ml-n6 d-flex justify-center align-center green"
-    >{{ this.count }}</p>
+    >
+      {{ this.count }}
+    </p>
   </div>
 </template>
 
@@ -12,9 +14,9 @@ export default {
   name: "CartComponent",
   data() {
     return {
-      count: 0
+      count: 0,
     };
-  }
+  },
 };
 </script>
 

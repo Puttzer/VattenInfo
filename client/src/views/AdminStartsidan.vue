@@ -1,51 +1,77 @@
 <template>
   <div class="admin-container">
-    <v-navigation-drawer app v-model="drawer">
-      <v-list dense>
-        <v-list-item>
-          <v-list-item-content @click="moveToTests">
-            <v-list-item-title>Tester</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content @click="moveToPrivateCustomers">
-            <v-list-item-title>Privatkund</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Företagskund</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Beställningar</v-list-item-title>
-            <v-list>
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>Privat</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      class="d-flex flex-column align-content-space-between"
+    >
+      <div class="heightClass">
+        <v-list>
+          <v-list-item>
+            <v-list-item-content @click.stop="moveToTests">
+              <v-list-item-title>
+                <v-icon medium color="blue">science</v-icon>
+                Tester</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content @click.stop="moveToPrivateCustomers">
+              <v-list-item-title>
+                <v-icon medium color="blue">person</v-icon>
+                Privatkund</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>
+                <v-icon medium color="blue">business</v-icon>
+                Företagskund</v-list-item-title
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-title>
+                <v-icon medium color="blue">payments</v-icon>
+                Beställningar</v-list-item-title
+              >
+              <v-list>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>Privat</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
 
-              <v-list-item>
-                <v-list-item-content>
-                  <v-list-item-title>Företag</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+                <v-list-item>
+                  <v-list-item-content>
+                    <v-list-item-title>Företag</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+              </v-list>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+        <div class="d-flex flex-row align-center">
+          <v-icon color="orange" x-large v-if="admin.isLoggedIn"
+            >account_circle</v-icon
+          >
+          <div class="d-flex flex-coulmn">
+            <p>Logged in as:</p>
+            <h1 class="text--orange text">{{ admin.username }}</h1>
+          </div>
+        </div>
+      </div>
     </v-navigation-drawer>
     <v-app-bar app color="dark" dark>
-      <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <div class="d-flex align-center">
         <b text class="font-weight-bold">Admin Manager</b>
       </div>
 
       <v-spacer></v-spacer>
-
-      <v-btn text @click="logout()" v-if="admin.isLoggedIn">
+      <v-btn text @click.stop="logout()" v-if="admin.isLoggedIn">
         <span class="mr-2">Logout</span>
         <v-icon>logout</v-icon>
       </v-btn>
@@ -96,5 +122,11 @@ export default {
 .admin-container {
   height: 960px;
   min-height: 90%;
+}
+.heightClass {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 </style>

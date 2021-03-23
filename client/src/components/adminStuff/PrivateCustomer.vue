@@ -37,7 +37,7 @@
           </v-col>
           <v-col cols="1">
             <p class="font-weight-light text--disabled caption">Status</p>
-            <p id="isActive" name="isActive">
+            <p :class="`status ${user.isActive}`">
               {{ user.isActive }}
             </p>
           </v-col>
@@ -81,5 +81,14 @@ export default {
 <style scoped>
 .rowWidth {
   width: 85%;
+}
+.status .true {
+  background-color: rgb(88, 173, 102);
+  width: 50%;
+}
+.status .false {
+  border-left: 5px solid rgb(133, 38, 9);
+  background-color: rgb(151, 29, 20);
+  width: 50%;
 }
 </style>
