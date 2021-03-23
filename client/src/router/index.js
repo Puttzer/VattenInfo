@@ -6,6 +6,8 @@ import store from '../store'
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import KundStartsidan from '../views/KundStartsidan.vue'
+import ForetagStartsida from '../views/ForetagStartsida'
+
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
 import RegistreraKund from '../views/RegistreraKund.vue'
@@ -23,148 +25,162 @@ import AdminLogin from '../views/AdminLogin.vue'
 import AdminStartsidan from '../views/AdminStartsidan.vue'
 import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
+import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
 
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login
-    },
-    {
-        path: '/lostlogin',
-        name: 'LostLogin',
-        component: LostLogin
-    },
-    {
-        path: '/analyskatalog',
-        name: 'AnalysKatalog',
-        component: AnalysKatalog
-    },
-    {
-        path: '/login/user',
-        name: 'PrivateAccount',
-        component: KundStartsidan
-    },
-    {
-        path: '/login/admin',
-        name: 'AdminLogin',
-        component: AdminLogin
-    },
-    // {
-    //     path: '/adminpage',
-    //     name: 'AdminStartsidan',
-    //     component: AdminStartsidan,
-    //     beforeEnter: (to, from, next) => {
-    //         console.log(store.state.admin.isLoggedIn)
-    //         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-    //             next()
-    //         } else {
-    //             next('/')
-    //         }
-    //     }
-    // },
-    {
-        path: '/adminpage',
-        // You could also have named views at the top
-        component: AdminStartsidan,
-        beforeEnter: (to, from, next) => {
-            console.log(store.state.admin.isLoggedIn)
-            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-                next()
-            } else {
-                next('/')
-            }
-        },
-        children: [{
-            path: 'tests',
-            component: Tests
-        }, {
-            path: 'privatecustomer',
-            component: PrivateCustomer
+	{
+		path: '/',
+		name: 'Home',
+		component: Home
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login
+	},
+	{
+		path: '/lostlogin',
+		name: 'LostLogin',
+		component: LostLogin
+	},
+	{
+		path: '/analyskatalog',
+		name: 'AnalysKatalog',
+		component: AnalysKatalog
+	},
+	{
+		path: '/login/user',
+		name: 'PrivateAccount',
+		component: KundStartsidan
+	},
+	{
+		path: '/login/admin',
+		name: 'AdminLogin',
+		component: AdminLogin
+	},
+	// {
+	//     path: '/adminpage',
+	//     name: 'AdminStartsidan',
+	//     component: AdminStartsidan,
+	//     beforeEnter: (to, from, next) => {
+	//         console.log(store.state.admin.isLoggedIn)
+	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+	//             next()
+	//         } else {
+	//             next('/')
+	//         }
+	//     }
+	// },
+	{
+		path: '/adminpage',
+		// You could also have named views at the top
+		component: AdminStartsidan,
+		beforeEnter: (to, from, next) => {
+			console.log(store.state.admin.isLoggedIn)
+			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		},
+		children: [{
+			path: 'tests',
+			component: Tests
+		}, {
+			path: 'privatecustomer',
+			component: PrivateCustomer
 
-        }]
-    },
-    {
-        path: '/private',
-        name: 'KundStartsidan',
-        component: KundStartsidan
-    },
-    {
-        path: '/bestall',
-        name: 'BestallSidan',
-        component: BestallSidan
-    },
-    {
-        path: '/blanketter',
-        name: 'InstruktionOchBlanketter',
-        component: InstruktionOchBlanketter
-    },
-    {
-        path: '/omlab',
-        name: 'OmLaboratiet',
-        component: OmLaboratiet
-    },
-    {
-        path: '/help',
-        name: 'HjalpMedDittVatten',
-        component: HjalpMedDittVatten
-    },
-    {
-        path: '/enskilt_vatten',
-        name: 'EnsikltDricksVatten',
-        component: EnsikltDricksVatten
-    },
-    {
-        path: '/avlopp_analyser',
-        name: 'AvloppsAnalyser',
-        component: AvloppsAnalyser
+		},
+		{
+			path: 'ForetagCustomer',
+			component: ForetagCustomer
 
-    },
-    {
-        path: '/bygglov_tillstand',
-        name: 'BygglovTillstand',
-        component: BygglovTillstand
-    },
-    {
-        path: '/verksamhet',
-        name: 'VerksamhetSamfallighet',
-        component: VerksamhetSamfallighet
-    },
-    {
-        path: '/kontakt',
-        name: 'KontaktSidan',
-        component: KontaktSidan
-    },
-    {
-        path: '/registrera',
-        name: 'RegistreraKund',
-        component: RegistreraKund
-    },
-    {
-        path: '/payment',
-        name: 'PaymentInfo',
-        component: PaymentInfo
-    },
-    {
-        path: '/*',
-        alias: '/'
-    },
+		}]
+	},
+	{
+		path: '/private',
+		name: 'KundStartsidan',
+		component: KundStartsidan
+	},
+
+	{
+		path: '/foretag',
+		name: 'ForetagStartsida',
+		component: ForetagStartsida
+	},
+
+
+	{
+		path: '/bestall',
+		name: 'BestallSidan',
+		component: BestallSidan
+	},
+	{
+		path: '/blanketter',
+		name: 'InstruktionOchBlanketter',
+		component: InstruktionOchBlanketter
+	},
+	{
+		path: '/omlab',
+		name: 'OmLaboratiet',
+		component: OmLaboratiet
+	},
+	{
+		path: '/help',
+		name: 'HjalpMedDittVatten',
+		component: HjalpMedDittVatten
+	},
+	{
+		path: '/enskilt_vatten',
+		name: 'EnsikltDricksVatten',
+		component: EnsikltDricksVatten
+	},
+	{
+		path: '/avlopp_analyser',
+		name: 'AvloppsAnalyser',
+		component: AvloppsAnalyser
+
+	},
+	{
+		path: '/bygglov_tillstand',
+		name: 'BygglovTillstand',
+		component: BygglovTillstand
+	},
+	{
+		path: '/verksamhet',
+		name: 'VerksamhetSamfallighet',
+		component: VerksamhetSamfallighet
+	},
+	{
+		path: '/kontakt',
+		name: 'KontaktSidan',
+		component: KontaktSidan
+	},
+	{
+		path: '/registrera',
+		name: 'RegistreraKund',
+		component: RegistreraKund
+	},
+	{
+		path: '/payment',
+		name: 'PaymentInfo',
+		component: PaymentInfo
+	},
+	{
+		path: '/*',
+		alias: '/'
+	},
 
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes
 })
 
 export default router
