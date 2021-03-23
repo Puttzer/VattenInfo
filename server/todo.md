@@ -38,11 +38,26 @@ get the list of all products -->
 
 front end
 
-create a view for admin
+<!-- create a view for admin -->
+
+navbar
+--drop down menu for each tab
+--display list of items in each tab
+--change the logo position from right to left
+--insert a search function
+
 users view
+-- register functionality
+-- login functionality
+-- user login page
 
 company view
+-- register functionality
+-- login functionality
+-- user login page
+
 products view
+--display the products in betäll sidan
 
 login view
 -- make componets for private and company (switch between roles)
