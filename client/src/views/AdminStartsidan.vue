@@ -24,7 +24,8 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
-            <v-list-item-content>
+            <v-list-item-content @click.stop="moveToForetag">
+
               <v-list-item-title>
                 <v-icon medium color="blue">business</v-icon>
                 Företagskund</v-list-item-title
@@ -114,6 +115,10 @@ export default {
     moveToPrivateCustomers() {
       this.$router.push("/adminpage/privatecustomer");
     },
+	moveToForetag(){
+      this.$router.push("/adminpage/foretagcustomer");
+
+	}
   },
 };
 </script>
