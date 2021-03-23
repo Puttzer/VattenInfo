@@ -1,11 +1,11 @@
 <template>
-  <div class="container">
-    <v-content>
+  <div>
+    <v-main class="loginContainer">
       <v-row class="d-flex justify-center">
-        <v-col cols="4">
-          <h1>Admin Konto</h1>
+        <v-col cols="3">
+          <h1 class="mt-n16 mb-12">Privatkund</h1>
           <form>
-            <v-text-field v-model="userName" label="Användarnamm" required>
+            <v-text-field v-model="email" label="email" required>
             </v-text-field>
             <v-text-field
               v-model="password"
@@ -19,42 +19,63 @@
             >
             </v-text-field>
 
-            <v-btn class="mr-2" dark @click="moveToAdminAccount"
-              >Logga In</v-btn
-            >
+            <v-btn class="mr-2" dark @click="moveToUserAccount">Logga In</v-btn>
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
+            <v-row class="mt-6">
+              <div class="d-flex flex-column">
+                <p class="red--text">Inget Konto?</p>
+                <v-btn outlined plain> Registrera</v-btn>
+              </div>
+            </v-row>
           </form>
         </v-col>
       </v-row>
-    </v-content>
+    </v-main>
   </div>
 </template>
 
 
 <script>
+import { mapState } from "vuex";
 import store from "../store";
 export default {
   data() {
     return {
-      userName: "",
+      email: "",
       password: "",
       showPassword: false,
     };
   },
-  computed: {},
+  computed: {
+    ...mapState(["user"]),
+  },
   methods: {
-    moveToAdminAccount() {
-      store.dispatch("admin/login", {
-        userName: this.userName,
+    async moveToUserAccount() {
+      const payload = {
+        email: this.email,
         password: this.password,
-      });
+      };
+      //   console.log("move to actions");
+      await store.dispatch("user/loginUser", payload);
+
+      if (this.user.userIsloggedIn) {
+        this.$router.push("/login/user");
+      } else {
+        return;
+      }
     },
     clearTheInputdata() {
-      (this.userName = ""), (this.password = "");
+      (this.email = ""), (this.password = "");
     },
   },
 };
 </script>
 
 <style scoped>
+.loginContainer {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>

@@ -1,7 +1,11 @@
 export default {
     state: {
-        users: []
-
+        users: [],
+        userIsloggedIn: false,
+        user: {
+            email: '',
+            _id: ''
+        }
     },
     getters: {
 
@@ -38,6 +42,25 @@ export default {
             console.log(data)
             commit('DELETE_USER', data.user._id, { module: 'user' })
 
+        },
+        async loginUser({ commit }, payload) {
+            console.log(payload)
+
+            const response = await fetch(`http://localhost:4000/api/user/login`, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            localStorage.setItem('userToken', data.Token)
+            commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            commit('UPDATE_USER_ID', data._id, { module: 'user' })
+            commit('UPDATE_USER_ISLOGGEDIN', true, { module: 'user' })
+
         }
     },
     mutations: {
@@ -48,7 +71,17 @@ export default {
             const remainingUsers = state.users.filter(user => user._id !== _id)
             // console.log(remainingUsers)
             state.users = remainingUsers
+        },
+        UPDATE_USER_EMAIL(state, email) {
+            state.user.email = email
+        },
+        UPDATE_USER_ID(state, id) {
+            state.user._id = id
+        },
+        UPDATE_USER_ISLOGGEDIN(state, value) {
+            state.userIsloggedIn = value
         }
+
     },
     namespaced: true
 }
