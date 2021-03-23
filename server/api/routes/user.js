@@ -39,6 +39,8 @@ module.exports = function (router) {
                 res.status(200)
                 res.json({
                     message: `User is logged in as ${reqUser.email}`,
+                    email: reqUser.email,
+                    _id: findUser._id,
                     Token: token,
                 })
             } else {
@@ -52,7 +54,7 @@ module.exports = function (router) {
         } else {
             res.status(404)
             res.json({
-                message: 'Username does'
+                message: 'Username does not exist'
             })
             return
         }
