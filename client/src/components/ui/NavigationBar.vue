@@ -1,53 +1,73 @@
 <template>
-  <div
-    class="d-flex d-flex-column container align-center justify-space-between"
-  >
-    <v-card class="d-flex d-flex-column align-center" flat color="transparent">
-      <v-img
-        @click="moveToHome"
-        src="@/assets/V-info-logotyp.png"
-        class="d-flex align-right ml-6"
-        max-height="160px"
-        max-width="163px"
-      ></v-img>
+  <div class="d-flex flex-column container">
+    <v-card class="d-flex flex-column" flat color="transparent">
+      <v-row>
+        <v-col cols="12" class="d-flex flex-row">
+          <v-col cols="2">
+            <img
+              @click="moveToHome"
+              src="@/assets/V-info-logotyp.png"
+              width="160px"
+              height="60px"
+            />
+          </v-col>
+          <v-col cols="8">
+            <v-text-field
+              solo
+              class="text"
+              append-icon="search"
+              color="background"
+              dense
+            >
+            </v-text-field>
+          </v-col>
+          <v-col cols="1">
+            <v-btn>Logga In</v-btn>
+          </v-col>
+          <v-col cols="1">
+            <cart-component />
+          </v-col>
+        </v-col>
+      </v-row>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
-      <nav>
-        <ul class="blue--text menu">
-          <li
-            @click="moveToAnalysKatalog"
-            @mouseover="showServices = true"
-            @mouseleave="showServices = false"
-          >
-            Analyskatalog
-            <v-icon>keyboard_arrow_down</v-icon>
+      <v-row>
+        <nav>
+          <ul class="blue--text menu">
+            <li
+              @click="moveToAnalysKatalog"
+              @mouseover="showServices = true"
+              @mouseleave="showServices = false"
+            >
+              Analyskatalog
+              <v-icon>keyboard_arrow_down</v-icon>
 
-            <ul v-if="showServices">
-              <li class="text--white">enskilt dricks vatten</li>
-              <li class="text--white">verksamhet & sämfallighet</li>
-              <li class="text--white">bygglov & tillstand</li>
-              <li class="text--white">analyskatalog</li>
-              <li class="text--white">rådgivning</li>
-            </ul>
-          </li>
-          <li>Beställ analys</li>
-          <li
-            @mouseover="showAboutSection = true"
-            @mouseleave="showAboutSection = false"
-          >
-            Om labbtjänster
-            <v-icon>keyboard_arrow_down</v-icon>
+              <ul v-if="showServices">
+                <li class="text--white">enskilt dricks vatten</li>
+                <li class="text--white">verksamhet & sämfallighet</li>
+                <li class="text--white">bygglov & tillstand</li>
+                <li class="text--white">analyskatalog</li>
+                <li class="text--white">rådgivning</li>
+              </ul>
+            </li>
+            <li>Beställ analys</li>
+            <li
+              @mouseover="showAboutSection = true"
+              @mouseleave="showAboutSection = false"
+            >
+              Om labbtjänster
+              <v-icon>keyboard_arrow_down</v-icon>
 
-            <ul v-if="showAboutSection">
-              <li class="text--white">om oss</li>
-              <li class="text--white">kontakt</li>
-              <li class="text--white">wennnn</li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
+              <ul v-if="showAboutSection">
+                <li class="text--white">om oss</li>
+                <li class="text--white">kontakt</li>
+                <li class="text--white">wennnn</li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </v-row>
     </v-card>
-    <v-spacer></v-spacer>
-    <cart-component />
+
     <!-- <v-img
       src="@/assets/V-info-logotyp.png"
       class="d-flex align-right ml-6"
