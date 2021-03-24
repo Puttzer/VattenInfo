@@ -2,6 +2,7 @@
   <div class="rowWidth ml-16">
     <v-row class="my-4">
       <h1>Företagskund</h1>
+      <p>{{ company.sucessMessage }}</p>
     </v-row>
     <v-row
       v-for="(company, index) in this.company.companys"
@@ -16,7 +17,7 @@
               Användarnamn
             </p>
             <p id="userName" name="userName" class="ml-2">
-              {{ company.fullname }} 
+              {{ company.fullname }}
             </p>
           </v-col>
           <v-col cols="3">
@@ -24,8 +25,12 @@
             <p id="userEmail" name="userEmail">{{ company.email }}</p>
           </v-col>
           <v-col cols="2">
-            <p class="font-weight-light text--disabled caption">Organistionsnummer</p>
-            <p id="userRole" name="userRole">{{ company.organizationnumber }}</p>
+            <p class="font-weight-light text--disabled caption">
+              Organistionsnummer
+            </p>
+            <p id="userRole" name="userRole">
+              {{ company.organizationnumber }}
+            </p>
           </v-col>
           <v-col cols="2">
             <p class="font-weight-light text--disabled caption">
@@ -36,13 +41,17 @@
             </p>
           </v-col>
           <v-col cols="1">
-            <p class="font-weight-light text--disabled caption">alternatenumber</p>
+            <p class="font-weight-light text--disabled caption">
+              alternatenumber
+            </p>
             <p>
               {{ company.alternatenumber }}
             </p>
           </v-col>
           <v-col cols="1" class="d-flex justify-center align-center">
-            <v-icon color="red">delete</v-icon>
+            <v-icon color="red" @click="deleteCompanyUser(company._id)"
+              >delete</v-icon
+            >
           </v-col>
         </v-row>
       </v-list>
@@ -66,14 +75,14 @@ export default {
     await this.$store.dispatch("company/getCompanys");
   },
   methods: {
-    // async deleteUser(id) {
-    //   const output = confirm("Delete the user");
-    //   if (output) {
-    //     await this.$store.dispatch("user/deleteUser", id);
-    //   } else {
-    //     return;
-    //   }
-    // },
+    async deleteCompanyUser(id) {
+      const output = confirm("Delete the Foretag Konto");
+      if (output) {
+        await this.$store.dispatch("company/deleteCompany", id);
+      } else {
+        return;
+      }
+    },
   },
 };
 </script>
