@@ -3,7 +3,11 @@
     <v-main class="loginContainer">
       <v-row class="d-flex justify-center">
         <v-col cols="3">
-          <h1 class="mt-n16 mb-12">Privatkund</h1>
+          <div class="mb-12">
+            <v-btn color="blue" flat outlined>Privat</v-btn>
+            <span class="mx-4 black--text"> | </span>
+            <v-btn color="green" outlined>Företag</v-btn>
+          </div>
           <form>
             <v-text-field v-model="email" label="email" required>
             </v-text-field>
