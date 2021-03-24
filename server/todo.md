@@ -62,3 +62,6 @@ products view
 login view
 -- make componets for private and company (switch between roles)
 --add lostlogin button move to (lostlogin view)
+
+Footer
+-- Currently needing small css fixes (icons not next to text and whatnot)
