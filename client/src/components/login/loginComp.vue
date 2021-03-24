@@ -1,10 +1,14 @@
 <template>
   <div>
     <v-main class="hejs">
+      <v-row>
+        <v-icon color="black" x-large @click="closeWindow()">close</v-icon>
+        {{ this.showLoginComp }}
+      </v-row>
       <v-row class="d-flex justify-center">
-        <v-col cols="3">
+        <v-col cols="9">
           <div class="mb-12">
-            <v-btn color="blue" flat outlined>Privat</v-btn>
+            <v-btn color="blue" text outlined>Privat</v-btn>
             <span class="mx-4 black--text">|</span>
             <v-btn color="green" outlined>Företag</v-btn>
           </div>
@@ -48,28 +52,42 @@ export default {
       showPassword: false,
     };
   },
-//   computed: {
-    // ...mapState(["user"]),
-//   },
-//   methods: {
-//     async moveToUserAccount() {
-//       const payload = {
-//         email: this.email,
-//         password: this.password,
-//       };
-      //   console.log("move to actions");
-    //   await store.dispatch("user/loginUser", payload);
+  props: ["showLoginComp"],
+  methods: {
+    closeWindow() {
+      const value = !this.showLoginComp;
+      console.log("close loginwindow", value);
+      this.$emit("closeWindow", value);
+    },
+    clearTheInputdata() {
+      (this.email = ""), (this.password = "");
+    },
+    moveToUserAccount() {
+      console.log("bvfekegj");
+    },
+  },
+  //   computed: {
+  // ...mapState(["user"]),
+  //   },
+  //   methods: {
+  //     async moveToUserAccount() {
+  //       const payload = {
+  //         email: this.email,
+  //         password: this.password,
+  //       };
+  //   console.log("move to actions");
+  //   await store.dispatch("user/loginUser", payload);
 
-//       if (this.user.userIsloggedIn) {
-//         this.$router.push("/login/user");
-//       } else {
-//         return;
-//       }
-//     },
-//     clearTheInputdata() {
-//       (this.email = ""), (this.password = "");
-//     },
-//   },
+  //       if (this.user.userIsloggedIn) {
+  //         this.$router.push("/login/user");
+  //       } else {
+  //         return;
+  //       }
+  //     },
+  //     clearTheInputdata() {
+  //       (this.email = ""), (this.password = "");
+  //     },
+  //   },
 };
 </script>
 

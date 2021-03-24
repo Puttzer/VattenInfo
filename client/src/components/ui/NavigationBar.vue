@@ -25,13 +25,26 @@
             </v-col>
             <v-col cols="2">
               <!-- <v-btn><v-icon>account_circle</v-icon></v-btn> -->
-              <div @click="showMeLogin" class="d-flex flex-row align-center justify-end logga-in">
+              <div
+                @click="showPopup"
+                class="d-flex flex-row align-center justify-end logga-in"
+              >
                 <v-icon color="blue" x-large>account_circle</v-icon>
                 <p class="ma-2 title">Logga in</p>
-                <LoginComp class="placement" v-show="showLoginComp === true" />
+
+                <LoginComp
+                  v-if="showLoginComp"
+                  v-model="showLoginComp"
+                  class="placement"
+                  :showLoginComp="showLoginComp"
+                  v-on:closeWindow="closeLoginWindow"
+                />
               </div>
             </v-col>
-            <v-col class="mt-n2 d-flex flex-row align-start justify-start" cols="1">
+            <v-col
+              class="mt-n2 d-flex flex-row align-start justify-start"
+              cols="1"
+            >
               <cart-component />
             </v-col>
           </v-col>
@@ -58,7 +71,10 @@
               </ul>
             </li>
             <li>Beställ analys</li>
-            <li @mouseover="showAboutSection = true" @mouseleave="showAboutSection = false">
+            <li
+              @mouseover="showAboutSection = true"
+              @mouseleave="showAboutSection = false"
+            >
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -68,7 +84,10 @@
                 <li class="text--white">wennnn</li>
               </ul>
             </li>
-            <li @mouseover="showOtherServices = true" @mouseleave="showOtherServices = false">
+            <li
+              @mouseover="showOtherServices = true"
+              @mouseleave="showOtherServices = false"
+            >
               Övriga tjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -113,12 +132,12 @@ export default {
       showServices: false,
       showAboutSection: false,
       showOtherServices: false,
-      showLoginComp: false
+      showLoginComp: false,
     };
   },
   components: {
     CartComponent,
-    LoginComp
+    LoginComp,
   },
   methods: {
     moveToAnalysKatalog() {
@@ -127,10 +146,14 @@ export default {
     moveToHome() {
       this.$router.push("/");
     },
-    showMeLogin() {
+    showPopup() {
       this.showLoginComp = true;
-    }
-  }
+    },
+    closeLoginWindow(value) {
+      this.showLoginComp = value;
+      console.log(this.showLoginComp);
+    },
+  },
 };
 </script>
 
@@ -197,14 +220,10 @@ export default {
 .search-icon-color .v-icon {
   color: #449ace;
 }
-
-.dontshow {
-  display: none;
-}
 .placement {
   /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 2; /* Sit on top */
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
