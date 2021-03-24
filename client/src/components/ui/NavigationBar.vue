@@ -1,37 +1,36 @@
 <template>
   <div class="d-flex flex-column container">
     <v-card class="d-flex flex-column" flat color="transparent">
-      <v-row>
-        <v-col cols="12" class="d-flex flex-row">
-          <v-col cols="2">
-            <img
-              @click="moveToHome"
-              src="@/assets/V-info-logotyp.png"
-              width="160px"
-              height="60px"
-            />
+      <div class="navbarTop">
+        <v-row>
+          <v-col cols="12" class="d-flex flex-row">
+            <v-col cols="2">
+              <img
+                @click="moveToHome"
+                src="@/assets/V-info-logotyp.png"
+                width="160px"
+                height="60px"
+              />
+            </v-col>
+            <v-col cols="7">
+              <v-text-field solo class="text" append-icon="search" dense><v-icon color='red'>search </v-icon></v-text-field>
+            </v-col>
+            <v-col cols="2">
+              <!-- <v-btn><v-icon>account_circle</v-icon></v-btn> -->
+              <div class="d-flex flex-row align-center justify-center logga-in">
+                <v-icon color="blue" x-large>account_circle</v-icon>
+                <p class="ma-2 title">Logga in</p>
+              </div>
+            </v-col>
+            <v-col class="mt-n2 d-flex flex-row align-start justify-center" cols="1">
+              <cart-component />
+            </v-col>
           </v-col>
-          <v-col cols="8">
-            <v-text-field
-              solo
-              class="text"
-              append-icon="search"
-              color="background"
-              dense
-            >
-            </v-text-field>
-          </v-col>
-          <v-col cols="1">
-            <v-btn>Logga In</v-btn>
-          </v-col>
-          <v-col cols="1">
-            <cart-component />
-          </v-col>
-        </v-col>
-      </v-row>
+        </v-row>
+      </div>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
       <v-row>
-        <nav>
+        <nav class="grey">
           <ul class="blue--text menu">
             <li
               @click="moveToAnalysKatalog"
@@ -50,10 +49,7 @@
               </ul>
             </li>
             <li>Beställ analys</li>
-            <li
-              @mouseover="showAboutSection = true"
-              @mouseleave="showAboutSection = false"
-            >
+            <li @mouseover="showAboutSection = true" @mouseleave="showAboutSection = false">
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -73,7 +69,7 @@
       class="d-flex align-right ml-6"
       max-height="160px"
       max-width="163px"
-    ></v-img> -->
+    ></v-img>-->
     <!-- <v-navigation-drawer
       app
       v-model="drawer"
@@ -83,7 +79,7 @@
       temporary
       height="10vh"
       class="d-none d-sm-flex d-md-none"
-    ></v-navigation-drawer> -->
+    ></v-navigation-drawer>-->
   </div>
 </template>
 
@@ -94,11 +90,11 @@ export default {
     return {
       //   drawer: false,
       showServices: false,
-      showAboutSection: false,
+      showAboutSection: false
     };
   },
   components: {
-    CartComponent,
+    CartComponent
   },
   methods: {
     moveToAnalysKatalog() {
@@ -106,12 +102,16 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
+.navbarTop {
+  height: 55px;
+}
+
 .menu {
   display: block;
   padding: 20px;
@@ -166,4 +166,10 @@ export default {
 	right: 0;
 	left:100;
 } */
+
+.search-icon-color .v-icon {
+  color: #449ace;
+}
+
+
 </style>
