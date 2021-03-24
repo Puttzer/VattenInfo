@@ -3,7 +3,7 @@
     <v-card class="d-flex flex-column" flat color="transparent">
       <div class="navbarTop">
         <v-row>
-          <v-col cols="12" class="d-flex flex-row">
+          <v-col cols="12" class="d-flex flex-row justify-space-around">
             <v-col cols="2">
               <img
                 @click="moveToHome"
@@ -12,25 +12,34 @@
                 height="60px"
               />
             </v-col>
-            <v-col cols="7">
-              <v-text-field solo class="text" append-icon="search" dense><v-icon color='red'>search </v-icon></v-text-field>
+            <v-col cols="7" class="d-flex justify-right">
+              <v-text-field
+                solo
+                class="text"
+                label="sök efter tester/produkter!"
+                append-icon="search"
+                dense
+              >
+                <v-icon color="red">search</v-icon>
+              </v-text-field>
             </v-col>
             <v-col cols="2">
               <!-- <v-btn><v-icon>account_circle</v-icon></v-btn> -->
-              <div class="d-flex flex-row align-center justify-center logga-in">
+              <div @click="showMeLogin" class="d-flex flex-row align-center justify-end logga-in">
                 <v-icon color="blue" x-large>account_circle</v-icon>
                 <p class="ma-2 title">Logga in</p>
+                <LoginComp class="placement" v-show="showLoginComp === true" />
               </div>
             </v-col>
-            <v-col class="mt-n2 d-flex flex-row align-start justify-center" cols="1">
+            <v-col class="mt-n2 d-flex flex-row align-start justify-start" cols="1">
               <cart-component />
             </v-col>
           </v-col>
         </v-row>
       </div>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
-      <v-row>
-        <nav class="grey">
+      <v-row class="d-flex ml-n15 justify-center">
+        <nav>
           <ul class="blue--text menu">
             <li
               @click="moveToAnalysKatalog"
@@ -59,6 +68,16 @@
                 <li class="text--white">wennnn</li>
               </ul>
             </li>
+            <li @mouseover="showOtherServices = true" @mouseleave="showOtherServices = false">
+              Övriga tjänster
+              <v-icon>keyboard_arrow_down</v-icon>
+
+              <ul v-if="showOtherServices">
+                <li class="text--white">lorem</li>
+                <li class="text--white">lorem</li>
+                <li class="text--white">lorem</li>
+              </ul>
+            </li>
           </ul>
         </nav>
       </v-row>
@@ -85,16 +104,21 @@
 
 <script scoped>
 import CartComponent from "../cart/CartComponent.vue";
+import LoginComp from "../../components/login/loginComp.vue";
+
 export default {
   data() {
     return {
       //   drawer: false,
       showServices: false,
-      showAboutSection: false
+      showAboutSection: false,
+      showOtherServices: false,
+      showLoginComp: false
     };
   },
   components: {
-    CartComponent
+    CartComponent,
+    LoginComp
   },
   methods: {
     moveToAnalysKatalog() {
@@ -102,6 +126,9 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
+    },
+    showMeLogin() {
+      this.showLoginComp = true;
     }
   }
 };
@@ -125,7 +152,7 @@ export default {
   padding: 20px;
   position: relative;
   text-decoration: none;
-  min-width: 160px;
+  min-width: 180px;
   list-style: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -171,5 +198,20 @@ export default {
   color: #449ace;
 }
 
-
+.dontshow {
+  display: none;
+}
+.placement {
+  /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
 </style>
