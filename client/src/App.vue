@@ -34,9 +34,16 @@ export default {
     // test
   },
   computed: {
-    ...mapState(["admin"]),
+    ...mapState(["admin", "user"]),
   },
   methods: {},
+  mounted() {
+    if (localStorage.userToken) {
+      this.$router.push("/login/user");
+    } else {
+      this.$router.push("/");
+    }
+  },
 };
 </script>
 

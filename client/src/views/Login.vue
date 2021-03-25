@@ -4,7 +4,7 @@
       <v-row class="d-flex justify-center">
         <v-col cols="3">
           <div class="mb-12">
-            <v-btn color="blue" flat outlined>Privat</v-btn>
+            <v-btn color="blue" text outlined>Privat</v-btn>
             <span class="mx-4 black--text"> | </span>
             <v-btn color="green" outlined>Företag</v-btn>
           </div>
@@ -23,7 +23,8 @@
             >
             </v-text-field>
 
-            <v-btn class="mr-2" dark @click="moveToUserAccount">Logga In</v-btn>
+            <v-btn class="mr-2" dark>Logga In</v-btn>
+            <!-- @click="moveToUserAccount" -->
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
             <v-row class="mt-6">
               <div class="d-flex flex-column">
@@ -41,7 +42,7 @@
 
 <script>
 import { mapState } from "vuex";
-import store from "../store";
+// import store from "../store";
 export default {
   data() {
     return {
@@ -54,20 +55,21 @@ export default {
     ...mapState(["user"]),
   },
   methods: {
-    async moveToUserAccount() {
-      const payload = {
-        email: this.email,
-        password: this.password,
-      };
-      //   console.log("move to actions");
-      await store.dispatch("user/loginUser", payload);
+    // async moveToUserAccount() {
+    //   const payload = {
+    //     email: this.email,
+    //     password: this.password,
+    //   };
+    //   //   console.log("move to actions");
+    //   await store.dispatch("user/loginUser", payload);
+    //   console.log(this.user);
 
-      if (this.user.userIsloggedIn) {
-        this.$router.push("/login/user");
-      } else {
-        return;
-      }
-    },
+    //   if (this.user.userIsloggedIn) {
+    //     this.$router.push("/login/user");
+    //   } else {
+    //     return;
+    //   }
+    // },
     clearTheInputdata() {
       (this.email = ""), (this.password = "");
     },

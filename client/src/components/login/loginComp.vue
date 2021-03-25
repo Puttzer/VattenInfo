@@ -13,7 +13,8 @@
               text
               outlined
               @click="switchButtonPrivate"
-            >Privat</v-btn>
+              >Privat</v-btn
+            >
             <span class="mx-4 black--text">|</span>
             <v-btn
               text
@@ -21,10 +22,17 @@
               outlined
               @click="switchButtonCompany"
               :class="{ colorStatus: !isPrivateUser }"
-            >Företag</v-btn>
+              >Företag</v-btn
+            >
           </div>
           <form>
-            <v-text-field outlined border="blue" v-model="email" label="Email" required></v-text-field>
+            <v-text-field
+              outlined
+              border="blue"
+              v-model="email"
+              label="Email"
+              required
+            ></v-text-field>
             <v-text-field
               outlined
               border="blue"
@@ -43,13 +51,15 @@
               dark
               @click="loginPrivateuser"
               v-show="showLoginUser === true"
-            >Logga In</v-btn>
+              >Logga In</v-btn
+            >
             <v-btn
               class="mr-2"
               dark
               @click="loginCompany"
               v-show="showLoginCompany === true"
-            >Logga In</v-btn>
+              >Logga In</v-btn
+            >
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
             <v-row class="mt-6">
               <div class="d-flex flex-column">
@@ -67,7 +77,7 @@
 
 <script>
 import { mapState } from "vuex";
-import store from "vuex";
+import store from "../../store";
 
 export default {
   data() {
@@ -77,18 +87,16 @@ export default {
       showPassword: false,
       showLoginUser: true,
       showLoginCompany: false,
-      isPrivateUser: true
+      isPrivateUser: true,
     };
   },
   props: ["showLoginComp"],
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     closeWindow() {
-      const value = !this.showLoginComp;
-      console.log("close loginwindow", value);
-      this.$emit("closeWindow", value);
+      this.$store.commit("user/CLOSE_WINDOW");
     },
     clearTheInputdata() {
       (this.email = ""), (this.password = "");
@@ -96,15 +104,12 @@ export default {
     async loginPrivateuser() {
       const payload = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       console.log("move to actions", payload);
-      await store.dispatch("user/kmlml", payload);
-		console.log(this.user.userIsloggedIn);
+      await store.dispatch("user/loginUser", payload);
+      console.log(this.user.userIsloggedIn);
       if (this.user.userIsloggedIn) {
-        const value = !this.showLoginComp;
-        console.log("close loginwindow", value);
-        this.$emit("closeWindow", value);
         this.$router.push("/login/user");
       } else {
         return;
@@ -113,7 +118,7 @@ export default {
     async loginCompany() {
       const payload = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       console.log("move to actions company", payload);
       await store.dispatch("company/loginCompany", payload);
@@ -133,9 +138,8 @@ export default {
       (this.showLoginUser = true),
         (this.showLoginCompany = false),
         (this.isPrivateUser = true);
-    }
+    },
   },
-  
 };
 </script>
 

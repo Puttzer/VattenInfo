@@ -2,6 +2,7 @@ export default {
     state: {
         users: [],
         userIsloggedIn: false,
+        showLoginModel: false,
         user: {
             email: '',
             _id: ''
@@ -59,29 +60,10 @@ export default {
             localStorage.setItem('userToken', data.Token)
             commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
             commit('UPDATE_USER_ID', data._id, { module: 'user' })
-            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin , { module: 'user' })
+            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
 
         },
-
-		async kmlml({ commit }, payload) {
-            console.log(payload)
-
-            const response = await fetch(`http://localhost:4000/api/user/login`, {
-                method: 'POST',
-                body: JSON.stringify(payload),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-
-            const data = await response.json()
-            console.log(data)
-            localStorage.setItem('userToken', data.Token)
-            commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
-            commit('UPDATE_USER_ID', data._id, { module: 'user' })
-            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin , { module: 'user' })
-
-        }
 
     },
     mutations: {
@@ -101,9 +83,22 @@ export default {
         },
         UPDATE_USER_ISLOGGEDIN(state, value) {
             state.userIsloggedIn = value
-			console.log(value);
-			console.log(state.userIsloggedIn	);
+        },
+        UPDATE_USER_STATUS(state, value) {
+            state.userIsloggedIn = value
+        },
+        OPEN_LOGIN_COMP(state) {
+            state.showLoginModel = true;
+
+        },
+        CLOSE_WINDOW(state) {
+            state.showLoginModel = false;
+
+        },
+        UPDATE_CLOSE_WINDOW(state, value) {
+            state.showLoginModel = value;
         }
+
 
     },
     namespaced: true
