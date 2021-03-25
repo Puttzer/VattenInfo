@@ -1,20 +1,41 @@
 <template>
   <div>
-    <v-main class="hejs">
-      <v-row>
-        <v-icon color="black" x-large @click="closeWindow()">close</v-icon>
-        {{ this.showLoginComp }}
+    <v-main class="login-container">
+      <v-row class="d-flex justify-end ma-2">
+        <v-icon class="closeModal" x-large @click="closeWindow()">close</v-icon>
       </v-row>
       <v-row class="d-flex justify-center">
         <v-col cols="9">
           <div class="mb-12">
-            <v-btn color="blue" text outlined>Privat</v-btn>
+            <v-btn
+              :class="{ colorStatus: isPrivateUser }"
+              color="white"
+              text
+              outlined
+              @click="switchButtonPrivate"
+              >Privat</v-btn
+            >
             <span class="mx-4 black--text">|</span>
-            <v-btn color="green" outlined>Företag</v-btn>
+            <v-btn
+              text
+              color="white"
+              outlined
+              @click="switchButtonCompany"
+              :class="{ colorStatus: !isPrivateUser }"
+              >Företag</v-btn
+            >
           </div>
           <form>
-            <v-text-field v-model="email" label="email" required></v-text-field>
             <v-text-field
+              outlined
+              border="blue"
+              v-model="email"
+              label="Email"
+              required
+            ></v-text-field>
+            <v-text-field
+              outlined
+              border="blue"
               v-model="password"
               label="Lösenord"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -25,7 +46,20 @@
               required
             ></v-text-field>
 
-            <v-btn class="mr-2" dark @click="moveToUserAccount">Logga In</v-btn>
+            <v-btn
+              class="mr-2"
+              dark
+              @click="loginPrivateuser"
+              v-show="showLoginUser === true"
+              >Logga In</v-btn
+            >
+            <v-btn
+              class="mr-2"
+              dark
+              @click="loginCompany"
+              v-show="showLoginCompany === true"
+              >Logga In</v-btn
+            >
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
             <v-row class="mt-6">
               <div class="d-flex flex-column">
@@ -42,7 +76,7 @@
 
 
 <script>
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 // import store from "../store";
 export default {
   data() {
@@ -50,6 +84,9 @@ export default {
       email: "",
       password: "",
       showPassword: false,
+      showLoginUser: true,
+      showLoginCompany: false,
+      isPrivateUser: true,
     };
   },
   props: ["showLoginComp"],
@@ -62,59 +99,74 @@ export default {
     clearTheInputdata() {
       (this.email = ""), (this.password = "");
     },
-    moveToUserAccount() {
-      console.log("bvfekegj");
+    async loginPrivateuser() {
+      const payload = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log("move to actions", payload);
+      //   await store.dispatch("user/loginUser", payload);
+
+      //   if (this.user.userIsloggedIn) {
+      //     this.$router.push("/login/user");
+      //   } else {
+      //     return;
+      //   }
+    },
+    async loginCompany() {
+      const payload = {
+        email: this.email,
+        password: this.password,
+      };
+      console.log("move to actions company", payload);
+      //   await store.dispatch("company/loginCompany", payload);
+
+      //   if (this.company.companyUserIsloggedIn) {
+      //     this.$router.push("/login/company");
+      //   } else {
+      //     return;
+      //   }
+    },
+    switchButtonCompany() {
+      (this.showLoginUser = false),
+        (this.showLoginCompany = true),
+        (this.isPrivateUser = false);
+    },
+    switchButtonPrivate() {
+      (this.showLoginUser = true),
+        (this.showLoginCompany = false),
+        (this.isPrivateUser = true);
     },
   },
-  //   computed: {
-  // ...mapState(["user"]),
-  //   },
-  //   methods: {
-  //     async moveToUserAccount() {
-  //       const payload = {
-  //         email: this.email,
-  //         password: this.password,
-  //       };
-  //   console.log("move to actions");
-  //   await store.dispatch("user/loginUser", payload);
-
-  //       if (this.user.userIsloggedIn) {
-  //         this.$router.push("/login/user");
-  //       } else {
-  //         return;
-  //       }
-  //     },
-  //     clearTheInputdata() {
-  //       (this.email = ""), (this.password = "");
-  //     },
-  //   },
+  computed: {
+    ...mapState(["user", "company"]),
+  },
 };
 </script>
 
 <style scoped>
-.hejs {
+.login-container {
   min-height: 10vh;
-  width: 50vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: darkgoldenrod;
+  width: 33vw;
+  margin: 0 auto;
+  margin-top: 50px;
+  background: rgb(228, 227, 226);
+  box-shadow: 2px 2px 2px 2px rgb(107, 95, 95);
 }
 
-.dontshow {
-  display: none;
+.closeModal {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
-.placement {
-  /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+.closeModal:hover,
+.closeModal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.colorStatus {
+  background-color: #12669c;
 }
 </style>
