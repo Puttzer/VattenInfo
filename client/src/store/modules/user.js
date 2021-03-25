@@ -3,6 +3,7 @@ export default {
         users: [],
         userIsloggedIn: false,
         showLoginModel: false,
+		showUserDropDown: false,
         user: {
             email: '',
             _id: ''
@@ -58,6 +59,8 @@ export default {
             const data = await response.json()
             console.log(data)
             localStorage.setItem('userToken', data.Token)
+            localStorage.setItem('userLoggedIn', data.userLoggedin)
+
             commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
             commit('UPDATE_USER_ID', data._id, { module: 'user' })
             commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
@@ -97,7 +100,10 @@ export default {
         },
         UPDATE_CLOSE_WINDOW(state, value) {
             state.showLoginModel = value;
-        }
+        },
+		USER_DROP_MENU(state){
+			state.showUserDropDown = true
+		}
 
 
     },

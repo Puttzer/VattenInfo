@@ -37,23 +37,19 @@
                 <p class="ma-2 sub-title">Logga in</p>
               </div>
 
-              <LoginComp
-                v-show="this.user.showLoginModel === true"
-                class="placement"
-              />
+              <LoginComp v-show="this.user.showLoginModel === true" class="placement" />
             </v-col>
             <v-col v-show="this.user.userIsloggedIn === true">
               <div
-                class="d-flex flex-row align-center justify-end logga-in cursor-pointer"
+                @click="ShowDropDown"
+                class="d-flex flex-row align-center justify-end logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">{{ this.user.user.email }}</p>
               </div>
+              <UserDropDown v-show="this.user.showUserDropDown === true" />
             </v-col>
-            <v-col
-              class="mt-n2 d-flex flex-row align-start justify-start"
-              cols="2"
-            >
+            <v-col class="mt-n2 d-flex flex-row align-start justify-start" cols="2">
               <cart-component />
             </v-col>
           </v-col>
@@ -80,10 +76,7 @@
               </ul>
             </li>
             <li>Beställ analys</li>
-            <li
-              @mouseover="showAboutSection = true"
-              @mouseleave="showAboutSection = false"
-            >
+            <li @mouseover="showAboutSection = true" @mouseleave="showAboutSection = false">
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -93,10 +86,7 @@
                 <li class="text--white">wennnn</li>
               </ul>
             </li>
-            <li
-              @mouseover="showOtherServices = true"
-              @mouseleave="showOtherServices = false"
-            >
+            <li @mouseover="showOtherServices = true" @mouseleave="showOtherServices = false">
               Övriga tjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -116,6 +106,7 @@
 <script scoped>
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
+import UserDropDown from "../privateperson/UserDropDown.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -123,15 +114,16 @@ export default {
     return {
       showServices: false,
       showAboutSection: false,
-      showOtherServices: false,
+      showOtherServices: false
     };
   },
   components: {
     CartComponent,
     LoginComp,
+    UserDropDown
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user"])
   },
   methods: {
     moveToAnalysKatalog() {
@@ -143,7 +135,10 @@ export default {
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
     },
-  },
+    ShowDropDown() {
+      this.$store.commit("user/USER_DROP_MENU");
+    }
+  }
 };
 </script>
 
@@ -164,6 +159,33 @@ export default {
   padding: 20px;
   text-decoration: none;
   list-style: none;
+}
+
+.dropdownuser {
+  display: block;
+  float: left;
+  padding: 20px;
+  position: relative;
+  text-decoration: none;
+  min-width: 180px;
+  list-style: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+
+.dropdownuser UserDropDown {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  border-top: 5px solid blue;
+  background-color: rgb(21, 57, 68);
+  margin: 0;
+  padding: 0;
+  z-index: 8;
+  height: 234px;
+  width: 100px;
 }
 
 .menu li {
