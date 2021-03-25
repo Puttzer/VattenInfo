@@ -1,10 +1,7 @@
 <template>
   <div class="background container mt-6">
     <FixedBackground />
-
-    <!-- landning fort -->
-
-    <v-row>
+    <v-row class="bootles d-flex justify-center align-center">
       <v-col cols="5" class>
         <v-row class="d-flex justify-center align-center">
           <h1 class="blue--text font-weight-class text-uppercase text-center">

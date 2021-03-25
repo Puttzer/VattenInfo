@@ -34,6 +34,7 @@
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
+        <img src="@/assets/redcircle.svg" alt="red orb" />
         <svg viewBox="0 0 500 500">
           <path
             id="curve"
@@ -44,6 +45,7 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
+
         <v-img
           src="@/assets/landing/OmtankeH20.png"
           md="6"
@@ -61,4 +63,76 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+.container {
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+}
+.labb {
+  letter-spacing: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+/*  text starts here */
+.rubrik {
+  text-transform: uppercase;
+  font-size: 42px;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.bread {
+  /* letter-spacing: 3px; */
+  font-family: "Poppins", sans-serif;
+  font-weight: lighter;
+  font-size: 9px;
+  width: 300px;
+}
+
+/* text  ends here here */
+
+/* curved text starts here */
+
+/* .logo {
+  
+  background: url("../assets/landing/OmtankeH20.png");
+} */
+path {
+  fill: transparent;
+}
+
+text {
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  fill: #449a63;
+}
+
+/* curved text ends here */
+
+/* landingfort starts here */
+.heading-fort {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.bread-fort {
+  /* width: 300px; */
+  /* text-align: center; */
+  font-weight: 300;
+  /* width: 200px; */
+}
+
+/* .provInfo {
+  width: 200px;
+  height: 150px;
+  text-align: center;
+  color: white;
+} */
+
+/* landingfort ends here */
 </style>
