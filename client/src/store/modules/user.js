@@ -59,9 +59,30 @@ export default {
             localStorage.setItem('userToken', data.Token)
             commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
             commit('UPDATE_USER_ID', data._id, { module: 'user' })
-            commit('UPDATE_USER_ISLOGGEDIN', true, { module: 'user' })
+            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin , { module: 'user' })
+
+        },
+
+		async kmlml({ commit }, payload) {
+            console.log(payload)
+
+            const response = await fetch(`http://localhost:4000/api/user/login`, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            localStorage.setItem('userToken', data.Token)
+            commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            commit('UPDATE_USER_ID', data._id, { module: 'user' })
+            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin , { module: 'user' })
 
         }
+
     },
     mutations: {
         UPDATE_USERS(state, value) {
@@ -80,6 +101,8 @@ export default {
         },
         UPDATE_USER_ISLOGGEDIN(state, value) {
             state.userIsloggedIn = value
+			console.log(value);
+			console.log(state.userIsloggedIn	);
         }
 
     },

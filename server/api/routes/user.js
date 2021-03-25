@@ -42,6 +42,7 @@ module.exports = function (router) {
                     email: reqUser.email,
                     _id: findUser._id,
                     Token: token,
+					userLoggedin: true 
                 })
             } else {
                 res.status(404)

@@ -23,20 +23,21 @@
                   dense
                 >
                   <!-- <v-icon color="red" large class="cursor-pointer"
-                    >search</v-icon -->
+                  >search</v-icon-->
                   >
                 </v-text-field>
               </v-col>
             </v-col>
             <v-col cols="2">
-              <!-- <v-btn><v-icon>account_circle</v-icon></v-btn> -->
               <div
                 @click="showPopup"
+                :v-show="this.user.userIsloggedIn=false"
                 class="d-flex flex-row align-center justify-end logga-in cursor-pointer"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">Logga in</p>
               </div>
+
               <LoginComp
                 v-if="showLoginComp"
                 v-model="showLoginComp"
@@ -45,10 +46,14 @@
                 v-on:closeWindow="closeLoginWindow"
               />
             </v-col>
-            <v-col
-              class="mt-n2 d-flex flex-row align-start justify-start"
-              cols="2"
-            >
+            <v-col v-show="this.user.userIsloggedIn===true">
+              <div class="d-flex flex-row align-center justify-end logga-in cursor-pointer">
+                <v-icon color="blue" large>account_circle</v-icon>
+                {{this.user}}
+                <p class="ma-2 sub-title">{{user.user.email}}</p>
+              </div>
+            </v-col>
+            <v-col class="mt-n2 d-flex flex-row align-start justify-start" cols="2">
               <cart-component />
             </v-col>
           </v-col>
@@ -75,10 +80,7 @@
               </ul>
             </li>
             <li>Beställ analys</li>
-            <li
-              @mouseover="showAboutSection = true"
-              @mouseleave="showAboutSection = false"
-            >
+            <li @mouseover="showAboutSection = true" @mouseleave="showAboutSection = false">
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -88,10 +90,7 @@
                 <li class="text--white">wennnn</li>
               </ul>
             </li>
-            <li
-              @mouseover="showOtherServices = true"
-              @mouseleave="showOtherServices = false"
-            >
+            <li @mouseover="showOtherServices = true" @mouseleave="showOtherServices = false">
               Övriga tjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -105,29 +104,13 @@
         </nav>
       </v-row>
     </v-card>
-
-    <!-- <v-img
-      src="@/assets/V-info-logotyp.png"
-      class="d-flex align-right ml-6"
-      max-height="160px"
-      max-width="163px"
-    ></v-img>-->
-    <!-- <v-navigation-drawer
-      app
-      v-model="drawer"
-      color="#3a3a3a"
-      absolute
-      flat
-      temporary
-      height="10vh"
-      class="d-none d-sm-flex d-md-none"
-    ></v-navigation-drawer>-->
   </div>
 </template>
 
 <script scoped>
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -136,12 +119,15 @@ export default {
       showServices: false,
       showAboutSection: false,
       showOtherServices: false,
-      showLoginComp: false,
+      showLoginComp: false
     };
   },
   components: {
     CartComponent,
-    LoginComp,
+    LoginComp
+  },
+  computed: {
+    ...mapState(["user"])
   },
   methods: {
     moveToAnalysKatalog() {
@@ -156,8 +142,8 @@ export default {
     closeLoginWindow(value) {
       this.showLoginComp = value;
       console.log(this.showLoginComp);
-    },
-  },
+    }
+  }
 };
 </script>
 
