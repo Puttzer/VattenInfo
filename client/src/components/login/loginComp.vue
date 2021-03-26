@@ -9,22 +9,28 @@
           <div class="mb-12">
             <v-btn
               :class="{ colorStatus: isPrivateUser }"
-              color="white"
-              text
+              color="green"
               outlined
               @click="switchButtonPrivate"
-            >Privat</v-btn>
+              >Privat</v-btn
+            >
             <span class="mx-4 black--text">|</span>
             <v-btn
-              text
-              color="white"
+              color="green"
               outlined
               @click="switchButtonCompany"
               :class="{ colorStatus: !isPrivateUser }"
-            >Företag</v-btn>
+              >Företag</v-btn
+            >
           </div>
           <form>
-            <v-text-field outlined border="blue" v-model="email" label="Email" required></v-text-field>
+            <v-text-field
+              outlined
+              border="blue"
+              v-model="email"
+              label="Email"
+              required
+            ></v-text-field>
             <v-text-field
               outlined
               border="blue"
@@ -43,13 +49,15 @@
               dark
               @click="loginPrivateuser"
               v-show="showLoginUser === true"
-            >Logga In</v-btn>
+              >Logga In</v-btn
+            >
             <v-btn
               class="mr-2"
               dark
               @click="loginCompany"
               v-show="showLoginCompany === true"
-            >Logga In</v-btn>
+              >Logga In</v-btn
+            >
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
             <v-row class="mt-6">
               <div class="d-flex flex-column">
@@ -77,12 +85,12 @@ export default {
       showPassword: false,
       showLoginUser: true,
       showLoginCompany: false,
-      isPrivateUser: true
+      isPrivateUser: true,
     };
   },
   props: ["showLoginComp"],
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     closeWindow() {
@@ -94,21 +102,21 @@ export default {
     async loginPrivateuser() {
       const payload = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       console.log("move to actions", payload);
       await store.dispatch("user/loginUser", payload);
       console.log(this.user.userIsloggedIn);
-      if (this.user.userIsloggedIn) {
-        this.$router.push("/login/user");
-      } else {
-        return;
-      }
+      //   if (this.user.userIsloggedIn) {
+      //     this.$router.push("/login/user");
+      //   } else {
+      //     return;
+      //   }
     },
     async loginCompany() {
       const payload = {
         email: this.email,
-        password: this.password
+        password: this.password,
       };
       console.log("move to actions company", payload);
       await store.dispatch("company/loginCompany", payload);
@@ -128,8 +136,8 @@ export default {
       (this.showLoginUser = true),
         (this.showLoginCompany = false),
         (this.isPrivateUser = true);
-    }
-  }
+    },
+  },
 };
 </script>
 

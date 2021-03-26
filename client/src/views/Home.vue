@@ -1,7 +1,12 @@
 <template>
   <div class="background container mt-6">
     <v-row>
-      <v-col height="200px" cols="12" md="2" class="d-flex align-center justify-start">
+      <v-col
+        height="200px"
+        cols="12"
+        md="2"
+        class="d-flex align-center justify-start"
+      >
         <div class="wave">
           <v-img
             src="@/assets/landing/waves.png"
@@ -53,6 +58,7 @@
           contain
           max-height="500"
           max-width="500"
+          class="image-position"
         ></v-img>
       </v-col>
     </v-row>
@@ -75,9 +81,11 @@
             Ta hand om vattnet
             <br />så tar vattnet hand om dig
           </h1>
-          <p
-            class="text-center"
-          >Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur doloremque voluptatem dignissimos soluta incidunt non velit recusandae quia amet quibusdam.</p>
+          <p class="text-center">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
+            doloremque voluptatem dignissimos soluta incidunt non velit
+            recusandae quia amet quibusdam.
+          </p>
         </v-row>
         <v-row class="d-flex justify-space-between">
           <v-col class cols="3">
@@ -85,8 +93,9 @@
               <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
                 <h5>name</h5>
-                <p class="caption-1">Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
-
+                <p class="caption-1">
+                  Lorem ipsum dolor sit amet consectetur, adipisicing.
+                </p>
               </div>
             </div>
           </v-col>
@@ -104,7 +113,7 @@
               <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
                 <h5>name</h5>
-                <p >Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
               </div>
             </div>
           </v-col>
@@ -123,9 +132,7 @@
           </div>
         </v-row>
       </v-col>
-      <v-col cols="5" class="">
-
-      </v-col>
+      <v-col cols="5" class=""> </v-col>
     </v-row>
   </div>
 </template>
@@ -197,6 +204,9 @@ text {
   /* text-align: center; */
   font-weight: 300;
   /* width: 200px; */
+}
+.image-position {
+  z-index: 0;
 }
 
 /* .provInfo {

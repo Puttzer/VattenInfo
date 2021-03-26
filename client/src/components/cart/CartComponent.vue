@@ -22,7 +22,7 @@ export default {
 
 <style scoped>
 .countClass {
-  z-index: 999;
+  z-index: 2;
   border-radius: 99rem;
   width: 25px;
   height: 25px;

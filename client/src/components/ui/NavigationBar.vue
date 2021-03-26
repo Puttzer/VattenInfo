@@ -13,7 +13,7 @@
                 class="cursor-pointer"
               />
             </v-col>
-            <v-col cols="6" class="d-flex justify-end">
+            <v-col cols="7" class="d-flex justify-end">
               <v-col cols="10">
                 <v-text-field
                   solo
@@ -28,33 +28,46 @@
                 </v-text-field>
               </v-col>
             </v-col>
+            <v-col
+              class="mt-n2 d-flex flex-row align-start justify-end"
+              cols="1"
+            >
+              <cart-component />
+            </v-col>
             <v-col cols="2" v-show="this.user.userIsloggedIn === false">
               <div
                 @click="showPopup"
-                class="d-flex flex-row align-center justify-end logga-in cursor-pointer"
+                class="d-flex flex-row align-center justify-start logga-in cursor-pointer"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">Logga in</p>
               </div>
 
-              <LoginComp v-show="this.user.showLoginModel === true" class="placement" />
+              <LoginComp
+                v-show="this.user.showLoginModel === true"
+                class="placement"
+              />
             </v-col>
             <v-col v-show="this.user.userIsloggedIn === true">
               <div
-                @click="ShowDropDown"
-                class="d-flex flex-row align-center justify-end logga-in cursor-pointer dropdownuser"
+                @click="ShowDropDown()"
+                class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">{{ this.user.user.email }}</p>
               </div>
-              <UserDropDown v-show="this.user.showUserDropDown === true" />
-            </v-col>
-            <v-col class="mt-n2 d-flex flex-row align-start justify-start" cols="2">
-              <cart-component />
             </v-col>
           </v-col>
         </v-row>
       </div>
+      <v-row
+        class="d-flex justify-end mr-4"
+        v-if="this.user.showUserDropDown === true"
+      >
+        <v-col cols="2" class="d-flex justify-end">
+          <UserDropDown class="ma-0 pa-0 cursor-pointer user-window" />
+        </v-col>
+      </v-row>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
       <v-row class="d-flex ml-n15 mt-2 justify-center">
         <nav>
@@ -76,7 +89,10 @@
               </ul>
             </li>
             <li>Beställ analys</li>
-            <li @mouseover="showAboutSection = true" @mouseleave="showAboutSection = false">
+            <li
+              @mouseover="showAboutSection = true"
+              @mouseleave="showAboutSection = false"
+            >
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -86,7 +102,10 @@
                 <li class="text--white">wennnn</li>
               </ul>
             </li>
-            <li @mouseover="showOtherServices = true" @mouseleave="showOtherServices = false">
+            <li
+              @mouseover="showOtherServices = true"
+              @mouseleave="showOtherServices = false"
+            >
               Övriga tjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
@@ -114,16 +133,16 @@ export default {
     return {
       showServices: false,
       showAboutSection: false,
-      showOtherServices: false
+      showOtherServices: false,
     };
   },
   components: {
     CartComponent,
     LoginComp,
-    UserDropDown
+    UserDropDown,
   },
   computed: {
-    ...mapState(["user"])
+    ...mapState(["user"]),
   },
   methods: {
     moveToAnalysKatalog() {
@@ -137,8 +156,8 @@ export default {
     },
     ShowDropDown() {
       this.$store.commit("user/USER_DROP_MENU");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -148,7 +167,7 @@ export default {
   border-bottom: 1px solid #449ace;
 }
 .navbarTop {
-  height: 50px;
+  height: 60px;
 }
 .cursor-pointer {
   cursor: pointer;
@@ -160,14 +179,16 @@ export default {
   text-decoration: none;
   list-style: none;
 }
+.user-window {
+  position: fixed;
+  top: 60px;
+}
 
 .dropdownuser {
   display: block;
-  float: left;
-  padding: 20px;
   position: relative;
   text-decoration: none;
-  min-width: 180px;
+  min-width: 60px;
   list-style: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -183,9 +204,7 @@ export default {
   background-color: rgb(21, 57, 68);
   margin: 0;
   padding: 0;
-  z-index: 8;
-  height: 234px;
-  width: 100px;
+  z-index: 10;
 }
 
 .menu li {
@@ -209,7 +228,7 @@ export default {
   background-color: rgb(21, 57, 68);
   margin: 0;
   padding: 0;
-  z-index: 8;
+  z-index: 2;
 }
 
 .menu li ul li {

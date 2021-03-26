@@ -30,25 +30,22 @@ export default {
     NavigationBar,
     // AdminStartsidan,
     // NavBarMobile,
-    Footer
+    Footer,
     // test
   },
   computed: {
-    ...mapState(["admin", "user"])
+    ...mapState(["admin", "user"]),
   },
   methods: {},
   async mounted() {
     if (localStorage.userToken && localStorage.userLoggedin) {
-		console.log(localStorage.userToken);
-		console.log(localStorage.ocalStorage.userLoggedin);
+      console.log(localStorage.userToken);
+      console.log(localStorage.ocalStorage.userLoggedin);
 
-
-     await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
+      await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
       this.$router.push("/login/user");
-    } else {
-      this.$router.push("/");
     }
-  }
+  },
 };
 </script>
 
