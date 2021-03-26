@@ -71,7 +71,34 @@
 </template>
 
 <script>
-export default {};
+import {mapState} from 'vuex'
+
+export default {
+	name: 'EnsikltDricksVatten',
+	data(){
+		return{
+
+		}
+	},
+	mounted(){
+		this.$store.dispatch('tests/getTests')
+		
+	},
+	computed:{
+		...mapState(['tests']),
+		filterPaketTest(){
+			return this.tests.tests.filter(test=>(test.testtype === 'Packet pris') && (test.category === 'Enskilt dricksvatten') )
+
+		}
+		
+	},
+	methods:{
+		// filterPaketTest(){
+		// 	this.tests.tests.filter(test=>(test.testtype === 'Paket pris') && (test.category === 'Enskilt dricksvatten') )
+		// }
+		
+	}
+};
 </script>
 
 <style scoped>
