@@ -35,7 +35,7 @@
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <img class="orb" src="@/assets/redcircle.svg" alt="red orb" />
+        <!-- <img class="orb" src="@/assets/redcircle.svg" alt="red orb" /> -->
 
         <div class="heart">
           <svg viewBox="0 0 500 500">
@@ -88,8 +88,8 @@ export default {};
     transform: rotate(315deg);
     height: 900px;
     position: absolute;
-    top: -308px;
-    right: -411px;
+    top: -284px;
+    right: -398px;
   }
 
   .image {
