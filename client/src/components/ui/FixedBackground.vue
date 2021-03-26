@@ -9,6 +9,7 @@
       >
         <div class="wave">
           <v-img
+            class="wave"
             src="@/assets/landing/waves.png"
             max-height="100"
             max-width="100"
@@ -34,25 +35,27 @@
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <img src="@/assets/redcircle.svg" alt="red orb" />
-        <svg viewBox="0 0 500 500">
-          <path
-            id="curve"
-            fill="transparent"
-            d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
-          />
-          <text width="500">
-            <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
-          </text>
-        </svg>
+        <img class="orb" src="@/assets/redcircle.svg" alt="red orb" />
 
-        <v-img
-          src="@/assets/landing/OmtankeH20.png"
-          md="6"
-          contain
-          max-height="500"
-          max-width="500"
-        ></v-img>
+        <div class="heart">
+          <svg viewBox="0 0 500 500">
+            <path
+              id="curve"
+              fill="transparent"
+              d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
+            />
+            <text width="500">
+              <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
+            </text>
+          </svg>
+
+          <v-img
+            class="image"
+            src="@/assets/landing/OmtankeH20crop.png"
+            md="6"
+            max-width="400"
+          ></v-img>
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -63,6 +66,39 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+.wave {
+  position: fixed;
+  left: 0;
+  top: 300px;
+}
+
+.orb {
+  position: fixed;
+  top: 167px;
+  right: 33px;
+}
+
+.heart {
+  position: fixed;
+  top: 345px;
+  right: 0;
+
+  svg {
+    position: absolute;
+    transform: rotate(315deg);
+    height: 900px;
+    position: absolute;
+    top: -308px;
+    right: -411px;
+  }
+
+  .image {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
 .container {
   width: 100vw;
   margin: 0;
@@ -96,10 +132,6 @@ export default {};
 
 /* curved text starts here */
 
-/* .logo {
-  
-  background: url("../assets/landing/OmtankeH20.png");
-} */
 path {
   fill: transparent;
 }
