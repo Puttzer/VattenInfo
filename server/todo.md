@@ -47,8 +47,7 @@ navbar
 --insert a search function
 
 users view
--- register functionality
--- login functionality
+-- register functionality-- login functionality
 -- user login page
 
 company view
@@ -63,5 +62,9 @@ login view
 -- make componets for private and company (switch between roles)
 --add lostlogin button move to (lostlogin view)
 
+Home view (STATIC SCROLL ONLY)
+- separate visual assets and content [x] 
+-  2 layers one component (assets) one view (content)
 Footer
 -- Currently needing small css fixes (icons not next to text and whatnot)
+
