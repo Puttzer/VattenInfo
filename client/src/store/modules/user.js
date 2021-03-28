@@ -2,6 +2,8 @@ export default {
     state: {
         users: [],
         userIsloggedIn: false,
+        showLoginModel: false,
+        showUserDropDown: false,
         user: {
             email: '',
             _id: ''
@@ -57,11 +59,16 @@ export default {
             const data = await response.json()
             console.log(data)
             localStorage.setItem('userToken', data.Token)
+            localStorage.setItem('userLoggedIn', data.userLoggedin)
+
             commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
             commit('UPDATE_USER_ID', data._id, { module: 'user' })
-            commit('UPDATE_USER_ISLOGGEDIN', true, { module: 'user' })
+            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+            commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
 
-        }
+        },
+
     },
     mutations: {
         UPDATE_USERS(state, value) {
@@ -80,7 +87,33 @@ export default {
         },
         UPDATE_USER_ISLOGGEDIN(state, value) {
             state.userIsloggedIn = value
+        },
+        UPDATE_USER_STATUS(state, value) {
+            state.userIsloggedIn = value
+        },
+        OPEN_LOGIN_COMP(state) {
+            state.showLoginModel = true;
+
+        },
+        CLOSE_WINDOW(state) {
+            state.showLoginModel = false;
+
+        },
+        UPDATE_CLOSE_WINDOW(state, value) {
+            state.showLoginModel = value;
+        },
+        USER_DROP_MENU(state) {
+            state.showUserDropDown = !state.showUserDropDown
+        },
+        USER_DROP_DOWN_CHANGE(state, value) {
+            state.showUserDropDown = value
+        },
+        USER_LOGOUT(state) {
+            state.userIsloggedIn = false,
+                state.showUserDropDown = false
         }
+
+
 
     },
     namespaced: true

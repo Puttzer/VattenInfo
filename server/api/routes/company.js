@@ -1,6 +1,7 @@
 const Company = require('../../models/company')
 const bcrypt = require('../../Lib/Bcrypt.password')
 const JWT = require('../../Lib/Auth.token')
+const AuthMiddleware = require('../../Middleware/Auth.middleware')
 
 
 module.exports = function (router) {
@@ -55,5 +56,22 @@ module.exports = function (router) {
                     message: 'Error finding user',
                     error: err
                 }))
-    })
+    }),
+
+        router.delete('/company/:id', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
+            await Company.findByIdAndDelete(req.params.id).exec()
+                .then(docs => {
+
+                    res.status(200)
+                        .json({
+                            message: "Company user is deleted",
+                            company: docs
+                        })
+                })
+                .catch(err => res.status(500)
+                    .json({
+                        message: 'Error finding user',
+                        error: err
+                    }))
+        })
 }

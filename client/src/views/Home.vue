@@ -58,6 +58,7 @@
           contain
           max-height="500"
           max-width="500"
+          class="image-position"
         ></v-img>
       </v-col>
     </v-row>
@@ -203,6 +204,9 @@ text {
   /* text-align: center; */
   font-weight: 300;
   /* width: 200px; */
+}
+.image-position {
+  z-index: 0;
 }
 
 /* .provInfo {

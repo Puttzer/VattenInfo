@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken')
 const jwtSettings = {
-    expiresIn: '5 days'
+    expiresIn: '1h'
 }
 
 const generateToken = async (payload) => {

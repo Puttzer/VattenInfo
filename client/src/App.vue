@@ -1,10 +1,7 @@
 <template>
-  <v-app class="ma-0 pa-0">
+  <v-app class="ma-0 pa-0 d-flex justify-ceneter">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
-    <NavigationBar
-      v-if="this.admin.showNavbar === true"
-      class="d-xs-none d-md-flex"
-    />
+    <NavigationBar v-if="this.admin.showNavbar === true" class="ma-0 pa-0" />
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
     <v-main class="ma-0 pa-0 background" flat>
       <router-view></router-view>
@@ -37,9 +34,18 @@ export default {
     // test
   },
   computed: {
-    ...mapState(["admin"]),
+    ...mapState(["admin", "user"]),
   },
   methods: {},
+  async mounted() {
+    if (localStorage.userToken && localStorage.userLoggedin) {
+      console.log(localStorage.userToken);
+      console.log(localStorage.ocalStorage.userLoggedin);
+
+      await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
+      this.$router.push("/login/user");
+    }
+  },
 };
 </script>
 
@@ -52,6 +58,12 @@ export default {
   box-sizing: border-box;
 }
 .v-main {
+  width: 100vw;
+}
+.app-container {
+  width: 100vw;
+}
+NavigationBar {
   width: 100vw;
 }
 </style>
