@@ -11,10 +11,13 @@ module.exports = function (router) {
         console.log(req.params['id'])
         await Test.findById({ _id: req.params['id'] }).exec()
             .then(docs => res.status(200)
-                .json(docs))
+                .json({
+                    message: `test has been found with this ${docs._id}`,
+                    test: docs
+                }))
             .catch(err => res.status(500)
                 .json({
-                    message: 'Error finding user',
+                    message: 'Error finding Test with this ID',
                     error: err
                 }))
     })

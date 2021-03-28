@@ -8,6 +8,7 @@ import Login from '../views/Login.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
 import KundStartSidan from '../views/KundStartSidan.vue'
+import TestStartsidan from '../views/TestStartsidan.vue'
 
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
@@ -63,6 +64,11 @@ const routes = [
         name: 'AdminLogin',
         component: AdminLogin
     },
+    {
+        path: '/test/:id',
+        name: 'TestStartsidan',
+        component: TestStartsidan
+    },
     // {
     //     path: '/adminpage',
     //     name: 'AdminStartsidan',
@@ -88,19 +94,20 @@ const routes = [
                 next('/')
             }
         },
-        children: [{
-            path: 'tests',
-            component: Tests
-        }, {
-            path: 'privatecustomer',
-            component: PrivateCustomer
+        children: [
+            {
+                path: 'tests',
+                component: Tests
+            }, {
+                path: 'privatecustomer',
+                component: PrivateCustomer
 
-        },
-        {
-            path: 'ForetagCustomer',
-            component: ForetagCustomer
+            },
+            {
+                path: 'ForetagCustomer',
+                component: ForetagCustomer
 
-        }]
+            }]
     },
     {
         path: '/login/userpage',

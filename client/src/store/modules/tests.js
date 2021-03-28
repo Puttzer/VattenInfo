@@ -1,6 +1,7 @@
 export default {
     state: {
-        tests: []
+        tests: [],
+        test: {}
 
     },
     getters: {
@@ -39,26 +40,19 @@ export default {
             commit('EDIT_TEST', data.updatedTest, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
         },
+        async getTestInfo({ commit }, id) {
 
-
-        // async createNewTest({ commit }, newTest) {
-        //     const token = localStorage.getItem('token')
-        //     const response = await fetch('http://localhost:4000/api/test/create', {
-        //         method: 'POST',
-        //         body: JSON.stringify(newTest),
-        //         headers: {
-        //             'authorization': token,
-        //             'Content-Type': 'application/json',
-
-        //         }
-        //     });
-        //     const data = await response.json();
-        //     console.log(data)
-        //     commit('INSERT_TEST', data.newTest, { module: 'tests' })
-        //     // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
-
-
-        // },
+            const response = await fetch(`http://localhost:4000/api/test/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_TEST', data.test, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+        },
         async getTests({ commit }) {
             const token = localStorage.getItem('token')
             const response = await fetch('http://localhost:4000/api/tests', {
@@ -119,6 +113,9 @@ export default {
             state.tests.filter(test => test._id === _id).push(findTest)
 
         },
+        UPDATE_TEST(state, value) {
+            state.test = { ...value }
+        }
 
     },
     namespaced: true
