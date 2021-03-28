@@ -8,6 +8,7 @@ import Login from '../views/Login.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
 import KundStartSidan from '../views/KundStartSidan.vue'
+import TestStartsidan from '../views/TestStartsidan.vue'
 
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
@@ -63,6 +64,11 @@ const routes = [
 		name: 'AdminLogin',
 		component: AdminLogin
 	},
+  {
+        path: '/test/:id',
+        name: 'TestStartsidan',
+        component: TestStartsidan
+    },
 	{
 		path: '/test/scrolltest',
 		name: 'ScrollHome',
@@ -81,32 +87,44 @@ const routes = [
 	//         }
 	//     }
 	// },
-	{
-		path: '/adminpage',
-		// You could also have named views at the top
-		component: AdminStartsidan,
-		beforeEnter: (to, from, next) => {
-			console.log(store.state.admin.isLoggedIn)
-			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-				next()
-			} else {
-				next('/')
-			}
-		},
-		children: [{
-			path: 'tests',
-			component: Tests
-		}, {
-			path: 'privatecustomer',
-			component: PrivateCustomer
+	 {
+        path: '/adminpage',
+        // You could also have named views at the top
+        component: AdminStartsidan,
+        beforeEnter: (to, from, next) => {
+            console.log(store.state.admin.isLoggedIn)
+            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+                next()
+            } else {
+                next('/')
+            }
+        },
+        children: [
+            {
+                path: 'tests',
+                component: Tests
+            }, {
+                path: 'privatecustomer',
+                component: PrivateCustomer
 
-		}]
-	},
+            },
+            {
+                path: 'ForetagCustomer',
+                component: ForetagCustomer
+
+            }]
+    },
 	{
-		path: '/private',
-		name: 'KundStartsidan',
-		component: KundStartsidan
-	},
+        path: '/login/userpage',
+        name: 'KundStartSidan',
+        component: KundStartSidan
+    },
+
+    {
+        path: '/foretag',
+        name: 'ForetagStartsida',
+        component: ForetagStartsida
+    },
 	{
 		path: '/bestall',
 		name: 'BestallSidan',
@@ -166,7 +184,6 @@ const routes = [
 		path: '/*',
 		alias: '/'
 	},
-
 ]
 
 const router = new VueRouter({

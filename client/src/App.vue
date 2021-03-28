@@ -1,7 +1,10 @@
 <template>
   <v-app class="ma-0 pa-0 d-flex justify-ceneter">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
-    <NavigationBar v-if="this.admin.showNavbar === true" class="ma-0 pa-0" />
+    <NavigationBar
+      v-if="this.admin.showNavbar === true"
+      class="ma-0 pa-0 navigation-bar"
+    />
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
     <v-main class="ma-0 pa-0 background" flat>
       <router-view></router-view>
@@ -63,7 +66,7 @@ export default {
 .app-container {
   width: 100vw;
 }
-NavigationBar {
+.navigation-bar {
   width: 100vw;
 }
 </style>
