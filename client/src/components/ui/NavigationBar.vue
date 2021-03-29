@@ -60,6 +60,12 @@
           </v-col>
         </v-row>
       </div>
+      <v-row>
+        <ShowShoppingCart
+          v-if="this.tests.showSelectedTests === true"
+          class="position-shoppingcart"
+        />
+      </v-row>
       <v-row
         class="d-flex justify-end mr-4"
         v-if="this.user.showUserDropDown === true"
@@ -126,6 +132,7 @@
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
+import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -140,9 +147,10 @@ export default {
     CartComponent,
     LoginComp,
     UserDropDown,
+    ShowShoppingCart,
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "tests"]),
   },
   methods: {
     moveToAnalysKatalog() {
@@ -268,5 +276,11 @@ export default {
   overflow: auto; /* Enable scroll if needed */
   /* background-color: rgb(0, 0, 0);  Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.position-shoppingcart {
+  position: fixed;
+  z-index: 2;
+  top: 30px;
+  right: 0;
 }
 </style>

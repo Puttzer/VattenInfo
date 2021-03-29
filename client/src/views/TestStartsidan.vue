@@ -40,24 +40,25 @@
           <h3 class="bold">Pris :{{ this.tests.test.price }} Kr</h3>
         </v-row>
         <v-row>
-          <div class="d-flex flex-row ma-2">
-            <v-btn small color="btnColor">
+          <!-- <div class="d-flex flex-row ma-2">
+            <v-btn small color="btnColor" @click="decreaseCount">
               <v-icon>remove</v-icon>
             </v-btn>
-            <p>{{ count }}</p>
-            <v-btn small color="btnColor">
+            <p>{{ testSampleCount }}</p>
+            <v-btn small color="btnColor" @click="increaseCount">
               <v-icon>add</v-icon>
             </v-btn>
-          </div>
+          </div> -->
 
-          <v-btn color="btnColor"><v-icon>add_shopping_cart</v-icon> Köp</v-btn>
+          <v-btn color="btnColor" @click="increaseThecounterValue()"
+            ><v-icon>add_shopping_cart</v-icon> Köp</v-btn
+          >
         </v-row>
       </v-col>
       <v-col cols="3">
         <h1>relaterad producter</h1>
       </v-col>
     </v-row>
-
     {{ this.tests.test }}
   </v-main>
 </template>
@@ -67,9 +68,7 @@ import { mapState } from "vuex";
 export default {
   name: "TestStartsidan",
   data() {
-    return {
-      count: 0,
-    };
+    return {};
   },
   computed: {
     ...mapState(["tests"]),
@@ -77,6 +76,23 @@ export default {
   async mounted() {
     const id = this.$route.params.id;
     await this.$store.dispatch("tests/getTestInfo", id);
+  },
+  methods: {
+    // decreaseCount() {
+    //   if (this.testSampleCount <= 1) {
+    //     return (this.testSampleCount = 1);
+    //   } else {
+    //     return this.testSampleCount--;
+    //   }
+    // },
+    // increaseCount() {
+    //   return this.testSampleCount++;
+    // },
+    increaseThecounterValue() {
+      const id = this.$route.params.id;
+      console.log(id);
+      this.$store.commit("tests/INCREASE_COUNT", id);
+    },
   },
 };
 </script>
