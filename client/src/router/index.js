@@ -29,6 +29,7 @@ import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import ScrollHome from "../views/ScrollHome.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
+import KassaSida from '../views/KassaSida.vue'
 
 
 Vue.use(VueRouter)
@@ -65,14 +66,14 @@ const routes = [
         component: AdminLogin
     },
     {
-        path: '/test/:id',
-        name: 'TestStartsidan',
-        component: TestStartsidan
-    },
-    {
         path: '/test/scrolltest',
         name: 'ScrollHome',
         component: ScrollHome
+    },
+    {
+        path: '/test/:id',
+        name: 'TestStartsidan',
+        component: TestStartsidan
     },
     // {
     //     path: '/adminpage',
@@ -129,6 +130,11 @@ const routes = [
         path: '/bestall',
         name: 'BestallSidan',
         component: BestallSidan
+    },
+    {
+        path: '/kassasida',
+        name: 'KassaSida',
+        component: KassaSida
     },
     {
         path: '/blanketter',

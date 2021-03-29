@@ -1,7 +1,10 @@
 export default {
     state: {
         tests: [],
-        test: {}
+        test: {},
+        count: 0,
+        selectedTests: [],
+        showSelectedTests: false,
 
     },
     getters: {
@@ -115,6 +118,21 @@ export default {
         },
         UPDATE_TEST(state, value) {
             state.test = { ...value }
+        },
+        INCREASE_COUNT(state) {
+            const isTheTestExists = state.selectedTests.find(test => test._id === state.test._id)
+            if (isTheTestExists) {
+                return
+            }
+            state.count++;
+            state.selectedTests.push(state.test)
+        },
+        SHOW_CART_COMPONENT(state) {
+            console.log('show action')
+            state.showSelectedTests = true;
+        },
+        CLOSE_CART_COMPONENT(state) {
+            state.showSelectedTests = false;
         }
 
     },
