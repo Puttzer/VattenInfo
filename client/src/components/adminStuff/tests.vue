@@ -4,10 +4,10 @@
       <v-row class="d-flex flex-row">
         <h1>Tester</h1>
         <v-spacer></v-spacer>
-        <v-btn class="mr-12 mt-6" @click="showPopup"
-          >Lägg till <br />
-          Test</v-btn
-        >
+        <v-btn class="mr-12 mt-6" @click="showPopup">
+          Lägg till
+          <br />Test
+        </v-btn>
       </v-row>
       <v-row class="d-flex flex-row justify-end">
         <AddTest
@@ -29,13 +29,7 @@
           class="ma-2"
         >
           <v-list class="d-flex flex-column justify-center" id="testList">
-            <v-img
-              id="testImage"
-              :src="test.image"
-              height="150px"
-              width="150px"
-              name="testimage"
-            ></v-img>
+            <v-img id="testImage" :src="test.image" height="150px" width="250px"></v-img>
             <v-divider></v-divider>
             <h2 class="Heading-2" id="testName">Title : {{ test.testname }}</h2>
             <h4 id="testCategory">Detailjer :{{ test.category }}</h4>
@@ -70,21 +64,23 @@ export default {
         price: "",
         image: "",
         category: "",
-        id: "",
-      },
+        id: ""
+      }
     };
   },
   name: "tests",
   components: {
-    AddTest,
+    AddTest
   },
   computed: {
     ...mapState(["tests"]),
     testInfo(id) {
-      const test = this.tests.tests.find((test) => test._id === id);
+      const test = this.tests.tests.find(test => test._id === id);
+      console.log(test.image);
+
       console.log(test);
       return test;
-    },
+    }
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
@@ -107,7 +103,7 @@ export default {
       this.showAddTest = false;
     },
     editTest(id) {
-      const test = this.tests.tests.find((test) => test._id === id);
+      const test = this.tests.tests.find(test => test._id === id);
       console.log(test);
       this.showAddTest = true;
       this.addtestButton = false;
@@ -119,9 +115,10 @@ export default {
       this.test.description = test.description;
       this.test.id = test._id;
       this.test.image = test.image;
+
       this.test.category = test.category;
-    },
-  },
+    }
+  }
 };
 </script>
 

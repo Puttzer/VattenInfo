@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <h1>Verksamhet & Samfällighet</h1>
+ 
   </v-content>
 </template>
 

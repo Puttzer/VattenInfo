@@ -37,14 +37,18 @@ module.exports = function (router) {
         } else {
 
             const { testname, testtype, price, short_description, description, category } = req.body;
-            let test = {}
+			
+			const imgPath = req.file.path.split('../client/public')[1]
+
+
+			let test = {}
             test.testname = testname
             test.testtype = testtype
             test.short_description = short_description
             test.description = description
             test.category = category
             test.price = price
-            test.image = req.file.path
+            test.image = imgPath
             let newTest = new Test(test)
             console.log(newTest)
             try {
@@ -59,7 +63,7 @@ module.exports = function (router) {
 
 
 
-
+	
     router.get('/tests', function (req, res) {
 
         Test.find({}).exec()

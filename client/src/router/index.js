@@ -152,7 +152,7 @@ const routes = [
         component: HjalpMedDittVatten
     },
     {
-        path: '/enskilt_vatten',
+        path: '/analyskatalog/enskiltdricksvatten/',
         name: 'EnsikltDricksVatten',
         component: EnsikltDricksVatten
     },
