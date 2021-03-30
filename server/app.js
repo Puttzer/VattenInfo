@@ -21,8 +21,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(express.static('static'))
-// app.use('../../client/public/uploads', express.static('uploads'))
-app.use('/uploads', express.static('uploads'));
+app.use('../../client/public/uploads', express.static('uploads'))
+// app.use('/uploads', express.static('uploads'));
+
 app.use(morgan('dev'))
 
 //routing middleware

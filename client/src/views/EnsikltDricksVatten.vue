@@ -2,13 +2,10 @@
   <v-main class="container">
     <v-flex>
       <v-row>
-        <div class="d-flex flex-row">
-          <v-icon color="black">home</v-icon>
-          <p>/ {{ this.$route.path }}</p>
-        </div>
+       
       </v-row>
       <v-row d-flex justify="center">
-        <h1>Enskilt Dricks Vatten</h1>
+        <h1>Enskilt dricksvatten</h1>
       </v-row>
       <v-row class="d-flex justify-center font-weight-light blue--text mt-6">
         <h3>Analyser för dig med enskild brunn Introducerande text</h3>
@@ -113,7 +110,6 @@
 
 <script>
 import { mapState } from "vuex";
-
 export default {
   name: "EnsikltDricksVatten",
   data() {

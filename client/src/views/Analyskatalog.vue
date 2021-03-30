@@ -120,7 +120,7 @@
 export default {
   methods: {
     moveToEnsikltdricksvatten() {
-      this.$router.push("/enskilt_vatten");
+      this.$router.push("/analyskatalog/enskiltdricksvatten");
     },
     moveToAvloppAnalyser() {
       this.$router.push("/avlopp_analyser");
