@@ -94,7 +94,7 @@
                 <li class="text--white">rådgivning</li>
               </ul>
             </li>
-            <li>Beställ analys</li>
+            <li @click="moveToBestallanalys">Beställ analys</li>
             <li
               @mouseover="showAboutSection = true"
               @mouseleave="showAboutSection = false"
@@ -158,6 +158,9 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
+    },
+    moveToBestallanalys() {
+      this.$router.push("/bestallanalys");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");

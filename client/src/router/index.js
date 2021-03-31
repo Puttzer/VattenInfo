@@ -127,7 +127,7 @@ const routes = [
         component: ForetagStartsida
     },
     {
-        path: '/bestall',
+        path: '/bestallanalys',
         name: 'BestallSidan',
         component: BestallSidan
     },
