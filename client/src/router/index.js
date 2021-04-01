@@ -5,8 +5,8 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundBestallsidan from '../views/KundBestallsidan.vue'
-import ForetagStartsida from '../views/ForetagStartsida'
+// import KundBestallsidan from '../views/KundBestallsidan.vue'
+// import ForetagStartsida from '../views/ForetagStartsida'
 import KundStartsidan from '../views/KundStartsidan.vue'
 
 import AnalysKatalog from '../views/Analyskatalog.vue'
@@ -27,7 +27,8 @@ import AdminStartsidan from '../views/AdminStartsidan.vue'
 import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import ScrollHome from "../views/ScrollHome.vue";
-import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
+import ScrollAnalys from "../views/ScrollAnalys.vue";
+// import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 
 
 Vue.use(VueRouter)
@@ -67,6 +68,11 @@ const routes = [
 		path: '/test/scrolltest',
 		name: 'ScrollHome',
 		component: ScrollHome
+	},
+	{
+		path: '/test/ScrollAnalys',
+		name: 'ScrollAnalys',
+		component: ScrollAnalys
 	},
 	// {
 	//     path: '/adminpage',
