@@ -7,7 +7,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
-import KundStartSidan from '../views/KundStartSidan.vue'
+import KundStartsidan from '../views/KundStartsidan.vue'
 
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
@@ -136,7 +136,7 @@ const routes = [
 		path: '/avlopp_analyser',
 		name: 'AvloppsAnalyser',
 		component: AvloppsAnalyser
-  },
+	},
 	{
 		path: '/bygglov_tillstand',
 		name: 'BygglovTillstand',
