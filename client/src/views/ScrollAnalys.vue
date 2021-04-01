@@ -1,5 +1,6 @@
 <template>
   <v-main class="ma-0 pa-0">
+    <FixedAnalys />
     <v-row class="d-flex flex-column justify-center align-center mt-6">
       <v-col
         class="d-flex flex-column justify-center align-center mt-2"
@@ -17,15 +18,14 @@
 
     <v-row class="mt-8">
       <v-col cols="2">
-        <img src="@/assets/wave.png" height="125px" width="100px"
-      /></v-col>
+        <!-- <img src="@/assets/wave.png" height="125px" width="100px"
+      /> -->
+      </v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div class="pointer" @click="moveToEnsikltdricksvatten">
           <img src="@/assets/kran.png" height="140px" width="214px" />
-          <div class="lowertext">
-            <h3 class="blue--text">Enskilt dricksvatten</h3>
-            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
-          </div>
+          <h3 class="blue--text">Enskilt dricksvatten</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
         </div>
       </v-col>
       <v-col cols="5" class="d-flex flex-column">
@@ -39,8 +39,9 @@
 
     <v-row class="mt-8 mb-12">
       <v-col cols="2" class="d-flex align-center">
-        <img src="@/assets/wave.png" height="125px" width="100px"
-      /></v-col>
+        <!-- <img src="@/assets/wave.png" height="125px" width="100px"
+        /> -->
+      </v-col>
       <v-col
         @click="moveToBygglovTillstand"
         cols="5"
@@ -61,10 +62,8 @@
       >
         <div @click="moveToAvloppAnalyser" class="pointer">
           <img src="@/assets/analys.png" height="140px" width="214px" />
-          <div class="lowertext">
-            <h3 class="blue--text">Avloppanalyser</h3>
-            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
-          </div>
+          <h3 class="blue--text">Avloppanalyser</h3>
+          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
         </div>
       </v-col>
     </v-row>
@@ -93,8 +92,9 @@
 
     <v-row class="mt-12 mb-12">
       <v-col cols="3" class="d-flex align-center">
-        <img src="@/assets/wave.png" height="125px" width="100px"
-      /></v-col>
+        <!-- <img src="@/assets/wave.png" height="125px" width="100px"
+        /> -->
+      </v-col>
       <v-col cols="3" class="d-flex flex-column justify-start align-center">
         <img src="@/assets/waterdroplet.png" />
         <img
@@ -123,10 +123,14 @@
 </template>
 
 <script>
+import FixedAnalys from "../components/ui/FixedAnalys";
 export default {
+  components: {
+    FixedAnalys,
+  },
   methods: {
     moveToEnsikltdricksvatten() {
-      this.$router.push("/analyskatalog/enskiltdricksvatten");
+      this.$router.push("/enskilt_vatten");
     },
     moveToAvloppAnalyser() {
       this.$router.push("/avlopp_analyser");
@@ -142,6 +146,8 @@ export default {
 </script>
 
 <style scoped>
+/* This exists to center the text beneath the images
+ where needed so it appear more centered  */
 .lowertext {
   margin-left: 31px;
 }
