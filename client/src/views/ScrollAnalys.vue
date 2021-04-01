@@ -23,14 +23,14 @@
       </v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div class="pointer" @click="moveToEnsikltdricksvatten">
-          <img src="@/assets/kran.png" height="200px" width="250px" />
+          <img src="@/assets/kran.png" height="140px" width="214px" />
           <h3 class="blue--text">Enskilt dricksvatten</h3>
           <p class="text--secondary">Lorem ipsum dolor sit amet</p>
         </div>
       </v-col>
       <v-col cols="5" class="d-flex flex-column">
         <div class="pointer" @click="moveToVerksamhet">
-          <img src="@/assets/Samfalligheter.png" height="200px" width="200px" />
+          <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
           <h3 class="blue--text">Verksamhet & samfällighet</h3>
           <p class="text--secondary">Lorem ipsum dolor sit amet</p>
         </div>
@@ -48,9 +48,11 @@
         class="d-flex flex-column justify-center align-center pointer"
       >
         <div @click="moveToBygglovTillstand" class="pointer">
-          <img src="@/assets/Avtal.png" height="170px" width="180px" />
-          <h3 class="blue--text">Bygglov & tillstånd</h3>
-          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+          <img src="@/assets/Avtal.png" height="140px" width="214px" />
+          <div class="lowertext">
+            <h3 class="blue--text">Bygglov & tillstånd</h3>
+            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+          </div>
         </div>
       </v-col>
       <v-col
@@ -59,7 +61,7 @@
         class="d-flex flex-column pointer"
       >
         <div @click="moveToAvloppAnalyser" class="pointer">
-          <img src="@/assets/analys.png" height="170px" width="180px" />
+          <img src="@/assets/analys.png" height="140px" width="214px" />
           <h3 class="blue--text">Avloppanalyser</h3>
           <p class="text--secondary">Lorem ipsum dolor sit amet</p>
         </div>
@@ -144,6 +146,9 @@ export default {
 </script>
 
 <style scoped>
+.lowertext {
+  margin-left: 31px;
+}
 .linkText {
   color: red;
   font-size: 16px;
