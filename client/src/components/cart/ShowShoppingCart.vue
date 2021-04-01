@@ -1,14 +1,22 @@
 <template>
-  <div class="shopping-container">
+  <div class="shopping-container background">
+    <v-row class="ma-0 pa-0 mt-n4">
+      <v-col class="d-flex justify-center align-end ma-0 pa-0">
+        <div class="arrow-up"></div>
+      </v-col>
+    </v-row>
     <v-row class="pa-0 ma-0">
-      <v-col cols="12" class="containercart yellow d-flex justify-space-between flex-row">
+      <v-col
+        cols="12"
+        class="containercart yellow d-flex justify-space-between flex-row"
+      >
         <p class="title blue-grey--text lighten-3">Varukorg</p>
         <v-btn @click="closeCartComponent" text class="closeModal">
           <v-icon color="black">close</v-icon>
         </v-btn>
       </v-col>
     </v-row>
-    <v-row class="ma-0 pa-0">
+    <v-row class="ma-0 pa-0 d-flex justify-center">
       <v-col
         v-for="(selectTest, index) in this.tests.selectedTests"
         :key="selectTest._id"
@@ -22,7 +30,9 @@
           <div>
             <h3>{{ selectTest.price }} KR</h3>
           </div>
-          <v-icon large color="red">delete</v-icon>
+          <v-icon large color="red" @click="deleteTestInCart(selectTest._id)"
+            >delete</v-icon
+          >
         </v-list>
         <v-divider></v-divider>
       </v-col>
@@ -30,15 +40,17 @@
 
     <v-row>
       <v-col cols="12">
-        <h3 class="pl-4">Totalpris :</h3>
+        <h3 class="pl-4">Totalpris :{{ this.totalPrice }} KR</h3>
       </v-col>
     </v-row>
-    <v-row >
+    <v-row>
       <v-col cols="12">
         <div
           @click="moveToKassaSida"
-          class="btnColor shopme d-flex  align-center justify-center white--text"
-        >Ga till kassa</div>
+          class="btnColor shopme d-flex align-center justify-center white--text"
+        >
+          Ga till kassa
+        </div>
       </v-col>
     </v-row>
   </div>
@@ -52,26 +64,41 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["tests"])
+    ...mapState(["tests"]),
+    totalPrice() {
+      let totalAmount = 0;
+      this.tests.selectedTests.forEach((test) => {
+        console.log(test.price);
+        totalAmount = totalAmount + parseInt(test.price);
+      });
+      console.log(totalAmount);
+      this.$store.commit("tests/TOTAL_AMOUNT", totalAmount);
+      return totalAmount;
+    },
   },
+  mounted() {},
   methods: {
     closeCartComponent() {
       this.$store.commit("tests/CLOSE_CART_COMPONENT");
     },
     moveToKassaSida() {
+      this.$store.commit("tests/CLOSE_CART_COMPONENT");
       this.$router.push("/kassasida");
-    }
-  }
+    },
+    deleteTestInCart(id) {
+      console.log(id, " move to mutaions");
+      this.$store.commit("tests/DELETE_TEST_CART", id);
+    },
+  },
 };
 </script>
 
 <style scoped>
 .shopping-container {
-  min-height: 10vh;
-  width: 40vw;
+  min-height: 15vh;
+  width: 30vw;
   margin: 0 auto;
-  margin-top: 50px;
-  background: rgb(228, 227, 226);
+  margin-top: 40px;
   box-shadow: 2px 2px 2px 2px rgb(107, 95, 95);
 }
 
@@ -100,7 +127,15 @@ export default {
   height: 10vh;
 }
 
-.shopme:hover{
-	box-shadow: 2px 2px 10px #010;
+.shopme:hover {
+  box-shadow: 2px 2px 10px #010;
+}
+.arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+
+  border-bottom: 15px solid #f7db68;
 }
 </style>

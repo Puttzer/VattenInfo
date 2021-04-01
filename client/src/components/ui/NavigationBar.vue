@@ -60,12 +60,12 @@
           </v-col>
         </v-row>
       </div>
-      <v-row>
-        <ShowShoppingCart
-          v-if="this.tests.showSelectedTests === true"
-          class="position-shoppingcart"
-        />
-      </v-row>
+
+      <ShowShoppingCart
+        class="position-shoppingcart"
+        v-if="this.tests.showSelectedTests === true"
+      />
+
       <v-row
         class="d-flex justify-end mr-4"
         v-if="this.user.showUserDropDown === true"
@@ -175,7 +175,6 @@ export default {
 <style scoped>
 .nav-container {
   width: 100vw;
-  border-bottom: 1px solid #449ace;
 }
 .navbarTop {
   height: 60px;
@@ -282,8 +281,10 @@ export default {
 }
 .position-shoppingcart {
   position: fixed;
-  z-index: 2;
-  top: 30px;
-  right: 0;
+  z-index: 3;
+  top: 40px;
+  right: 25px;
+  background-color: none;
+  min-height: 5vh;
 }
 </style>

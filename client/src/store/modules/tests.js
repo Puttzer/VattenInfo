@@ -5,9 +5,11 @@ export default {
         count: 0,
         selectedTests: [],
         showSelectedTests: false,
+        totalAmount: 0,
 
     },
     getters: {
+
 
     },
     actions: {
@@ -133,7 +135,17 @@ export default {
         },
         CLOSE_CART_COMPONENT(state) {
             state.showSelectedTests = false;
-        }
+        },
+        TOTAL_AMOUNT(state, total) {
+            state.totalAmount = total
+        },
+        DELETE_TEST_CART(state, id) {
+            console.log('move to state')
+            const remainingTests = state.selectedTests.filter((test) => test._id !== id)
+            state.selectedTests = remainingTests
+            state.count--
+            console.log(state.selectedTests)
+        },
 
     },
     namespaced: true
