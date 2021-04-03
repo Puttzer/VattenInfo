@@ -1,9 +1,15 @@
 export default {
     state: {
-        tests: []
+        tests: [],
+        test: {},
+        count: 0,
+        selectedTests: [],
+        showSelectedTests: false,
+        totalAmount: 0,
 
     },
     getters: {
+
 
     },
     actions: {
@@ -39,26 +45,19 @@ export default {
             commit('EDIT_TEST', data.updatedTest, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
         },
+        async getTestInfo({ commit }, id) {
 
-
-        // async createNewTest({ commit }, newTest) {
-        //     const token = localStorage.getItem('token')
-        //     const response = await fetch('http://localhost:4000/api/test/create', {
-        //         method: 'POST',
-        //         body: JSON.stringify(newTest),
-        //         headers: {
-        //             'authorization': token,
-        //             'Content-Type': 'application/json',
-
-        //         }
-        //     });
-        //     const data = await response.json();
-        //     console.log(data)
-        //     commit('INSERT_TEST', data.newTest, { module: 'tests' })
-        //     // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
-
-
-        // },
+            const response = await fetch(`http://localhost:4000/api/test/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_TEST', data.test, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+        },
         async getTests({ commit }) {
             const token = localStorage.getItem('token')
             const response = await fetch('http://localhost:4000/api/tests', {
@@ -118,6 +117,34 @@ export default {
 
             state.tests.filter(test => test._id === _id).push(findTest)
 
+        },
+        UPDATE_TEST(state, value) {
+            state.test = { ...value }
+        },
+        INCREASE_COUNT(state) {
+            const isTheTestExists = state.selectedTests.find(test => test._id === state.test._id)
+            if (isTheTestExists) {
+                return
+            }
+            state.count++;
+            state.selectedTests.push(state.test)
+        },
+        SHOW_CART_COMPONENT(state) {
+            console.log('show action')
+            state.showSelectedTests = true;
+        },
+        CLOSE_CART_COMPONENT(state) {
+            state.showSelectedTests = false;
+        },
+        TOTAL_AMOUNT(state, total) {
+            state.totalAmount = total
+        },
+        DELETE_TEST_CART(state, id) {
+            console.log('move to state')
+            const remainingTests = state.selectedTests.filter((test) => test._id !== id)
+            state.selectedTests = remainingTests
+            state.count--
+            console.log(state.selectedTests)
         },
 
     },

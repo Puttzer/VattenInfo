@@ -146,6 +146,8 @@ export default {
 </script>
 
 <style scoped>
+/* This exists to center the text beneath the images
+ where needed so it appear more centered  */
 .lowertext {
   margin-left: 31px;
 }

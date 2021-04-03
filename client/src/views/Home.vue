@@ -1,5 +1,5 @@
 <template>
-  <div class="background container mt-6">
+  <div class="background container mt-12">
     <v-row>
       <v-col
         height="200px"
@@ -42,7 +42,7 @@
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <svg viewBox="0 0 500 500">
+        <svg viewBox="0 0 500 500" color="red">
           <path
             id="curve"
             fill="transparent"
@@ -206,6 +206,7 @@ text {
   /* width: 200px; */
 }
 .image-position {
+  position: absolute;
   z-index: 0;
 }
 

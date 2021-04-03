@@ -60,6 +60,12 @@
           </v-col>
         </v-row>
       </div>
+
+      <ShowShoppingCart
+        class="position-shoppingcart"
+        v-if="this.tests.showSelectedTests === true"
+      />
+
       <v-row
         class="d-flex justify-end mr-4"
         v-if="this.user.showUserDropDown === true"
@@ -88,7 +94,7 @@
                 <li class="text--white">rådgivning</li>
               </ul>
             </li>
-            <li>Beställ analys</li>
+            <li @click="moveToBestallanalys">Beställ analys</li>
             <li
               @mouseover="showAboutSection = true"
               @mouseleave="showAboutSection = false"
@@ -126,6 +132,7 @@
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
+import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -140,9 +147,10 @@ export default {
     CartComponent,
     LoginComp,
     UserDropDown,
+    ShowShoppingCart,
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "tests"]),
   },
   methods: {
     moveToAnalysKatalog() {
@@ -150,6 +158,9 @@ export default {
     },
     moveToHome() {
       this.$router.push("/");
+    },
+    moveToBestallanalys() {
+      this.$router.push("/bestallanalys");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
@@ -164,7 +175,6 @@ export default {
 <style scoped>
 .nav-container {
   width: 100vw;
-  border-bottom: 1px solid #449ace;
 }
 .navbarTop {
   height: 60px;
@@ -268,5 +278,13 @@ export default {
   overflow: auto; /* Enable scroll if needed */
   /* background-color: rgb(0, 0, 0);  Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+.position-shoppingcart {
+  position: fixed;
+  z-index: 3;
+  top: 40px;
+  right: 25px;
+  background-color: none;
+  min-height: 5vh;
 }
 </style>

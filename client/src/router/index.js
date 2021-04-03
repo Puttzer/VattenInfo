@@ -5,10 +5,10 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-// import KundBestallsidan from '../views/KundBestallsidan.vue'
-// import ForetagStartsida from '../views/ForetagStartsida'
 import KundStartsidan from '../views/KundStartsidan.vue'
-
+import KundBestallsidan from '../views/KundBestallsidan.vue'
+import ForetagStartsida from '../views/ForetagStartsida'
+import TestStartsidan from '../views/TestStartsidan.vue'
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
 import RegistreraKund from '../views/RegistreraKund.vue'
@@ -28,8 +28,8 @@ import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
-// import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
-
+import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
+import KassaSida from '../views/KassaSida.vue'
 
 Vue.use(VueRouter)
 
@@ -57,7 +57,7 @@ const routes = [
 	{
 		path: '/login/user',
 		name: 'PrivateAccount',
-		component: KundStartsidan
+		component: KundBestallsidan
 	},
 	{
 		path: '/login/admin',
@@ -73,6 +73,11 @@ const routes = [
 		path: '/test/ScrollAnalys',
 		name: 'ScrollAnalys',
 		component: ScrollAnalys
+  },
+  {    
+		path: '/test/:id',
+		name: 'TestStartsidan',
+		component: TestStartsidan
 	},
 	// {
 	//     path: '/adminpage',
@@ -99,24 +104,41 @@ const routes = [
 				next('/')
 			}
 		},
-		children: [{
-			path: 'tests',
-			component: Tests
-		}, {
-			path: 'privatecustomer',
-			component: PrivateCustomer
+		children: [
+			{
+				path: 'tests',
+				component: Tests
+			}, {
+				path: 'privatecustomer',
+				component: PrivateCustomer
 
-		}]
+			},
+			{
+				path: 'ForetagCustomer',
+				component: ForetagCustomer
+
+			}]
 	},
 	{
-		path: '/private',
+		path: '/login/userpage',
 		name: 'KundStartsidan',
 		component: KundStartsidan
 	},
+
 	{
-		path: '/bestall',
+		path: '/foretag',
+		name: 'ForetagStartsida',
+		component: ForetagStartsida
+	},
+	{
+		path: '/bestallanalys',
 		name: 'BestallSidan',
 		component: BestallSidan
+	},
+	{
+		path: '/kassasida',
+		name: 'KassaSida',
+		component: KassaSida
 	},
 	{
 		path: '/blanketter',
@@ -134,7 +156,7 @@ const routes = [
 		component: HjalpMedDittVatten
 	},
 	{
-		path: '/enskilt_vatten',
+		path: '/analyskatalog/enskiltdricksvatten/',
 		name: 'EnsikltDricksVatten',
 		component: EnsikltDricksVatten
 	},
@@ -172,7 +194,6 @@ const routes = [
 		path: '/*',
 		alias: '/'
 	},
-
 ]
 
 const router = new VueRouter({
