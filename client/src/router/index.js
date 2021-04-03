@@ -5,11 +5,10 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
+import KundStartsidan from '../views/KundStartsidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
-import KundStartsidan from '../views/KundStartsidan.vue'
 import TestStartsidan from '../views/TestStartsidan.vue'
-
 import AnalysKatalog from '../views/Analyskatalog.vue'
 import KontaktSidan from '../views/KontaktSidan.vue'
 import RegistreraKund from '../views/RegistreraKund.vue'
@@ -28,9 +27,9 @@ import AdminStartsidan from '../views/AdminStartsidan.vue'
 import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import ScrollHome from "../views/ScrollHome.vue";
+import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import KassaSida from '../views/KassaSida.vue'
-
 
 Vue.use(VueRouter)
 
@@ -71,6 +70,11 @@ const routes = [
 		component: ScrollHome
 	},
 	{
+		path: '/test/ScrollAnalys',
+		name: 'ScrollAnalys',
+		component: ScrollAnalys
+  },
+  {    
 		path: '/test/:id',
 		name: 'TestStartsidan',
 		component: TestStartsidan
