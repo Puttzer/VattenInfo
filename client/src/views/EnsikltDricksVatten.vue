@@ -1,9 +1,7 @@
 <template>
   <v-main class="container">
     <v-flex>
-      <v-row>
-       
-      </v-row>
+      <v-row> </v-row>
       <v-row d-flex justify="center">
         <h1>Enskilt dricksvatten</h1>
       </v-row>
@@ -18,13 +16,17 @@
           height="300px"
           class="ma-4"
         >
-          <v-list class="d-flex flex-column justify-center" id="testList">
+          <v-list
+            class="d-flex flex-column justify-center"
+            id="testList ma-0 pa-0"
+          >
             <v-img
               id="testImage"
               :src="test.image"
               height="150px"
-              width="150px"
+              width="300px"
               name="testimage"
+              class="ma-0 pa-0"
             ></v-img>
             <v-divider></v-divider>
             <div class="ma-2">
@@ -117,6 +119,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
+    console.log(this.$root);
   },
   computed: {
     ...mapState(["tests"]),
@@ -131,6 +134,7 @@ export default {
   methods: {
     moveToCart(id) {
       console.log("move to cart", id);
+      console.log(this);
     },
     moveToIndividual(id, test) {
       console.log(id);
