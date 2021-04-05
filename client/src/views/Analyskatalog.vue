@@ -28,7 +28,7 @@
           </div>
         </div>
       </v-col>
-      <v-col cols="5" class="d-flex flex-column">
+      <v-col cols="3" class="d-flex flex-column">
         <div class="pointer" @click="moveToVerksamhet">
           <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
           <h3 class="blue--text">Verksamhet & samfällighet</h3>
@@ -42,12 +42,12 @@
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col
-        @click="moveToBygglovTillstand"
+
         cols="5"
-        class="d-flex flex-column justify-center align-center pointer"
+        class="d-flex flex-column justify-center align-center"
       >
-        <div @click="moveToBygglovTillstand" class="pointer">
-          <img src="@/assets/Avtal.png" height="140px" width="214px" />
+        <div class="pointer">
+          <img @click="moveToBygglovTillstand" src="@/assets/Avtal.png" height="140px" width="214px" />
           <div class="lowertext">
             <h3 class="blue--text">Bygglov & tillstånd</h3>
             <p class="text--secondary">Lorem ipsum dolor sit amet</p>
@@ -55,12 +55,12 @@
         </div>
       </v-col>
       <v-col
-        @click="moveToAvloppAnalyser"
-        cols="5"
-        class="d-flex flex-column pointer"
+
+        cols="2"
+        class="d-flex flex-column"
       >
-        <div @click="moveToAvloppAnalyser" class="pointer">
-          <img src="@/assets/analys.png" height="140px" width="214px" />
+        <div class="pointer">
+          <img @click="moveToAvloppAnalyser" src="@/assets/analys.png" height="140px" width="214px" />
           <div class="lowertext">
             <h3 class="blue--text">Avloppanalyser</h3>
             <p class="text--secondary">Lorem ipsum dolor sit amet</p>
@@ -130,9 +130,12 @@ export default {
     },
     moveToAvloppAnalyser() {
       this.$router.push("/avlopp_analyser");
+	console.log("avlopp");
     },
     moveToBygglovTillstand() {
       this.$router.push("/bygglov_tillstand");
+	console.log("bygglov_tillstand");
+
     },
     moveToVerksamhet() {
       this.$router.push("/verksamhet");
@@ -155,10 +158,10 @@ export default {
 }
 .pointer {
   cursor: pointer;
-  transition: all 1s ease-out;
+  /* transition: all 0.5s ease-out; */
 }
 
-.pointer:hover {
+/* .pointer:hover {
   transform: scale(1.08);
-}
+} */
 </style>
