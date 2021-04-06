@@ -2,9 +2,19 @@ const Company = require('../../models/company')
 const bcrypt = require('../../Lib/Bcrypt.password')
 const JWT = require('../../Lib/Auth.token')
 const AuthMiddleware = require('../../Middleware/Auth.middleware')
+const isCompanyLoggedIn = require('../../Middleware/Company.middleware')
 
 
 module.exports = function (router) {
+
+    router.post('/company/validatetoken', isCompanyLoggedIn.isCompanyLoggedIn, (req, res) => {
+        res.status(200)
+        res.json({
+            message: 'token is valid',
+            email: req.email,
+        })
+    })
+
     router.post('/company/register', async (req, res) => {
         console.log()
         const findCompany = await Company.findOne({
