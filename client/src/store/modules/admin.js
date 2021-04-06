@@ -37,8 +37,25 @@ export default {
             commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
             commit('UPDATE_NAVBAR', true, { module: 'admin' });
             localStorage.removeItem('token')
-        }
+        },
 
+        async validateAdmin({ commit }) {
+            const token = localStorage.getItem('token')
+            const response = await fetch(`http://localhost:4000/api/admin/validatetoken`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            commit('UPDATE_USERNAME', data.username, { module: 'admin' })
+            commit('UPDATE_ISADMIN', data.isAdmin, { module: 'admin' })
+            commit('UPDATE_ISLOGGEDIN', data.isLoggedIn, { module: 'admin' })
+            commit('UPDATE_NAVBAR', false, { module: 'admin' });
+        },
     },
     mutations: {
         // after geeting response from server, token has to be stored in localstorage

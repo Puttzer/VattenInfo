@@ -2,7 +2,8 @@ const Order = require('../../models/order.js')
 const { generateOrderNr } = require('../../Lib/GenerateOrder.js')
 const User = require('../../models/user')
 const Test = require('../../models/test')
-const { listeners } = require('../../models/order.js')
+const AuthMiddleware = require('../../Middleware/Auth.middleware')
+const UserIsLoggedin = require('../../Middleware/User.middleware')
 
 module.exports = function (router) {
     router.post('/order/generate', async (req, res) => {
@@ -41,7 +42,7 @@ module.exports = function (router) {
         }
     })
 
-    router.get('/orders', async (req, res) => {
+    router.get('/orders', AuthMiddleware.isAdminLoggedIn, async (req, res) => {
         await Order.find({}).exec()
             .then(docs =>
                 res.status(200).json({
@@ -54,4 +55,20 @@ module.exports = function (router) {
                     error: err
                 }))
     })
+
+    router.get('/order/:userId', UserIsLoggedin.isUserLoggedIn, async (req, res) => {
+        await Order.find({ userId: req.params.userId }).exec()
+            .then(docs =>
+                res.status(200).json({
+                    message: 'list of all orders',
+                    orders: docs
+                }))
+            .catch(err => res.status(500)
+                .json({
+                    message: 'Error finding user',
+                    error: err
+                }))
+    })
+
+
 }

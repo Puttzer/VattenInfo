@@ -46,12 +46,21 @@ export default {
   },
   methods: {},
   async mounted() {
-    if (localStorage.userToken && localStorage.userLoggedin) {
-      console.log(localStorage.userToken);
-      console.log(localStorage.ocalStorage.userLoggedin);
+    // if (localStorage.userToken && localStorage.userLoggedin) {
+    //   console.log(localStorage.userToken);
+    //   console.log(localStorage.userLoggedin);
 
-      await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
-      this.$router.push("/login/user");
+    //   await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
+    //   this.$router.push("/login/user");
+    // }
+
+    if (localStorage.userToken) {
+      await this.$store.dispatch("user/validateUser");
+    } else if (localStorage.companyToken) {
+      await this.$store.dispatch("company/validateCompany");
+    } else if (localStorage.token) {
+      await this.$store.dispatch("admin/validateAdmin");
+      this.$router.push("/adminpage");
     }
   },
 };
