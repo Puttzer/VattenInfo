@@ -25,7 +25,6 @@
           </v-list-item>
           <v-list-item>
             <v-list-item-content @click.stop="moveToForetag">
-
               <v-list-item-title>
                 <v-icon medium color="blue">business</v-icon>
                 Företagskund</v-list-item-title
@@ -77,7 +76,7 @@
         <v-icon>logout</v-icon>
       </v-btn>
     </v-app-bar>
-    <v-main>
+    <v-main class="body-container">
       <router-view></router-view>
     </v-main>
   </div>
@@ -115,18 +114,19 @@ export default {
     moveToPrivateCustomers() {
       this.$router.push("/adminpage/privatecustomer");
     },
-	moveToForetag(){
+    moveToForetag() {
       this.$router.push("/adminpage/foretagcustomer");
-
-	}
+    },
   },
 };
 </script>
 
 <style scoped>
 .admin-container {
-  height: 960px;
-  min-height: 90%;
+  height: auto;
+}
+.body-container {
+  height: 100%;
 }
 .heightClass {
   display: flex;

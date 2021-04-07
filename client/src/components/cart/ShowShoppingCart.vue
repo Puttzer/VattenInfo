@@ -25,7 +25,11 @@
         class="pa-0 ma-1"
       >
         <v-list class="d-flex justify-space-around flex-row">
-          <img :src="selectTest.image" width="65px" height="65px" />
+          <img
+            :src="`http://localhost:4000/${selectTest.image}`"
+            width="65px"
+            height="65px"
+          />
           <h2 class="blue-grey--text lighten-3">{{ selectTest.testname }}</h2>
           <div>
             <h3>{{ selectTest.price }} KR</h3>

@@ -1,5 +1,5 @@
 <template>
-  <v-app class="ma-0 pa-0 d-flex justify-ceneter">
+  <v-app class="ma-0 pa-0 d-flex justify-ceneter app-container">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
     <NavigationBar
       v-if="this.admin.showNavbar === true"
@@ -7,7 +7,7 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <v-main class="ma-0 pa-0 background" flat>
+    <v-main class="ma-0 pa-0 background body-main" flat>
       <Pathcomponent />
 
       <router-view></router-view>
@@ -74,8 +74,9 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-.v-main {
+.body-main {
   width: 100vw;
+  height: 100%;
 }
 .app-container {
   width: 100vw;
