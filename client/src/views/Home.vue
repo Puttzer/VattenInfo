@@ -92,7 +92,7 @@
             <div class="provVal d-flex flex-column justify-start align-center">
               <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>name</h5>
+                <h5>namn</h5>
                 <p class="caption-1">
                   Lorem ipsum dolor sit amet consectetur, adipisicing.
                 </p>
@@ -103,7 +103,7 @@
             <div class="provVal d-flex flex-column justify-start align-center">
               <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>name</h5>
+                <h5>namn</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
               </div>
             </div>
@@ -112,7 +112,7 @@
             <div class="provVal d-flex flex-column justify-start align-center">
               <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>name</h5>
+                <h5>namn</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
               </div>
             </div>

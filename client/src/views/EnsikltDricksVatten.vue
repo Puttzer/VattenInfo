@@ -6,7 +6,7 @@
         <h1>Enskilt dricksvatten</h1>
       </v-row>
       <v-row class="d-flex justify-center font-weight-light blue--text mt-6">
-        <h3>Analyser för dig med enskild brunn Introducerande text</h3>
+        <h3>Analyser för dig med enskild brunn</h3>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <v-card

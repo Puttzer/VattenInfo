@@ -24,7 +24,7 @@
             <v-divider></v-divider>
             <div class="ma-2">
               <h2 class="Heading-2" id="testName">
-                Title : {{ test.testname }}
+                namn : {{ test.testname }}
               </h2>
               <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}

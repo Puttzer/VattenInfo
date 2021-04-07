@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <v-row class="d-flex">
-      <v-col class="d-flex justify-center" cols="8">
+      <v-col class="d-flex justify-left ml" cols="12">
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
@@ -11,19 +11,21 @@
       :index="index"
       class="d-flex justify-center"
     >
-      <v-col class="d-flex justify-center" cols="12">
-        <v-list class="d-flex flex-row">
+      <v-col class="d-flex justify-center brown" cols="12">
+
+		<v-list class="d-flex flex-row" cols='12'>
           <v-img :src="selectedTest.image" width="150px" height="150px"></v-img>
           <p>{{ selectedTest.testname }}</p>
           <p>{{ selectedTest.testtype }}</p>
           <p>{{ selectedTest.category }}</p>
           <p>{{ selectedTest.description }}</p>
           <p>{{ selectedTest.price }}</p>
-          <v-icon large color="red">delete</v-icon>
+          <v-icon @click="deleteProduct" large color="red">delete</v-icon>
         </v-list>
+
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="red">
       <v-col cols="12" class="d-flex flex-row">
         <p>Summa : {{ this.tests.totalAmount }}</p>
         <div class="mx-2 green">

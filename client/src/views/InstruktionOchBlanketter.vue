@@ -1,6 +1,6 @@
 <template>
   <v-content>
-    <h1>Instruktion Och Blanketter</h1>
+    <h1>Instruktioner Och Blanketter</h1>
   </v-content>
 </template>
 

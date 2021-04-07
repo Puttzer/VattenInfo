@@ -3,7 +3,7 @@
     <v-main>
       <v-row class="d-flex justify-center">
         <v-col cols="4">
-          <h1>Admin Konto</h1>
+          <h1>Adminkonto</h1>
           <form>
             <v-text-field v-model="userName" label="Användarnamm" required>
             </v-text-field>

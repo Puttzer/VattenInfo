@@ -11,7 +11,7 @@
       class="d-flex flex-column"
     >
       <v-list class="d-flex flex-row rounded-lg" height="80px">
-        <v-row class="d-flex">
+          <v-row class="d-flex">
           <v-col cols="3">
             <p class="font-weight-light text--disabled caption ml-2">
               Användarnamn
