@@ -16,7 +16,7 @@
           <v-list class="d-flex flex-column justify-center" id="testList">
             <v-img
               id="testImage"
-              :src="test.image"
+              :src="`http://localhost:4000/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
