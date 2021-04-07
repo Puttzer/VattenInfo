@@ -6,7 +6,7 @@
     <v-row class="d-flex justify-center">
       <v-col cols="4" class="d-flex justify-center">
         <img
-          :src="this.tests.test.image"
+          :src="`http://localhost:4000/${this.tests.test.image}`"
           alt="imagename"
           height="400px"
           width="300px"
@@ -55,11 +55,64 @@
           >
         </v-row>
       </v-col>
-      <v-col cols="3">
-        <h1>relaterad producter</h1>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <h1>Relaterade produkter</h1>
       </v-col>
     </v-row>
-    {{ this.tests.test }}
+    <v-row>
+      <v-col cols="12" class="d-flex">
+        <v-card
+          v-for="(test, index) in this.filterRelatedTests"
+          :key="index"
+          width="250px"
+          height="300px"
+          class="ma-4"
+        >
+          <v-list
+            class="d-flex flex-column justify-center"
+            id="testList ma-0 pa-0"
+          >
+            <v-img
+              id="testImage"
+              :src="`http://localhost:4000/${test.image}`"
+              height="150px"
+              width="300px"
+              name="testimage"
+              class="ma-0 pa-0"
+            ></v-img>
+            <v-divider></v-divider>
+            <div class="ma-2">
+              <h2 class="Heading-2" id="testName">
+                {{ test.testname }}
+              </h2>
+              <p id="testCategory">
+                <strong>Kategori : </strong> {{ test.category }}
+              </p>
+              <!-- <p id="testType">
+                <strong>Test type : </strong>{{ test.testtype }}
+              </p>
+
+              <p id="testLong">Detailjer :{{ test.description }}</p> -->
+              <p id="testPrice">Pris :{{ test.price }} SEK</p>
+            </div>
+            <div class="d-flex flex-row">
+              <v-btn
+                class="btnColor white--text ma-1"
+                @click="moveToIndividual(test._id, test)"
+                >Läs mer</v-btn
+              >
+              <v-btn
+                class="btnColor white--text ma-1"
+                @click="moveToCart(test._id)"
+                >köp</v-btn
+              >
+            </div>
+          </v-list>
+        </v-card>
+      </v-col>
+    </v-row>
   </v-main>
 </template>
 
@@ -72,6 +125,17 @@ export default {
   },
   computed: {
     ...mapState(["tests"]),
+    filterPaketTest() {
+      return this.tests.tests.filter(
+        (test) =>
+          test.testtype === "Packet pris" &&
+          test.category === "Enskilt dricksvatten"
+      );
+    },
+    filterRelatedTests() {
+      const id = this.$route.params.id;
+      return this.filterPaketTest.filter((test) => test._id !== id);
+    },
   },
   async mounted() {
     const id = this.$route.params.id;

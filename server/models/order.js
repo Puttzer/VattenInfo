@@ -1,7 +1,7 @@
 const { model, Schema, Mongoose } = require('mongoose')
 
 let newOrder = new Schema({
-    tests: [Schema.Types.ObjectId],
+    tests: [],
     userRole: {
         type: String,
         required: true
