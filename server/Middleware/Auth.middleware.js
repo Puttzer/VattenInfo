@@ -19,6 +19,7 @@ const isAdminLoggedIn = async (req, res, next) => {
                 return
             }
             if (dbAdmin.userRole = process.env.ADMIN_ROLE) {
+                req.username = dbAdmin.username
                 next()
             } else {
                 res.status(403)

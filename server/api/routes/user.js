@@ -2,6 +2,7 @@ const User = require('../../models/user')
 const bcrypt = require('../../Lib/Bcrypt.password')
 const JWT = require('../../Lib/Auth.token')
 const AuthMiddleware = require('../../Middleware/Auth.middleware')
+const isUserLoggedin = require('../../Middleware/User.middleware')
 
 module.exports = function (router) {
     router.post('/user/login', async function (req, res, next) {
@@ -42,7 +43,7 @@ module.exports = function (router) {
                     email: reqUser.email,
                     _id: findUser._id,
                     Token: token,
-					userLoggedin: true 
+                    userLoggedin: true
                 })
             } else {
                 res.status(404)
@@ -62,7 +63,7 @@ module.exports = function (router) {
     })
 
 
-    router.get('/user/:id', async function (req, res) {
+    router.get('/user/:id', isUserLoggedin.isUserLoggedIn, async function (req, res) {
         console.log(req.params['id'])
         await User.findById({ _id: req.params['id'] }).exec()
             .then(docs => res.status(200)
@@ -164,6 +165,18 @@ module.exports = function (router) {
                 }))
     })
 
+
+    //validate the token if its available in localstorage
+
+    router.post('/user/validatetoken', isUserLoggedin.isUserLoggedIn, (req, res) => {
+        res.status(200)
+        res.json({
+            message: 'token is valid',
+            id: req.id,
+            email: req.email,
+            userLoggedin: true,
+        })
+    })
 
 
     // router.get('/user/lastname', function (req, res) {

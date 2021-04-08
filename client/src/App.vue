@@ -1,5 +1,5 @@
 <template>
-  <v-app class="ma-0 pa-0 d-flex justify-ceneter">
+  <v-app class="ma-0 pa-0 d-flex justify-ceneter app-container">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
     <NavigationBar
       v-if="this.admin.showNavbar === true"
@@ -7,7 +7,7 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <v-main class="ma-0 pa-0 background" flat>
+    <v-main class="ma-0 pa-0 background body-main" flat>
       <Pathcomponent />
 
       <router-view></router-view>
@@ -46,12 +46,23 @@ export default {
   },
   methods: {},
   async mounted() {
-    if (localStorage.userToken && localStorage.userLoggedin) {
-      console.log(localStorage.userToken);
-      console.log(localStorage.ocalStorage.userLoggedin);
+    this.$vToastify.info("Welcome to VattenInfo Lab");
+    console.log(this.$vToastify.getSettings());
+    // if (localStorage.userToken && localStorage.userLoggedin) {
+    //   console.log(localStorage.userToken);
+    //   console.log(localStorage.userLoggedin);
 
-      await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
-      this.$router.push("/login/user");
+    //   await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
+    //   this.$router.push("/login/user");
+    // }
+
+    if (localStorage.userToken) {
+      await this.$store.dispatch("user/validateUser");
+    } else if (localStorage.companyToken) {
+      await this.$store.dispatch("company/validateCompany");
+    } else if (localStorage.token) {
+      await this.$store.dispatch("admin/validateAdmin");
+      this.$router.push("/adminpage");
     }
   },
 };
@@ -65,8 +76,9 @@ export default {
   margin: 0;
   box-sizing: border-box;
 }
-.v-main {
+.body-main {
   width: 100vw;
+  height: 100%;
 }
 .app-container {
   width: 100vw;

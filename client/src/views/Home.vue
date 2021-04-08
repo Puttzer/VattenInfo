@@ -9,7 +9,7 @@
       >
         <div class="wave">
           <v-img
-            src="@/assets/landing/waves.png"
+            src="@/assets/wave.png"
             max-height="100"
             max-width="100"
             border-radius="100"
@@ -68,7 +68,7 @@
       <v-col class="d-flex align-center" cols="2">
         <div class="wave">
           <v-img
-            src="@/assets/landing/waves.png"
+            src="@/assets/wave.png"
             max-height="100"
             max-width="100"
             border-radius="100"
