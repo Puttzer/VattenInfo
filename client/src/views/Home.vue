@@ -9,7 +9,7 @@
       >
         <div class="wave">
           <v-img
-            src="@/assets/landing/waves.png"
+            src="@/assets/wave.png"
             max-height="100"
             max-width="100"
             border-radius="100"
@@ -68,7 +68,7 @@
       <v-col class="d-flex align-center" cols="2">
         <div class="wave">
           <v-img
-            src="@/assets/landing/waves.png"
+            src="@/assets/wave.png"
             max-height="100"
             max-width="100"
             border-radius="100"
@@ -87,10 +87,17 @@
             recusandae quia amet quibusdam.
           </p>
         </v-row>
-        <v-row class="d-flex justify-space-between">
+        <v-row class="d-flex justify-space-between mt-10">
           <v-col class cols="3">
-            <div class="provVal d-flex flex-column justify-start align-center">
-              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+            <div
+              class="provVal d-flex flex-column justify-start align-center pt-3"
+            >
+              <v-img
+                src="../assets/FlaskaBas.png"
+                width="84px"
+                height="130px"
+              ></v-img>
+              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
                 <h5>namn</h5>
                 <p class="caption-1">
@@ -101,7 +108,12 @@
           </v-col>
           <v-col cols="3">
             <div class="provVal d-flex flex-column justify-start align-center">
-              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+              <v-img
+                src="../assets/FlaskorFamilj.png"
+                width="110px"
+                height="130px"
+              ></v-img>
+              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
                 <h5>namn</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
@@ -110,7 +122,12 @@
           </v-col>
           <v-col cols="3">
             <div class="provVal d-flex flex-column justify-start align-center">
-              <v-icon size="84">mdi-bottle-tonic-outline</v-icon>
+              <v-img
+                src="../assets/FlaskorStora.png"
+                width="110px"
+                height="130px"
+              ></v-img>
+              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
               <div class="provInfo d-flex flex-column pt-6 align-center blue">
                 <h5>namn</h5>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
@@ -121,7 +138,7 @@
         <v-row>
           <v-btn color="blue" class="white--text">FLER PROVER</v-btn>
         </v-row>
-        <v-row>
+        <!-- <v-row>
           <div class="social-media d-flex flex-row align-center mt-16">
             <div class="facebook">
               <v-icon size="52">mdi-facebook</v-icon>
@@ -130,7 +147,7 @@
               <v-icon size="42">mdi-instagram</v-icon>
             </div>
           </div>
-        </v-row>
+        </v-row> -->
       </v-col>
       <v-col cols="5" class=""> </v-col>
     </v-row>
