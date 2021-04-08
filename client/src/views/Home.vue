@@ -64,7 +64,7 @@
     </v-row>
     <!-- landning fort -->
 
-    <v-row>
+    <v-row class="">
       <v-col class="d-flex align-center" cols="2">
         <div class="wave">
           <v-img
@@ -75,7 +75,9 @@
           ></v-img>
         </div>
       </v-col>
-      <v-col cols="5" class>
+    </v-row>
+    <v-row class="d-flex justify-center">
+      <v-col cols="5" class="">
         <v-row class="d-flex justify-center align-center">
           <h1 class="blue--text font-weight-class text-uppercase text-center">
             Ta hand om vattnet
@@ -87,75 +89,99 @@
             recusandae quia amet quibusdam.
           </p>
         </v-row>
-        <v-row class="d-flex justify-space-between mt-10">
-          <v-col class cols="3">
+      </v-col>
+
+      <v-col class="d-flex justify-space-around px-2 mt-10" cols="9">
+        <v-col class="white mainBox" cols="3">
+          <div class="d-flex flex-column justify-start align-center mx-1">
+            <v-img
+              src="../assets/FlaskaBas.png"
+              width="84px"
+              height="130px"
+              class="pb-3"
+            ></v-img>
+            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
             <div
-              class="provVal d-flex flex-column justify-start align-center pt-3"
+              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
             >
-              <v-img
-                src="../assets/FlaskaBas.png"
-                width="84px"
-                height="130px"
-              ></v-img>
-              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-              <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>namn</h5>
-                <p class="caption-1">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing.
-                </p>
-              </div>
-            </div>
-          </v-col>
-          <v-col cols="3">
-            <div class="provVal d-flex flex-column justify-start align-center">
-              <v-img
-                src="../assets/FlaskorFamilj.png"
-                width="110px"
-                height="130px"
-              ></v-img>
-              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-              <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>namn</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
-              </div>
-            </div>
-          </v-col>
-          <v-col cols="3">
-            <div class="provVal d-flex flex-column justify-start align-center">
-              <v-img
-                src="../assets/FlaskorStora.png"
-                width="110px"
-                height="130px"
-              ></v-img>
-              <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-              <div class="provInfo d-flex flex-column pt-6 align-center blue">
-                <h5>namn</h5>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
-              </div>
-            </div>
-          </v-col>
-        </v-row>
-        <v-row>
-          <v-btn color="blue" class="white--text">FLER PROVER</v-btn>
-        </v-row>
-        <!-- <v-row>
-          <div class="social-media d-flex flex-row align-center mt-16">
-            <div class="facebook">
-              <v-icon size="52">mdi-facebook</v-icon>
-            </div>
-            <div class="instagram">
-              <v-icon size="42">mdi-instagram</v-icon>
+              <h5>Bas</h5>
+              <p class="caption-1">
+                Lorem ipsum dolor sit amet consectetur, adipisicing.
+              </p>
             </div>
           </div>
-        </v-row> -->
+          <v-card> </v-card>
+        </v-col>
+        <v-col
+          class="white mainBox"
+          cols="3"
+          @click="moveToIndividual(test._id, test)"
+        >
+          <div class="d-flex flex-column justify-start align-center">
+            <v-img
+              src="../assets/FlaskorFamilj.png"
+              width="110px"
+              height="130px"
+              class="pb-3"
+            ></v-img>
+            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
+            <!-- <div class="provInfo d-flex flex-column align-center blue"> -->
+            <div
+              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
+            >
+              <h5>Familj</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+            </div>
+          </div>
+        </v-col>
+        <v-col class="white mainBox" cols="3">
+          <div class="d-flex flex-column justify-start align-center">
+            <v-img
+              src="../assets/FlaskorStora.png"
+              width="110px"
+              height="130px"
+              class="pb-3"
+            ></v-img>
+            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
+            <div
+              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
+            >
+              <h5>Stora</h5>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
+            </div>
+          </div>
+        </v-col>
       </v-col>
-      <v-col cols="5" class=""> </v-col>
     </v-row>
+    <v-col>
+      <v-row class="justify-center align-center">
+        <v-btn color="blue" class="white--text">FLER PROVER</v-btn>
+      </v-row>
+    </v-col>
   </div>
 </template>
 
 <script>
-export default {};
+import { mapState } from "vuex";
+
+export default {
+  mounted() {
+    this.$store.dispatch("tests/getTests");
+  },
+  computed: {
+    ...mapState(["tests"]),
+  },
+  methods: {
+    moveToIndividual(id, test) {
+      console.log(id);
+      this.$router.push({
+        name: "TestStartsidan",
+        params: { id: id, test },
+      });
+      console.log("hit");
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -227,12 +253,18 @@ text {
   z-index: 0;
 }
 
-/* .provInfo {
+.provInfo {
   width: 200px;
   height: 150px;
   text-align: center;
   color: white;
-} */
+}
+
+.mainBox {
+  box-shadow: 1.5px 1.5px 10px #00000075;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 /* landingfort ends here */
 </style>

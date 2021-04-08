@@ -2,7 +2,7 @@
   <v-content>
     <v-flex>
       <v-row class="justify-center mt-12">
-        <h1>Tester till vatten</h1>
+        <h1>Vattentester</h1>
       </v-row>
 
       <v-row class="d-flex justify-center packet-height">
