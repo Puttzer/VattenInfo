@@ -12,8 +12,7 @@
       class="d-flex justify-center"
     >
       <v-col class="d-flex justify-center brown" cols="12">
-
-		<v-list class="d-flex flex-row" cols='12'>
+        <v-list class="d-flex flex-row" cols="12">
           <v-img :src="selectedTest.image" width="150px" height="150px"></v-img>
           <p>{{ selectedTest.testname }}</p>
           <p>{{ selectedTest.testtype }}</p>
@@ -22,7 +21,6 @@
           <p>{{ selectedTest.price }}</p>
           <v-icon @click="deleteProduct" large color="red">delete</v-icon>
         </v-list>
-
       </v-col>
     </v-row>
     <v-row class="red">
