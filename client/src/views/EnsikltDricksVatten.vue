@@ -51,7 +51,7 @@
               >
               <v-btn
                 class="btnColor white--text ma-1"
-                @click="moveToCart(test._id)"
+                @click="increaseThecounterValue(test._id)"
                 >köp</v-btn
               >
             </div>
@@ -87,15 +87,15 @@
               <h2 class="Heading-2" id="testName">
                 {{ test.testname }}
               </h2>
-              <p id="testCategory">
+              <!-- <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
-              </p>
+              </p> -->
               <!-- <p id="testType">
                 <strong>Test type : </strong>{{ test.testtype }}
               </p>
 
               <p id="testLong">Detailjer :{{ test.description }}</p> -->
-              <p id="testPrice">Pris :{{ test.price }} SEK</p>
+              <!-- <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
             </div>
             <div class="d-flex justify-center">
               <!-- <v-btn
@@ -103,11 +103,16 @@
                 @click="moveToIndividual(test._id, test)"
                 >Läs mer</v-btn
               > -->
-              <v-btn
+              <!-- <v-btn
                 class="btnColor white--text ma-1"
                 @click="moveToCart(test._id)"
                 >köp</v-btn
-              >
+              > -->
+              <input
+                type="checkbox"
+                :testId="test._id"
+                @change="increaseThecounterValue(test._id)"
+              />
             </div>
           </v-list>
         </v-card>
@@ -175,7 +180,9 @@ import { mapState } from "vuex";
 export default {
   name: "EnsikltDricksVatten",
   data() {
-    return {};
+    return {
+      isChecked: false,
+    };
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
@@ -206,9 +213,9 @@ export default {
     },
   },
   methods: {
-    moveToCart(id) {
-      console.log("move to cart", id);
-      console.log(this);
+    increaseThecounterValue(_id) {
+      console.log(_id);
+      this.$store.commit("tests/INCREASE_COUNT", _id);
     },
     moveToIndividual(id, test) {
       console.log(id);
