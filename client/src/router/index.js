@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartsidan from '../views/KundStartsidan.vue'
+import KundStartsidan from '../views/KundStartSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
 import TestStartsidan from '../views/TestStartsidan.vue'
