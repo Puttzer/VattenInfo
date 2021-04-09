@@ -12,6 +12,7 @@
       class="my-1 mx-2"
       cols="12"
     >
+
       <v-col class="d-flex red justify-center pa-0 mx-1 my-1">
         <v-list
           class="d-flex justify-space-around pa-0 ma-0 flex-row"
