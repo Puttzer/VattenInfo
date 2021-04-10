@@ -18,7 +18,8 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.2",
     "morgan": "^1.10.0",
-    "multer": "^1.4.2"
+    "multer": "^1.4.2",
+    "vue-toastify": "^1.8.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

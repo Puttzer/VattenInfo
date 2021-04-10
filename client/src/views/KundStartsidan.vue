@@ -1,5 +1,5 @@
 <template>
-  <h1>kund start sidan</h1>
+  <h1>kundstart sidan</h1>
 </template>
 
 <script>

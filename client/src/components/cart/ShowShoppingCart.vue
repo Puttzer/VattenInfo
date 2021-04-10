@@ -53,7 +53,7 @@
           @click="moveToKassaSida"
           class="btnColor shopme d-flex align-center justify-center white--text"
         >
-          Ga till kassa
+          Gå till kassan
         </div>
       </v-col>
     </v-row>

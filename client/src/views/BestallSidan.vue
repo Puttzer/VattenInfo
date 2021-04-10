@@ -2,7 +2,7 @@
   <v-content>
     <v-flex>
       <v-row class="justify-center mt-12">
-        <h1>Tester till vatten</h1>
+        <h1>Vattentester</h1>
       </v-row>
 
       <v-row class="d-flex justify-center packet-height">
@@ -24,7 +24,7 @@
             <v-divider></v-divider>
             <div class="ma-2">
               <h2 class="Heading-2" id="testName">
-                Title : {{ test.testname }}
+                namn : {{ test.testname }}
               </h2>
               <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}

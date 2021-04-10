@@ -28,7 +28,7 @@
             <v-btn @click="clearTheInputdata">Rensa</v-btn>
             <v-row class="mt-6">
               <div class="d-flex flex-column">
-                <p class="red--text">Inget Konto?</p>
+                <p class="red--text">Inget Konto? lägg till lite mer text</p>
                 <v-btn outlined plain> Registrera</v-btn>
               </div>
             </v-row>

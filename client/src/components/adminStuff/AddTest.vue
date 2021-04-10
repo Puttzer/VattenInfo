@@ -26,7 +26,7 @@
                 </select>
                 <select v-model="testtype">
                   <option value="">select Category</option>
-                  <option value="Packet pris">packet pris</option>
+                  <option value="	 pris">packet pris</option>
                   <option value="styckvis 1">styckvis1</option>
                   <option value="styckvis 2">styckvis2</option>
                   <option value="ovriga priser">ovriga priser</option>
@@ -41,7 +41,7 @@
                   dense
                   outlined
                   label="Test namm"
-                  >Test Name</v-text-field
+                  >Test Namn</v-text-field
                 >
                 <v-select
                   :items="type1"

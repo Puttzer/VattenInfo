@@ -105,7 +105,7 @@
               >
               <v-btn
                 class="btnColor white--text ma-1"
-                @click="moveToCart(test._id)"
+                @click="increaseThecounterValue()"
                 >köp</v-btn
               >
             </div>

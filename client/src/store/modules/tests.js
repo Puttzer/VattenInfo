@@ -121,13 +121,19 @@ export default {
         UPDATE_TEST(state, value) {
             state.test = { ...value }
         },
-        INCREASE_COUNT(state) {
-            const isTheTestExists = state.selectedTests.find(test => test._id === state.test._id)
-            if (isTheTestExists) {
+        INCREASE_COUNT(state, _id) {
+            console.log(_id)
+            let isTheTestExists = state.selectedTests.find(test => test._id === _id)
+            console.log(isTheTestExists)
+
+            if (!isTheTestExists) {
+                state.count++;
+                const test = state.tests.find(test => test._id === _id)
+                console.log('test', test)
+                state.selectedTests.push(test)
+            } else {
                 return
             }
-            state.count++;
-            state.selectedTests.push(state.test)
         },
         SHOW_CART_COMPONENT(state) {
             console.log('show action')

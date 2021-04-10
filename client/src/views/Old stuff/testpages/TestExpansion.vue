@@ -34,7 +34,7 @@
                   <h4>Pris :{{ item.price }}</h4>
                   <v-btn small class="d-flex justify-end" color="grey lighten">
                     <v-icon class="ma-1">add_shopping_cart</v-icon>
-                    Add to cart</v-btn
+                    Lägg till i varukorg</v-btn
                   >
                 </div>
               </v-expansion-panel-content>
@@ -43,7 +43,7 @@
         </v-col>
         <v-col class="d-flex" cols="12" xs="12" sm="6" md="3">
           <div>
-            <h1>Packet pris</h1>
+            <h1>Paketpris</h1>
             <h3>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo,
               voluptate maxime architecto tenetur sapiente porro sunt
