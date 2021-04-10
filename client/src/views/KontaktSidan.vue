@@ -70,7 +70,6 @@
               v-model="user.fullName"
               append-icon="person"
               label="Förnamn och Efternamn"
-              hint="Exempel: Anders Andersson"
               persistent-hint
               outlined
               class="mt-3"
