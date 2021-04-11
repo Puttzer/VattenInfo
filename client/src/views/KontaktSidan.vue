@@ -1,6 +1,6 @@
 <template>
   <v-container pt-16>
-    <v-form>
+    <v-form class="white">
       <v-row>
         <v-col cols="12" md="12">
           <h1 class="white--text mt-3">Kontakta oss</h1>
