@@ -118,14 +118,14 @@ export default {
 </script>
 
 <style scoped>
-#text {
-  /* background: rgb(153, 153, 153); */
-}
+/* #text {
+  background: rgb(153, 153, 153);
+} */
 .text {
   margin-left: 200px;
 }
 #form {
   max-width: 600px;
-  margin-left: 200px;
+  margin-left: 100px;
 }
 </style>
