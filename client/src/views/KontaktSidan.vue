@@ -1,36 +1,17 @@
 <template>
   <v-layout>
     <!-- left on screen -->
-    <v-container id="text" pt-16>
-      <v-row
-        ><v-col cols="5" class="text md-left"
-          ><h1>This text should be to the left of the form</h1>
-          <p class="text-justify">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-            non mi vitae neque blandit dapibus sit amet at tortor. Phasellus
-            pretium finibus libero eu dictum. Morbi a aliquam ex, non
-            consectetur urna. Etiam rhoncus luctus ex eget tempor. Etiam
-            sollicitudin ac tortor sed pellentesque. Suspendisse potenti. Etiam
-            vitae libero ornare quam facilisis ultricies. <br />
-            <br />
-            In rhoncus est ut mauris eleifend, at hendrerit orci condimentum.
-            Phasellus vel augue accumsan, vehicula risus ut, tincidunt magna.
-            Fusce eu massa quis massa lobortis bibendum. Etiam eros nibh,
-            vestibulum sit amet tempor id, ornare in lectus. Praesent finibus
-            nibh non mattis rutrum. In massa risus, consequat sit amet fermentum
-            eget, vulputate a mi. Vestibulum sed malesuada erat. Cras maximus
-            faucibus varius.
-          </p></v-col
-        ></v-row
-      >
-    </v-container>
 
     <!-- Right on screen -->
-    <v-container pt-16>
+    <v-container>
       <v-form id="form">
         <v-row>
-          <v-col cols="12">
+          <v-col cols="12" class="pt-16">
             <h1 class="black--text mt-3">Kontakta oss</h1>
+            <p>
+              Skriv gärna ett mail till oss om du har några frågor eller
+              problem!
+            </p>
           </v-col>
 
           <v-col cols="12">
@@ -126,6 +107,6 @@ export default {
 }
 #form {
   max-width: 600px;
-  margin-left: 100px;
+  margin-left: 250px;
 }
 </style>
