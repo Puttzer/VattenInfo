@@ -128,9 +128,14 @@ export default {
 
             if (!isTheTestExists) {
                 state.count++;
+				// localStorage.setItem('seletedTests',)
+
                 const test = state.tests.find(test => test._id === _id)
                 console.log('test', test)
-                state.selectedTests.push(test)
+                const tests = state.selectedTests.push(test)
+				
+				console.log(tests);
+
             } else {
                 return
             }

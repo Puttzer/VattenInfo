@@ -42,7 +42,7 @@ export default {
     // test
   },
   computed: {
-    ...mapState(["admin", "user"]),
+    ...mapState(["admin", "test","user"]),
   },
   methods: {},
   async mounted() {
