@@ -7,9 +7,9 @@ import store from './store'
 import vuetify from './plugins/vuetify';
 import VueToastify from "vue-toastify";
 const toastifySettings = {
-    position: 'top-right',
+    position: 'bottom-right',
     theme: 'dark',
-    duration: '3000',
+    duration: '1000',
     backdrop: "rgba('129,212,250')",
     singular: true,
     iconEnabled: false

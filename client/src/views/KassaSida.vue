@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <v-row class="d-flex">
-      <v-col class="d-flex justify-left ml" cols="12">
+      <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
@@ -11,16 +11,32 @@
       :index="index"
       class="d-flex justify-center"
     >
-      <v-col class="d-flex justify-center brown" cols="12">
-        <v-list class="d-flex flex-row" cols="12">
-          <v-img :src="selectedTest.image" width="150px" height="150px"></v-img>
-          <p>{{ selectedTest.testname }}</p>
-          <p>{{ selectedTest.testtype }}</p>
-          <p>{{ selectedTest.category }}</p>
-          <p>{{ selectedTest.description }}</p>
-          <p>{{ selectedTest.price }}</p>
-          <v-icon @click="deleteProduct" large color="red">delete</v-icon>
-        </v-list>
+      <v-col class="d-flex justify-center brown" cols="10">
+        <v-card class="d-flex flex-row" cols="12">
+          <v-col col="2">
+            <v-img
+              :src="`http://localhost:4000/${selectedTest.image}`"
+              width="150px"
+              height="150px"
+            ></v-img>
+          </v-col>
+          <v-col cols="2">
+            <p>{{ selectedTest.testname }}</p>
+            <p>{{ selectedTest.testtype }}</p>
+            <p>{{ selectedTest.category }}</p>
+          </v-col>
+          <v-col cols="6">
+            <p>{{ selectedTest.description }}</p>
+          </v-col>
+          <v-col cols="2">
+            <v-row>
+              <h2>Pris:</h2>
+              {{ selectedTest.price }}
+              <p>SEK</p>
+            </v-row>
+            <v-icon @click="deleteProduct" large color="red">delete</v-icon>
+          </v-col>
+        </v-card>
       </v-col>
     </v-row>
     <v-row class="red">
@@ -31,8 +47,6 @@
         </div>
       </v-col>
     </v-row>
-    {{ this.tests.selectedTests }}
-    {{ this.tests.totalAmount }}
   </div>
 </template>
 
