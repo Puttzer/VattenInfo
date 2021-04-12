@@ -5,23 +5,23 @@
         <h1>Vattentester</h1>
       </v-row>
 
-      <v-row class="d-flex  justify-center packet-height">
+      <v-row class="d-flex justify-center packet-height">
         <div
           v-for="(test, index) in this.tests.tests"
           :key="index"
           width="50px"
           height="300px"
-          class="ma-4 mt-0 pa-0"
+          class="mainCard ma-4 mt-0 pa-0"
           color=""
         >
-          <v-list class="d-flex flex-column justify-center pt-0" id="testList">
+          <v-list class="d-flex flex-column justify-center pt-0 " id="testList">
             <v-img
               id="testImage"
               :src="`http://localhost:4000/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
-              class="ma-0 pt-0 align-start"
+              class="ma-0 pt-0  align-start"
             ></v-img>
             <v-divider></v-divider>
             <div class="ma-2">
@@ -89,5 +89,9 @@ export default {
 <style scoped>
 .packet-height {
   min-height: 400px;
+}
+
+.mainCard{
+	box-shadow: 2px 2px 5px #00000090;
 }
 </style>
