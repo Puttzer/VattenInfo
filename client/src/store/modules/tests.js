@@ -128,7 +128,7 @@ export default {
 
             if (!isTheTestExists) {
                 state.count++;
-				// localStorage.setItem('seletedTests',)
+                // localStorage.setItem('seletedTests',)
 
                 const test = state.tests.find(test => test._id === _id)
                 console.log('test', test)
@@ -161,6 +161,12 @@ export default {
             localStorage.setItem('count', state.count)
             console.log(state.selectedTests)
         },
+        DELETE_SELECTED_TESTS(state) {
+            console.log('delete selected tests')
+            state.selectedTests = [],
+                state.count = 0;
+
+        }
 
     },
     namespaced: true

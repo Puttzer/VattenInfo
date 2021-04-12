@@ -59,7 +59,6 @@
       <!-- <v-divider></v-divider> -->
     </v-row>
 
-
     <v-col
       cols="12"
       class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
@@ -68,6 +67,7 @@
 
       <div
         class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="generateOrder()"
       >
         Bekräffta beställning
       </div>
@@ -83,7 +83,25 @@ import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
   computed: {
-    ...mapState(["tests"]),
+    ...mapState(["tests", "order"]),
+  },
+  methods: {
+    async generateOrder() {
+      const orderTests = this.tests.selectedTests;
+      const orderAmount = this.tests.totalAmount;
+      const payload = {
+        orderTests: orderTests,
+        orderAmount: orderAmount,
+      };
+      console.log("generating the order");
+      await this.$store.dispatch("order/generateOrder", payload);
+      this.$store.commit("tests/DELETE_SELECTED_TESTS");
+      this.$router.push("/ordernumber");
+      //   if (this.order.orderGenerated) {
+      //     console.log("move to mutations");
+      //   }
+      //   setTimeout(function () {}, 2000);
+    },
   },
 };
 </script>
@@ -103,7 +121,7 @@ export default {
 
 .testDetails {
   font-size: 12px;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 .totalPrice {
