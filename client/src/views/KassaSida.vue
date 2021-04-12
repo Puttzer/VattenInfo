@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <v-row class="d-flex">
-      <v-col class="d-flex justify-left ml" cols="12">
+      <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
@@ -58,6 +58,7 @@
       </v-col>
       <!-- <v-divider></v-divider> -->
     </v-row>
+
 
     <v-col
       cols="12"
