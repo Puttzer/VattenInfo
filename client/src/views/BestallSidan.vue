@@ -5,29 +5,31 @@
         <h1>Vattentester</h1>
       </v-row>
 
-      <v-row class="d-flex justify-center packet-height">
-        <v-card
+      <v-row class="d-flex  justify-center packet-height">
+        <div
           v-for="(test, index) in this.tests.tests"
           :key="index"
-          width="250px"
+          width="50px"
           height="300px"
-          class="ma-4"
+          class="ma-4 mt-0 pa-0"
+          color=""
         >
-          <v-list class="d-flex flex-column justify-center" id="testList">
+          <v-list class="d-flex flex-column justify-center pt-0" id="testList">
             <v-img
               id="testImage"
               :src="`http://localhost:4000/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
+              class="ma-0 pt-0 align-start"
             ></v-img>
             <v-divider></v-divider>
             <div class="ma-2">
               <h2 class="Heading-2" id="testName">
-                namn : {{ test.testname }}
+                {{ test.testname }}
               </h2>
               <p id="testCategory">
-                <strong>Kategori : </strong> {{ test.category }}
+                {{ test.category }}
               </p>
               <!-- <p id="testType">
                 <strong>Test type : </strong>{{ test.testtype }}
@@ -36,9 +38,9 @@
               <p id="testLong">Detailjer :{{ test.description }}</p> -->
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex flex-row justify-center">
               <v-btn
-                class="btnColor white--text ma-1"
+                class="btnColor justify-center white--text ma-1"
                 @click="moveToIndividual(test._id, test)"
                 >Läs mer</v-btn
               >
@@ -49,7 +51,7 @@
               >
             </div>
           </v-list>
-        </v-card>
+        </div>
       </v-row>
     </v-flex>
   </v-content>
