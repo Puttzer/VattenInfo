@@ -9,44 +9,72 @@
       v-for="(selectedTest, index) in this.tests.selectedTests"
       :key="selectedTest._id"
       :index="index"
-      class="d-flex justify-center"
+      class="my-1 mx-8"
+      cols="12"
     >
-      <v-col class="d-flex justify-center brown" cols="10">
-        <v-card class="d-flex flex-row" cols="12">
-          <v-col col="2">
+      <v-col class="d-flex justify-center grey lighten-1 pa-0 mx-1 my-1">
+        <v-list
+          class="d-flex justify-space-around pa-0 ma-0 flex-row"
+          cols="12"
+        >
+          <div class="d-flex flex-column">
             <v-img
-              :src="`http://localhost:4000/${selectedTest.image}`"
+              cols="2"
+              class="pink"
+              :src="selectedTest.image"
               width="150px"
               height="150px"
             ></v-img>
-          </v-col>
-          <v-col cols="2">
-            <p>{{ selectedTest.testname }}</p>
-            <p>{{ selectedTest.testtype }}</p>
-            <p>{{ selectedTest.category }}</p>
-          </v-col>
-          <v-col cols="6">
-            <p>{{ selectedTest.description }}</p>
-          </v-col>
-          <v-col cols="2">
-            <v-row>
-              <h2>Pris:</h2>
-              {{ selectedTest.price }}
-              <p>SEK</p>
-            </v-row>
-            <v-icon @click="deleteProduct" large color="red">delete</v-icon>
-          </v-col>
-        </v-card>
+
+            <div class="d-flex testDetails flex-column">
+              <p class="price grey--text font-weight-light mb-3">
+                {{ selectedTest.price }} kr
+              </p>
+              <p class="mb-0 font-weight-light">
+                {{ selectedTest.testname }}
+              </p>
+              <p class="mb-0 font-weight-light">{{ selectedTest.testtype }}</p>
+              <p>{{ selectedTest.category }}</p>
+            </div>
+          </div>
+
+          <div cols="4" lass="d-flex  flex-column">
+            <div class="justify-text desc d-flex flex-column">
+              <p class="text-justify my-2 py-3 mx-2 px-3">
+                {{ selectedTest.description }}
+              </p>
+            </div>
+          </div>
+
+          <v-icon
+            @click="deleteProduct"
+            class="d-flex grey lighten-5 justify-center"
+            size="42px"
+            color="red"
+            cols="2"
+            >delete</v-icon
+          >
+        </v-list>
       </v-col>
+      <!-- <v-divider></v-divider> -->
     </v-row>
-    <v-row class="red">
-      <v-col cols="12" class="d-flex flex-row">
-        <p>Summa : {{ this.tests.totalAmount }}</p>
-        <div class="mx-2 green">
-          <p>Betala</p>
-        </div>
-      </v-col>
-    </v-row>
+
+
+    <v-col
+      cols="12"
+      class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
+    >
+      <div class="">Summa : {{ this.tests.totalAmount }} kr</div>
+
+      <div
+        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+      >
+        Bekräffta beställning
+      </div>
+    </v-col>
+    <!-- 
+    {{ this.tests.selectedTests }}
+    {{ this.tests.totalAmount }} -->
   </div>
 </template>
 
@@ -60,5 +88,25 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.payButton {
+  height: 60px;
+  width: 550px;
+  border-radius: 4px;
+  font-size: 24px;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.testDetails {
+  font-size: 12px;
+  color: #BDBDBD;
+}
+
+.totalPrice {
+  font-size: 34px;
+}
 </style>
