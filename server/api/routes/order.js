@@ -8,24 +8,24 @@ const UserIsLoggedin = require('../../Middleware/User.middleware')
 module.exports = function (router) {
     router.post('/order/generate', async (req, res) => {
         console.log(req.body)
-        const { userId, totalAmount } = req.body
-        const newTests = req.body.tests.map(test => test)
+        const { orderAmount } = req.body
+        const newTests = req.body.orderTests.map(test => test)
         let userRole = ''
 
-        const FindUser = await User.findById({ _id: userId })
-        console.log(FindUser)
-        console.log(newTests)
-        console.log(totalAmount)
+        // const FindUser = await User.findById({ _id: userId })
+        // console.log(FindUser)
+        // console.log(newTests)
+        // console.log(totalAmount)
 
-        userRole = FindUser.userRole
+        // userRole = FindUser.userRole
         const orderNumber = await generateOrderNr()
 
         let order = {}
-        order.userRole = userRole
+        // order.userRole = userRole
         order.orderNumber = orderNumber
         order.tests = newTests
-        order.totalAmount = totalAmount
-        order.userId = userId
+        order.totalAmount = orderAmount
+        // order.userId = userId
 
         console.log(order)
 

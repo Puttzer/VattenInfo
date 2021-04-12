@@ -2,15 +2,15 @@ const { model, Schema, Mongoose } = require('mongoose')
 
 let newOrder = new Schema({
     tests: [],
-    userRole: {
-        type: String,
-        required: true
-    },
+    // userRole: {
+    //     type: String,
+    //     required: true
+    // },
     orderNumber: {
         type: String,
         required: true
     },
-    userId: Schema.Types.ObjectId,
+    // userId: Schema.Types.ObjectId,
     totalAmount: {
         type: String,
         required: true

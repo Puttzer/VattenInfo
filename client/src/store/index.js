@@ -5,6 +5,7 @@ import user from './modules/user';
 import company from './modules/company'
 import admin from './modules/admin'
 import tests from './modules/tests'
+import order from './modules/order'
 
 
 Vue.use(Vuex)
@@ -14,6 +15,7 @@ export default new Vuex.Store({
         user,
         company,
         admin,
-        tests
+        tests,
+        order
     }
 })

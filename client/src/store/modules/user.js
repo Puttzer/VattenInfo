@@ -7,7 +7,7 @@ export default {
         user: {
             email: '',
             _id: ''
-        }
+        },
     },
     getters: {
 
@@ -132,7 +132,8 @@ export default {
         USER_LOGOUT(state) {
             state.userIsloggedIn = false,
                 state.showUserDropDown = false
-        }
+        },
+
 
 
 
