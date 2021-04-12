@@ -4,7 +4,7 @@
 
     <!-- Right on screen -->
     <v-container>
-      <v-form id="form">
+      <v-form class="form">
         <v-row>
           <v-col cols="12" class="pt-16">
             <h1 class="black--text mt-3">Kontakta oss</h1>
@@ -102,10 +102,8 @@ export default {
 /* #text {
   background: rgb(153, 153, 153);
 } */
-.text {
-  margin-left: 200px;
-}
-#form {
+
+.form {
   max-width: 600px;
   margin-left: 250px;
 }
