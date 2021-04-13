@@ -4,11 +4,13 @@
       <v-row class="justify-center mt-12">
         <h1>Vattentester</h1>
       </v-row>
-      <v-row class="justify-start d-flex  flex-column mb-2 ml-3">
-        <div class="sortera ml-16">Filtrera på kategori</div>
-        <div class="d-flex ml-16 mr-16">
-          <v-select :items="items"></v-select>
-        </div>
+      <v-row class="d-flex justify-center">
+        <v-col cols="4">
+          <v-select :items="type1"></v-select>
+        </v-col>
+        <v-col cols="4">
+          <v-select :items="type2"></v-select>
+        </v-col>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <div
@@ -67,7 +69,20 @@ import { mapState } from "vuex";
 // import TestExpansion from "../components/testpages/TestExpansion.vue";
 export default {
   data: () => ({
-    items: ["Foo", "Bar", "Fizz", "Buzz"],
+    // items: ["Foo", "Bar", "Fizz", "Buzz"],
+    // testtype:
+    type1: [
+      "Ackrediterade analyser",
+      "Enskilt dricksvatten",
+      "avloppsvatten och badvatten",
+    ],
+    type2: [
+      "Packet pris",
+      "Analyser Styckvis 1",
+      "Analyser styckvis 2",
+      "Styck Prov",
+      "övriga prover",
+    ],
   }),
   name: "BestallSidan",
   components: {
@@ -78,6 +93,13 @@ export default {
   },
   computed: {
     ...mapState(["tests"]),
+    filterTestName() {
+      return this.tests.tests.map((test) => {
+        let testtype = [];
+        testtype = test.testtype;
+        return testtype;
+      });
+    },
   },
   methods: {
     moveToCart(id) {
