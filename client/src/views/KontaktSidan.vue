@@ -3,8 +3,8 @@
     <!-- left on screen -->
 
     <!-- Right on screen -->
-    <v-container>
-      <v-form class="form">
+    <v-container class="form">
+      <v-form>
         <v-row>
           <v-col cols="12" class="pt-16">
             <h1 class="black--text mt-3">Kontakta oss</h1>
@@ -73,7 +73,10 @@
               color="transparent"
               class="d-flex mt-12 justify-end algin-end"
             >
-              <v-btn class="font-weight-light white">skicka</v-btn>
+              <v-btn
+                class="font-weight-light btnColor white--text font-weight-bold"
+                >skicka</v-btn
+              >
             </v-card>
           </v-col>
         </v-row>
@@ -105,6 +108,9 @@ export default {
 
 .form {
   max-width: 600px;
-  margin-left: 250px;
+  /* margin-left: 550px; */
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.329);
 }
 </style>

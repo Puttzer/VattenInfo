@@ -17,7 +17,7 @@ import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import LostLogin from '../views/LostLogin.vue'
 import BestallSidan from '../views/BestallSidan.vue'
 import InstruktionOchBlanketter from '../views/InstruktionOchBlanketter.vue'
-import OmLaboratiet from '../views/OmLaboratiet.vue'
+import OmOss from '../views/OmOss.vue'
 import HjalpMedDittVatten from '../views/HjalpMedDittVatten.vue'
 import EnsikltDricksVatten from '../views/EnsikltDricksVatten.vue'
 import AvloppsAnalyser from '../views/AvloppsAnalyser.vue'
@@ -152,9 +152,9 @@ const routes = [
 		component: InstruktionOchBlanketter
 	},
 	{
-		path: '/omlab',
-		name: 'OmLaboratiet',
-		component: OmLaboratiet
+		path: '/about',
+		name: 'OmOss',
+		component: OmOss
 	},
 	{
 		path: '/help',
