@@ -64,7 +64,10 @@ login view
 
 Home view (STATIC SCROLL ONLY)
 - separate visual assets and content [x] 
--  2 layers one component (assets) one view (content)
+-  2 layers one component (assets) one view (content) [x]
 Footer
 -- Currently needing small css fixes (icons not next to text and whatnot)
 
+Kontakt
+-- Text formating fixes needed
+-- then what we should put in

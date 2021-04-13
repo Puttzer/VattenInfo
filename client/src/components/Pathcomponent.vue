@@ -10,7 +10,8 @@
           class="background"
         >
           <p class="cursor-pointer background ma-1" @click="moveToRoute(route)">
-            / {{ route }}
+            /
+            {{ route }}
           </p>
         </v-list>
       </div>
@@ -24,18 +25,32 @@ export default {
   computed: {
     filterRoutes() {
       const routes = this.$route.path.split("/");
-      console.log(routes);
+      //   console.log(routes);
       routes.forEach((route) => {
         if (route === "") {
           routes.shift();
         }
-        console.log(routes);
       });
-      return routes;
+      const newArray = routes;
+      let splitArray = [];
+      newArray.forEach((routename) => {
+        const ex1 = routename.split("");
+        ex1[0] = ex1[0].toUpperCase();
+        const cobminestring = ex1.join("");
+        console.log(cobminestring);
+        splitArray.push(cobminestring);
+      });
+      console.log(splitArray);
+      return splitArray;
     },
   },
   methods: {
     moveToRoute(route) {
+      console.log(route);
+      //   const routeParameter = route.split("");
+      //   console.log(routeParameter);
+      //   routeParameter[0] = routeParameter[0].toLowerCase();
+      //   const cobminestring = routeParameter.join("");
       this.$router.push(`/${route}`);
     },
     moveToHome() {

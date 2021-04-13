@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <v-row class="d-flex">
-      <v-col class="d-flex justify-left ml" cols="12">
+      <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
@@ -67,6 +67,7 @@
 
       <div
         class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="generateOrder()"
       >
         Bekräffta beställning
       </div>
@@ -82,7 +83,25 @@ import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
   computed: {
-    ...mapState(["tests"]),
+    ...mapState(["tests", "order"]),
+  },
+  methods: {
+    async generateOrder() {
+      const orderTests = this.tests.selectedTests;
+      const orderAmount = this.tests.totalAmount;
+      const payload = {
+        orderTests: orderTests,
+        orderAmount: orderAmount,
+      };
+      console.log("generating the order");
+      await this.$store.dispatch("order/generateOrder", payload);
+      this.$store.commit("tests/DELETE_SELECTED_TESTS");
+      this.$router.push("/ordernumber");
+      //   if (this.order.orderGenerated) {
+      //     console.log("move to mutations");
+      //   }
+      //   setTimeout(function () {}, 2000);
+    },
   },
   mounted: {
     deleteTestInCart(id) {

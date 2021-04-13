@@ -1,7 +1,5 @@
 <template>
-  <v-content>
-    <h1>Om Laboratiet</h1>
-  </v-content>
+  <v-content> </v-content>
 </template>
 
 <script>
