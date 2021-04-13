@@ -133,7 +133,6 @@ export default {
                 const test = state.tests.find(test => test._id === _id)
                 console.log('test', test)
                 const tests = state.selectedTests.push(test)
-				
 				console.log(tests);
 
             } else {

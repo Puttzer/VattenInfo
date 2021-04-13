@@ -4,8 +4,11 @@
       <v-row class="justify-center mt-12">
         <h1>Vattentester</h1>
       </v-row>
-      <v-row class="justify-start black">
-        <div class="sortera ml-16 red">hata aik</div>
+      <v-row class="justify-start d-flex  flex-column mb-2 ml-3">
+        <div class="sortera ml-16">Filtrera på kategori</div>
+        <div class="d-flex ml-16 mr-16">
+          <v-select :items="items"></v-select>
+        </div>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <div
@@ -63,6 +66,9 @@
 import { mapState } from "vuex";
 // import TestExpansion from "../components/testpages/TestExpansion.vue";
 export default {
+  data: () => ({
+    items: ["Foo", "Bar", "Fizz", "Buzz"],
+  }),
   name: "BestallSidan",
   components: {
     // TestExpansion,
