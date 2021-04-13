@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex flex-column">
     <v-row class="d-flex">
-      <v-col class="d-flex justify-left ml" cols="12">
+      <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
@@ -9,11 +9,10 @@
       v-for="(selectedTest, index) in this.tests.selectedTests"
       :key="selectedTest._id"
       :index="index"
-      class="my-1 mx-2"
+      class="my-1 mx-8"
       cols="12"
     >
-
-      <v-col class="d-flex red justify-center pa-0 mx-1 my-1">
+      <v-col class="d-flex justify-center grey lighten-1 pa-0 mx-1 my-1">
         <v-list
           class="d-flex justify-space-around pa-0 ma-0 flex-row"
           cols="12"
@@ -27,21 +26,21 @@
               height="150px"
             ></v-img>
 
-            <div class="d-flex flex-column">
-              <p class="price mb-3">
-                {{ selectedTest.price }}
+            <div class="d-flex testDetails flex-column">
+              <p class="price grey--text font-weight-light mb-3">
+                {{ selectedTest.price }} kr
               </p>
-              <p class="mb-0">
+              <p class="mb-0 font-weight-light">
                 {{ selectedTest.testname }}
               </p>
-              <p class="mb-0">{{ selectedTest.testtype }}</p>
+              <p class="mb-0 font-weight-light">{{ selectedTest.testtype }}</p>
               <p>{{ selectedTest.category }}</p>
             </div>
           </div>
 
-          <div cols="4" lass="d-flex pink flex-column">
-            <div class="justify-text amber desc d-flex flex-column">
-              <p class="text-justify green my-2 py-3 mx-2 px-3">
+          <div cols="4" lass="d-flex  flex-column">
+            <div class="justify-text desc d-flex flex-column">
+              <p class="text-justify my-2 py-3 mx-2 px-3">
                 {{ selectedTest.description }}
               </p>
             </div>
@@ -49,7 +48,7 @@
 
           <v-icon
             @click="deleteProduct"
-            class="d-flex justify-center"
+            class="d-flex grey lighten-5 justify-center"
             size="42px"
             color="red"
             cols="2"
@@ -57,24 +56,25 @@
           >
         </v-list>
       </v-col>
+      <!-- <v-divider></v-divider> -->
     </v-row>
 
     <v-col
       cols="12"
-      class="amber d-flex flex-row justify-space-evenly align-right"
+      class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
     >
-      <div class="indigo">
-        <p class="mt-4 pink">Summa : {{ this.tests.totalAmount }}</p>
-      </div>
+      <div class="">Summa : {{ this.tests.totalAmount }} kr</div>
+
       <div
         class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="generateOrder()"
       >
         Bekräffta beställning
       </div>
     </v-col>
-
+    <!-- 
     {{ this.tests.selectedTests }}
-    {{ this.tests.totalAmount }}
+    {{ this.tests.totalAmount }} -->
   </div>
 </template>
 
@@ -83,7 +83,25 @@ import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
   computed: {
-    ...mapState(["tests"]),
+    ...mapState(["tests", "order"]),
+  },
+  methods: {
+    async generateOrder() {
+      const orderTests = this.tests.selectedTests;
+      const orderAmount = this.tests.totalAmount;
+      const payload = {
+        orderTests: orderTests,
+        orderAmount: orderAmount,
+      };
+      console.log("generating the order");
+      await this.$store.dispatch("order/generateOrder", payload);
+      this.$store.commit("tests/DELETE_SELECTED_TESTS");
+      this.$router.push("/ordernumber");
+      //   if (this.order.orderGenerated) {
+      //     console.log("move to mutations");
+      //   }
+      //   setTimeout(function () {}, 2000);
+    },
   },
 };
 </script>
@@ -91,12 +109,22 @@ export default {
 <style scoped>
 .payButton {
   height: 60px;
-  width: 250px;
+  width: 550px;
   border-radius: 4px;
+  font-size: 24px;
 }
 
 .price {
-  size: 54px;
+  font-size: 24px;
   font-weight: bold;
+}
+
+.testDetails {
+  font-size: 12px;
+  color: #bdbdbd;
+}
+
+.totalPrice {
+  font-size: 34px;
 }
 </style>
