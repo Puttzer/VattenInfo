@@ -1,20 +1,34 @@
 <template>
-  <v-content>
+  <v-main>
     <v-flex>
       <v-row class="justify-center mt-12">
         <h1>Vattentester</h1>
       </v-row>
       <v-row class="d-flex justify-center">
-        <v-col cols="4">
-          <v-select :items="type1"></v-select>
+        <v-col cols="1">
+          <div class="d-flex flex-row justify-space-between btnColor">
+            <p class="ma-1">Filter</p>
+            <v-icon class="ma-1">filter_alt</v-icon>
+          </div>
         </v-col>
-        <v-col cols="4">
-          <v-select :items="type2"></v-select>
+        <v-col cols="3">
+          <v-select
+            :items="type1"
+            v-model="category"
+            label="select test category"
+          ></v-select>
+        </v-col>
+        <v-col cols="3">
+          <v-select
+            :items="type2"
+            v-model="testtype"
+            label="select test testtype"
+          ></v-select>
         </v-col>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <div
-          v-for="(test, index) in this.tests.tests"
+          v-for="(test, index) in this.filterTesttype"
           :key="index"
           width="50px"
           height="300px"
@@ -61,7 +75,7 @@
         </div>
       </v-row>
     </v-flex>
-  </v-content>
+  </v-main>
 </template>
 
 <script>
@@ -72,17 +86,21 @@ export default {
     // items: ["Foo", "Bar", "Fizz", "Buzz"],
     // testtype:
     type1: [
+      "",
       "Ackrediterade analyser",
       "Enskilt dricksvatten",
       "avloppsvatten och badvatten",
     ],
     type2: [
+      "",
       "Packet pris",
       "Analyser Styckvis 1",
       "Analyser styckvis 2",
       "Styck Prov",
       "övriga prover",
     ],
+    category: "",
+    testtype: "",
   }),
   name: "BestallSidan",
   components: {
@@ -99,6 +117,25 @@ export default {
         testtype = test.testtype;
         return testtype;
       });
+    },
+    filterCategory() {
+      console.log(this.category);
+      if (this.category === "") {
+        return this.tests.tests;
+      } else {
+        return this.tests.tests.filter(
+          (test) => test.category === this.category
+        );
+      }
+    },
+    filterTesttype() {
+      if (this.testtype === "") {
+        return this.tests.tests;
+      } else {
+        return this.filterCategory.filter(
+          (test) => test.testtype === this.testtype
+        );
+      }
     },
   },
   methods: {
