@@ -128,9 +128,16 @@ export default {
 
             if (!isTheTestExists) {
                 state.count++;
+                // localStorage.setItem('seletedTests',)
+
                 const test = state.tests.find(test => test._id === _id)
                 console.log('test', test)
                 state.selectedTests.push(test)
+                // const localTests = state.selectedTests.map(test => test)
+                // console.log(localTests);
+                localStorage.setItem('count', state.count)
+                localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
+
             } else {
                 return
             }
@@ -150,8 +157,16 @@ export default {
             const remainingTests = state.selectedTests.filter((test) => test._id !== id)
             state.selectedTests = remainingTests
             state.count--
+            localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
+            localStorage.setItem('count', state.count)
             console.log(state.selectedTests)
         },
+        DELETE_SELECTED_TESTS(state) {
+            console.log('delete selected tests')
+            state.selectedTests = [],
+                state.count = 0;
+
+        }
 
     },
     namespaced: true
