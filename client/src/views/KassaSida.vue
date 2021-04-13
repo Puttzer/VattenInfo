@@ -102,7 +102,7 @@ export default {
 
 .testDetails {
   font-size: 12px;
-  color: #BDBDBD;
+  color: #bdbdbd;
 }
 
 .totalPrice {
