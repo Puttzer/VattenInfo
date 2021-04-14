@@ -47,7 +47,7 @@
           </div>
 
           <v-icon
-            @click="deleteTestInCart(selectTest._id)"
+            @click="deleteTestInCart(selectedTest._id)"
             class="d-flex grey lighten-5 justify-center"
             size="42px"
             color="red"
@@ -102,8 +102,6 @@ export default {
       //   }
       //   setTimeout(function () {}, 2000);
     },
-  },
-  mounted: {
     deleteTestInCart(id) {
       console.log(id, " move to mutaions");
       this.$store.commit("tests/DELETE_TEST_CART", id);
@@ -133,5 +131,4 @@ export default {
 .totalPrice {
   font-size: 34px;
 }
-
 </style>
