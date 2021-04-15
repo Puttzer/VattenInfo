@@ -31,7 +31,13 @@ import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import KassaSida from '../views/KassaSida.vue'
-import VattenGuiden from '../views/VattenGuide'
+import VattenGuide from '../views/VattenGuide.vue'
+import answer1 from '../components/guiden/answer1'
+import answer2 from '../components/guiden/answer2'
+import answer3 from '../components/guiden/answer3'
+import answer4 from '../components/guiden/answer4'
+
+
 
 Vue.use(VueRouter)
 
@@ -203,8 +209,26 @@ const routes = [
     },
   {
 		path: '/vattenguide',
-		name: 'VattenGuiden',
-		component: VattenGuiden
+		name: 'VattenGuide',
+		component: VattenGuide,
+			},
+	{
+		path: '/answer1',
+		name: 'answer1',
+		component: answer1,
+	},
+	{
+		path: '/answer2',
+		name: 'answer2',
+		component: answer2,
+	},{
+		path: '/answer3',
+		name: 'answer3',
+		component: answer3,
+	},{
+		path: '/answer4',
+		name: 'answer4',
+		component: answer4,
 	},
     {
         path: '/*',

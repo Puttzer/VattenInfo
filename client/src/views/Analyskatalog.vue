@@ -41,26 +41,28 @@
       <v-col cols="2" class="d-flex align-center">
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
-      <v-col
-
-        cols="5"
-        class="d-flex flex-column justify-center align-center"
-      >
+      <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div class="pointer">
-          <img @click="moveToBygglovTillstand" src="@/assets/Avtal.png" height="140px" width="214px" />
+          <img
+            @click="moveToBygglovTillstand"
+            src="@/assets/Avtal.png"
+            height="140px"
+            width="214px"
+          />
           <div class="lowertext">
             <h3 class="blue--text">Bygglov & tillstånd</h3>
             <p class="text--secondary">Lorem ipsum dolor sit amet</p>
           </div>
         </div>
       </v-col>
-      <v-col
-
-        cols="2"
-        class="d-flex flex-column"
-      >
+      <v-col cols="2" class="d-flex flex-column">
         <div class="pointer">
-          <img @click="moveToAvloppAnalyser" src="@/assets/analys.png" height="140px" width="214px" />
+          <img
+            @click="moveToAvloppAnalyser"
+            src="@/assets/analys.png"
+            height="140px"
+            width="214px"
+          />
           <div class="lowertext">
             <h3 class="blue--text">Avloppanalyser</h3>
             <p class="text--secondary">Lorem ipsum dolor sit amet</p>
@@ -76,6 +78,7 @@
           width="250px"
           color="light-blue darken-3"
           class="rounded-0"
+          @click="moveToGuiden()"
         >
           <div class="d-flex flex-column justify-center align-center">
             <h1
@@ -130,15 +133,17 @@ export default {
     },
     moveToAvloppAnalyser() {
       this.$router.push("/avlopp_analyser");
-	console.log("avlopp");
+      console.log("avlopp");
     },
     moveToBygglovTillstand() {
       this.$router.push("/bygglov_tillstand");
-	console.log("bygglov_tillstand");
-
+      console.log("bygglov_tillstand");
     },
     moveToVerksamhet() {
       this.$router.push("/verksamhet");
+    },
+    moveToGuiden() {
+      this.$router.push("/vattenguide");
     },
   },
 };

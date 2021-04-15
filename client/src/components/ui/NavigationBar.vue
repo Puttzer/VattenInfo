@@ -102,7 +102,7 @@
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
-              <ul v-if="showAboutSection">
+              <ul  v-if="showAboutSection">
                 <li class="text--white">om oss</li>
                 <li class="text--white">kontakt</li>
                 <li class="text--white">wennnn</li>
@@ -113,13 +113,13 @@
               @mouseleave="showOtherServices = false"
             >
               Övriga tjänster
-              <v-icon>keyboard_arrow_down</v-icon>
+              <!-- <v-icon>keyboard_arrow_down</v-icon> -->
 
-              <ul v-if="showOtherServices">
+              <!-- <ul v-if="showOtherServices">
                 <li class="text--white">lorem</li>
                 <li class="text--white">lorem</li>
                 <li class="text--white">lorem</li>
-              </ul>
+              </ul> -->
             </li>
           </ul>
         </nav>
@@ -234,8 +234,9 @@ export default {
   position: absolute;
   left: 0;
   top: 55px;
-  border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  /* border-top: 5px solid blue; */
+  /* background-color: rgb(21, 57, 68); */
+  background: #fff;
   margin: 0;
   padding: 0;
   z-index: 2;
@@ -247,7 +248,7 @@ export default {
   padding: 0;
   /* color: rgb(54, 85, 104); */
   font-size: 14px;
-  color: white;
+  /* color: white; */
   font-weight: 600;
   font-family: "Poppins", sans-serif;
 }
