@@ -42,102 +42,101 @@ import answer4 from '../components/guiden/answer4'
 Vue.use(VueRouter)
 
 const routes = [
-	{
-		path: '/',
-		name: 'Home',
-		component: Home
-	},
-	{
-		path: '/login',
-		name: 'Login',
-		component: Login
-	},
-	{
-		path: '/lostlogin',
-		name: 'LostLogin',
-		component: LostLogin
-	},
-	{
-		path: '/analyskatalog',
-		name: 'AnalysKatalog',
-		component: AnalysKatalog
-	},
-	{
-		path: '/login/user',
-		name: 'PrivateAccount',
-		component: KundBestallsidan
-	},
-	{
-		path: '/login/admin',
-		name: 'AdminLogin',
-		component: AdminLogin
-	},
-	{
-		path: '/test/scrolltest',
-		name: 'ScrollHome',
-		component: ScrollHome
-	},
-	{
-		path: '/test/ScrollAnalys',
-		name: 'ScrollAnalys',
-		component: ScrollAnalys
-	},
-	{
-		path: '/test/:id',
-		name: 'TestStartsidan',
-		component: TestStartsidan
-	},
-	// {
-	//     path: '/adminpage',
-	//     name: 'AdminStartsidan',
-	//     component: AdminStartsidan,
-	//     beforeEnter: (to, from, next) => {
-	//         console.log(store.state.admin.isLoggedIn)
-	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-	//             next()
-	//         } else {
-	//             next('/')
-	//         }
-	//     }
-	// },
-	{
-		path: '/adminpage',
-		// You could also have named views at the top
-		component: AdminStartsidan,
-		beforeEnter: (to, from, next) => {
-			console.log(store.state.admin.isLoggedIn)
-			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-				next()
-			} else {
-				next('/')
-			}
-		},
-		children: [
-			{
-				path: 'tests',
-				component: Tests
-			}, {
-				path: 'privatecustomer',
-				component: PrivateCustomer
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/lostlogin',
+        name: 'LostLogin',
+        component: LostLogin
+    },
+    {
+        path: '/analyskatalog',
+        name: 'AnalysKatalog',
+        component: AnalysKatalog
+    },
+    {
+        path: '/login/user',
+        name: 'PrivateAccount',
+        component: KundBestallsidan
+    },
+    {
+        path: '/login/admin',
+        name: 'AdminLogin',
+        component: AdminLogin
+    },
+    {
+        path: '/test/scrolltest',
+        name: 'ScrollHome',
+        component: ScrollHome
+    },
+    {
+        path: '/test/ScrollAnalys',
+        name: 'ScrollAnalys',
+        component: ScrollAnalys
+    },
+    {
+        path: '/test/:id',
+        name: 'TestStartsidan',
+        component: TestStartsidan
+    },
+    // {
+    //     path: '/adminpage',
+    //     name: 'AdminStartsidan',
+    //     component: AdminStartsidan,
+    //     beforeEnter: (to, from, next) => {
+    //         console.log(store.state.admin.isLoggedIn)
+    //         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+    //             next()
+    //         } else {
+    //             next('/')
+    //         }
+    //     }
+    // },
+    {
+        path: '/adminpage',
+        // You could also have named views at the top
+        component: AdminStartsidan,
+        beforeEnter: (to, from, next) => {
+            console.log(store.state.admin.isLoggedIn)
+            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+                next()
+            } else {
+                next('/')
+            }
+        },
+        children: [
+            {
+                path: 'tests',
+                component: Tests
+            }, {
+                path: 'privatecustomer',
+                component: PrivateCustomer
 
-			},
-			{
-				path: 'ForetagCustomer',
-				component: ForetagCustomer
+            },
+            {
+                path: 'ForetagCustomer',
+                component: ForetagCustomer
 
-			}]
-	},
-	{
-		path: '/login/userpage',
-		name: 'KundStartsidan',
-		component: KundStartsidan
-	},
-	{
-		path: '/ordernumber',
-		name: 'KundOrderSidan',
-		component: KundOrderSidan
-	},
-
+            }]
+    },
+    {
+        path: '/login/userpage',
+        name: 'KundStartsidan',
+        component: KundStartsidan
+    },
+    {
+        path: '/ordernumber',
+        name: 'KundOrderSidan',
+        component: KundOrderSidan
+    },
 	{
 		path: '/foretag',
 		name: 'ForetagStartsida',
@@ -252,13 +251,12 @@ const routes = [
 		path: '/*',
 		alias: '/'
 	}
-
 ]
 
 const router = new VueRouter({
-	mode: 'history',
-	base: process.env.BASE_URL,
-	routes
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes
 })
 
 export default router
