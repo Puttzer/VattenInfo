@@ -3,32 +3,19 @@
     <v-col>
       <v-row class="d-flex justify-center">Vad vill du ta prov på?</v-row>
       <v-row class="">
-        <v-col class="my-2">
-          <div
-            @click="dricksvatten()"
+        <v-col
+          class="ma-0 pa-0"
+          v-for="(info, index) in infos"
+          :key="info.id"
+          :index="index"
+          cols="12"
+        >
+          <router-link
+            :to="info.path"
             class="answer d-flex justify-center btnColor white--text py-2 my-2"
           >
-            Dricksvatten
-          </div>
-          <div
-            @click="tillstand()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Vatten för att söka tillstånd (om du till exempel ska bygga avlopp)
-            eller bygglov?
-          </div>
-          <div
-            @click="avlopp()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Avlopp
-          </div>
-          <div
-            @click="annat()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Annat vatten
-          </div>
+            {{ info.title }}
+          </router-link>
         </v-col>
       </v-row>
     </v-col>
@@ -38,32 +25,20 @@
 <script>
 export default {
   name: "VattenGuide",
-  methods: {
-    dricksvatten() {
-      this.$router.push({
-        name: "answer1",
-        path: "/answer1",
-      });
-    },
-    tillstand() {
-      this.$router.push({
-        name: "answer2",
-        path: "/answer2",
-      });
-    },
-    avlopp() {
-      this.$router.push({
-        name: "answer3",
-        path: "/answer3",
-      });
-    },
-
-    annat() {
-      this.$router.push({
-        name: "answer4",
-        path: "/answer4",
-      });
-    },
+  data() {
+    return {
+      infos: [
+        { title: "Dricksvatten", id: 1, path: "/answer1" },
+        {
+          title:
+            "Vatten för att söka tillstånd (om du till exempel ska bygga avlopp) eller bygglov?",
+          id: 2,
+          path: "/answer2",
+        },
+        { title: "Avlopp", id: 3, path: "/answer3" },
+        { title: "Annat vatten", id: 4, path: "/answer4" },
+      ],
+    };
   },
 };
 </script>
