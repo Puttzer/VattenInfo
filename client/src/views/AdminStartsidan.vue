@@ -39,13 +39,15 @@
               >
               <v-list>
                 <v-list-item>
-                  <v-list-item-content>
+                  <v-list-item-content
+                    @click.stop="moveToPrivateCustomersOrders"
+                  >
                     <v-list-item-title>Privat</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
 
                 <v-list-item>
-                  <v-list-item-content>
+                  <v-list-item-content @click.stop="moveToCompanyOrders">
                     <v-list-item-title>Företag</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -116,6 +118,12 @@ export default {
     },
     moveToForetag() {
       this.$router.push("/adminpage/foretagcustomer");
+    },
+    moveToCompanyOrders() {
+      this.$router.push("/adminpage/foretagorders");
+    },
+    moveToPrivateCustomersOrders() {
+      this.$router.push("/adminpage/privatecustomerorders");
     },
   },
 };

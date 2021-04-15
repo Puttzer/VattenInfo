@@ -20,6 +20,7 @@ const isUserLoggedIn = async (req, res, next) => {
             }
             req.email = dbUser.email
             req.id = dbUser._id
+            console.log(req.id)
             next()
         }
         )
