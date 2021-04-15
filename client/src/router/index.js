@@ -31,6 +31,7 @@ import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import KassaSida from '../views/KassaSida.vue'
+import VattenGuiden from '../views/VattenGuide'
 
 Vue.use(VueRouter)
 
@@ -130,7 +131,6 @@ const routes = [
         name: 'KundOrderSidan',
         component: KundOrderSidan
     },
-
     {
         path: '/foretag',
         name: 'ForetagStartsida',
@@ -196,15 +196,20 @@ const routes = [
         name: 'PaymentInfo',
         component: PaymentInfo
     },
-    {
-        path: '/*',
-        alias: '/'
-    },
-    {
+   {
         path: '/kundstart',
         name: 'KundStartsidan',
         component: KundStartsidan
     },
+  {
+		path: '/vattenguide',
+		name: 'VattenGuiden',
+		component: VattenGuiden
+	},
+    {
+        path: '/*',
+        alias: '/'
+    }
 ]
 
 const router = new VueRouter({

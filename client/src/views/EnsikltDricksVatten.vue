@@ -36,14 +36,10 @@
               <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
               </p>
-              <!-- <p id="testType">
-                <strong>Test type : </strong>{{ test.testtype }}
-              </p>
 
-              <p id="testLong">Detailjer :{{ test.description }}</p> -->
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
-            <div class="d-flex flex-row">
+            <div class="d-flex justify-center mb-2 mx-2 flex-row">
               <v-btn
                 class="btnColor white--text ma-1"
                 @click="moveToIndividual(test._id, test)"
@@ -61,72 +57,47 @@
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
         <h3>Individuell tester styckvis 1</h3>
+        <p>{{ countStyckvisOne }}</p>
       </v-row>
-      <v-row>
+      <v-col class="d-flex flex-row justify-center">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis1"
           :key="index"
-          width="200px"
-          height="200px"
-          class="ma-4 amber darken-1"
+          width="75px"
+          height="75px"
+          class="ma-4 amber"
+          :testId="test._id"
         >
           <v-list
-            class="d-flex flex-column justify-center amber darken-1"
+            class="d-flex flex-column amber justify-center"
             id="testList ma-0 pa-0"
           >
-            <!-- <v-img
-              id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
-              height="150px"
-              width="300px"
-              name="testimage"
-              class="ma-0 pa-0"
-            ></v-img>
-            <v-divider></v-divider> -->
-            <div class="ma-2">
-              <h2 class="Heading-2" id="testName">
+            <div class="d-flex justify-center">
+              <p class="test-text" id="testName">
                 {{ test.testname }}
-              </h2>
-              <!-- <p id="testCategory">
-                <strong>Kategori : </strong> {{ test.category }}
-              </p> -->
-              <!-- <p id="testType">
-                <strong>Test type : </strong>{{ test.testtype }}
               </p>
-
-              <p id="testLong">Detailjer :{{ test.description }}</p> -->
-              <!-- <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
             </div>
             <div class="d-flex justify-center">
-              <!-- <v-btn
-                class="btnColor white--text ma-1"
-                @click="moveToIndividual(test._id, test)"
-                >Läs mer</v-btn
-              > -->
-              <!-- <v-btn
-                class="btnColor white--text ma-1"
-                @click="moveToCart(test._id)"
-                >köp</v-btn
-              > -->
               <input
                 type="checkbox"
                 :testId="test._id"
-                @change="increaseThecounterValue(test._id)"
+                @click="increaseThecounterValue(test._id, test.isChecked)"
+                v-model="test.isChecked"
               />
             </div>
           </v-list>
         </v-card>
-      </v-row>
+      </v-col>
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
         <h3>Individuell tester styckvis 2</h3>
       </v-row>
-      <v-row>
+      <v-col class="d-flex flex-row justify-center ma-2">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis2"
           :key="index"
-          width="200px"
-          height="200px"
+          width="70px"
+          height="70px"
           class="ma-4 green darken-1"
         >
           <v-list
@@ -143,25 +114,16 @@
             ></v-img>
             <v-divider></v-divider> -->
             <div class="ma-2 white--text">
-              <h2 class="Heading-2" id="testName">
+              <div class="test-text" id="testName">
                 {{ test.testname }}
-              </h2>
+              </div>
               <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
               </p>
-              <!-- <p id="testType">
-                <strong>Test type : </strong>{{ test.testtype }}
-              </p>
 
-              <p id="testLong">Detailjer :{{ test.description }}</p> -->
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
             <div class="d-flex justify-center">
-              <!-- <v-btn
-                class="btnColor white--text ma-1"
-                @click="moveToIndividual(test._id, test)"
-                >Läs mer</v-btn
-              > -->
               <v-btn
                 class="btnColor white--text ma-1"
                 @click="moveToCart(test._id)"
@@ -170,7 +132,7 @@
             </div>
           </v-list>
         </v-card>
-      </v-row>
+      </v-col>
     </v-flex>
   </v-main>
 </template>
@@ -182,6 +144,8 @@ export default {
   data() {
     return {
       isChecked: false,
+      //   clicked: false,
+      countStyckvisOne: 0,
     };
   },
   mounted() {
@@ -198,11 +162,15 @@ export default {
       );
     },
     filterIndividuelStyckvis1() {
-      return this.tests.tests.filter(
+      const inviduelStyckvis1 = this.tests.tests.filter(
         (test) =>
           test.testtype === "Analyser Styckvis 1" &&
           test.category === "Enskilt dricksvatten"
       );
+      inviduelStyckvis1.map((test) => {
+        test.isChecked = false;
+      });
+      return inviduelStyckvis1;
     },
     filterIndividuelStyckvis2() {
       return this.tests.tests.filter(
@@ -213,9 +181,14 @@ export default {
     },
   },
   methods: {
-    increaseThecounterValue(_id) {
+    increaseThecounterValue(_id, value) {
       console.log(_id);
       this.$store.commit("tests/INCREASE_COUNT", _id);
+      if (value) {
+        this.countStyckvisOne++;
+      } else {
+        this.countStyckvisOne--;
+      }
     },
     moveToIndividual(id, test) {
       console.log(id);
@@ -238,8 +211,19 @@ export default {
 .packet-height {
   min-height: 400px;
 }
-p {
+/* p {
   margin: 0;
   padding: 0;
+} */
+
+.test-text {
+  font-size: 14px;
+}
+
+.white {
+  background-color: white;
+}
+.blue {
+  background-color: blue;
 }
 </style>
