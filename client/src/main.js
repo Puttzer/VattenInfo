@@ -9,7 +9,7 @@ import VueToastify from "vue-toastify";
 const toastifySettings = {
     position: 'bottom-right',
     theme: 'dark',
-    duration: '500',
+    successDuration: '1000',
     backdrop: "rgba('129,212,250')",
     singular: true,
     iconEnabled: false

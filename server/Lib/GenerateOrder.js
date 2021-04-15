@@ -1,6 +1,10 @@
 function generateOrderNr() {
-    let letters = ["X", "Y", "Z", "A", "B"];
-    return `VI${Date.now()}${letters[Math.floor(Math.random() * letters.length)]
+    let letters = ["X", "Y", "Z", "A", "B", "C"];
+    var dateObj = new Date();
+    var month = ('0' + (dateObj.getMonth() + 1)).slice(-2);
+    var date = ('0' + dateObj.getDate()).slice(-2);
+    var year = dateObj.getFullYear();
+    return `V${year}${month}${date}${letters[Math.floor(Math.random() * letters.length)]
         }`;
 }
 

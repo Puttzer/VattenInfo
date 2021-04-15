@@ -83,20 +83,27 @@ import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
   computed: {
-    ...mapState(["tests", "order"]),
+    ...mapState(["tests", "order", "user"]),
   },
   methods: {
     async generateOrder() {
-      const orderTests = this.tests.selectedTests;
-      const orderAmount = this.tests.totalAmount;
-      const payload = {
-        orderTests: orderTests,
-        orderAmount: orderAmount,
-      };
-      console.log("generating the order");
-      await this.$store.dispatch("order/generateOrder", payload);
-      this.$store.commit("tests/DELETE_SELECTED_TESTS");
-      this.$router.push("/ordernumber");
+      if (this.user.userIsloggedIn) {
+        console.log(this.user.user._id);
+        const id = this.user.user._id;
+        const orderTests = this.tests.selectedTests;
+        const orderAmount = this.tests.totalAmount;
+        const payload = {
+          orderTests: orderTests,
+          orderAmount: orderAmount,
+          id: id,
+        };
+        console.log("generating the order");
+        await this.$store.dispatch("order/generateOrder", payload);
+        this.$store.commit("tests/DELETE_SELECTED_TESTS");
+        this.$router.push("/ordernumber");
+      } else {
+        return;
+      }
       //   if (this.order.orderGenerated) {
       //     console.log("move to mutations");
       //   }
