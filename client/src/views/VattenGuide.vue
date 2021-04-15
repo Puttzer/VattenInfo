@@ -1,12 +1,18 @@
 <template>
-  <div class="container">
-    <h1>vattenguide</h1>
-  </div>
+<div class="">
+  <question/>
+</div>
 </template>
 
 <script>
-export default {};
+import question from '../components/guiden/question'
+export default {
+components:{
+	question,
+}
+}
 </script>
 
 <style>
+
 </style>
