@@ -137,95 +137,81 @@ const routes = [
         name: 'KundOrderSidan',
         component: KundOrderSidan
     },
-	{
-		path: '/foretag',
-		name: 'ForetagStartsida',
-		component: ForetagStartsida
-	},
-	{
-		path: '/bestallanalys',
-		name: 'BestallSidan',
-		component: BestallSidan
-	},
-	{
-		path: '/kassasida',
-		name: 'KassaSida',
-		component: KassaSida
-	},
-	{
-		path: '/blanketter',
-		name: 'InstruktionOchBlanketter',
-		component: InstruktionOchBlanketter
-	},
-	{
-		path: '/about',
-		name: 'OmOss',
-		component: OmOss
-	},
-	{
-		path: '/help',
-		name: 'HjalpMedDittVatten',
-		component: HjalpMedDittVatten
-	},
-	{
-		path: '/analyskatalog/enskiltdricksvatten/',
-		name: 'EnsikltDricksVatten',
-		component: EnsikltDricksVatten
-	},
-	{
-		path: '/avlopp_analyser',
-		name: 'AvloppsAnalyser',
-		component: AvloppsAnalyser
-	},
-	{
-		path: '/bygglov_tillstand',
-		name: 'BygglovTillstand',
-		component: BygglovTillstand
-	},
-	{
-		path: '/verksamhet',
-		name: 'VerksamhetSamfallighet',
-		component: VerksamhetSamfallighet
-	},
-	{
-		path: '/kontakt',
-		name: 'KontaktSidan',
-		component: KontaktSidan
-	},
-	{
-		path: '/registrera',
-		name: 'RegistreraKund',
-		component: RegistreraKund
-	},
-	{
-		path: '/payment',
-		name: 'PaymentInfo',
-		component: PaymentInfo
-	},
-	{
-		path: '/kundstart',
-		name: 'KundStartsidan',
-		component: KundStartsidan
-	},
-	{
+    {
+        path: '/foretag',
+        name: 'ForetagStartsida',
+        component: ForetagStartsida
+    },
+    {
+        path: '/bestallanalys',
+        name: 'BestallSidan',
+        component: BestallSidan
+    },
+    {
+        path: '/kassasida',
+        name: 'KassaSida',
+        component: KassaSida
+    },
+    {
+        path: '/blanketter',
+        name: 'InstruktionOchBlanketter',
+        component: InstruktionOchBlanketter
+    },
+    {
+        path: '/about',
+        name: 'OmOss',
+        component: OmOss
+    },
+    {
+        path: '/help',
+        name: 'HjalpMedDittVatten',
+        component: HjalpMedDittVatten
+    },
+    {
+        path: '/analyskatalog/enskiltdricksvatten/',
+        name: 'EnsikltDricksVatten',
+        component: EnsikltDricksVatten
+    },
+    {
+        path: '/avlopp_analyser',
+        name: 'AvloppsAnalyser',
+        component: AvloppsAnalyser
+    },
+    {
+        path: '/bygglov_tillstand',
+        name: 'BygglovTillstand',
+        component: BygglovTillstand
+    },
+    {
+        path: '/verksamhet',
+        name: 'VerksamhetSamfallighet',
+        component: VerksamhetSamfallighet
+    },
+    {
+        path: '/kontakt',
+        name: 'KontaktSidan',
+        component: KontaktSidan
+    },
+    {
+        path: '/registrera',
+        name: 'RegistreraKund',
+        component: RegistreraKund
+    },
+    {
+        path: '/payment',
+        name: 'PaymentInfo',
+        component: PaymentInfo
+    },
+   {
+        path: '/kundstart',
+        name: 'KundStartsidan',
+        component: KundStartsidan
+    },
+  {
 		path: '/vattenguide',
 		name: 'VattenGuide',
 		component: VattenGuide,
-		// children: [
-		// 	{
-		// 		path: '/answer1',
-		// 		component: answer1
-		// 	}, {
-		// 		path: 'privatecustomer',
-		// 		component: PrivateCustomer
-
-		// 	},
-		// 	{
-		// 		path: 'ForetagCustomer',
-		// 		component: ForetagCustomer
-
-		// 	}]
-	},
+			},
 	{
 		path: '/answer1',
 		name: 'answer1',
@@ -244,13 +230,10 @@ const routes = [
 		name: 'answer4',
 		component: answer4,
 	},
-
-	
-	// must be at the end
-	{
-		path: '/*',
-		alias: '/'
-	}
+    {
+        path: '/*',
+        alias: '/'
+    }
 ]
 
 const router = new VueRouter({
