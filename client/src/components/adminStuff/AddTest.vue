@@ -108,7 +108,9 @@ export default {
       type1: [
         "Ackrediterade analyser",
         "Enskilt dricksvatten",
+        "Bygglov & Tillstånd",
         "avloppsvatten och badvatten",
+        "Samfällighet & Verksamhet",
       ],
       type2: [
         "Packet pris",

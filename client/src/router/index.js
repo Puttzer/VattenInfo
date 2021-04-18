@@ -33,6 +33,7 @@ import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
 import KassaSida from '../views/KassaSida.vue'
+import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
 import answer1 from '../components/guiden/answer1'
 import answer2 from '../components/guiden/answer2'
@@ -154,6 +155,11 @@ const routes = [
         path: '/foretag',
         name: 'ForetagStartsida',
         component: ForetagStartsida
+    },
+    {
+        path: '/omlab',
+        name: 'LabbTjanster',
+        component: LabbTjanster
     },
     {
         path: '/bestallanalys',

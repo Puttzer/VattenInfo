@@ -7,7 +7,7 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <v-main class="ma-0 pa-0 background body-main" flat>
+    <v-main class="background body-main" flat>
       <Pathcomponent />
 
       <router-view></router-view>
@@ -42,7 +42,7 @@ export default {
     // test
   },
   computed: {
-    ...mapState(["admin", "test","user"]),
+    ...mapState(["admin", "test", "user"]),
   },
   methods: {},
   async mounted() {
@@ -55,7 +55,7 @@ export default {
     //   await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
     //   this.$router.push("/login/user");
     // }
-
+    await this.$store.dispatch("tests/getTests");
     if (localStorage.userToken) {
       await this.$store.dispatch("user/validateUser");
     } else if (localStorage.companyToken) {
@@ -68,7 +68,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,400&display=swap'); */
 
 * {
@@ -79,11 +79,16 @@ export default {
 .body-main {
   width: 100vw;
   height: 100%;
+  margin-top: 150px;
 }
 .app-container {
   width: 100vw;
 }
 .navigation-bar {
   width: 100vw;
+  height: 150px;
+  position: fixed;
+  z-index: 2;
+  background-color: white;
 }
 </style>

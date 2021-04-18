@@ -89,7 +89,7 @@
           width="250px"
           color="light-blue darken-3"
           class="rounded-0"
-          @click="moveToGuiden()"
+          @click.prevent="moveToGuiden()"
         >
           <div class="d-flex flex-column justify-center align-center">
             <h1
