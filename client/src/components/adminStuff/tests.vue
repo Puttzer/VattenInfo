@@ -40,6 +40,7 @@
               <h2 class="Heading-2" id="testName">
                 Title : {{ test.testname }}
               </h2>
+              <p>{{ test.short_description }}</p>
               <h4 id="testCategory">Detailjer :{{ test.category }}</h4>
               <h4 id="testType">Detailjer :{{ test.testtype }}</h4>
               <!-- <h5 id="testLong">Detailjer :{{ test.description }}</h5> -->
@@ -69,6 +70,7 @@ export default {
         testname: "",
         testtype: "",
         description: "",
+        short_description: "",
         price: "",
         image: "",
         category: "",
@@ -120,6 +122,7 @@ export default {
       this.test.testname = test.testname;
       this.test.testtype = test.testtype;
       this.test.price = test.price;
+      this.test.short_description = test.short_description;
       this.test.description = test.description;
       this.test.id = test._id;
       this.test.image = test.image;
