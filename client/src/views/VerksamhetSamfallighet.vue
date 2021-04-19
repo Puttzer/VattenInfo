@@ -1,16 +1,16 @@
 <template>
   <v-main>
     <v-row class="d-flex justify-center">
-      <v-col cols="10" class="d-flex justify-center">
-        <h2>
+      <v-col cols="9" class="d-flex justify-center">
+        <h2 class="blue--text">
           Dricksvattenanalyser för registrerade anläggningar. Samfälligheter,
           företag och verksamheter.
         </h2>
       </v-col>
     </v-row>
     <v-row class="d-flex justify-center">
-      <v-col cols="10" class="d-flex justify-center">
-        <p class="body-1">
+      <v-col cols="8" class="d-flex justify-center">
+        <p class="title">
           Dessa analyser är de som krävs av tillsynsmyndigheterna (kommunala
           eller regionala Miljö och hälsoskyddskontor) för alla som registreras
           som producenter av dricksvatten enligt dricksvattenföreskrifterna
