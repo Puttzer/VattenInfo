@@ -19,6 +19,9 @@
           </h3>
         </v-row>
         <v-row>
+          <p class="caption">{{ this.tests.test.short_description }}</p>
+        </v-row>
+        <v-row>
           <h2 class="green--text test-name">
             <strong class="black--text headline"> Test Name</strong> :
             {{ this.tests.test.testname }}
@@ -128,8 +131,8 @@ export default {
     filterPaketTest() {
       return this.tests.tests.filter(
         (test) =>
-          test.testtype === "Packet pris" &&
-          test.category === "Enskilt dricksvatten"
+          test.testtype === this.tests.test.testtype &&
+          test.category === this.tests.test.category
       );
     },
     filterRelatedTests() {

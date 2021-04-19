@@ -8,24 +8,26 @@
         </h2>
       </v-row>
       <v-row class="d-flex justify-center font-weight-bold blue--text mt-6">
-        <p class="bread">
-          Här hittar du analyser för dig med enskilt vatten (vatten för privat
-          dricksvattenförsörjning för färre än 50 personer eller med ett flöde
-          på mindre än 10 kubikmeter).<br />
-          Om du har anlagt en ny brunn så rekommenderas att prova vatten efter
-          någon månads användning. I andra fall rekommenderar Livsmedelsverket
-          att du testar ditt eget vatten minst vart tredje år.<br />
-          Är det fler än två fastigheter som är anslutna till samma brunn, om
-          vattnet kommer från en sjö eller passerar en avsaltningsanläggning bör
-          vattnet testas minst en gång per år.<br />
-          <span> OBS! </span> Vatten som försörjer fler än 50 personer eller har
-          ett flöde på minst 10 m3 är dricksvatten enligt
-          Livsmedelslagstiftningen. Klicka här för att komma till ackrediterade
-          analyser för registrerade anläggningar.
-        </p>
+        <v-col cols="11" class="d-flex justify-center">
+          <p class="bread">
+            Här hittar du analyser för dig med enskilt vatten (vatten för privat
+            dricksvattenförsörjning för färre än 50 personer eller med ett flöde
+            på mindre än 10 kubikmeter).<br />
+            Om du har anlagt en ny brunn så rekommenderas att prova vatten efter
+            någon månads användning. I andra fall rekommenderar Livsmedelsverket
+            att du testar ditt eget vatten minst vart tredje år.<br />
+            Är det fler än två fastigheter som är anslutna till samma brunn, om
+            vattnet kommer från en sjö eller passerar en avsaltningsanläggning
+            bör vattnet testas minst en gång per år.<br />
+            <span> OBS! </span> Vatten som försörjer fler än 50 personer eller
+            har ett flöde på minst 10 m3 är dricksvatten enligt
+            Livsmedelslagstiftningen. Klicka här för att komma till
+            ackrediterade analyser för registrerade anläggningar.
+          </p>
+        </v-col>
       </v-row>
       <v-row class="d-flex justify-center mt-6">
-        <v-col cols="12">
+        <v-col cols="11" class="d-flex flex-column justify-center">
           <h2 class="d-flex justify-center text--black">
             Analyser i lokalt laboratorium
           </h2>
@@ -41,7 +43,7 @@
         <v-card
           v-for="(test, index) in this.filterPaketTest"
           :key="index"
-          width="250px"
+          width="300px"
           height="200px"
           class="ma-4"
         >
@@ -62,19 +64,22 @@
               <h2 class="Heading-2" id="testName">
                 {{ test.testname }}
               </h2>
-              <p id="testCategory">
+              <p class="caption">{{ test.short_description }}</p>
+              <!-- <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
-              </p>
+              </p> -->
 
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
             <div class="d-flex justify-center mb-2 mx-2 flex-row">
               <v-btn
                 class="btnColor white--text ma-1"
+                medium
                 @click="moveToIndividual(test._id, test)"
                 >Läs mer</v-btn
               >
               <v-btn
+                medium
                 class="btnColor white--text ma-1"
                 @click="increaseThecounterValue(test._id)"
                 >köp</v-btn
@@ -85,14 +90,16 @@
       </v-row>
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
-        <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
-        <p>{{ countStyckvisOne }}</p>
+        <v-col cols="10" class="d-flex justify-center">
+          <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
+          <p>{{ countStyckvisOne }}</p>
+        </v-col>
       </v-row>
       <v-col class="d-flex flex-row justify-center">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis1"
           :key="index"
-          width="200px"
+          width="320px"
           height="75px"
           class="ma-4 amber"
           :testId="test._id"
@@ -136,19 +143,20 @@
       <v-row class="blue--text d-flex justify-center my-4">
         <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
       </v-row>
-      <v-col class="d-flex flex-row justify-center ma-2">
-        <v-card
-          v-for="(test, index) in this.filterIndividuelStyckvis2"
-          :key="index"
-          width="200px"
-          height="75px"
-          class="ma-4 green darken-1"
-        >
-          <v-list
-            class="d-flex flex-row justify-space-around green darken-1"
-            id="testList ma-0 pa-0"
+      <v-row>
+        <v-col class="d-flex flex-row justify-center ma-2" cols="12">
+          <v-card
+            v-for="(test, index) in this.filterIndividuelStyckvis2"
+            :key="index"
+            width="300px"
+            height="75px"
+            class="ma-4 purple darken-1"
           >
-            <!-- <v-img
+            <v-list
+              class="d-flex flex-row justify-space-around purple darken-1"
+              id="testList ma-0 pa-0"
+            >
+              <!-- <v-img
               id="testImage"
               :src="`http://localhost:4000/${test.image}`"
               height="150px"
@@ -157,37 +165,38 @@
               class="ma-0 pa-0"
             ></v-img>
             <v-divider></v-divider> -->
-            <div class="ma-2 white--text">
-              <div class="test-text" id="testName">
-                {{ test.testname }}
-              </div>
-              <!-- <p id="testCategory">
+              <div class="ma-2 white--text font-weight-bold">
+                <div class="test-text" id="testName">
+                  {{ test.testname }}
+                </div>
+                <!-- <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
               </p>
 
               <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
-            </div>
-            <div class="d-flex flex-column">
-              <div class="d-flex justify-center">
-                <v-btn icon small @click="increaseThecounterValue(test._id)">
-                  <v-icon>add_shopping_cart</v-icon>
-                </v-btn>
               </div>
-              <div>
-                <v-btn
-                  x-small
-                  class="btnColor"
-                  @click="moveToIndividual(test._id, test)"
-                  >läs mer</v-btn
-                >
+              <div class="d-flex flex-column">
+                <div class="d-flex justify-center">
+                  <v-btn icon small @click="increaseThecounterValue(test._id)">
+                    <v-icon>add_shopping_cart</v-icon>
+                  </v-btn>
+                </div>
+                <div>
+                  <v-btn
+                    x-small
+                    class="btnColor"
+                    @click="moveToIndividual(test._id, test)"
+                    >läs mer</v-btn
+                  >
+                </div>
               </div>
-            </div>
-          </v-list>
-        </v-card>
-      </v-col>
+            </v-list>
+          </v-card>
+        </v-col>
+      </v-row>
       <v-divider></v-divider>
       <v-row class="d-flex justify-center mt-6">
-        <v-col cols="12">
+        <v-col cols="10">
           <h1 class="d-flex justify-center text--black">
             Ackrediterade analyser för enskilt dricksvatten
           </h1>
@@ -200,9 +209,9 @@
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <v-card
-          v-for="(test, index) in this.filterPaketTest"
+          v-for="(test, index) in this.filterAckrediteradePaketTester"
           :key="index"
-          width="250px"
+          width="280px"
           height="200px"
           class="ma-4"
         >
@@ -223,9 +232,10 @@
               <h2 class="Heading-2" id="testName">
                 {{ test.testname }}
               </h2>
-              <p id="testCategory">
+              <p class="caption">{{ test.short_description }}</p>
+              <!-- <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
-              </p>
+              </p> -->
 
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
@@ -250,9 +260,9 @@
       </v-row>
       <v-col class="d-flex flex-row justify-center ma-2">
         <v-card
-          v-for="(test, index) in this.filterIndividuelStyckvis2"
+          v-for="(test, index) in this.filterAckrediteradeIndividuelStyckvis"
           :key="index"
-          width="200px"
+          width="300px"
           height="75px"
           class="ma-4 green darken-1"
         >
@@ -325,6 +335,13 @@ export default {
           test.category === "Enskilt dricksvatten"
       );
     },
+    filterAckrediteradePaketTester() {
+      return this.tests.tests.filter(
+        (test) =>
+          test.testtype === "Packet pris" &&
+          test.category === "Ackrediterade analyser"
+      );
+    },
     filterIndividuelStyckvis1() {
       const inviduelStyckvis1 = this.tests.tests.filter(
         (test) =>
@@ -341,6 +358,13 @@ export default {
         (test) =>
           test.testtype === "Analyser styckvis 2" &&
           test.category === "Enskilt dricksvatten"
+      );
+    },
+    filterAckrediteradeIndividuelStyckvis() {
+      return this.tests.tests.filter(
+        (test) =>
+          test.testtype === "Styck Prov" &&
+          test.category === "Ackrediterade analyser"
       );
     },
   },
