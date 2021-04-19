@@ -1,5 +1,5 @@
 <template>
-  <v-app class="ma-0 pa-0 d-flex justify-ceneter app-container">
+  <v-app class="d-flex justify-ceneter app-container">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
     <NavigationBar
       v-if="this.admin.showNavbar === true"
@@ -7,9 +7,8 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <v-main class="background body-main" flat>
-      <Pathcomponent />
-
+    <!-- <Pathcomponent /> -->
+    <v-main class="ma-0 pa-0 background body-main" flat>
       <router-view></router-view>
     </v-main>
     <Footer></Footer>
@@ -21,7 +20,7 @@ import NavigationBar from "./components/ui/NavigationBar.vue";
 // import AdminStartsidan from "./views/AdminStartsidan.vue";
 
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
-import Pathcomponent from "./components/Pathcomponent";
+// import Pathcomponent from "./components/Pathcomponent";
 
 import Footer from "./components/ui/Footer";
 import { mapState } from "vuex";
@@ -34,7 +33,7 @@ export default {
     return {};
   },
   components: {
-    Pathcomponent,
+    // Pathcomponent,
     NavigationBar,
     // AdminStartsidan,
     // NavBarMobile,
@@ -79,16 +78,15 @@ export default {
 .body-main {
   width: 100vw;
   height: 100%;
-  margin-top: 150px;
 }
 .app-container {
   width: 100vw;
 }
 .navigation-bar {
   width: 100vw;
-  height: 150px;
+  /* height: 150px;
   position: fixed;
   z-index: 2;
-  background-color: white;
+  background-color: white; */
 }
 </style>
