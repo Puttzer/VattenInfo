@@ -1,19 +1,48 @@
 <template>
   <v-main class="container">
     <v-flex>
-      <v-row> </v-row>
       <v-row d-flex justify="center">
-        <h1>Enskilt dricksvatten</h1>
+        <h2>
+          Analyser för dig med egen brunn eller gemensam brunn för upp till 50
+          personer
+        </h2>
       </v-row>
-      <v-row class="d-flex justify-center font-weight-light blue--text mt-6">
-        <h3>Analyser för dig med enskild brunn</h3>
+      <v-row class="d-flex justify-center font-weight-bold blue--text mt-6">
+        <p class="bread">
+          Här hittar du analyser för dig med enskilt vatten (vatten för privat
+          dricksvattenförsörjning för färre än 50 personer eller med ett flöde
+          på mindre än 10 kubikmeter).<br />
+          Om du har anlagt en ny brunn så rekommenderas att prova vatten efter
+          någon månads användning. I andra fall rekommenderar Livsmedelsverket
+          att du testar ditt eget vatten minst vart tredje år.<br />
+          Är det fler än två fastigheter som är anslutna till samma brunn, om
+          vattnet kommer från en sjö eller passerar en avsaltningsanläggning bör
+          vattnet testas minst en gång per år.<br />
+          <span> OBS! </span> Vatten som försörjer fler än 50 personer eller har
+          ett flöde på minst 10 m3 är dricksvatten enligt
+          Livsmedelslagstiftningen. Klicka här för att komma till ackrediterade
+          analyser för registrerade anläggningar.
+        </p>
+      </v-row>
+      <v-row class="d-flex justify-center mt-6">
+        <v-col cols="12">
+          <h2 class="d-flex justify-center text--black">
+            Analyser i lokalt laboratorium
+          </h2>
+          <p class="bread font-weight-light blue--text">
+            Det lokala laboratoriet analyserar enligt akrediterade metoder, men
+            är inte ackrediterat. Därför är det lämpligt för enskilt vatten.
+            Vårt lokala laboratorie erbjuder snabbare svarstider och
+            direktkoppling till rådgivning.
+          </p>
+        </v-col>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <v-card
           v-for="(test, index) in this.filterPaketTest"
           :key="index"
           width="250px"
-          height="300px"
+          height="200px"
           class="ma-4"
         >
           <v-list
@@ -56,52 +85,67 @@
       </v-row>
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
-        <h3>Individuell tester styckvis 1</h3>
+        <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
         <p>{{ countStyckvisOne }}</p>
       </v-row>
       <v-col class="d-flex flex-row justify-center">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis1"
           :key="index"
-          width="75px"
+          width="200px"
           height="75px"
           class="ma-4 amber"
           :testId="test._id"
         >
-          <v-list
-            class="d-flex flex-column amber justify-center"
-            id="testList ma-0 pa-0"
-          >
-            <div class="d-flex justify-center">
-              <p class="test-text" id="testName">
-                {{ test.testname }}
-              </p>
-            </div>
-            <div class="d-flex justify-center">
-              <input
-                type="checkbox"
-                :testId="test._id"
-                @click="increaseThecounterValue(test._id, test.isChecked)"
-                v-model="test.isChecked"
-              />
+          <v-list class="d-flex flex-column amber pa-3" id="testList ma-0 pa-0">
+            <div class="d-flex flex-row justify-space-around align-center">
+              <div class="d-flex justify-center">
+                <h1 class="test-text" id="testName">
+                  {{ test.testname }}
+                </h1>
+              </div>
+              <!-- <div class="d-flex justify-center">
+                <input
+                  type="checkbox"
+                  :testId="test._id"
+                  @click="increaseThecounterValue(test._id, test.isChecked)"
+                  v-model="test.isChecked"
+                /> 
+              </div> -->
+
+              <div class="d-flex flex-column align-space-around">
+                <div class="d-flex justify-center">
+                  <v-btn icon small @click="increaseThecounterValue(test._id)">
+                    <v-icon>add_shopping_cart</v-icon>
+                  </v-btn>
+                </div>
+                <div>
+                  <v-btn
+                    x-small
+                    class="btnColor"
+                    @click="moveToIndividual(test._id, test)"
+                    >läs mer</v-btn
+                  >
+                </div>
+              </div>
             </div>
           </v-list>
         </v-card>
       </v-col>
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
-        <h3>Individuell tester styckvis 2</h3>
+        <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
       </v-row>
       <v-col class="d-flex flex-row justify-center ma-2">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis2"
           :key="index"
-          width="70px"
-          height="70px"
+          width="200px"
+          height="75px"
           class="ma-4 green darken-1"
         >
           <v-list
-            class="d-flex flex-column justify-center green darken-1"
+            class="d-flex flex-row justify-space-around green darken-1"
             id="testList ma-0 pa-0"
           >
             <!-- <v-img
@@ -117,18 +161,138 @@
               <div class="test-text" id="testName">
                 {{ test.testname }}
               </div>
+              <!-- <p id="testCategory">
+                <strong>Kategori : </strong> {{ test.category }}
+              </p>
+
+              <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
+            </div>
+            <div class="d-flex flex-column">
+              <div class="d-flex justify-center">
+                <v-btn icon small @click="increaseThecounterValue(test._id)">
+                  <v-icon>add_shopping_cart</v-icon>
+                </v-btn>
+              </div>
+              <div>
+                <v-btn
+                  x-small
+                  class="btnColor"
+                  @click="moveToIndividual(test._id, test)"
+                  >läs mer</v-btn
+                >
+              </div>
+            </div>
+          </v-list>
+        </v-card>
+      </v-col>
+      <v-divider></v-divider>
+      <v-row class="d-flex justify-center mt-6">
+        <v-col cols="12">
+          <h1 class="d-flex justify-center text--black">
+            Ackrediterade analyser för enskilt dricksvatten
+          </h1>
+          <h2 class="bread font-weight-light blue--text">
+            Analyser för dig som önskar få en bedömning från ett ackrediterat
+            laboratorium eller analysera specifika parametrar så som metaller,
+            samt räkna bakterier.
+          </h2>
+        </v-col>
+      </v-row>
+      <v-row class="d-flex justify-center packet-height">
+        <v-card
+          v-for="(test, index) in this.filterPaketTest"
+          :key="index"
+          width="250px"
+          height="200px"
+          class="ma-4"
+        >
+          <v-list
+            class="d-flex flex-column justify-center ma-0 pa-0"
+            id="testList"
+          >
+            <v-img
+              id="testImage"
+              :src="`http://localhost:4000/${test.image}`"
+              height="150px"
+              width="300px"
+              name="testimage"
+              class="ma-0 pa-0"
+            ></v-img>
+            <v-divider></v-divider>
+            <div class="ma-2">
+              <h2 class="Heading-2" id="testName">
+                {{ test.testname }}
+              </h2>
               <p id="testCategory">
                 <strong>Kategori : </strong> {{ test.category }}
               </p>
 
               <p id="testPrice">Pris :{{ test.price }} SEK</p>
             </div>
-            <div class="d-flex justify-center">
+            <div class="d-flex justify-center mb-2 mx-2 flex-row">
               <v-btn
                 class="btnColor white--text ma-1"
-                @click="moveToCart(test._id)"
+                @click="moveToIndividual(test._id, test)"
+                >Läs mer</v-btn
+              >
+              <v-btn
+                class="btnColor white--text ma-1"
+                @click="increaseThecounterValue(test._id)"
                 >köp</v-btn
               >
+            </div>
+          </v-list>
+        </v-card>
+      </v-row>
+      <v-divider></v-divider>
+      <v-row class="blue--text d-flex justify-center my-4">
+        <h3>Ackrediterade analyser styckvis</h3>
+      </v-row>
+      <v-col class="d-flex flex-row justify-center ma-2">
+        <v-card
+          v-for="(test, index) in this.filterIndividuelStyckvis2"
+          :key="index"
+          width="200px"
+          height="75px"
+          class="ma-4 green darken-1"
+        >
+          <v-list
+            class="d-flex flex-row justify-space-around green darken-1"
+            id="testList ma-0 pa-0"
+          >
+            <!-- <v-img
+              id="testImage"
+              :src="`http://localhost:4000/${test.image}`"
+              height="150px"
+              width="300px"
+              name="testimage"
+              class="ma-0 pa-0"
+            ></v-img>
+            <v-divider></v-divider> -->
+            <div class="ma-2 white--text">
+              <div class="test-text" id="testName">
+                {{ test.testname }}
+              </div>
+              <!-- <p id="testCategory">
+                <strong>Kategori : </strong> {{ test.category }}
+              </p>
+
+              <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
+            </div>
+            <div class="d-flex flex-column">
+              <div class="d-flex justify-center">
+                <v-btn icon small @click="increaseThecounterValue(test._id)">
+                  <v-icon>add_shopping_cart</v-icon>
+                </v-btn>
+              </div>
+              <div>
+                <v-btn
+                  x-small
+                  class="btnColor"
+                  @click="moveToIndividual(test._id, test)"
+                  >läs mer</v-btn
+                >
+              </div>
             </div>
           </v-list>
         </v-card>
@@ -225,5 +389,11 @@ export default {
 }
 .blue {
   background-color: blue;
+}
+.bread {
+  /* letter-spacing: 3px; */
+  font-family: "Poppins", sans-serif;
+  font-weight: lighter;
+  font-size: 14px;
 }
 </style>

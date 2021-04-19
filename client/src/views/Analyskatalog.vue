@@ -6,11 +6,12 @@
         cols="8"
       >
         <h1 class="blue--text display-1">Våra analyser</h1>
-        <p class="text--secondary mt-2">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae,
-          adipisci praesentium voluptatum accusantium, accusamus hic rem neque
-          aperiam dolorum doloribus nostrum aut. Sed, ea placeat! Similique
-          praesentium totam ea sunt.
+        <p class="text--primary mt-2">
+          Dricksvatten bör vara hälsosamt och rent samt ha en acceptabel
+          kvalitet både estetiskt och tekniskt. Oavsett om du har en egen eller
+          en gemensam vattenbrunn är det viktigt att kontrollera
+          vattenkvaliteten regelbundet. Här kan du enkelt beställa provkit och
+          flaskor för din önskade analys.
         </p>
       </v-col>
     </v-row>
@@ -24,7 +25,10 @@
           <img src="@/assets/kran.png" height="140px" width="214px" />
           <div class="lowertext">
             <h3 class="blue--text">Enskilt dricksvatten</h3>
-            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+            <p class="text--secondary">
+              För dig med egen brunn eller gemensam brunn<br />
+              för upp till 50 personer
+            </p>
           </div>
         </div>
       </v-col>
@@ -32,7 +36,9 @@
         <div class="pointer" @click="moveToVerksamhet">
           <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
           <h3 class="blue--text">Verksamhet & samfällighet</h3>
-          <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+          <p class="text--secondary">
+            Ackrediterade analyser för er med en registrerad anlägging
+          </p>
         </div>
       </v-col>
     </v-row>
@@ -51,7 +57,10 @@
           />
           <div class="lowertext">
             <h3 class="blue--text">Bygglov & tillstånd</h3>
-            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+            <p class="text--secondary">
+              För dig som ska söka tillstånd för att bygga <br />
+              eller inför att du ska söka bygglov.
+            </p>
           </div>
         </div>
       </v-col>
@@ -65,7 +74,9 @@
           />
           <div class="lowertext">
             <h3 class="blue--text">Avloppanalyser</h3>
-            <p class="text--secondary">Lorem ipsum dolor sit amet</p>
+            <p class="text--secondary">
+              För dig som behöver provta ditt avloppsvatten.
+            </p>
           </div>
         </div>
       </v-col>

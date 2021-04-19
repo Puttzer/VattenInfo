@@ -20,7 +20,7 @@ export default new Vuetify({
                 background: 'e9e9e9',
                 blue: '#449ace',
                 green: '#449a63',
-				yellow: "#F7DB68"
+                yellow: "#F7DB68",
 
             },
         },

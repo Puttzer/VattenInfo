@@ -27,9 +27,11 @@ import AdminLogin from '../views/AdminLogin.vue'
 import AdminStartsidan from '../views/AdminStartsidan.vue'
 import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
+import PrivateCustomerOrders from '../components/adminStuff/PrivateCustomerOrders.vue'
 import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
+import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
 import KassaSida from '../views/KassaSida.vue'
 import VattenGuide from '../views/VattenGuide.vue'
 import answer1 from '../components/guiden/answer1'
@@ -125,7 +127,18 @@ const routes = [
                 path: 'ForetagCustomer',
                 component: ForetagCustomer
 
-            }]
+            },
+            {
+                path: 'Foretagorders',
+                component: ForetagOrders
+
+            },
+            {
+                path: 'privatecustomerorders',
+                component: PrivateCustomerOrders
+
+            },
+        ]
     },
     {
         path: '/login/userpage',
@@ -202,34 +215,34 @@ const routes = [
         name: 'PaymentInfo',
         component: PaymentInfo
     },
-   {
+    {
         path: '/kundstart',
         name: 'KundStartsidan',
         component: KundStartsidan
     },
-  {
-		path: '/vattenguide',
-		name: 'VattenGuide',
-		component: VattenGuide,
-			},
-	{
-		path: '/answer1',
-		name: 'answer1',
-		component: answer1,
-	},
-	{
-		path: '/answer2',
-		name: 'answer2',
-		component: answer2,
-	},{
-		path: '/answer3',
-		name: 'answer3',
-		component: answer3,
-	},{
-		path: '/answer4',
-		name: 'answer4',
-		component: answer4,
-	},
+    {
+        path: '/vattenguide',
+        name: 'VattenGuide',
+        component: VattenGuide,
+    },
+    {
+        path: '/answer1',
+        name: 'answer1',
+        component: answer1,
+    },
+    {
+        path: '/answer2',
+        name: 'answer2',
+        component: answer2,
+    }, {
+        path: '/answer3',
+        name: 'answer3',
+        component: answer3,
+    }, {
+        path: '/answer4',
+        name: 'answer4',
+        component: answer4,
+    },
     {
         path: '/*',
         alias: '/'
