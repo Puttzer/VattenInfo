@@ -22,7 +22,7 @@
           <v-select
             :items="type2"
             v-model="testtype"
-            label="select test testtype"
+            label="select test type"
           ></v-select>
         </v-col>
       </v-row>

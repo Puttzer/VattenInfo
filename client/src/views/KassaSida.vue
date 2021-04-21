@@ -112,6 +112,11 @@ export default {
     deleteTestInCart(id) {
       console.log(id, " move to mutaions");
       this.$store.commit("tests/DELETE_TEST_CART", id);
+      if (this.tests.selectedTests.length < 1) {
+        this.$router.push("/bestallanalys");
+      } else {
+        return;
+      }
     },
   },
 };

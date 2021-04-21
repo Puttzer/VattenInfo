@@ -4,7 +4,7 @@
       <v-col
         height="200px"
         cols="12"
-        md="2"
+        md="3"
         class="d-flex align-center justify-start"
       >
         <div class="wave">
@@ -16,7 +16,7 @@
           ></v-img>
         </div>
       </v-col>
-      <v-col cols="12" md="7" class="d-flex justify-center">
+      <v-col cols="12" md="6" class="d-flex justify-center">
         <div class="middle_section">
           <div class="labb blue--text ma-2">VATTENINFO LABBTJÄNSTER</div>
           <div class="rubrik ma-0 pa-0">

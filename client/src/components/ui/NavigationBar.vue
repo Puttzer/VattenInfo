@@ -98,11 +98,12 @@
             <li
               @mouseover="showAboutSection = true"
               @mouseleave="showAboutSection = false"
+              @click="moveToLab()"
             >
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
 
-              <ul  v-if="showAboutSection">
+              <ul v-if="showAboutSection">
                 <li class="text--white">om oss</li>
                 <li class="text--white">kontakt</li>
                 <li class="text--white">wennnn</li>
@@ -161,6 +162,9 @@ export default {
     },
     moveToBestallanalys() {
       this.$router.push("/bestallanalys");
+    },
+    moveToLab() {
+      this.$router.push("/omlab");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
