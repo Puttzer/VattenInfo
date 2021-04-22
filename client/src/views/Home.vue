@@ -63,8 +63,7 @@
       </v-col>
     </v-row>
     <!-- landning fort -->
-
-    <v-row class="">
+    <v-row class="mt-16">
       <v-col class="d-flex align-center" cols="2">
         <div class="wave">
           <v-img
@@ -75,89 +74,56 @@
           ></v-img>
         </div>
       </v-col>
-    </v-row>
-    <v-row class="d-flex justify-center">
-      <v-col cols="5" class="">
+
+      <v-col cols="8" class="d-flex flex-column justify-center">
         <v-row class="d-flex justify-center align-center">
-          <h1 class="blue--text font-weight-class text-uppercase text-center">
-            Ta hand om vattnet
-            <br />så tar vattnet hand om dig
+          <h1
+            class="blue--text font-weight-class text-uppercase d-flex justify-start"
+          >
+            Ta hand om vattnet så <br />tar vattnet hand om dig
           </h1>
-          <p class="text-center">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aspernatur
-            doloremque voluptatem dignissimos soluta incidunt non velit
-            recusandae quia amet quibusdam.
+        </v-row>
+        <v-row class="d-flex justify-center align-center ml-8 mt-4" cols="12">
+          <p class="d-flex justify-center align-center ml-16">
+            Lorem ipsum dolor, sit amet consectetur elit. Aspernatur doloremque
+            voluptatem <br />
+            dignissimos soluta incidunt non velit recusandae quia amet
+            quibusdam.
           </p>
         </v-row>
       </v-col>
+    </v-row>
 
-      <v-col class="d-flex justify-space-around px-2 mt-10" cols="9">
-        <v-col class="white mainBox" cols="3">
-          <div class="d-flex flex-column justify-start align-center mx-1">
-            <v-img
-              src="../assets/FlaskaBas.png"
-              width="84px"
-              height="130px"
-              class="pb-3"
-            ></v-img>
-            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-            <div
-              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
-            >
-              <h5>Bas</h5>
-              <p class="caption-1">
-                Lorem ipsum dolor sit amet consectetur, adipisicing.
-              </p>
-            </div>
-          </div>
-          <v-card> </v-card>
-        </v-col>
-        <v-col
-          class="white mainBox"
-          cols="3"
-          @click="moveToIndividual(test._id, test)"
+    <v-row class="d-flex justify-center px-2 mt-10 ml-16" cols="8">
+      <v-col class="d-flex flex-row justify-center">
+        <v-card
+          class="d-flex flex-column justify-start align-center ma-1"
+          v-for="test in this.displayTests"
+          :key="test.id"
+          v-bind:style="{ backgroundColor: test.color }"
         >
-          <div class="d-flex flex-column justify-start align-center">
-            <v-img
-              src="../assets/FlaskorFamilj.png"
-              width="110px"
-              height="130px"
-              class="pb-3"
-            ></v-img>
-            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-            <!-- <div class="provInfo d-flex flex-column align-center blue"> -->
-            <div
-              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
-            >
-              <h5>Familj</h5>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
-            </div>
+          <img
+            :src="require('@/assets/' + test.image)"
+            height="120px"
+            width="70px"
+          />
+          <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
+          <div
+            class="provInfo d-flex flex-column pt-6 ma-3 align-center light-blue darken-2 rounded-2"
+          >
+            <h5 class="title black--text">{{ test.name }}</h5>
+            <p class="caption-1 black--text">
+              {{ test.description }}
+            </p>
           </div>
-        </v-col>
-        <v-col class="white mainBox" cols="3">
-          <div class="d-flex flex-column justify-start align-center">
-            <v-img
-              src="../assets/FlaskorStora.png"
-              width="110px"
-              height="130px"
-              class="pb-3"
-            ></v-img>
-            <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
-            <div
-              class="provInfo d-flex flex-column pt-6 ma-3 align-center blue"
-            >
-              <h5>Stora</h5>
-              <p>Lorem ipsum dolor sit amet consectetur, adipisicing.</p>
-            </div>
-          </div>
-        </v-col>
+        </v-card>
       </v-col>
     </v-row>
-    <v-col>
-      <v-row class="justify-center align-center">
-        <v-btn color="blue" class="white--text">FLER PROVER</v-btn>
-      </v-row>
-    </v-col>
+    <v-row class="d-flex justify-start mt-12">
+      <v-col cols="10" class="d-flex justify-center align-center">
+        <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -165,6 +131,36 @@
 import { mapState } from "vuex";
 
 export default {
+  data() {
+    return {
+      displayTests: [
+        {
+          id: 1,
+          name: "BAS",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
+          path: "/baspaket",
+          image: "FlaskaBas.png",
+          color: "#B3E5FC",
+        },
+        {
+          id: 2,
+          name: "FAMILJ",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
+          path: "/familjpaket",
+          image: "FlaskorFamilj.png",
+          color: "#B2EBF2",
+        },
+        {
+          id: 3,
+          name: "STORA",
+          description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
+          path: "/storapaket",
+          image: "FlaskorStora.png",
+          color: "#B2DFDB",
+        },
+      ],
+    };
+  },
   mounted() {
     this.$store.dispatch("tests/getTests");
   },
