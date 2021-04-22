@@ -95,18 +95,18 @@
           <p>{{ countStyckvisOne }}</p>
         </v-col>
       </v-row>
-      <v-col class="d-flex flex-row justify-center">
+      <v-col class="d-flex flex-column justify-center">
         <v-card
           v-for="(test, index) in this.filterIndividuelStyckvis1"
           :key="index"
-          width="320px"
+          width="75px"
           height="75px"
           class="ma-4 amber"
           :testId="test._id"
         >
           <v-list class="d-flex flex-column amber pa-3" id="testList ma-0 pa-0">
             <div class="d-flex flex-row justify-space-around align-center">
-              <div class="d-flex justify-center">
+              <div class="d-flex red justify-center">
                 <h1 class="test-text" id="testName">
                   {{ test.testname }}
                 </h1>
@@ -129,7 +129,7 @@
                 <div>
                   <v-btn
                     x-small
-                    class="btnColor"
+                    class="btnColor white--text"
                     @click="moveToIndividual(test._id, test)"
                     >läs mer</v-btn
                   >
@@ -140,20 +140,20 @@
         </v-card>
       </v-col>
       <v-divider></v-divider>
-      <v-row class="blue--text d-flex justify-center my-4">
+      <v-row class="blue--text d-flex justify-center  my-4">
         <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
       </v-row>
       <v-row>
-        <v-col class="d-flex flex-row justify-center ma-2" cols="12">
+        <v-col class="d-flex flex-column justify-center  ma-2" cols="12">
           <v-card
             v-for="(test, index) in this.filterIndividuelStyckvis2"
             :key="index"
-            width="300px"
+            width="75px"
             height="75px"
             class="ma-4 purple darken-1"
           >
             <v-list
-              class="d-flex flex-row justify-space-around purple darken-1"
+              class="d-flex flex-column justify-space-around red darken-1"
               id="testList ma-0 pa-0"
             >
               <!-- <v-img
@@ -165,7 +165,7 @@
               class="ma-0 pa-0"
             ></v-img>
             <v-divider></v-divider> -->
-              <div class="ma-2 white--text font-weight-bold">
+              <div class="ma-2 white--text d-flex justify-center align-center  font-weight-bold">
                 <div class="test-text" id="testName">
                   {{ test.testname }}
                 </div>
@@ -175,20 +175,20 @@
 
               <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
               </div>
-              <div class="d-flex flex-column">
-                <div class="d-flex justify-center">
+              <div class="d-flex  flex-column">
+                <!-- <div class="d-flex justify-center">
                   <v-btn icon small @click="increaseThecounterValue(test._id)">
                     <v-icon>add_shopping_cart</v-icon>
                   </v-btn>
-                </div>
-                <div>
+                </div> -->
+                <!-- <div>
                   <v-btn
                     x-small
                     class="btnColor"
                     @click="moveToIndividual(test._id, test)"
                     >läs mer</v-btn
                   >
-                </div>
+                </div> -->
               </div>
             </v-list>
           </v-card>
@@ -207,7 +207,7 @@
           </h2>
         </v-col>
       </v-row>
-      <v-row class="d-flex justify-center packet-height">
+      <v-col class="d-flex justify-center packet-height">
         <v-card
           v-for="(test, index) in this.filterAckrediteradePaketTester"
           :key="index"
@@ -253,7 +253,7 @@
             </div>
           </v-list>
         </v-card>
-      </v-row>
+      </v-col>
       <v-divider></v-divider>
       <v-row class="blue--text d-flex justify-center my-4">
         <h3>Ackrediterade analyser styckvis</h3>
