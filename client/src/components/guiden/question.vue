@@ -46,5 +46,6 @@ export default {
 <style scoped>
 .answer {
   cursor: pointer;
+  text-decoration: none;
 }
 </style>
