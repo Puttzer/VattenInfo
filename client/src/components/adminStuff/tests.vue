@@ -26,7 +26,7 @@
             v-for="(test, index) in this.tests.tests"
             :key="index"
             width="200px"
-            height="250px"
+            height="450px"
             class="ma-2"
           >
             <v-list class="d-flex flex-column justify-center" id="testList">

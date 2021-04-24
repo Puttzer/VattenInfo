@@ -6,9 +6,9 @@
       </v-row>
       <v-row class="d-flex justify-center">
         <v-col cols="1">
-          <div class="d-flex flex-row justify-space-between btnColor">
+          <div class="white--text  d-flex flex-row justify-space-between btnColor">
             <p class="ma-1">Filter</p>
-            <v-icon class="ma-1">filter_alt</v-icon>
+            <v-icon class="white--text ma-1">filter_alt</v-icon>
           </div>
         </v-col>
         <v-col cols="3">
