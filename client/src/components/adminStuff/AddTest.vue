@@ -76,7 +76,8 @@
                   outlined
                   label="Description"
                   no-resize
-                  rows="5"
+                  rows="3"
+                  class="mt-2"
                 ></v-textarea>
                 <v-btn
                   dark

@@ -6,6 +6,8 @@ export default {
         selectedTests: [],
         showSelectedTests: false,
         totalAmount: 0,
+        paginatedTests: [],
+        numberOfPages: null
 
     },
     getters: {
@@ -70,6 +72,26 @@ export default {
             const data = await response.json();
             // console.log(data)
             commit('updateTest', data.tests, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        },
+        async getPaginatedTests({ commit }, pageNumber) {
+            console.log('get paginated tests')
+            const token = localStorage.getItem('token')
+            const page = pageNumber;
+            const limit = 10;
+            const response = await fetch(`http://localhost:4000/api/paginated/tests?page=${page}&limit=${limit}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_PAGINATED_TESTS', data.tests.results, { module: 'tests' })
+            commit('UPDATE_PAGINATED_PAGES', data.tests.pages, { module: 'tests' })
             // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
 
 
@@ -166,6 +188,12 @@ export default {
             state.selectedTests = [],
                 state.count = 0;
 
+        },
+        UPDATE_PAGINATED_TESTS(state, value) {
+            state.paginatedTests = value
+        },
+        UPDATE_PAGINATED_PAGES(state, value) {
+            state.numberOfPages = value
         }
 
 
