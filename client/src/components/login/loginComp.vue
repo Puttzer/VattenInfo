@@ -62,7 +62,7 @@
             <v-row class="mt-6">
               <div class="d-flex flex-column">
                 <p class="red--text">Inget Konto?</p>
-                <v-btn outlined plain>Registrera</v-btn>
+                <v-btn outlined plain @click="moveToRegister">Registrera</v-btn>
               </div>
             </v-row>
           </form>
@@ -136,6 +136,10 @@ export default {
       (this.showLoginUser = true),
         (this.showLoginCompany = false),
         (this.isPrivateUser = true);
+    },
+    moveToRegister() {
+      this.$store.commit("user/CLOSE_WINDOW");
+      this.$router.push("/registrera");
     },
   },
 };

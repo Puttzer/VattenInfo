@@ -252,13 +252,27 @@ const routes = [
     {
         path: '/*',
         alias: '/'
-    }
+    },
 ]
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior(_, _2, savedPosition) {
+        // console.log(to, from, savedPosition)
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
+    }
+})
+
+router.beforeEach(function (to, from, next) {
+    console.log('global route')
+    console.log(to, from)
+    next()
 })
 
 export default router
