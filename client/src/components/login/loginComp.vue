@@ -90,7 +90,7 @@ export default {
   },
   props: ["showLoginComp"],
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["user", "company"]),
   },
   methods: {
     closeWindow() {
