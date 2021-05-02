@@ -32,6 +32,7 @@ import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
+import CompanyLoginHomePage from '../components/company/CompanyLoginHomePage.vue'
 import KassaSida from '../views/KassaSida.vue'
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
@@ -74,6 +75,11 @@ const routes = [
         path: '/login/admin',
         name: 'AdminLogin',
         component: AdminLogin
+    },
+    {
+        path: '/login/comapny',
+        name: 'CompanyLoginHomePage',
+        component: CompanyLoginHomePage
     },
     {
         path: '/test/scrolltest',

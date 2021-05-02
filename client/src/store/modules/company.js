@@ -3,6 +3,8 @@ export default {
         companys: [],
         errorMessage: '',
         sucessMessage: '',
+        showLoginModel: false,
+        showCompanyDropDown: false,
         companyUserIsloggedIn: false,
         companyUser: {
             email: '',
@@ -46,25 +48,27 @@ export default {
             commit('DELETE_COMPANY', data.company._id, { module: 'company' })
 
         },
-        //         async loginUser({ commit }, payload) {
-        //             console.log(payload)
+        async loginCompany({ commit }, payload) {
+            console.log(payload)
 
-        //             const response = await fetch(`http://localhost:4000/api/user/login`, {
-        //                 method: 'POST',
-        //                 body: JSON.stringify(payload),
-        //                 headers: {
-        //                     'Content-Type': 'application/json'
-        //                 }
-        //             })
+            const response = await fetch(`http://localhost:4000/api/company/login`, {
+                method: 'POST',
+                body: JSON.stringify(payload),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
 
-        //             const data = await response.json()
-        //             console.log(data)
-        //             localStorage.setItem('userToken', data.Token)
-        //             commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
-        //             commit('UPDATE_USER_ID', data._id, { module: 'user' })
-        //             commit('UPDATE_USER_ISLOGGEDIN', true, { module: 'user' })
+            const data = await response.json()
+            console.log(data)
+            localStorage.setItem('companyProfileToken', data.Token)
+            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
+            commit('UPDATE_COMPANY_ID', data._id, { module: 'company' })
+            commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })
+            commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
+            commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
 
-        //         }
+        }
     },
     mutations: {
         UPDATE_COMPANYS(state, value) {
@@ -79,15 +83,24 @@ export default {
             state.sucessMessage = value
             // this.$vToastify.success(state.sucessMessage);
         },
-        // UPDATE_USER_EMAIL(state, email) {
-        //     state.user.email = email
-        // },
-        // UPDATE_USER_ID(state, id) {
-        //     state.user._id = id
-        // },
-        // UPDATE_USER_ISLOGGEDIN(state, value) {
-        //     state.userIsloggedIn = value
-        // }
+        UPDATE_COMPANY_EMAIL(state, email) {
+            state.companyUser.email = email
+        },
+        UPDATE_COMPANY_ID(state, id) {
+            state.companyUser._id = id
+        },
+        UPDATE_COMPANY_ISLOGGEDIN(state, value) {
+            state.companyUserIsloggedIn = value
+        },
+        UPDATE_CLOSE_WINDOW(state, value) {
+            state.showLoginModel = value;
+        },
+        COMPANY_DROP_MENU(state) {
+            state.showCompanyDropDown = !state.showCompanyDropDown
+        },
+        COMPANY_DROP_DOWN_CHANGE(state, value) {
+            state.showCompanyDropDown = value
+        },
 
     },
     namespaced: true
