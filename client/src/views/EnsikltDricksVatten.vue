@@ -89,134 +89,95 @@
         </v-card>
       </v-row>
       <v-divider></v-divider>
-      <v-row class="blue--text d-flex justify-center my-4">
-        <v-col cols="10" class="d-flex justify-center">
-          <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
-          <p>{{ countStyckvisOne }}</p>
-        </v-col>
-      </v-row>
-      <v-col class="d-flex flex-column justify-center">
-        <div
-          v-for="(test, index) in this.filterIndividuelStyckvis1"
-          :key="index"
-          :testId="test._id"
-          class="d-flex flex-row"
-        >
-          <v-col cols="2" class="d-flex align-center justify-center">
-            <p class="amber testbox d-flex align-center justify-center ma-3">
-              {{ test.short_description }}
-            </p>
-          </v-col>
 
-          <!-- <div class="d-flex justify-center">
-                <input
-                  type="checkbox"
-                  :testId="test._id"
-                  @click="increaseThecounterValue(test._id, test.isChecked)"
-                  v-model="test.isChecked"
-                /> 
-              </div> -->
+      <!-- <v-divider></v-divider> -->
 
-          <!-- </v-list> -->
-
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <p>
-              {{ test.testname }}
-            </p>
-          </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <v-btn
-              x-small
-              class="btnColor white--text"
-              @click="moveToIndividual(test._id, test)"
-              >läs mer</v-btn
+      <v-col cols="12" class="d-flex justify-center flex-row">
+        <div class="">
+          <v-row class="blue--text d-flex justify-center my-4">
+            <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
+            <p>{{ countStyckvisOne }}</p>
+          </v-row>
+          <v-col cols="12" class="d-flex flex-column justify-center">
+            <div
+              v-for="(test, index) in this.filterIndividuelStyckvis1"
+              :key="index"
+              :testId="test._id"
+              class="d-flex flex-row"
             >
+              <v-col cols="" class="d-flex align-center justify-center">
+                <p
+                  class="amber testbox d-flex align-center justify-center ma-3"
+                >
+                  {{ test.short_description }}
+                  
+                </p>
+              </v-col>
+
+              <v-col class="d-flex align-center justify-center" cols="">
+                <p>
+                  {{ test.testname }}
+                </p>
+              </v-col>
+              <v-col class="d-flex align-center justify-center" cols="">
+                <v-btn
+                  x-small
+                  class="btnColor white--text"
+                  @click="moveToIndividual(test._id, test)"
+                  >läs mer</v-btn
+                >
+              </v-col>
+              <v-col class="d-flex align-center justify-center" cols="">
+                <v-btn icon small @click="increaseThecounterValue(test._id)">
+                  <v-icon>add_shopping_cart</v-icon>
+                </v-btn>
+              </v-col>
+            </div>
           </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <v-btn icon small @click="increaseThecounterValue(test._id)">
-              <v-icon>add_shopping_cart</v-icon>
-            </v-btn>
+        </div>
+
+        <div class="">
+          <v-row class="blue--text d-flex justify-center my-4">
+            <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
+          </v-row>
+          <v-col cols="" class="d-flex flex-column justify-center">
+            <div
+              v-for="(test, index) in this.filterIndividuelStyckvis2"
+              :key="index"
+              class="d-flex flex-row"
+              @click="moveToIndividual(test._id, test)"
+            >
+              <v-col cols="" class="d-flex align-center justify-center">
+                <p
+                  class="btnColor white--text testbox d-flex align-center justify-center ma-3"
+                >
+                  {{ test.short_description }}
+                </p>
+              </v-col>
+
+              <v-col class="d-flex align-center justify-center">
+                <p>
+                  {{ test.testname }}
+                </p>
+              </v-col>
+              <v-col class="d-flex align-center justify-center">
+                <v-btn
+                  x-small
+                  class="btnColor white--text"
+                  @click="moveToIndividual(test._id, test)"
+                  >läs mer</v-btn
+                >
+              </v-col>
+              <v-col class="d-flex align-center justify-center">
+                <v-btn icon small @click="increaseThecounterValue(test._id)">
+                  <v-icon>add_shopping_cart</v-icon>
+                </v-btn>
+              </v-col>
+            </div>
           </v-col>
         </div>
       </v-col>
-      <v-divider></v-divider>
-      <v-row class="blue--text d-flex justify-center my-4">
-        <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
-      </v-row>
-      <v-col class="d-flex flex-column justify-center">
-        <div
-          v-for="(test, index) in this.filterIndividuelStyckvis2"
-          :key="index"
-          class="d-flex flex-row"
-          @click="moveToIndividual(test._id, test)"
-        >
-          <!-- <v-list
-              class="d-flex flex-column justify-space-around red darken-1"
-              id="testList ma-0 pa-0"
-            > -->
-          <!-- <v-img
-              id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
-              height="150px"
-              width="300px"
-              name="testimage"
-              class="ma-0 pa-0"
-            ></v-img>
-            <v-divider></v-divider> -->
-          <!-- <div class="ma-2 white--text font-weight-bold">
-            <div class="test-text" id="testName">
-              {{ test.testname }}
-            </div> -->
-          <!-- <p id="testCategory">
-                <strong>Kategori : </strong> {{ test.category }}
-              </p>
 
-              <p id="testPrice">Pris :{{ test.price }} SEK</p> -->
-          <!-- </div> -->
-          <v-col cols="2" class="d-flex align-center justify-center">
-            <p
-              class="btnColor white--text testbox d-flex align-center justify-center ma-3"
-            >
-              {{ test.short_description }}
-            </p>
-          </v-col>
-
-          <!-- <div class="d-flex flex-column"> -->
-          <!-- <div class="d-flex justify-center">
-                  <v-btn icon small @click="increaseThecounterValue(test._id)">
-                    <v-icon>add_shopping_cart</v-icon>
-                  </v-btn>
-                </div> -->
-          <!-- <div>
-                  <v-btn
-                    x-small
-                    class="btnColor"
-                    @click="moveToIndividual(test._id, test)"
-                    >läs mer</v-btn
-                  >
-                </div> -->
-          <!-- </div> -->
-          <!-- </v-list> -->
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <p>
-              {{ test.testname }}
-            </p>
-          </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <v-btn
-              x-small
-              class="btnColor white--text"
-              @click="moveToIndividual(test._id, test)"
-              >läs mer</v-btn
-            >
-          </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <v-btn icon small @click="increaseThecounterValue(test._id)">
-              <v-icon>add_shopping_cart</v-icon>
-            </v-btn>
-          </v-col>
-        </div>
-      </v-col>
       <v-divider></v-divider>
 
       <v-row class="d-flex justify-center mt-6">
@@ -290,19 +251,6 @@
           class="d-flex flex-row"
           @click="moveToIndividual(test._id, test)"
         >
-          <!-- <v-list
-            class="d-flex flex-row justify-space-around green darken-1"
-            id="testList ma-0 pa-0"
-          > -->
-          <!-- <v-img
-              id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
-              height="150px"
-              width="300px"
-              name="testimage"
-              class="ma-0 pa-0"
-            ></v-img>
-            <v-divider></v-divider> -->
           <v-col cols="2" class="d-flex align-center justify-center">
             <p
               class="green white--text testbox d-flex align-center justify-center ma-3"
