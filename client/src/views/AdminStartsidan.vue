@@ -68,7 +68,7 @@
     </v-navigation-drawer>
     <v-app-bar app color="dark" dark>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <div class="d-flex align-center">
+      <div class="d-flex align-center" @click="moveToAdminPage">
         <b text class="font-weight-bold">Admin Manager</b>
       </div>
 
@@ -79,6 +79,7 @@
       </v-btn>
     </v-app-bar>
     <v-main class="body-container">
+      <all-info v-if="this.showInformation === true" />
       <router-view></router-view>
     </v-main>
   </div>
@@ -86,14 +87,18 @@
 
 <script>
 import { mapState } from "vuex";
+import AllInfo from "../components/adminStuff/AllInfo.vue";
 
 export default {
   data() {
     return {
       drawer: false,
+      showInformation: true,
     };
   },
-  components: {},
+  components: {
+    AllInfo,
+  },
   //   mounted() {
   //     this.$store.dispatch("tests/getTests");
   //   },
@@ -112,18 +117,29 @@ export default {
     },
     moveToTests() {
       this.$router.push("/adminpage/tests");
+      this.showInformation = false;
     },
     moveToPrivateCustomers() {
       this.$router.push("/adminpage/privatecustomer");
+      this.showInformation = false;
     },
     moveToForetag() {
       this.$router.push("/adminpage/foretagcustomer");
+      this.showInformation = false;
     },
     moveToCompanyOrders() {
       this.$router.push("/adminpage/foretagorders");
+      this.showInformation = false;
     },
     moveToPrivateCustomersOrders() {
       this.$router.push("/adminpage/privatecustomerorders");
+      this.showInformation = false;
+    },
+    moveToAdminPage() {
+      if (this.admin.isLoggedIn && this.admin.isAdmin) {
+        this.$router.push("/adminpage/");
+        this.showInformation = true;
+      }
     },
   },
 };

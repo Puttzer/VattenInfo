@@ -124,6 +124,7 @@ export default {
             state.showLoginModel = value;
         },
         USER_DROP_MENU(state) {
+            console.log('user drop down mutations')
             state.showUserDropDown = !state.showUserDropDown
         },
         USER_DROP_DOWN_CHANGE(state, value) {

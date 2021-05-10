@@ -2,7 +2,7 @@
   <v-main class="someOtherName d-flex justify-center">
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToUserPage"
+      @click="moveToCompanyPage"
     >
       <v-icon medium class="mx-1" color="white">account_box</v-icon>
       <p>Mina Sidor</p>
@@ -10,7 +10,7 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToUserOrder"
+      @click="moveToCompanyOrder"
     >
       <v-icon medium class="mx-1" color="white">payments</v-icon>
       <p>Mina Beställningar</p>
@@ -19,7 +19,7 @@
 
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToLogout"
+      @click="moveToCompanyLogout"
     >
       <v-icon medium class="mx-1" color="white">logout</v-icon>
       <p>Logga Ut</p>
@@ -35,28 +35,28 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["user"]),
+    ...mapState(["company"]),
   },
   methods: {
-    moveToUserPage() {
-      if (this.user.userIsloggedIn) {
-        this.$router.push("/login/userpage");
+    moveToCompanyPage() {
+      if (this.company.companyUserIsloggedIn) {
+        this.$router.push("/login/companyinfopage");
       } else {
         return;
       }
     },
-    moveToUserOrder() {
-      if (this.user.userIsloggedIn) {
-        this.$router.push("/login/user");
+    moveToCompanyOrder() {
+      if (this.company.companyserIsloggedIn) {
+        this.$router.push("/login/comapnyorderspage");
       } else {
         return;
       }
     },
-    moveToLogout() {
+    moveToCompanyLogout() {
       console.log("logout");
-      this.$store.commit("user/USER_LOGOUT");
-      localStorage.removeItem("userToken");
-      if (!this.user.userIsloggedIn) {
+      this.$store.commit("company/COMPANY_LOGOUT");
+      localStorage.removeItem("companyProfileToken");
+      if (!this.company.companyUserIsloggedIn) {
         this.$router.push("/");
       }
     },

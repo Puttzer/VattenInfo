@@ -8,7 +8,8 @@ let newTest = new Schema({
     description: { type: String, required: true },
     short_description: { type: String, required: true },
     price: { type: String, required: true },
-    image: { type: String, required: true }
+    image: { type: String, required: true },
+    quantity: { type: Number, default: 1 }
 })
 
 const Test = mongoose.model('Test', newTest)

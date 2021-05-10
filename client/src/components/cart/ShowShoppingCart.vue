@@ -24,15 +24,30 @@
         cols="12"
         class="pa-0 ma-1"
       >
-        <v-list class="d-flex justify-space-around flex-row">
+        <v-list class="d-flex justify-space-around flex-row align-center">
           <img
             :src="`http://localhost:4000/${selectTest.image}`"
             width="65px"
             height="65px"
           />
           <h2 class="blue-grey--text lighten-3">{{ selectTest.testname }}</h2>
-          <div>
+          <div class="d-flex flex-row align-center justify-center">
             <h3>{{ selectTest.price }} KR</h3>
+          </div>
+          <div class="d-flex flex-row align-center justify-center">
+            <v-icon
+              medium
+              color="blue"
+              @click="increaseQuantity(selectTest._id)"
+              >add_circle</v-icon
+            >
+            <p>{{ selectTest.quantity }}</p>
+            <v-icon
+              medium
+              color="blue"
+              @click="decreaseQuantity(selectTest._id)"
+              >remove_circle</v-icon
+            >
           </div>
           <v-icon large color="red" @click="deleteTestInCart(selectTest._id)"
             >delete</v-icon
@@ -65,7 +80,9 @@ import { mapState } from "vuex";
 export default {
   name: "ShowShoppingCart",
   data() {
-    return {};
+    return {
+      quantity: 0,
+    };
   },
   computed: {
     ...mapState(["tests"]),
@@ -73,7 +90,7 @@ export default {
       let totalAmount = 0;
       this.tests.selectedTests.forEach((test) => {
         console.log(test.price);
-        totalAmount = totalAmount + parseInt(test.price);
+        totalAmount = totalAmount + parseInt(test.price) * test.quantity;
       });
       console.log(totalAmount);
       this.$store.commit("tests/TOTAL_AMOUNT", totalAmount);
@@ -89,9 +106,34 @@ export default {
       this.$store.commit("tests/CLOSE_CART_COMPONENT");
       this.$router.push("/kassasida");
     },
-    deleteTestInCart(id) {
-      console.log(id, " move to mutaions");
-      this.$store.commit("tests/DELETE_TEST_CART", id);
+    increaseQuantity(id) {
+      this.$store.commit("tests/INCREASE_QUANTITY", id);
+    },
+    decreaseQuantity(id) {
+      this.$store.commit("tests/DECREASE_QUANTITY", id);
+      console.log(this.totalQuantity(id));
+      const testInformation = this.totalQuantity(id);
+      if (testInformation.quantity < 1) {
+        this.$store.commit("tests/DELETE_TEST_CART", id);
+      }
+      if (this.tests.selectedTests.length < 1) {
+        this.$store.commit("tests/CLOSE_CART_COMPONENT");
+      }
+    },
+    totalQuantity(id) {
+      const testInfo = this.tests.selectedTests.find((test) => test._id === id);
+      return testInfo;
+    },
+    async deleteTestInCart(id) {
+      //   console.log(id, " move to mutaions");
+      await this.$store.commit("tests/DELETE_TEST_CART", id);
+      //   console.log(this.tests.selectedTests.length);
+
+      //   checking the condition to display the dropdown window or NOT?
+
+      if (this.tests.selectedTests.length < 1) {
+        this.$store.commit("tests/CLOSE_CART_COMPONENT");
+      }
     },
   },
 };

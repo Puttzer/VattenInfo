@@ -57,15 +57,10 @@
                 class="placement"
               />
             </v-col>
-            <v-col
-              v-show="
-                this.user.userIsloggedIn === true ||
-                this.company.companyUserIsloggedIn === true
-              "
-            >
+            <v-col>
               <div
-                @click="ShowUserDropDown()"
                 v-show="this.user.userIsloggedIn === true"
+                @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
@@ -94,22 +89,20 @@
         v-if="this.tests.showSelectedTests === true"
       />
 
-      <v-row
-        class="d-flex justify-end mr-4"
+      <!-- <v-row class="d-flex justify-end mr-4">
+        <v-col cols="2" class="d-flex justify-end"> </v-col>
+      </v-row>
+      <v-row class="d-flex justify-end mr-4">
+        <v-col cols="2" class="d-flex justify-end"> </v-col>
+      </v-row> -->
+      <UserDropDown
         v-if="this.user.showUserDropDown === true"
-      >
-        <v-col cols="2" class="d-flex justify-end">
-          <UserDropDown class="ma-0 pa-0 cursor-pointer user-window" />
-        </v-col>
-      </v-row>
-      <v-row
-        class="d-flex justify-end mr-4"
+        class="ma-0 pa-0 cursor-pointer user-window"
+      />
+      <CompanyDropDown
         v-if="this.company.showCompanyDropDown === true"
-      >
-        <v-col cols="2" class="d-flex justify-end">
-          <CompanyDropDown class="ma-0 pa-0 cursor-pointer user-window" />
-        </v-col>
-      </v-row>
+        class="ma-0 pa-0 cursor-pointer user-window"
+      />
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
       <v-row class="d-flex ml-n15 mt-2 justify-center">
         <nav>
@@ -208,9 +201,11 @@ export default {
       this.$store.commit("user/OPEN_LOGIN_COMP");
     },
     ShowUserDropDown() {
+      console.log("user drop down");
       this.$store.commit("user/USER_DROP_MENU");
     },
     ShowCompanyDropDown() {
+      console.log("company drop down");
       this.$store.commit("company/COMPANY_DROP_MENU");
     },
   },
@@ -235,15 +230,23 @@ export default {
   list-style: none;
 }
 .user-window {
-  position: fixed;
+  position: absolute;
+  right: 10px;
   top: 60px;
+  min-height: 100px;
+  min-width: 100px;
+  border-top: 5px solid blue;
+  background-color: rgb(27, 77, 92);
+  margin: 0;
+  padding: 0;
+  z-index: 10;
 }
 
 .dropdownuser {
   display: block;
   position: absolute;
   text-decoration: none;
-  min-width: 60px;
+  min-width: 100px;
   list-style: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -251,16 +254,17 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 
-.dropdownuser UserDropDown {
+/* .dropdownuser UserDropDown {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 55px;
+  min-width: 100px;
   border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  background-color: rgb(80, 152, 173);
   margin: 0;
   padding: 0;
   z-index: 10;
-}
+} */
 
 .menu li {
   display: block;

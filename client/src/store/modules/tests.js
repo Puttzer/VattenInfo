@@ -115,12 +115,14 @@ export default {
     mutations: {
         updateTest(state, value) {
             state.tests = value.map((test) => test)
-            console.log(state.tests);
+            // console.log(state.tests);
         },
         DELETE_TEST(state, value) {
+            console.log(state)
             const remainingTests = state.tests.filter((test) => test._id != value)
             state.tests = remainingTests
-            console.log(state.tests)
+            // console.log(state.tests)
+
         },
         INSERT_TEST(state, value) {
             return state.tests.push(value)
@@ -144,16 +146,16 @@ export default {
             state.test = { ...value }
         },
         INCREASE_COUNT(state, _id) {
-            console.log(_id)
+            // console.log(_id)
             let isTheTestExists = state.selectedTests.find(test => test._id === _id)
-            console.log(isTheTestExists)
+            // console.log(isTheTestExists)
 
             if (!isTheTestExists) {
                 state.count++;
                 // localStorage.setItem('seletedTests',)
 
                 const test = state.tests.find(test => test._id === _id)
-                console.log('test', test)
+                // console.log('test', test)
                 state.selectedTests.push(test)
                 // const localTests = state.selectedTests.map(test => test)
                 // console.log(localTests);
@@ -194,7 +196,23 @@ export default {
         },
         UPDATE_PAGINATED_PAGES(state, value) {
             state.numberOfPages = value
-        }
+        },
+        INCREASE_QUANTITY(state, id) {
+            const findTest = state.selectedTests.find(test => test._id === id)
+            // console.log(findTest)
+            findTest.quantity++
+            state.tests.filter(test => test._id === id).push(findTest)
+        },
+        DECREASE_QUANTITY(state, id) {
+            const findTest = state.selectedTests.find(test => test._id === id)
+            // console.log(findTest)
+            findTest.quantity--
+            console.log(findTest.quantity)
+            if (findTest.quantity < 1) {
+                state.tests.filter(test => test._id === id)
+            }
+            state.tests.filter(test => test._id === id).push(findTest)
+        },
 
 
     },

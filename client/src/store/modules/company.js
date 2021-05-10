@@ -101,6 +101,10 @@ export default {
         COMPANY_DROP_DOWN_CHANGE(state, value) {
             state.showCompanyDropDown = value
         },
+        COMPANY_LOGOUT(state) {
+            state.companyUserIsloggedIn = false,
+                state.showCompanyDropDown = false
+        },
 
     },
     namespaced: true
