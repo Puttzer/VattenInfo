@@ -17,15 +17,20 @@
     </v-row>
 
     <v-row class="mt-8">
-      <v-col cols=" 2">
-        <img src="@/assets/wave.png" height="125px" width="100px"
+      <v-col cols="2">
+        <img src="@/assets/wave.png" height="125px" width="214px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <div class=" white pointer" @click="moveToEnsikltdricksvatten">
-          <img src="@/assets/kran.png" height="140px" width="214px" />
-          <div class="lowertext">
+        <div
+          class="white pointer d-flex flex-column justify-center align-center"
+          @click="moveToEnsikltdricksvatten"
+        >
+          <img  src="@/assets/kran.png" height="140px" width="214px" />
+          <div
+            class="lowertext white  d-flex align-center flex-column justify-center"
+          >
             <h3 class="blue--text">Enskilt dricksvatten</h3>
-            <p class="text--secondary">
+            <p class="text--secondary ma-3 text--secondary">
               För dig med egen brunn eller gemensam brunn<br />
               för upp till 50 personer
             </p>
@@ -33,31 +38,44 @@
         </div>
       </v-col>
       <v-col cols="3" class="d-flex flex-column">
-        <div class="pointer" @click="moveToVerksamhet">
-          <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
-          <h3 class="blue--text">Verksamhet & samfällighet</h3>
-          <p class="text--secondary">
-            Ackrediterade analyser för er med en registrerad anlägging
-          </p>
+        <div
+          class="white pointer d-flex flex-column justify-center align-center"
+          @click="moveToVerksamhet"
+        >
+          <img  src="@/assets/Samfalligheter.png" height="140px" width="214px" />
+
+          <div
+            class="lowertext white  d-flex align-center flex-column justify-center"
+          >
+            <h3 class="blue--text">Verksamhet & samfällighet</h3>
+            <p class="text--secondary ma-3">
+              Ackrediterade analyser för er med en registrerad anlägging
+            </p>
+          </div>
         </div>
       </v-col>
     </v-row>
 
     <v-row class="mt-8 mb-12">
       <v-col cols="2" class="d-flex align-center">
-        <img src="@/assets/wave.png" height="125px" width="100px"
+        <img  src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <div class="pointer">
-          <img
+        <div
+          class="white pointer d-flex flex-column justify-center align-center"
+        >
+          <img 
             @click="moveToBygglovTillstand"
             src="@/assets/Avtal.png"
             height="140px"
             width="214px"
+            class=""
           />
-          <div class="lowertext">
+          <div
+            class="lowertext white  d-flex align-center flex-column justify-center"
+          >
             <h3 class="blue--text">Bygglov & tillstånd</h3>
-            <p class="text--secondary">
+            <p class="text--secondary ma-3">
               För dig som ska söka tillstånd för att bygga <br />
               eller inför att du ska söka bygglov.
             </p>
@@ -65,16 +83,20 @@
         </div>
       </v-col>
       <v-col cols="2" class="d-flex flex-column">
-        <div class="pointer">
+        <div
+          class="white pointer d-flex flex-column justify-center align-center"
+        >
           <img
             @click="moveToAvloppAnalyser"
             src="@/assets/analys.png"
             height="140px"
             width="214px"
           />
-          <div class="lowertext">
+          <div
+            class="lowertext white  d-flex align-center flex-column justify-center"
+          >
             <h3 class="blue--text">Avloppanalyser</h3>
-            <p class="text--secondary">
+            <p class="text--secondary ma-3">
               För dig som behöver provta ditt avloppsvatten.
             </p>
           </div>
@@ -120,7 +142,7 @@
       </v-col>
       <v-col cols="4" class="d-flex flex-column">
         <h1 class="blue--text font-weight-bold">Boka rådgivning</h1>
-        <p class="text--secondary">
+        <p class="text--secondary ma-3">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit.<br />
           Aspernatur eum dolorem. <span class="linkText">BOKA LÄNK</span>
         </p>
@@ -162,7 +184,7 @@ export default {
 
 <style scoped>
 .lowertext {
-  margin-left: 31px;
+  /* margin-left: 31px; */
 }
 .linkText {
   color: red;
@@ -174,10 +196,10 @@ export default {
 }
 .pointer {
   cursor: pointer;
-  /* transition: all 0.5s ease-out; */
+  box-shadow: 2px 2px 5px #00000090;
+
 }
 
-/* .pointer:hover {
-  transform: scale(1.08);
-} */
+.lowertext {
+}
 </style>
