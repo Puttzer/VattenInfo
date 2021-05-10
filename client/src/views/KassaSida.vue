@@ -5,6 +5,14 @@
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
+
+    <v-row class="d-flex" v-if="this.displayErrorMessage === true">
+      <v-col class="d-flex justify-center ml" cols="12">
+        <h3 v-if="this.displayErrorMessage === true" class="red--text">
+          User must login to procceed further!!!
+        </h3>
+      </v-col>
+    </v-row>
     <v-row
       v-for="(selectedTest, index) in this.tests.selectedTests"
       :key="selectedTest._id"
@@ -21,7 +29,7 @@
             <v-img
               cols="2"
               class="pink"
-              :src="selectedTest.image"
+              :src="`http://localhost:4000/${selectedTest.image}`"
               width="150px"
               height="150px"
             ></v-img>
@@ -82,12 +90,17 @@
 import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
+  data() {
+    return {
+      displayErrorMessage: false,
+    };
+  },
   computed: {
-    ...mapState(["tests", "order", "user"]),
+    ...mapState(["tests", "order", "user", "company"]),
   },
   methods: {
     async generateOrder() {
-      if (this.user.userIsloggedIn) {
+      if (this.user.userIsloggedIn || this.company.companyUserIsloggedIn) {
         console.log(this.user.user._id);
         const id = this.user.user._id;
         const orderTests = this.tests.selectedTests;
@@ -102,6 +115,7 @@ export default {
         this.$store.commit("tests/DELETE_SELECTED_TESTS");
         this.$router.push("/ordernumber");
       } else {
+        this.displayErrorMessage = true;
         return;
       }
       //   if (this.order.orderGenerated) {

@@ -28,6 +28,7 @@ import AdminStartsidan from '../views/AdminStartsidan.vue'
 import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import PrivateCustomerOrders from '../components/adminStuff/PrivateCustomerOrders.vue'
+// import AllInfo from '../components/adminStuff/AllInfo.vue'
 import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
@@ -122,6 +123,7 @@ const routes = [
             }
         },
         children: [
+
             {
                 path: 'tests',
                 component: Tests

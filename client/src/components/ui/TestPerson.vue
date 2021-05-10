@@ -152,4 +152,8 @@ export default {
 </script>
 
 <style scoped>
+.v-text-field >>> label {
+  font-size: 1.2em;
+  color: black;
+}
 </style>
