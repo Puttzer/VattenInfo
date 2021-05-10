@@ -2,7 +2,7 @@
   <v-main class="ma-0 pa-0">
     <v-row class="d-flex flex-column justify-center align-center mt-6">
       <v-col
-        class="d-flex flex-column justify-center align-center mt-2"
+        class="d-flex flex-column white justify-center align-center mt-2"
         cols="8"
       >
         <h1 class="blue--text display-1">Våra analyser</h1>
@@ -17,11 +17,11 @@
     </v-row>
 
     <v-row class="mt-8">
-      <v-col cols="2">
+      <v-col cols=" 2">
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <div class="pointer" @click="moveToEnsikltdricksvatten">
+        <div class=" white pointer" @click="moveToEnsikltdricksvatten">
           <img src="@/assets/kran.png" height="140px" width="214px" />
           <div class="lowertext">
             <h3 class="blue--text">Enskilt dricksvatten</h3>
