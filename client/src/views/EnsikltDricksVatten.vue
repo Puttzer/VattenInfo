@@ -7,7 +7,7 @@
           personer
         </h2>
       </v-row>
-      <v-row class="d-flex justify-center font-weight-bold blue--text mt-6">
+      <v-row class="d-flex white justify-center font-weight-bold blue--text mt-6">
         <v-col cols="11" class="d-flex justify-center">
           <p class="bread">
             Här hittar du analyser för dig med enskilt vatten (vatten för privat
