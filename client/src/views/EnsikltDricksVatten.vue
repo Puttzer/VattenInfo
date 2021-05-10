@@ -92,13 +92,13 @@
 
       <!-- <v-divider></v-divider> -->
 
-      <v-col cols='12' class="d-flex justify-space-between flex-row">
+      <v-col cols="12" class="d-flex justify-center flex-row">
         <div class="">
-          <v-row class="blue--text  d-flex justify-center my-4">
+          <v-row class="blue--text d-flex justify-center my-4">
             <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
             <p>{{ countStyckvisOne }}</p>
           </v-row>
-          <v-col cols="12" class="d-flex  flex-column justify-center">
+          <v-col cols="12" class="d-flex flex-column justify-center">
             <div
               v-for="(test, index) in this.filterIndividuelStyckvis1"
               :key="index"
@@ -153,13 +153,14 @@
                   {{ test.short_description }}
                 </p>
               </v-col>
+              <v-col class="d-flex align-center justify-center">
 
-              <v-col class="d-flex align-center justify-center" cols="">
                 <p>
                   {{ test.testname }}
                 </p>
               </v-col>
-              <v-col class="d-flex align-center justify-center" cols="">
+              <v-col class="d-flex align-center justify-center">
+
                 <v-btn
                   x-small
                   class="btnColor white--text"
@@ -167,7 +168,8 @@
                   >läs mer</v-btn
                 >
               </v-col>
-              <v-col class="d-flex align-center justify-center" cols="">
+              <v-col class="d-flex align-center justify-center">
+
                 <v-btn icon small @click="increaseThecounterValue(test._id)">
                   <v-icon>add_shopping_cart</v-icon>
                 </v-btn>
