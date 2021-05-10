@@ -2,7 +2,7 @@
   <v-main class="ma-0 pa-0">
     <v-row class="d-flex flex-column justify-center align-center mt-6">
       <v-col
-        class="d-flex flex-column white justify-center align-center mt-2"
+        class="d-flex flex-column white container justify-center align-center mt-2"
         cols="8"
       >
         <h1 class="blue--text display-1">Våra analyser</h1>
@@ -18,16 +18,16 @@
 
     <v-row class="mt-8">
       <v-col cols="2">
-        <img src="@/assets/wave.png" height="125px" width="214px"
+        <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div
           class="white pointer d-flex flex-column justify-center align-center"
           @click="moveToEnsikltdricksvatten"
         >
-          <img  src="@/assets/kran.png" height="140px" width="214px" />
+          <img src="@/assets/kran.png" height="140px" width="214px" />
           <div
-            class="lowertext white  d-flex align-center flex-column justify-center"
+            class="lowertext white d-flex align-center flex-column justify-center"
           >
             <h3 class="blue--text">Enskilt dricksvatten</h3>
             <p class="text--secondary ma-3 text--secondary">
@@ -42,10 +42,10 @@
           class="white pointer d-flex flex-column justify-center align-center"
           @click="moveToVerksamhet"
         >
-          <img  src="@/assets/Samfalligheter.png" height="140px" width="214px" />
+          <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
 
           <div
-            class="lowertext white  d-flex align-center flex-column justify-center"
+            class="lowertext white d-flex align-center flex-column justify-center"
           >
             <h3 class="blue--text">Verksamhet & samfällighet</h3>
             <p class="text--secondary ma-3">
@@ -58,13 +58,13 @@
 
     <v-row class="mt-8 mb-12">
       <v-col cols="2" class="d-flex align-center">
-        <img  src="@/assets/wave.png" height="125px" width="100px"
+        <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div
           class="white pointer d-flex flex-column justify-center align-center"
         >
-          <img 
+          <img
             @click="moveToBygglovTillstand"
             src="@/assets/Avtal.png"
             height="140px"
@@ -72,7 +72,7 @@
             class=""
           />
           <div
-            class="lowertext white  d-flex align-center flex-column justify-center"
+            class="lowertext white d-flex align-center flex-column justify-center"
           >
             <h3 class="blue--text">Bygglov & tillstånd</h3>
             <p class="text--secondary ma-3">
@@ -93,7 +93,7 @@
             width="214px"
           />
           <div
-            class="lowertext white  d-flex align-center flex-column justify-center"
+            class="lowertext white d-flex align-center flex-column justify-center"
           >
             <h3 class="blue--text">Avloppanalyser</h3>
             <p class="text--secondary ma-3">
@@ -183,6 +183,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  box-shadow: 2px 2px 5px #00000090;
+}
 .lowertext {
   /* margin-left: 31px; */
 }
@@ -197,7 +200,6 @@ export default {
 .pointer {
   cursor: pointer;
   box-shadow: 2px 2px 5px #00000090;
-
 }
 
 .lowertext {
