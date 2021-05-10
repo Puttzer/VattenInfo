@@ -32,6 +32,7 @@ import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
+import CompanyLoginHomePage from '../components/company/CompanyLoginHomePage.vue'
 import KassaSida from '../views/KassaSida.vue'
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
@@ -74,6 +75,11 @@ const routes = [
         path: '/login/admin',
         name: 'AdminLogin',
         component: AdminLogin
+    },
+    {
+        path: '/login/comapny',
+        name: 'CompanyLoginHomePage',
+        component: CompanyLoginHomePage
     },
     {
         path: '/test/scrolltest',
@@ -252,13 +258,27 @@ const routes = [
     {
         path: '/*',
         alias: '/'
-    }
+    },
 ]
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
+    scrollBehavior(_, _2, savedPosition) {
+        // console.log(to, from, savedPosition)
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
+    }
+})
+
+router.beforeEach(function (to, from, next) {
+    console.log('global route')
+    console.log(to, from)
+    next()
 })
 
 export default router

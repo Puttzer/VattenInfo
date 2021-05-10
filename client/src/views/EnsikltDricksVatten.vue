@@ -110,7 +110,6 @@
                   class="amber testbox d-flex align-center justify-center ma-3"
                 >
                   {{ test.short_description }}
-                  
                 </p>
               </v-col>
 
@@ -154,13 +153,14 @@
                   {{ test.short_description }}
                 </p>
               </v-col>
-
               <v-col class="d-flex align-center justify-center">
+
                 <p>
                   {{ test.testname }}
                 </p>
               </v-col>
               <v-col class="d-flex align-center justify-center">
+
                 <v-btn
                   x-small
                   class="btnColor white--text"
@@ -169,6 +169,7 @@
                 >
               </v-col>
               <v-col class="d-flex align-center justify-center">
+
                 <v-btn icon small @click="increaseThecounterValue(test._id)">
                   <v-icon>add_shopping_cart</v-icon>
                 </v-btn>

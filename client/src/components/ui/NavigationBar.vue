@@ -34,7 +34,13 @@
             >
               <cart-component />
             </v-col>
-            <v-col cols="2" v-show="this.user.userIsloggedIn === false">
+            <v-col
+              cols="2"
+              v-show="
+                this.user.userIsloggedIn === false &&
+                this.company.companyUserIsloggedIn === false
+              "
+            >
               <div
                 @click="showPopup"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer"
@@ -44,17 +50,39 @@
               </div>
 
               <LoginComp
-                v-show="this.user.showLoginModel === true"
+                v-show="
+                  this.user.showLoginModel === true ||
+                  this.company.showLoginModel === true
+                "
                 class="placement"
               />
             </v-col>
-            <v-col v-show="this.user.userIsloggedIn === true">
+            <v-col
+              v-show="
+                this.user.userIsloggedIn === true ||
+                this.company.companyUserIsloggedIn === true
+              "
+            >
               <div
-                @click="ShowDropDown()"
+                @click="ShowUserDropDown()"
+                v-show="this.user.userIsloggedIn === true"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title">{{ this.user.user.email }}</p>
+                <p class="ma-2 sub-title">
+                  {{ this.user.user.email }}
+                </p>
+              </div>
+              <div
+                @click="ShowCompanyDropDown()"
+                class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
+                v-show="this.company.companyUserIsloggedIn === true"
+              >
+                <v-icon color="blue" large>account_circle</v-icon>
+
+                <p class="ma-2 sub-title">
+                  {{ this.company.companyUser.email }}
+                </p>
               </div>
             </v-col>
           </v-col>
@@ -72,6 +100,14 @@
       >
         <v-col cols="2" class="d-flex justify-end">
           <UserDropDown class="ma-0 pa-0 cursor-pointer user-window" />
+        </v-col>
+      </v-row>
+      <v-row
+        class="d-flex justify-end mr-4"
+        v-if="this.company.showCompanyDropDown === true"
+      >
+        <v-col cols="2" class="d-flex justify-end">
+          <CompanyDropDown class="ma-0 pa-0 cursor-pointer user-window" />
         </v-col>
       </v-row>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
@@ -133,6 +169,7 @@
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
+import CompanyDropDown from "../company/CompanyDropDown.vue";
 import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
 import { mapState } from "vuex";
 
@@ -149,9 +186,10 @@ export default {
     LoginComp,
     UserDropDown,
     ShowShoppingCart,
+    CompanyDropDown,
   },
   computed: {
-    ...mapState(["user", "tests"]),
+    ...mapState(["user", "tests", "company"]),
   },
   methods: {
     moveToAnalysKatalog() {
@@ -169,8 +207,11 @@ export default {
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
     },
-    ShowDropDown() {
+    ShowUserDropDown() {
       this.$store.commit("user/USER_DROP_MENU");
+    },
+    ShowCompanyDropDown() {
+      this.$store.commit("company/COMPANY_DROP_MENU");
     },
   },
 };
@@ -200,7 +241,7 @@ export default {
 
 .dropdownuser {
   display: block;
-  position: relative;
+  position: absolute;
   text-decoration: none;
   min-width: 60px;
   list-style: none;
@@ -285,11 +326,12 @@ export default {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .position-shoppingcart {
-  position: fixed;
+  position: absolute;
   z-index: 3;
   top: 40px;
   right: 25px;
   background-color: none;
+  background-color: rgba(0, 0, 0, 0.4);
   min-height: 5vh;
 }
 </style>

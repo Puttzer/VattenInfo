@@ -1,9 +1,7 @@
 const Test = require('../../models/test')
 const AuthMiddleware = require('../../Middleware/Auth.middleware')
 const ImageUpload = require('../../Middleware/Image.upload')
-
-
-
+const Pagination = require('../../Lib/Pagination')
 
 module.exports = function (router) {
 
@@ -66,9 +64,35 @@ module.exports = function (router) {
 
 
 
-    router.get('/tests', function (req, res) {
+    router.get('/paginated/tests', Pagination.paginatedResults(Test), async function (req, res) {
 
-        Test.find({}).exec()
+        if (await res.paginatedResults) {
+            console.log(res.paginatedResults)
+            res.status(200).json({
+                message: 'list of tests',
+                tests: await res.paginatedResults
+            })
+        } else {
+            res.status(500).json({
+                message: 'Error finding user',
+            })
+        }
+
+        // Test.find({}).exec()
+        //     .then(docs =>
+        //         res.status(200).json({
+        //             message: 'list of tests',
+        //             tests: docs
+        //         }))
+        //     .catch(err => res.status(500)
+        //         .json({
+
+        //             message: 'Error finding user',
+        //             error: err
+        //         }))
+    })
+    router.get('/tests', async function (req, res) {
+        await Test.find({}).exec()
             .then(docs =>
                 res.status(200).json({
                     message: 'list of tests',
@@ -81,7 +105,6 @@ module.exports = function (router) {
                     error: err
                 }))
     })
-
 
     router.put('/test/update/:id', AuthMiddleware.isAdminLoggedIn, ImageUpload.single('image'), async function (req, res) {
         console.log(req.file)

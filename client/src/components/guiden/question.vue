@@ -38,6 +38,58 @@ export default {
         { title: "Avlopp", id: 3, path: "/answer3" },
         { title: "Annat vatten", id: 4, path: "/answer4" },
       ],
+      answerA: [
+        {
+          title:
+            "Är det vatten från egen brunn som bara försörjer ditt hushåll?",
+          id: 1,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som försörjer upp till 50 personer?",
+          id: 2,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som försörjer över 50 personer?",
+          id: 3,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som används för verksamhet??",
+          id: 4,
+          path: "/",
+        },
+      ],
+      answerB: [
+        {
+          title:
+            "Är det Norrtälje, Täby eller Vaxholm?",
+          id: 1,
+          path: "/",
+        },
+        {
+          title:
+            "Andra kommuner eller ej registrerad än?",
+          id: 2,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som försörjer över 50 personer?",
+          id: 3,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som används för verksamhet??",
+          id: 4,
+          path: "/",
+        },
+      ],
     };
   },
 };

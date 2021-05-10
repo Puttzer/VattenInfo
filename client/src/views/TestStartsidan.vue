@@ -141,7 +141,7 @@ export default {
     },
   },
   async mounted() {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0);	
 
     const id = this.$route.params.id;
     await this.$store.dispatch("tests/getTestInfo", id);

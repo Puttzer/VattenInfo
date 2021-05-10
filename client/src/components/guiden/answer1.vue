@@ -44,6 +44,21 @@
 
 <script>
 export default {
+  data() {
+    return {
+      infos: [
+        { title: "Dricksvatten", id: 1, path: "/answer1" },
+        {
+          title:
+            "Vatten för att söka tillstånd (om du till exempel ska bygga avlopp) eller bygglov?",
+          id: 2,
+          path: "/answer2",
+        },
+        { title: "Avlopp", id: 3, path: "/answer3" },
+        { title: "Annat vatten", id: 4, path: "/answer4" },
+      ],
+    };
+  },
   methods: {
     moveToVattenguide() {
       console.log(this.$router);
