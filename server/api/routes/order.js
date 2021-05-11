@@ -6,31 +6,30 @@ const AuthMiddleware = require('../../Middleware/Auth.middleware')
 const UserIsLoggedin = require('../../Middleware/User.middleware')
 
 module.exports = function (router) {
-    router.post('/order/generate', async (req, res) => {
-        console.log(req.body)
-        const { orderAmount } = req.body
+    router.post('/order/generate', UserIsLoggedin.isUserLoggedIn, async (req, res) => {
+        // console.log(req.body)
+        const { orderAmount, id } = req.body
         const newTests = req.body.orderTests.map(test => test)
         let userRole = ''
 
-        // const FindUser = await User.findById({ _id: userId })
+        const FindUser = await User.findById({ _id: id })
         // console.log(FindUser)
         // console.log(newTests)
-        // console.log(totalAmount)
 
-        // userRole = FindUser.userRole
+        userRole = FindUser.userRole
         const orderNumber = await generateOrderNr()
 
         let order = {}
-        // order.userRole = userRole
+        order.userRole = userRole
         order.orderNumber = orderNumber
         order.tests = newTests
         order.totalAmount = orderAmount
-        // order.userId = userId
+        order.userId = id
 
-        console.log(order)
+        // console.log(order)
 
         let newOrder = new Order(order)
-        console.log(newOrder)
+        // console.log(newOrder)
         try {
             await newOrder.save()
             res.status(200).json({

@@ -6,6 +6,8 @@ export default {
         selectedTests: [],
         showSelectedTests: false,
         totalAmount: 0,
+        paginatedTests: [],
+        numberOfPages: null
 
     },
     getters: {
@@ -74,6 +76,26 @@ export default {
 
 
         },
+        async getPaginatedTests({ commit }, pageNumber) {
+            console.log('get paginated tests')
+            const token = localStorage.getItem('token')
+            const page = pageNumber;
+            const limit = 10;
+            const response = await fetch(`http://localhost:4000/api/paginated/tests?page=${page}&limit=${limit}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_PAGINATED_TESTS', data.tests.results, { module: 'tests' })
+            commit('UPDATE_PAGINATED_PAGES', data.tests.pages, { module: 'tests' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        },
         async deleteTest({ commit }, _id) {
             const token = localStorage.getItem('token')
             const response = await fetch(`http://localhost:4000/api/test/${_id}`, {
@@ -93,12 +115,14 @@ export default {
     mutations: {
         updateTest(state, value) {
             state.tests = value.map((test) => test)
-            console.log(state.tests);
+            // console.log(state.tests);
         },
         DELETE_TEST(state, value) {
+            console.log(state)
             const remainingTests = state.tests.filter((test) => test._id != value)
             state.tests = remainingTests
-            console.log(state.tests)
+            // console.log(state.tests)
+
         },
         INSERT_TEST(state, value) {
             return state.tests.push(value)
@@ -122,16 +146,16 @@ export default {
             state.test = { ...value }
         },
         INCREASE_COUNT(state, _id) {
-            console.log(_id)
+            // console.log(_id)
             let isTheTestExists = state.selectedTests.find(test => test._id === _id)
-            console.log(isTheTestExists)
+            // console.log(isTheTestExists)
 
             if (!isTheTestExists) {
                 state.count++;
                 // localStorage.setItem('seletedTests',)
 
                 const test = state.tests.find(test => test._id === _id)
-                console.log('test', test)
+                // console.log('test', test)
                 state.selectedTests.push(test)
                 // const localTests = state.selectedTests.map(test => test)
                 // console.log(localTests);
@@ -166,7 +190,30 @@ export default {
             state.selectedTests = [],
                 state.count = 0;
 
-        }
+        },
+        UPDATE_PAGINATED_TESTS(state, value) {
+            state.paginatedTests = value
+        },
+        UPDATE_PAGINATED_PAGES(state, value) {
+            state.numberOfPages = value
+        },
+        INCREASE_QUANTITY(state, id) {
+            const findTest = state.selectedTests.find(test => test._id === id)
+            // console.log(findTest)
+            findTest.quantity++
+            state.tests.filter(test => test._id === id).push(findTest)
+        },
+        DECREASE_QUANTITY(state, id) {
+            const findTest = state.selectedTests.find(test => test._id === id)
+            // console.log(findTest)
+            findTest.quantity--
+            console.log(findTest.quantity)
+            if (findTest.quantity < 1) {
+                state.tests.filter(test => test._id === id)
+            }
+            state.tests.filter(test => test._id === id).push(findTest)
+        },
+
 
     },
     namespaced: true

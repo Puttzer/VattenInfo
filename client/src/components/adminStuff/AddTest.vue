@@ -63,6 +63,12 @@
                   outlined
                   label="Pris i SEK"
                 ></v-text-field>
+                <v-text-field
+                  v-model="short_description"
+                  dense
+                  outlined
+                  label="kort info"
+                ></v-text-field>
                 <input type="file" ref="file" @change="selectFile" />
                 <v-textarea
                   v-model="description"
@@ -70,7 +76,8 @@
                   outlined
                   label="Description"
                   no-resize
-                  rows="5"
+                  rows="3"
+                  class="mt-2"
                 ></v-textarea>
                 <v-btn
                   dark
@@ -102,7 +109,9 @@ export default {
       type1: [
         "Ackrediterade analyser",
         "Enskilt dricksvatten",
+        "Bygglov & Tillstånd",
         "avloppsvatten och badvatten",
+        "Samfällighet & Verksamhet",
       ],
       type2: [
         "Packet pris",
@@ -114,6 +123,7 @@ export default {
       category: "",
       testtype: "",
       description: "",
+      short_description: "",
       price: "",
       image: "",
       id: "",
@@ -144,6 +154,7 @@ export default {
       formData.append("testname", this.testname);
       formData.append("category", this.category);
       formData.append("testtype", this.testtype);
+      formData.append("short_description", this.short_description);
       formData.append("description", this.description);
       formData.append("price", this.price);
       formData.append("image", this.image);
@@ -166,6 +177,7 @@ export default {
       formData.append("testname", this.testname);
       formData.append("category", this.category);
       formData.append("testtype", this.testtype);
+      formData.append("short_description", this.short_description);
       formData.append("description", this.description);
       formData.append("price", this.price);
       formData.append("image", this.image);

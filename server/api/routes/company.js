@@ -15,6 +15,63 @@ module.exports = function (router) {
         })
     })
 
+    router.post('/company/login', async function (req, res, next) {
+        const reqCompany = {
+            email: req.body.email,
+            password: req.body.password
+        }
+        console.log(reqCompany)
+
+        // check whether there is a user with email
+        const findCompany = await Company.findOne({ email: reqCompany.email }).exec()
+        console.log(findCompany)
+
+        if (!findCompany) {
+            res.status(404),
+                res.json({
+                    message: 'Invalid credentials'
+                })
+            return
+        }
+        //user exists and check the password is matched
+        if (findCompany.email = reqCompany.email) {
+
+            const isMatched = await bcrypt.verifyPassword(reqCompany.password, findCompany.password)
+            console.log(isMatched)
+
+            //payload for jwt token
+            const payload = {
+                _id: findCompany._id,
+                email: findCompany.email
+            }
+            if (isMatched) {
+                // generate jwt token
+                const token = await JWT.generateToken(payload)
+                res.status(200)
+                res.json({
+                    message: `Company is logged in as ${reqCompany.email}`,
+                    email: reqCompany.email,
+                    _id: findCompany._id,
+                    Token: token,
+                    companyUserIsloggedIn: true
+                })
+            } else {
+                res.status(404)
+                res.json({
+                    message: 'Credentials password does not match'
+                })
+                return
+            }
+
+        } else {
+            res.status(404)
+            res.json({
+                message: 'Username does not exist'
+            })
+            return
+        }
+    })
+
     router.post('/company/register', async (req, res) => {
         console.log()
         const findCompany = await Company.findOne({

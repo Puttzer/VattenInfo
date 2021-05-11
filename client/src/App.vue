@@ -1,5 +1,5 @@
 <template>
-  <v-app class="ma-0 pa-0 d-flex justify-ceneter app-container">
+  <v-app class="d-flex justify-ceneter app-container">
     <!-- <AdminStartsidan v-if="this.admin.isAdmin === true" /> -->
     <NavigationBar
       v-if="this.admin.showNavbar === true"
@@ -7,9 +7,8 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
+    <!-- <Pathcomponent /> -->
     <v-main class="ma-0 pa-0 background body-main" flat>
-      <Pathcomponent />
-
       <router-view></router-view>
     </v-main>
     <Footer></Footer>
@@ -21,7 +20,7 @@ import NavigationBar from "./components/ui/NavigationBar.vue";
 // import AdminStartsidan from "./views/AdminStartsidan.vue";
 
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
-import Pathcomponent from "./components/Pathcomponent";
+// import Pathcomponent from "./components/Pathcomponent";
 
 import Footer from "./components/ui/Footer";
 import { mapState } from "vuex";
@@ -34,7 +33,7 @@ export default {
     return {};
   },
   components: {
-    Pathcomponent,
+    // Pathcomponent,
     NavigationBar,
     // AdminStartsidan,
     // NavBarMobile,
@@ -42,7 +41,7 @@ export default {
     // test
   },
   computed: {
-    ...mapState(["admin", "test","user"]),
+    ...mapState(["admin", "test", "user"]),
   },
   methods: {},
   async mounted() {
@@ -55,7 +54,7 @@ export default {
     //   await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
     //   this.$router.push("/login/user");
     // }
-
+    await this.$store.dispatch("tests/getTests");
     if (localStorage.userToken) {
       await this.$store.dispatch("user/validateUser");
     } else if (localStorage.companyToken) {
@@ -68,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,600;1,400&display=swap'); */
 
 * {
@@ -85,5 +84,9 @@ export default {
 }
 .navigation-bar {
   width: 100vw;
+  /* height: 150px;
+  position: fixed;
+  z-index: 2;
+  background-color: white; */
 }
 </style>

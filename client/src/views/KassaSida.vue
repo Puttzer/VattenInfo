@@ -5,6 +5,14 @@
         <h1>Varukorg</h1>
       </v-col>
     </v-row>
+
+    <v-row class="d-flex" v-if="this.displayErrorMessage === true">
+      <v-col class="d-flex justify-center ml" cols="12">
+        <h3 v-if="this.displayErrorMessage === true" class="red--text">
+          User must login to procceed further!!!
+        </h3>
+      </v-col>
+    </v-row>
     <v-row
       v-for="(selectedTest, index) in this.tests.selectedTests"
       :key="selectedTest._id"
@@ -12,7 +20,9 @@
       class="my-1 mx-8"
       cols="12"
     >
-      <v-col class="d-flex justify-center grey lighten-1 pa-0 mx-1 my-1">
+      <v-col
+        class="d-flex container justify-center grey lighten-1 pa-0 mx-1 my-1"
+      >
         <v-list
           class="d-flex justify-space-around pa-0 ma-0 flex-row"
           cols="12"
@@ -21,7 +31,7 @@
             <v-img
               cols="2"
               class="pink"
-              :src="selectedTest.image"
+              :src="`http://localhost:4000/${selectedTest.image}`"
               width="150px"
               height="150px"
             ></v-img>
@@ -47,7 +57,7 @@
           </div>
 
           <v-icon
-            @click="deleteProduct"
+            @click="deleteTestInCart(selectedTest._id)"
             class="d-flex grey lighten-5 justify-center"
             size="42px"
             color="red"
@@ -82,31 +92,56 @@
 import { mapState } from "vuex";
 export default {
   name: "KassaSidan",
+  data() {
+    return {
+      displayErrorMessage: false,
+    };
+  },
   computed: {
-    ...mapState(["tests", "order"]),
+    ...mapState(["tests", "order", "user", "company"]),
   },
   methods: {
     async generateOrder() {
-      const orderTests = this.tests.selectedTests;
-      const orderAmount = this.tests.totalAmount;
-      const payload = {
-        orderTests: orderTests,
-        orderAmount: orderAmount,
-      };
-      console.log("generating the order");
-      await this.$store.dispatch("order/generateOrder", payload);
-      this.$store.commit("tests/DELETE_SELECTED_TESTS");
-      this.$router.push("/ordernumber");
+      if (this.user.userIsloggedIn || this.company.companyUserIsloggedIn) {
+        console.log(this.user.user._id);
+        const id = this.user.user._id;
+        const orderTests = this.tests.selectedTests;
+        const orderAmount = this.tests.totalAmount;
+        const payload = {
+          orderTests: orderTests,
+          orderAmount: orderAmount,
+          id: id,
+        };
+        console.log("generating the order");
+        await this.$store.dispatch("order/generateOrder", payload);
+        this.$store.commit("tests/DELETE_SELECTED_TESTS");
+        this.$router.push("/ordernumber");
+      } else {
+        this.displayErrorMessage = true;
+        return;
+      }
       //   if (this.order.orderGenerated) {
       //     console.log("move to mutations");
       //   }
       //   setTimeout(function () {}, 2000);
+    },
+    deleteTestInCart(id) {
+      console.log(id, " move to mutaions");
+      this.$store.commit("tests/DELETE_TEST_CART", id);
+      if (this.tests.selectedTests.length < 1) {
+        this.$router.push("/bestallanalys");
+      } else {
+        return;
+      }
     },
   },
 };
 </script>
 
 <style scoped>
+.container {
+  box-shadow: 2px 2px 5px #00000090;
+}
 .payButton {
   height: 60px;
   width: 550px;

@@ -34,7 +34,13 @@
             >
               <cart-component />
             </v-col>
-            <v-col cols="2" v-show="this.user.userIsloggedIn === false">
+            <v-col
+              cols="2"
+              v-show="
+                this.user.userIsloggedIn === false &&
+                this.company.companyUserIsloggedIn === false
+              "
+            >
               <div
                 @click="showPopup"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer"
@@ -44,17 +50,34 @@
               </div>
 
               <LoginComp
-                v-show="this.user.showLoginModel === true"
+                v-show="
+                  this.user.showLoginModel === true ||
+                  this.company.showLoginModel === true
+                "
                 class="placement"
               />
             </v-col>
-            <v-col v-show="this.user.userIsloggedIn === true">
+            <v-col>
               <div
-                @click="ShowDropDown()"
+                v-show="this.user.userIsloggedIn === true"
+                @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title">{{ this.user.user.email }}</p>
+                <p class="ma-2 sub-title">
+                  {{ this.user.user.email }}
+                </p>
+              </div>
+              <div
+                @click="ShowCompanyDropDown()"
+                class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
+                v-show="this.company.companyUserIsloggedIn === true"
+              >
+                <v-icon color="blue" large>account_circle</v-icon>
+
+                <p class="ma-2 sub-title">
+                  {{ this.company.companyUser.email }}
+                </p>
               </div>
             </v-col>
           </v-col>
@@ -66,14 +89,20 @@
         v-if="this.tests.showSelectedTests === true"
       />
 
-      <v-row
-        class="d-flex justify-end mr-4"
-        v-if="this.user.showUserDropDown === true"
-      >
-        <v-col cols="2" class="d-flex justify-end">
-          <UserDropDown class="ma-0 pa-0 cursor-pointer user-window" />
-        </v-col>
+      <!-- <v-row class="d-flex justify-end mr-4">
+        <v-col cols="2" class="d-flex justify-end"> </v-col>
       </v-row>
+      <v-row class="d-flex justify-end mr-4">
+        <v-col cols="2" class="d-flex justify-end"> </v-col>
+      </v-row> -->
+      <UserDropDown
+        v-if="this.user.showUserDropDown === true"
+        class="ma-0 pa-0 cursor-pointer user-window"
+      />
+      <CompanyDropDown
+        v-if="this.company.showCompanyDropDown === true"
+        class="ma-0 pa-0 cursor-pointer user-window"
+      />
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
       <v-row class="d-flex ml-n15 mt-2 justify-center">
         <nav>
@@ -98,6 +127,7 @@
             <li
               @mouseover="showAboutSection = true"
               @mouseleave="showAboutSection = false"
+              @click="moveToLab()"
             >
               Om labbtjänster
               <v-icon>keyboard_arrow_down</v-icon>
@@ -113,13 +143,13 @@
               @mouseleave="showOtherServices = false"
             >
               Övriga tjänster
-              <v-icon>keyboard_arrow_down</v-icon>
+              <!-- <v-icon>keyboard_arrow_down</v-icon> -->
 
-              <ul v-if="showOtherServices">
+              <!-- <ul v-if="showOtherServices">
                 <li class="text--white">lorem</li>
                 <li class="text--white">lorem</li>
                 <li class="text--white">lorem</li>
-              </ul>
+              </ul> -->
             </li>
           </ul>
         </nav>
@@ -132,6 +162,7 @@
 import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
+import CompanyDropDown from "../company/CompanyDropDown.vue";
 import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
 import { mapState } from "vuex";
 
@@ -148,9 +179,10 @@ export default {
     LoginComp,
     UserDropDown,
     ShowShoppingCart,
+    CompanyDropDown,
   },
   computed: {
-    ...mapState(["user", "tests"]),
+    ...mapState(["user", "tests", "company"]),
   },
   methods: {
     moveToAnalysKatalog() {
@@ -162,11 +194,19 @@ export default {
     moveToBestallanalys() {
       this.$router.push("/bestallanalys");
     },
+    moveToLab() {
+      this.$router.push("/omlab");
+    },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
     },
-    ShowDropDown() {
+    ShowUserDropDown() {
+      console.log("user drop down");
       this.$store.commit("user/USER_DROP_MENU");
+    },
+    ShowCompanyDropDown() {
+      console.log("company drop down");
+      this.$store.commit("company/COMPANY_DROP_MENU");
     },
   },
 };
@@ -190,15 +230,23 @@ export default {
   list-style: none;
 }
 .user-window {
-  position: fixed;
+  position: absolute;
+  right: 10px;
   top: 60px;
+  min-height: 100px;
+  min-width: 100px;
+  border-top: 5px solid blue;
+  background-color: rgb(27, 77, 92);
+  margin: 0;
+  padding: 0;
+  z-index: 10;
 }
 
 .dropdownuser {
   display: block;
-  position: relative;
+  position: absolute;
   text-decoration: none;
-  min-width: 60px;
+  min-width: 100px;
   list-style: none;
   text-transform: uppercase;
   font-size: 14px;
@@ -206,16 +254,17 @@ export default {
   font-family: "Poppins", sans-serif;
 }
 
-.dropdownuser UserDropDown {
+/* .dropdownuser UserDropDown {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 55px;
+  min-width: 100px;
   border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  background-color: rgb(80, 152, 173);
   margin: 0;
   padding: 0;
   z-index: 10;
-}
+} */
 
 .menu li {
   display: block;
@@ -234,8 +283,9 @@ export default {
   position: absolute;
   left: 0;
   top: 55px;
-  border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  /* border-top: 5px solid blue; */
+  /* background-color: rgb(21, 57, 68); */
+  background: #fff;
   margin: 0;
   padding: 0;
   z-index: 2;
@@ -247,7 +297,7 @@ export default {
   padding: 0;
   /* color: rgb(54, 85, 104); */
   font-size: 14px;
-  color: white;
+  /* color: white; */
   font-weight: 600;
   font-family: "Poppins", sans-serif;
 }
@@ -280,11 +330,12 @@ export default {
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .position-shoppingcart {
-  position: fixed;
+  position: absolute;
   z-index: 3;
   top: 40px;
   right: 25px;
   background-color: none;
+  background-color: rgba(0, 0, 0, 0.4);
   min-height: 5vh;
 }
 </style>

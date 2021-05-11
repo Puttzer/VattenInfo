@@ -5,16 +5,16 @@
         <form class="mt-n12 pa-10">
           <v-row d-flex justify="center">
             <v-col cols="12" md="12">
-              <h3>Skappa user Person Konto</h3>
+              <h3>Skappa Privat kund Konto</h3>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" md="12" sm="12">
               <v-text-field
-                dense
                 color="#051f38"
                 text
-                class="mt-6"
+                dense
+                class="mt-6 sizeLabel"
                 v-model="user.name"
                 append-icon="person"
                 label="Namn"
@@ -152,4 +152,8 @@ export default {
 </script>
 
 <style scoped>
+.v-text-field >>> label {
+  font-size: 1.2em;
+  color: black;
+}
 </style>

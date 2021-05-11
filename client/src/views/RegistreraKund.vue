@@ -1,11 +1,17 @@
 <template>
-  <div class="container">
-    <v-row class="bgColor">
+  <div class="container background">
+    <v-row class="d-flex justify-center mt-4">
+      <v-col cols="6" class="d-flex justify-center">
+        <h2 v-show="isAPerson" class="blue--text">Skappa Privat kund Konto</h2>
+        <h2 v-show="!isAPerson" class="blue--text">Skappa Företag Konto</h2>
+      </v-col>
+    </v-row>
+    <v-row class="bgColor mt-12">
       <v-col cols="12" sm="12" md="12">
         <v-btn
           class="ml-4"
           small
-          color="white"
+          color="black"
           text
           @click="isAPerson = false"
           :class="{ active: !isAPerson }"
@@ -15,7 +21,7 @@
         <span class="ma-2">|</span>
         <v-btn
           small
-          color="white"
+          color="black"
           text
           @click="isAPerson = true"
           :class="{ active: isAPerson }"
@@ -38,6 +44,7 @@ export default {
   data() {
     return {
       isAPerson: true,
+      message: "",
     };
   },
   components: {
@@ -51,15 +58,15 @@ export default {
 .container {
   height: 1100px;
   width: 90%;
-  margin-top: 150px;
+  margin-top: 10px;
 }
 .bgColor {
-  background-color: #051f38;
+  background-color: #6b849c;
   height: 60px;
   width: 100%;
 }
 .personbgcolor {
-  background: #2176c0;
+  background: #b3bdc5;
   width: 100%;
 }
 .active {

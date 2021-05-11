@@ -3,6 +3,10 @@
     <v-row class="d-flex flex-row">
       <h1>Tester</h1>
       <v-spacer></v-spacer>
+      <v-btn class="mr-12 mt-6" @click="loadTests">
+        Load tests
+        <br />Test
+      </v-btn>
       <v-btn class="mr-12 mt-6" @click="showPopup">
         Lägg till
         <br />Test
@@ -23,10 +27,10 @@
       <v-col cols="10">
         <div class="test-container ma-3">
           <v-card
-            v-for="(test, index) in this.tests.tests"
+            v-for="(test, index) in this.tests.paginatedTests"
             :key="index"
             width="200px"
-            height="250px"
+            height="450px"
             class="ma-2"
           >
             <v-list class="d-flex flex-column justify-center" id="testList">
@@ -40,6 +44,7 @@
               <h2 class="Heading-2" id="testName">
                 Title : {{ test.testname }}
               </h2>
+              <p>{{ test.short_description }}</p>
               <h4 id="testCategory">Detailjer :{{ test.category }}</h4>
               <h4 id="testType">Detailjer :{{ test.testtype }}</h4>
               <!-- <h5 id="testLong">Detailjer :{{ test.description }}</h5> -->
@@ -53,6 +58,24 @@
         </div>
       </v-col>
     </v-row>
+    <v-row>
+      <div class="pagination-container">
+        <li
+          v-for="pageNumber in this.tests.numberOfPages"
+          :key="pageNumber"
+          class="ma-1"
+          :class="{ activeColor: activeclass }"
+        >
+          <v-btn
+            x-small
+            @click="changePageNumber(pageNumber)"
+            :class="[activeColor ? activeclass : 'blue']"
+          >
+            {{ pageNumber }}
+          </v-btn>
+        </li>
+      </div>
+    </v-row>
   </div>
 </template>
 
@@ -65,10 +88,12 @@ export default {
       showAddTest: false,
       addtestButton: false,
       addsaveButton: false,
+      activeColor: false,
       test: {
         testname: "",
         testtype: "",
         description: "",
+        short_description: "",
         price: "",
         image: "",
         category: "",
@@ -90,8 +115,8 @@ export default {
       return test;
     },
   },
-  mounted() {
-    this.$store.dispatch("tests/getTests");
+  async mounted() {
+    await this.$store.dispatch("tests/getPaginatedTests");
   },
   methods: {
     // testInfo(id) {
@@ -99,6 +124,15 @@ export default {
     //   console.log(test);
     //   return test;
     // },
+    // async loadTests() {
+    //   await this.$store.dispatch("tests/getPaginatedTests");
+    // },
+    async changePageNumber(pageNumber) {
+      console.log(pageNumber);
+      await this.$store.dispatch("tests/getPaginatedTests", pageNumber);
+      this.activeColor = true;
+    },
+
     deleteTest(_id) {
       this.$store.dispatch("tests/deleteTest", _id);
     },
@@ -120,6 +154,7 @@ export default {
       this.test.testname = test.testname;
       this.test.testtype = test.testtype;
       this.test.price = test.price;
+      this.test.short_description = test.short_description;
       this.test.description = test.description;
       this.test.id = test._id;
       this.test.image = test.image;
@@ -161,5 +196,28 @@ export default {
 }
 .test-container > v-card {
   flex: 1 1 160px;
+}
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+li {
+  width: 30px;
+  height: 50px;
+  list-style: none;
+}
+.pagination-container > button {
+  width: 30px;
+  height: 50px;
+  margin: 5px;
+}
+.activeclass {
+  border: 5px solid green;
+  background-color: chartreuse;
+  font-size: 16px;
+}
+.inactiveclass {
+  background-color: none;
+  font-size: 16px;
 }
 </style>
