@@ -2,16 +2,19 @@
   <v-container>
     <v-row class="d-flex flex-row">
       <v-col class="d-flex flex-column">
-        <div class="text">
-          <h1 class="headtitle">Om Vatteninfo Laboratorietjänster</h1>
-          <h4 class="filler">
+        <div class="uppertext">
+          <h1 class="headtitle text-center">
+            Om Vatteninfo Laboratorietjänster
+          </h1>
+          <h4 class="filler text-left">
             Vatteninfo Laboratorietjänster är en lokal tjänst för analys av
             brunnsvatten, dricksvatten och avloppsvatten för fastighetsägare,
             samfälligheter och företag. Vi erbjuder både analyser från vårt
             lokala laboratorium som följer metoderna i ackreditearde
             laboratorier för den enskilde fastighetsägaren, samt analyser från
             ett ackrediterat laboratorium för registrerade anläggningar eller
-            för djupare analyser av enskilda brunnar. <br />
+            för djupare analyser av enskilda brunnar.
+            <br />
             Registrerade anläggningar: De måste följa föreskrifterna i SLVFS
             2001:30 Föreskrifterna gäller för anläggningar för
             dricksvattenförsörjning som antingen tillhandahåller i genomsnitt 10
@@ -26,37 +29,45 @@
           <br />
           <br />
           <br />
-          <hr />
-          <h1 class="lowertitle">Nyttiga Länkar</h1>
-
-          <div class="links">
-            <v-row class="d-flex flex-row">
-              <v-col class="d-flex flex-column blue">
-                <div class="linkcard d-flex flex-row">
-                  <h2>IMAGE</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    iaculis lacus sed congue pellentesque. Praesent.
-                  </p>
-                </div>
-                <div class="linkcard d-flex flex-row">
-                  <h2>IMAGE</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    iaculis lacus sed congue pellentesque. Praesent.
-                  </p>
-                </div>
-                <div class="linkcard d-flex flex-row">
-                  <h2>IMAGE</h2>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                    iaculis lacus sed congue pellentesque. Praesent.
-                  </p>
-                </div>
-              </v-col>
-            </v-row>
-          </div>
         </div>
+        <br />
+        <hr />
+        <br />
+        <v-row class="d-flex flex-row">
+          <v-col class="d-flex flex-column"
+            ><div class="lowertext">
+              <h1 class="lowertitle text-center">Nyttiga Länkar</h1>
+
+              <div class="links">
+                <v-row class="d-flex flex-row red">
+                  <v-col class="d-flex flex-column">
+                    <div class="linkcard d-flex flex-row green">
+                      <h2>IMAGE</h2>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed iaculis lacus sed congue pellentesque. Praesent.
+                      </p>
+                    </div>
+                    <div class="linkcard d-flex flex-row">
+                      <h2>IMAGE</h2>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed iaculis lacus sed congue pellentesque. Praesent.
+                      </p>
+                    </div>
+                    <div class="linkcard d-flex flex-row">
+                      <h2>IMAGE</h2>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed iaculis lacus sed congue pellentesque. Praesent.
+                      </p>
+                    </div>
+                  </v-col>
+                </v-row>
+              </div>
+            </div></v-col
+          >
+        </v-row>
       </v-col>
     </v-row>
   </v-container>
@@ -67,30 +78,36 @@ export default {};
 </script>
 
 <style lang="scss" scoped >
-.text {
+.uppertext {
   font-family: "Poppins", sans-serif;
+}
+.lowertext {
+  font-family: "Poppins", sans-serif;
+  //   Commented out to reflect what sent to Joel
+  //   background-color: white;
+  //   box-shadow: 2px 2px 5px #00000090;
 }
 .headtitle {
   font-size: 36px;
-  padding-left: 500px;
   padding-bottom: 70px;
+  padding-top: 70px;
 }
 
 .filler {
-  font-size: 20px;
+  font-size: 18px;
   // Desktop width
-  width: 1150px;
+  width: 800px;
   margin: auto;
   letter-spacing: 0.7px;
 }
 
 .lowertitle {
   font-size: 36px;
-  padding-left: 700px;
   padding-top: 70px;
+  padding-bottom: 70px;
 }
 .links {
-  max-width: 907px;
+  //   max-width: 907px;
   left: 200px;
 }
 .linkcard {
