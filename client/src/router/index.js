@@ -17,7 +17,7 @@ import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import LostLogin from '../views/LostLogin.vue'
 import BestallSidan from '../views/BestallSidan.vue'
 import InstruktionOchBlanketter from '../views/InstruktionOchBlanketter.vue'
-import OmOss from '../views/OmOss.vue'
+import OmLab from '../views/OmLab.vue'
 import HjalpMedDittVatten from '../views/HjalpMedDittVatten.vue'
 import EnsikltDricksVatten from '../views/EnsikltDricksVatten.vue'
 import AvloppsAnalyser from '../views/AvloppsAnalyser.vue'
@@ -191,8 +191,8 @@ const routes = [
 	// Current about page as of 2021-05-11
 	{
 		path: '/omlab',
-		name: 'OmOss',
-		component: OmOss
+		name: 'OmLab',
+		component: OmLab
 	},
 	{
 		path: '/help',
