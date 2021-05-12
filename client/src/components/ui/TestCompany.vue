@@ -4,7 +4,7 @@
       <form class="pa-8">
         <v-row d-flex justify="center">
           <v-col cols="12" md="12" justify="center">
-            <h3>Skappa Företag Konto</h3>
+            <h3>Skappa Ett Företag Konto</h3>
           </v-col>
         </v-row>
         <v-row justify="center">
@@ -14,7 +14,7 @@
               large
               text
               color="#051f38"
-              placeholder="Vatteninfo AB"
+              placeholder="Företagsnamn"
               v-model="company.name"
               label="Företags Namn"
               outlined
@@ -31,7 +31,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="krishna Mohan"
+              placeholder="Förnamn Efternamn"
               v-model="company.contactPerson"
               label="Kontakt Person"
               outlined
@@ -98,7 +98,7 @@
               class="mt-n4"
               placeholder="888888-8888"
               v-model="company.organisationsnummer"
-              label="Organisations Nummer"
+              label="Organisationsnummer"
               outlined
             ></v-text-field>
           </v-col>
@@ -112,7 +112,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="odalvägen"
+              placeholder="Gatunamn"
               v-model="company.adress"
               label="Adress"
               outlined
@@ -143,7 +143,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="linköping"
+              placeholder="Postort"
               v-model="company.ort"
               label="Ort"
               outlined
@@ -153,7 +153,7 @@
         </v-row>
         <v-row justify="end">
           <v-col cols="12" md="3">
-            <v-btn class="btnColor"> Register </v-btn>
+            <v-btn class="white--text btnColor"> Register </v-btn>
           </v-col>
         </v-row>
       </form>

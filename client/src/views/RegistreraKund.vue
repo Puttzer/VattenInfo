@@ -11,22 +11,22 @@
         <v-btn
           class="ml-4"
           small
-          color="black"
+          color="white"
           text
           @click="isAPerson = false"
           :class="{ active: !isAPerson }"
         >
-          företag
+          Företag
         </v-btn>
         <span class="ma-2">|</span>
         <v-btn
           small
-          color="black"
+          color="white"
           text
           @click="isAPerson = true"
           :class="{ active: isAPerson }"
         >
-          privat
+          Privatkund
         </v-btn>
       </v-col>
     </v-row>
@@ -61,16 +61,16 @@ export default {
   margin-top: 10px;
 }
 .bgColor {
-  background-color: #6b849c;
+  background-color: #cfcfcf;
   height: 60px;
   width: 100%;
 }
 .personbgcolor {
-  background: #b3bdc5;
+  background: white;
   width: 100%;
 }
 .active {
-  background-color: rgb(168, 123, 24);
+  background-color: #12669c;
   font-size: 16px;
 }
 </style>
