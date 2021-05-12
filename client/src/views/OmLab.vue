@@ -43,24 +43,39 @@
                   <v-col class="d-flex flex-column">
                     <div class="linkcard d-flex flex-row green">
                       <h2>IMAGE</h2>
+                      <h3>Livsmedelsverket</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
+                      <p>LINK</p>
                     </div>
                     <div class="linkcard d-flex flex-row">
                       <h2>IMAGE</h2>
+                      <h3>Sveriges Geologiska Undersökning</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
+                      <p>LINK</p>
                     </div>
                     <div class="linkcard d-flex flex-row">
                       <h2>IMAGE</h2>
+                      <h3>Vatteninfo</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
+                      <p>LINK</p>
+                    </div>
+                    <div class="linkcard d-flex flex-row">
+                      <h2>IMAGE</h2>
+                      <h3>Gemva</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Sed iaculis lacus sed congue pellentesque. Praesent.
+                      </p>
+                      <p>LINK</p>
                     </div>
                   </v-col>
                 </v-row>
