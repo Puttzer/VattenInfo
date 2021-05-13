@@ -140,7 +140,6 @@
               <ul v-if="showAboutSection">
                 <li class="text--white">om oss</li>
                 <li class="text--white">kontakt</li>
-                <li class="text--white">wennnn</li>
               </ul>
             </li>
             <li

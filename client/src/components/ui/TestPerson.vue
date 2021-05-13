@@ -40,6 +40,38 @@
           </v-row>
 
           <v-row justify="center">
+            <v-col cols="12" md="12">
+              <v-text-field
+                dense
+                large
+                :type="password"
+                color="#051f38"
+                placeholder="Password"
+                v-model="user.password"
+                label="Password"
+                outlined
+                append-icon="lock"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row justify="center">
+            <v-col cols="12" md="12">
+              <v-text-field
+                dense
+                large
+                :type="password"
+                color="#051f38"
+                placeholder="Repeat password"
+                v-model="user.repeatpassword"
+                label="Repeat password"
+                outlined
+                append-icon="lock"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row justify="center">
             <v-col cols="12" md="6" sm="12">
               <v-text-field
                 dense
@@ -140,6 +172,8 @@ export default {
       user: {
         name: "",
         email: "",
+        password: "",
+        repeatPassword: "",
         phone: "",
         altPhone: "",
         adress: "",
