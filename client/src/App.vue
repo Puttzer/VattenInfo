@@ -7,7 +7,7 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <!-- <Pathcomponent /> -->
+    <Pathcomponent />
     <v-main class="ma-0 pa-0 background body-main" flat>
       <router-view></router-view>
     </v-main>
@@ -20,7 +20,7 @@ import NavigationBar from "./components/ui/NavigationBar.vue";
 // import AdminStartsidan from "./views/AdminStartsidan.vue";
 
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
-// import Pathcomponent from "./components/Pathcomponent";
+import Pathcomponent from "./components/Pathcomponent";
 
 import Footer from "./components/ui/Footer";
 import { mapState } from "vuex";
@@ -33,7 +33,7 @@ export default {
     return {};
   },
   components: {
-    // Pathcomponent,
+    Pathcomponent,
     NavigationBar,
     // AdminStartsidan,
     // NavBarMobile,
