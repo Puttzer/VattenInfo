@@ -4,6 +4,8 @@ export default {
         userIsloggedIn: false,
         showLoginModel: false,
         showUserDropDown: false,
+        showSearchDropDown: false,
+        searchText: '',
         user: {
             email: '',
             _id: ''
@@ -134,6 +136,16 @@ export default {
             state.userIsloggedIn = false,
                 state.showUserDropDown = false
         },
+        SEARCH_DROP_DOWN_VISIBLE(state) {
+            state.showSearchDropDown = true
+        },
+        SEARCH_DROP_DOWN_CLOSE(state) {
+            state.showSearchDropDown = false
+        },
+        SEND_UPDATED_VALUE(state, value) {
+            state.searchText = value
+            console.log(state.searchText)
+        }
 
 
 
