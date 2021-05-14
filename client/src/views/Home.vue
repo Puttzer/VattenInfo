@@ -42,6 +42,29 @@
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
+        <!-- <img class="orb" src="@/assets/redcircle.svg" alt="red orb" /> -->
+
+        <div class="heart">
+          <svg viewBox="0 0 500 500">
+            <path
+              id="curve"
+              fill="transparent"
+              d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
+            />
+            <text width="500">
+              <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
+            </text>
+          </svg>
+
+          <v-img
+            class="image"
+            src="@/assets/landing/OmtankeH20crop.png"
+            md="6"
+            max-width="400"
+          ></v-img>
+        </div>
+      </v-col>
+      <!-- <v-col cols="12" md="3" class="d-flex flex-row align-start">
         <svg viewBox="0 0 500 500" color="red">
           <path
             id="curve"
@@ -60,7 +83,7 @@
           max-width="500"
           class="image-position"
         ></v-img>
-      </v-col>
+      </v-col> -->
     </v-row>
     <!-- landning fort -->
     <v-row class="mt-16">
@@ -97,7 +120,7 @@
     <v-row class="d-flex justify-center px-2 mt-10" cols="8">
       <v-col class="d-flex flex-row justify-center justify-space-evenly">
         <v-card
-          class="d-flex flex-column justify-evenly align-center  white ma-1"
+          class="d-flex flex-column justify-evenly align-center white ma-1"
           v-for="test in this.displayTests"
           :key="test.id"
           v-bind:style="{ backgroundColor: test.color }"
@@ -128,7 +151,6 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 
 export default {
@@ -141,7 +163,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/baspaket",
           image: "FlaskaBas.png",
-        //   color: "#B3E5FC",
+          //   color: "#B3E5FC",
         },
         {
           id: 2,
@@ -149,7 +171,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/familjpaket",
           image: "FlaskorFamilj.png",
-        //   color: "#B2EBF2",
+          //   color: "#B2EBF2",
         },
         {
           id: 3,
@@ -157,7 +179,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/storapaket",
           image: "FlaskorStora.png",
-        //   color: "#B2DFDB",
+          //   color: "#B2DFDB",
         },
       ],
     };
@@ -181,7 +203,27 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.heart {
+  //   position: fixed;
+  top: 345px;
+  right: 0;
+
+  svg {
+    position: absolute;
+    transform: rotate(319deg);
+    height: 900px;
+    position: absolute;
+    top: -131px;
+    right: -398px;
+  }
+
+  .image {
+    position: absolute;
+    right: 0;
+    top: 148px;
+  }
+}
 .container {
   width: 100vw;
   margin: 0;
