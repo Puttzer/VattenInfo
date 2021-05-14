@@ -3,6 +3,7 @@
     <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
+		<addRemove/>
       </v-col>
     </v-row>
 
@@ -20,7 +21,9 @@
       class="my-1 mx-8"
       cols="12"
     >
-      <v-col class="d-flex justify-center grey lighten-1 pa-0 mx-1 my-1">
+      <v-col
+        class="d-flex container justify-center grey lighten-1 pa-0 mx-1 my-1"
+      >
         <v-list
           class="d-flex justify-space-around pa-0 ma-0 flex-row"
           cols="12"
@@ -88,15 +91,20 @@
 
 <script>
 import { mapState } from "vuex";
+import addRemove from '../components/cart/AddRemoveCounter'
 export default {
   name: "KassaSidan",
   data() {
     return {
       displayErrorMessage: false,
+	  
     };
   },
   computed: {
     ...mapState(["tests", "order", "user", "company"]),
+  },
+  components:{
+	 addRemove 
   },
   methods: {
     async generateOrder() {
@@ -137,6 +145,9 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  box-shadow: 2px 2px 5px #00000090;
+}
 .payButton {
   height: 60px;
   width: 550px;

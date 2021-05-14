@@ -30,6 +30,7 @@
             width="65px"
             height="65px"
           />
+
           <h2 class="blue-grey--text lighten-3">{{ selectTest.testname }}</h2>
           <div class="d-flex flex-row align-center justify-center">
             <h3>{{ selectTest.price }} KR</h3>
@@ -38,15 +39,16 @@
             <v-icon
               medium
               color="blue"
-              @click="increaseQuantity(selectTest._id)"
-              >add_circle</v-icon
+              @click="decreaseQuantity(selectTest._id)"
+              >remove_circle</v-icon
             >
-            <p>{{ selectTest.quantity }}</p>
+            <p class="mx-2">{{ selectTest.quantity }}</p>
+           
             <v-icon
               medium
               color="blue"
-              @click="decreaseQuantity(selectTest._id)"
-              >remove_circle</v-icon
+              @click="increaseQuantity(selectTest._id)"
+              >add_circle</v-icon
             >
           </div>
           <v-icon large color="red" @click="deleteTestInCart(selectTest._id)"

@@ -4,7 +4,7 @@
       <form class="pa-8">
         <v-row d-flex justify="center">
           <v-col cols="12" md="12" justify="center">
-            <h3>Skappa Företag Konto</h3>
+            <h3>Skappa Ett Företag Konto</h3>
           </v-col>
         </v-row>
         <v-row justify="center">
@@ -14,7 +14,7 @@
               large
               text
               color="#051f38"
-              placeholder="Vatteninfo AB"
+              placeholder="Företagsnamn"
               v-model="company.name"
               label="Företags Namn"
               outlined
@@ -31,7 +31,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="krishna Mohan"
+              placeholder="Förnamn Efternamn"
               v-model="company.contactPerson"
               label="Kontakt Person"
               outlined
@@ -53,6 +53,38 @@
               label="Email"
               outlined
               append-icon="email"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col cols="12" md="12">
+            <v-text-field
+              dense
+              large
+              password
+              color="#051f38"
+              placeholder="password"
+              v-model="company.password"
+              label="password"
+              outlined
+              append-icon="lock"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+
+        <v-row justify="center">
+          <v-col cols="12" md="12">
+            <v-text-field
+              dense
+              large
+              :type="password"
+              color="#051f38"
+              placeholder="Repeat password"
+              v-model="company.repeatpassword"
+              label="Repeat password"
+              outlined
+              append-icon="lock"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -98,7 +130,7 @@
               class="mt-n4"
               placeholder="888888-8888"
               v-model="company.organisationsnummer"
-              label="Organisations Nummer"
+              label="Organisationsnummer"
               outlined
             ></v-text-field>
           </v-col>
@@ -112,7 +144,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="odalvägen"
+              placeholder="Gatunamn"
               v-model="company.adress"
               label="Adress"
               outlined
@@ -143,7 +175,7 @@
               text
               color="#051f38"
               class="mt-n4"
-              placeholder="linköping"
+              placeholder="Postort"
               v-model="company.ort"
               label="Ort"
               outlined
@@ -153,7 +185,7 @@
         </v-row>
         <v-row justify="end">
           <v-col cols="12" md="3">
-            <v-btn class="btnColor"> Register </v-btn>
+            <v-btn class="white--text btnColor"> Register </v-btn>
           </v-col>
         </v-row>
       </form>
@@ -167,6 +199,8 @@ export default {
     return {
       company: {
         name: "",
+        password: "",
+        repeatPassword: "",
         contactPerson: "",
         contactEmail: "",
         contactPhone: "",

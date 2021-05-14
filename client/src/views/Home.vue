@@ -94,10 +94,10 @@
       </v-col>
     </v-row>
 
-    <v-row class="d-flex justify-center px-2 mt-10 ml-16" cols="8">
-      <v-col class="d-flex flex-row justify-center">
+    <v-row class="d-flex justify-center px-2 mt-10" cols="8">
+      <v-col class="d-flex flex-row justify-center justify-space-evenly">
         <v-card
-          class="d-flex flex-column justify-start align-center ma-1"
+          class="d-flex flex-column justify-evenly align-center  white ma-1"
           v-for="test in this.displayTests"
           :key="test.id"
           v-bind:style="{ backgroundColor: test.color }"
@@ -109,17 +109,17 @@
           />
           <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
           <div
-            class="provInfo d-flex flex-column pt-6 ma-3 align-center light-blue darken-2 rounded-2"
+            class="provInfo d-flex flex-column pt-6 ma-3 align-center btnColor rounded-2"
           >
-            <h5 class="title black--text">{{ test.name }}</h5>
-            <p class="caption-1 black--text">
+            <h5 class="title white--text">{{ test.name }}</h5>
+            <p class="caption-1 white--text">
               {{ test.description }}
             </p>
           </div>
         </v-card>
       </v-col>
     </v-row>
-    <v-row class="d-flex justify-start mt-12">
+    <v-row class="d-flex justify-center mt-12">
       <v-col cols="10" class="d-flex justify-center align-center">
         <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
       </v-col>
@@ -128,6 +128,7 @@
 </template>
 
 <script>
+
 import { mapState } from "vuex";
 
 export default {
@@ -140,7 +141,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/baspaket",
           image: "FlaskaBas.png",
-          color: "#B3E5FC",
+        //   color: "#B3E5FC",
         },
         {
           id: 2,
@@ -148,7 +149,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/familjpaket",
           image: "FlaskorFamilj.png",
-          color: "#B2EBF2",
+        //   color: "#B2EBF2",
         },
         {
           id: 3,
@@ -156,7 +157,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/storapaket",
           image: "FlaskorStora.png",
-          color: "#B2DFDB",
+        //   color: "#B2DFDB",
         },
       ],
     };

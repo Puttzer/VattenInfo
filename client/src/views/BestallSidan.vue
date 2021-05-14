@@ -4,9 +4,9 @@
       <v-row class="justify-center mt-12">
         <h1>Vattentester</h1>
       </v-row>
-      <v-row class="d-flex white ma-16 align-center justify-center">
+      <v-row class="d-flex white ma-16 align-center filter justify-center">
         <v-col class="" cols="1">
-          <div color='green' class="white--text d-flex flex-row justify-space-between btnColor">
+          <div  class="white--text d-flex flex-row justify-space-between btnColor">
             <p class="ma-1">Filter</p>
             <v-icon class="white--text ma-1">filter_alt</v-icon>
           </div>
@@ -81,6 +81,7 @@
 <script>
 import { mapState } from "vuex";
 // import TestExpansion from "../components/testpages/TestExpansion.vue";
+
 export default {
   data: () => ({
     // items: ["Foo", "Bar", "Fizz", "Buzz"],
@@ -105,6 +106,7 @@ export default {
   name: "BestallSidan",
   components: {
     // TestExpansion,
+
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
@@ -156,6 +158,11 @@ export default {
 <style scoped>
 .packet-height {
   min-height: 400px;
+}
+
+.filter{
+  box-shadow: 2px 2px 5px #00000090;
+
 }
 
 .mainCard {
