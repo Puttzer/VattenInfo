@@ -1,18 +1,19 @@
 <template>
   <v-main class="ma-16 d-flex">
     <v-row class="d-flex justify-center">
-      <h1>Test Detailed Information</h1>
+      <h1>Information</h1>
     </v-row>
-    <v-row class="d-flex justify-center">
-      <v-col cols="4" class="d-flex justify-center">
+    <v-row class="d-flex justify-start white">
+      <v-col cols="4" class="d-flex justify-start pa-0">
         <img
           :src="`http://localhost:4000/${this.tests.test.image}`"
           alt="imagename"
           height="400px"
           width="300px"
+          class="justify-center"
         />
       </v-col>
-      <v-col cols="5" class="d-flex flex-column justify-center">
+      <v-col cols="5" class="d-flex flex-column justify-start">
         <v-row>
           <h3 class="green--text test-category">
             {{ this.tests.test.category }}
@@ -53,8 +54,8 @@
             </v-btn>
           </div> -->
 
-          <v-btn color="btnColor" @click="increaseThecounterValue()"
-            ><v-icon>add_shopping_cart</v-icon> Köp</v-btn
+          <v-btn color="btnColor white--text" @click="increaseThecounterValue()"
+            ><v-icon class="mx-2">add_shopping_cart</v-icon> Köp</v-btn
           >
         </v-row>
       </v-col>
@@ -141,7 +142,7 @@ export default {
     },
   },
   async mounted() {
-    window.scrollTo(0, 0);	
+    window.scrollTo(0, 0);
 
     const id = this.$route.params.id;
     await this.$store.dispatch("tests/getTestInfo", id);

@@ -81,6 +81,7 @@
 <script>
 import { mapState } from "vuex";
 // import TestExpansion from "../components/testpages/TestExpansion.vue";
+
 export default {
   data: () => ({
     // items: ["Foo", "Bar", "Fizz", "Buzz"],
@@ -105,6 +106,7 @@ export default {
   name: "BestallSidan",
   components: {
     // TestExpansion,
+
   },
   mounted() {
     this.$store.dispatch("tests/getTests");

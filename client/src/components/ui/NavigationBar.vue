@@ -18,7 +18,7 @@
                 <v-text-field
                   solo
                   class="text"
-                  label="sök efter tester/produkter!"
+                  label="Sök efter tester och produkter"
                   append-icon="search"
                   dense
                 >
@@ -108,7 +108,6 @@
         <nav>
           <ul class="blue--text menu">
             <li
-              @click="moveToAnalysKatalog"
               @mouseover="showServices = true"
               @mouseleave="showServices = false"
             >
@@ -116,10 +115,16 @@
               <v-icon>keyboard_arrow_down</v-icon>
 
               <ul v-if="showServices">
-                <li class="text--white">enskilt dricks vatten</li>
-                <li class="text--white">verksamhet & sämfallighet</li>
-                <li class="text--white">bygglov & tillstand</li>
-                <li class="text--white">analyskatalog</li>
+                <li class="text--white" @click="moveToEnskillt">enskilt dricks vatten</li>
+                <li class="text--white" @click="moveToVerksam">
+                  verksamhet & sämfallighet
+                </li>
+                <li class="text--white" @click="movteToBygglov">
+                  bygglov & tillstand
+                </li>
+                <li class="text--white" @click="moveToAnalysKatalog">
+                  analyskatalog
+                </li>
                 <li class="text--white">rådgivning</li>
               </ul>
             </li>
@@ -135,7 +140,6 @@
               <ul v-if="showAboutSection">
                 <li class="text--white">om oss</li>
                 <li class="text--white">kontakt</li>
-                <li class="text--white">wennnn</li>
               </ul>
             </li>
             <li
@@ -185,6 +189,10 @@ export default {
     ...mapState(["user", "tests", "company"]),
   },
   methods: {
+    moveToEnskillt() {
+      this.$router.push("/analyskatalog/enskiltdricksvatten");
+    },
+
     moveToAnalysKatalog() {
       this.$router.push("/analyskatalog");
     },
@@ -194,8 +202,14 @@ export default {
     moveToBestallanalys() {
       this.$router.push("/bestallanalys");
     },
+    moveToVerksam() {
+      this.$router.push("/verksamhet");
+    },
     moveToLab() {
       this.$router.push("/omlab");
+    },
+    movteToBygglov() {
+      this.$router.push("/bygglov_tillstand");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
