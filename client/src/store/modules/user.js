@@ -10,6 +10,9 @@ export default {
             email: '',
             _id: ''
         },
+        userInfo: {
+
+        }
     },
     getters: {
 
@@ -91,6 +94,29 @@ export default {
             commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
 
         },
+        async getUserInfo({ commit }, payload) {
+            console.log('get user info')
+            const token = localStorage.getItem('userToken')
+            const response = await fetch(`http://localhost:4000/api/user/getUserInfo`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                    body: JSON.stringify(payload)
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            // commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            // commit('UPDATE_USER_ID', data.id, { module: 'user' })
+            // commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            // commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+            commit('USER_INFO', data.user, { module: 'user' })
+        }
 
     },
     mutations: {
@@ -145,7 +171,11 @@ export default {
         SEND_UPDATED_VALUE(state, value) {
             state.searchText = value
             console.log(state.searchText)
-        }
+        },
+        USER_INFO(state, value) {
+            state.userInfo = { ...value }
+            console.log(state.userInfo)
+        },
 
 
 

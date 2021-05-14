@@ -32,16 +32,16 @@ export default {
         }
       });
       const newArray = routes;
-      let splitArray = [];
-      newArray.forEach((routename) => {
-        const ex1 = routename.split("");
-        ex1[0] = ex1[0].toUpperCase();
-        const cobminestring = ex1.join("");
-        console.log(cobminestring);
-        splitArray.push(cobminestring);
-      });
-      console.log(splitArray);
-      return splitArray;
+      //   let splitArray = [];
+      //   newArray.forEach((routename) => {
+      //     const ex1 = routename.split("");
+      //     ex1[0] = ex1[0].toUpperCase();
+      //     const cobminestring = ex1.join("");
+      //     console.log(cobminestring);
+      //     splitArray.push(cobminestring);
+      //   });
+      //   console.log(splitArray);
+      return newArray;
     },
   },
   methods: {

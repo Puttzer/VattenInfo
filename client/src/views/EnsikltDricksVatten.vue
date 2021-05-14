@@ -151,7 +151,6 @@
             <div
               v-for="(test, index) in this.filterIndividuelStyckvis2"
               :key="index"
-              @click="moveToIndividual(test._id, test)"
               class="d-flex white my-2 flex-row"
             >
               <v-col cols="" class="d-flex white align-center justify-center">
@@ -259,7 +258,6 @@
           :key="index"
           :testId="test._id"
           class="d-flex white flex-row my-2"
-          @click="moveToIndividual(test._id, test)"
         >
           <v-col cols="2" class="d-flex align-center ma-0 pa-0 justify-start">
             <p

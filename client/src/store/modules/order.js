@@ -2,6 +2,7 @@ import Vue from 'vue'
 export default {
     state: {
         orders: [],
+        individualOrders: [],
         orderGenrated: false,
         order: {},
         orderNumber: null
@@ -52,6 +53,22 @@ export default {
 
 
         },
+        async getIndividualOrders({ commit }, userId) {
+            const token = localStorage.getItem('userToken')
+            const response = await fetch(`http://localhost:4000/api/order/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_INDIVIDUAL_ORDERS', data.orders, { module: 'order' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        },
     },
     mutations: {
         // after geeting response from server, token has to be stored in localstorage
@@ -66,6 +83,10 @@ export default {
         UPDATE_ORDERS(state, value) {
             state.orders = value
             console.log(state.orders)
+        },
+        UPDATE_INDIVIDUAL_ORDERS(state, value) {
+            state.individualOrders = value
+            console.log(state.individualOrders)
         }
 
 

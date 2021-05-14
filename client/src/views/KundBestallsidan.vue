@@ -1,9 +1,17 @@
 <template>
-  <div class="privateContainer">
-    <h1 class="mt-2 white--text">User Account</h1>
-    <h3 class="mt-4 white--text">order information</h3>
-    <private-user class="mt-4" />
-  </div>
+  <v-main class="mt-4">
+    <v-row class="d-flex justify-ceneter">
+      <v-col cols="12" class="d-flex justify-center">
+        <h2 class="black--text">Order Information</h2>
+      </v-col>
+    </v-row>
+    <v-divider></v-divider>
+    <v-row class="d-flex mx-16 mt-4">
+      <v-col cols="10" class="mx-16">
+        <private-user />
+      </v-col>
+    </v-row>
+  </v-main>
 </template>
 
 <script>
@@ -24,8 +32,6 @@ export default {
   height: 1000px;
   width: 90%;
   padding: 20px;
-  margin-left: 100px;
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
 }

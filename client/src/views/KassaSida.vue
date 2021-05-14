@@ -90,6 +90,7 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { mapState } from "vuex";
 import addRemove from "../components/cart/AddRemoveCounter";
 export default {
@@ -123,6 +124,7 @@ export default {
         this.$router.push("/ordernumber");
       } else {
         this.displayErrorMessage = true;
+        Vue.$vToastify.error("User must able to login to procced further");
         return;
       }
       //   if (this.order.orderGenerated) {

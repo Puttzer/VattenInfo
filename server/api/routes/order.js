@@ -56,17 +56,24 @@ module.exports = function (router) {
     })
 
     router.get('/order/:userId', UserIsLoggedin.isUserLoggedIn, async (req, res) => {
-        await Order.find({ userId: req.params.userId }).exec()
-            .then(docs =>
-                res.status(200).json({
-                    message: 'list of all orders',
-                    orders: docs
-                }))
-            .catch(err => res.status(500)
-                .json({
-                    message: 'Error finding user',
-                    error: err
-                }))
+        if (req.id = req.params.userId) {
+
+            await Order.find({ userId: req.params.userId }).exec()
+                .then(docs =>
+                    res.status(200).json({
+                        message: 'list of all orders',
+                        orders: docs
+                    }))
+                .catch(err => res.status(500)
+                    .json({
+                        message: 'Error finding user',
+                        error: err
+                    }))
+        } else {
+            res.status(400).json({
+                message: 'Unvalid Credentials'
+            })
+        }
     })
 
 
