@@ -3,6 +3,7 @@
     <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
+        <addRemove />
       </v-col>
     </v-row>
 
@@ -90,6 +91,7 @@
 
 <script>
 import { mapState } from "vuex";
+import addRemove from "../components/cart/AddRemoveCounter";
 export default {
   name: "KassaSidan",
   data() {
@@ -99,6 +101,9 @@ export default {
   },
   computed: {
     ...mapState(["tests", "order", "user", "company"]),
+  },
+  components: {
+    addRemove,
   },
   methods: {
     async generateOrder() {

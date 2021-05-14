@@ -7,7 +7,7 @@
           personer
         </h2>
       </v-row>
-      <v-row class="d-flex white justify-center font-weight-bold blue--text mt-6">
+      <v-row class="d-flex justify-center font-weight-bold blue--text mt-6">
         <v-col cols="11" class="d-flex justify-center">
           <p class="bread">
             Här hittar du analyser för dig med enskilt vatten (vatten för privat
@@ -94,27 +94,35 @@
 
       <v-col cols="12" class="d-flex justify-center flex-row">
         <div class="">
-          <v-row class="blue--text d-flex justify-center my-4">
-            <h3>Analyser styckvis, prisklass 1 200 kr/st</h3>
-            <p>{{ countStyckvisOne }}</p>
+          <v-row class="blue--text d-flex justify-center">
+            <h3>Analyser styckvis, prisklass 1 <br />200 kr/st</h3>
+            <!-- <p>{{ countStyckvisOne }}</p> -->
           </v-row>
           <v-col cols="12" class="d-flex flex-column justify-center">
             <div
               v-for="(test, index) in this.filterIndividuelStyckvis1"
               :key="index"
               :testId="test._id"
-              class="d-flex flex-row"
+              class="d-flex white my-2 flex-row"
             >
-              <v-col cols="" class="d-flex align-center justify-center">
+              <v-col
+                cols=""
+                class="d-flex align-center justify-center ma-0 pa-0"
+              >
                 <p
-                  class="amber testbox d-flex align-center justify-center ma-3"
+                  class="amber white--text testbox d-flex align-center mr-2 ma-0 pa-0 justify-center"
                 >
                   {{ test.short_description }}
                 </p>
               </v-col>
 
-              <v-col class="d-flex align-center justify-center" cols="">
-                <p>
+              <v-col
+                class="d-flex align-center justify-center ma-0 pa-0"
+                cols=""
+              >
+                <p
+                  class="d-flex align-center ma-0 pa-0 testname justify-center"
+                >
                   {{ test.testname }}
                 </p>
               </v-col>
@@ -137,30 +145,32 @@
 
         <div class="">
           <v-row class="blue--text d-flex justify-center my-4">
-            <h3>Analyser styckvis, prisklass 2 250 kr/st</h3>
+            <h3>Analyser styckvis, prisklass 2 <br />250 kr/st</h3>
           </v-row>
           <v-col cols="" class="d-flex flex-column justify-center">
             <div
               v-for="(test, index) in this.filterIndividuelStyckvis2"
               :key="index"
-              class="d-flex flex-row"
               @click="moveToIndividual(test._id, test)"
+              class="d-flex white my-2 flex-row"
             >
-              <v-col cols="" class="d-flex align-center justify-center">
+              <v-col cols="" class="d-flex white align-center justify-center">
                 <p
-                  class="btnColor white--text testbox d-flex align-center justify-center ma-3"
+                  class="btnColor white--text testbox d-flex align-center mr-2 ma-0 pa-0 justify-center"
                 >
                   {{ test.short_description }}
                 </p>
               </v-col>
-              <v-col class="d-flex align-center justify-center">
-
-                <p>
+              <v-col
+                class="d-flex align-center ma-0 pa-0 testname justify-center"
+              >
+                <p
+                  class="d-flex align-center ma-0 pa-0 testname justify-center"
+                >
                   {{ test.testname }}
                 </p>
               </v-col>
               <v-col class="d-flex align-center justify-center">
-
                 <v-btn
                   x-small
                   class="btnColor white--text"
@@ -169,7 +179,6 @@
                 >
               </v-col>
               <v-col class="d-flex align-center justify-center">
-
                 <v-btn icon small @click="increaseThecounterValue(test._id)">
                   <v-icon>add_shopping_cart</v-icon>
                 </v-btn>
@@ -249,43 +258,27 @@
           v-for="(test, index) in this.filterAckrediteradeIndividuelStyckvis"
           :key="index"
           :testId="test._id"
-          class="d-flex flex-row"
+          class="d-flex white flex-row my-2"
           @click="moveToIndividual(test._id, test)"
         >
-          <v-col cols="2" class="d-flex align-center justify-center">
+          <v-col cols="2" class="d-flex align-center ma-0 pa-0 justify-start">
             <p
-              class="green white--text testbox d-flex align-center justify-center ma-3"
+              class="green white--text ma-0 pa-0 testbox d-flex align-center justify-center"
             >
               {{ test.short_description }}
             </p>
           </v-col>
-          <!-- <div class="d-flex flex-column"> -->
-          <!-- <div class="d-flex justify-center">
-                <v-btn icon small @click="increaseThecounterValue(test._id)">
-                  <v-icon>add_shopping_cart</v-icon>
-                </v-btn>
-              </div>
-              <div>
-                <v-btn
-                  x-small
-                  class="btnColor"
-                  @click="moveToIndividual(test._id, test)"
-                  >läs mer</v-btn
-                >
-              </div>
-            </div> -->
-          <!-- </v-list> -->
-          <v-col class="d-flex align-center justify-center" cols="1">
-            <p>
+          <v-col class="d-flex align-center justify-center ma-0 pa-0" cols="1">
+            <p class="justify-center d-flex align-center">
               {{ test.testname }}
             </p>
           </v-col>
           <v-col class="d-flex align-center justify-center" cols="1">
             <v-btn
               x-small
-              class="btnColor white--text"
+              class="btnColor red justify-center white--text"
               @click="moveToIndividual(test._id, test)"
-              >läs mer</v-btn
+              >äs mer</v-btn
             >
           </v-col>
           <v-col class="d-flex align-center justify-center" cols="1">
@@ -417,8 +410,13 @@ export default {
   font-size: 14px;
 }
 
+.testname {
+  text-transform: capitalize;
+}
+
 .testbox {
-  width: 75px;
-  height: 75px;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
 }
 </style>

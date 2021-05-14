@@ -16,7 +16,7 @@
           ></v-img>
         </div>
       </v-col>
-      <v-col cols="12" md="6" class="d-flex justify-center white">
+      <v-col cols="12" md="6" class="d-flex justify-center">
         <div class="middle_section">
           <div class="labb blue--text ma-2">VATTENINFO LABBTJÄNSTER</div>
           <div class="rubrik ma-0 pa-0">
@@ -75,7 +75,7 @@
         </div>
       </v-col>
 
-      <v-col cols="8" class="d-flex flex-column justify-center white">
+      <v-col cols="8" class="d-flex flex-column justify-center">
         <v-row class="d-flex justify-center align-center">
           <h1
             class="blue--text font-weight-class text-uppercase d-flex justify-start"
@@ -94,8 +94,8 @@
       </v-col>
     </v-row>
 
-    <v-row class="d-flex justify-center px-2 mt-10 ml-16" cols="8">
-      <v-col class="d-flex flex-row justify-space-between">
+    <v-row class="d-flex justify-center px-2 mt-10" cols="8">
+      <v-col class="d-flex flex-row justify-center justify-space-evenly">
         <v-card
           class="d-flex flex-column justify-evenly align-center  white ma-1"
           v-for="test in this.displayTests"
@@ -119,7 +119,7 @@
         </v-card>
       </v-col>
     </v-row>
-    <v-row class="d-flex justify-start mt-12">
+    <v-row class="d-flex justify-center mt-12">
       <v-col cols="10" class="d-flex justify-center align-center">
         <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
       </v-col>
@@ -128,6 +128,7 @@
 </template>
 
 <script>
+
 import { mapState } from "vuex";
 
 export default {
