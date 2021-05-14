@@ -107,11 +107,11 @@
                 @click="moveToIndividual(test._id, test)"
                 >Läs mer</v-btn
               >
-              <v-btn
+              <!-- <v-btn
                 class="btnColor white--text ma-1"
                 @click="increaseThecounterValue()"
                 >köp</v-btn
-              >
+              > -->
             </div>
           </v-list>
         </v-card>
@@ -159,6 +159,13 @@ export default {
     // increaseCount() {
     //   return this.testSampleCount++;
     // },
+    moveToIndividual(id, test) {
+      console.log(id);
+      this.$router.push({
+        name: "TestStartsidan",
+        params: { id: id, test },
+      });
+    },
     increaseThecounterValue() {
       const id = this.$route.params.id;
       console.log(id);

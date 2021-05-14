@@ -178,7 +178,7 @@ const routes = [
         component: BestallSidan
     },
     {
-        path: '/kassasida',
+        path: '/kassa',
         name: 'KassaSida',
         component: KassaSida
     },
