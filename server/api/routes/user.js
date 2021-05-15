@@ -87,21 +87,22 @@ module.exports = function (router) {
                 })
             return
         } else {
-            const { firstname, lastname, email, password, streetname, postcode, city, phonenumber } = req.body;
+            const { name, email, password, streetname, postcode, city, phonenumber,altPhone, houseNumber } = req.body;
 
             const hashedpassword = await bcrypt.haschPassword(password)
             console.log(hashedpassword)
 
             let user = {}
 
-            user.firstname = firstname
-            user.lastname = lastname
+            user.name = name
             user.email = email
             user.password = hashedpassword
             user.streetname = streetname
             user.city = city
             user.postcode = parseInt(postcode)
             user.phonenumber = parseInt(phonenumber)
+            user.altPhone = parseInt(altPhone)
+			user.houseNumber = parseInt(houseNumber)
 
             let newUser = new User(user)
             console.log(newUser)

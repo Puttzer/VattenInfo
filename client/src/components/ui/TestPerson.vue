@@ -7,7 +7,14 @@
             <v-col cols="12" md="12">
               <h3>Skappa Ett Privatkund Konto</h3>
             </v-col>
+            <v-row d-flex justify="center">
+              <v-col cols="12" md="12">
+				  <h1>hej</h1>
+                <h3>{{ this.user.statusMessage }}</h3>
+              </v-col>
+            </v-row>
           </v-row>
+
           <v-row>
             <v-col cols="12" md="12" sm="12">
               <v-text-field
@@ -35,6 +42,41 @@
                 label="Email"
                 outlined
                 placeholder="dinepst@mail.com"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="12" md="12">
+              <v-text-field
+                dense
+                large
+                text
+                color="#051f38"
+                class="mt-n4"
+                placeholder="Password"
+                v-model="user.password"
+                label="Password"
+
+                outlined
+                append-icon="lock"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col cols="12" md="12">
+              <v-text-field
+                dense
+                large
+                text
+                color="#051f38"
+                class="mt-n4"
+                placeholder="repeat password"
+                v-model="user.repeatpassword"
+                label="Repeat Password"
+                outlined
+                append-icon="lock"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -87,7 +129,7 @@
                 dense
                 color="#051f38"
                 text
-                v-model="user.adress"
+                v-model="user.houseNumber"
                 label="Number"
                 outlined
                 placeholder="23"
@@ -124,7 +166,9 @@
           </v-row>
           <v-row justify="end">
             <v-col cols="12" md="3" sm="3">
-              <v-btn class="white--text btnColor">Register </v-btn>
+              <v-btn @click="addUser()" class="white--text btnColor"
+                >Register
+              </v-btn>
             </v-col>
           </v-row>
         </form>
@@ -135,18 +179,41 @@
 
 <script>
 export default {
+  props: {
+    regInfo: Object,
+  },
   data() {
     return {
       user: {
         name: "",
         email: "",
+        password: "",
+        repeatpassword: "",
         phone: "",
         altPhone: "",
         adress: "",
         city: "",
         postnr: "",
+		houseNumber:""
       },
     };
+  },
+  methods: {
+    async addUser() {
+      let regInfo = {
+        name: this.user.name,
+        email: this.user.email,
+        password: this.user.password,
+        phonenumber: this.user.phone,
+        altPhone: this.user.altPhone,
+        streetname: this.user.adress,
+        city: this.user.city,
+        postcode: this.user.postnr,
+		houseNumber: this.user.houseNumber
+      };
+      console.log(regInfo);
+      await this.$store.dispatch("user/createNewUser", regInfo);
+    },
   },
 };
 </script>

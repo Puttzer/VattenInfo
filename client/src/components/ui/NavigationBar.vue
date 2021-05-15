@@ -115,7 +115,9 @@
               <v-icon>keyboard_arrow_down</v-icon>
 
               <ul v-if="showServices">
-                <li class="text--white" @click="moveToEnskillt">enskilt dricks vatten</li>
+                <li class="text--white" @click="moveToEnskillt">
+                  enskilt dricks vatten
+                </li>
                 <li class="text--white" @click="moveToVerksam">
                   verksamhet & sämfallighet
                 </li>
@@ -125,7 +127,14 @@
                 <li class="text--white" @click="moveToAnalysKatalog">
                   analyskatalog
                 </li>
-                <li class="text--white">rådgivning</li>
+                <li class="text--white">
+                  <a
+                    href="https://vatteninfo.com/Radgivning"
+                    class="d-flex flex-row justify-center webpage mt-3"
+                  >
+                    rådgivning
+                  </a>
+                </li>
               </ul>
             </li>
             <li @click="moveToBestallanalys">Beställ analys</li>
