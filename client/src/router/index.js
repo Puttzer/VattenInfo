@@ -34,6 +34,7 @@ import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
 import CompanyLoginHomePage from '../components/company/CompanyLoginHomePage.vue'
+import CompanyOrdersPage from '../components/company/CompanyOrdersPage.vue'
 import KassaSida from '../views/KassaSida.vue'
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
@@ -80,9 +81,14 @@ const routes = [
         component: AdminLogin
     },
     {
-        path: '/login/comapny',
+        path: '/login/companyinfopage',
         name: 'CompanyLoginHomePage',
         component: CompanyLoginHomePage
+    },
+    {
+        path: '/login/companyorderspage',
+        name: 'CompanyOrdersPage',
+        component: CompanyOrdersPage
     },
     {
         path: '/test/scrolltest',
@@ -251,7 +257,7 @@ const routes = [
         name: 'answer1',
         component: answer1,
     },
-	{
+    {
         path: '/answer1a',
         name: 'answer1a',
         component: answer1a,

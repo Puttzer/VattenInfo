@@ -9,7 +9,8 @@ export default {
         companyUser: {
             email: '',
             _id: ''
-        }
+        },
+        companyInfo: {}
     },
     getters: {
 
@@ -92,6 +93,29 @@ export default {
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
 
         },
+        async getCompanyInfo({ commit }, payload) {
+            console.log('get user info')
+            const token = localStorage.getItem('companyProfileToken')
+            const response = await fetch(`http://localhost:4000/api/company/getCompanyInfo`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                    body: JSON.stringify(payload)
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            // commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            // commit('UPDATE_USER_ID', data.id, { module: 'user' })
+            // commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            // commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+            commit('COMPANY_INFO', data.company, { module: 'user' })
+        }
     },
     mutations: {
         UPDATE_COMPANYS(state, value) {
@@ -130,7 +154,11 @@ export default {
         },
         COMPANY_DROPDOWNCOPMONENT_DISABLE(state) {
             state.showCompanyDropDown = false
-        }
+        },
+        COMPANY_INFO(state, value) {
+            state.companyInfo = { ...value }
+            console.log(state.companyInfo)
+        },
 
     },
     namespaced: true

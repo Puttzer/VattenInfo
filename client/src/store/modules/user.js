@@ -11,9 +11,7 @@ export default {
             email: '',
             _id: ''
         },
-        userInfo: {
-
-        }
+        userInfo: {}
     },
     getters: {
 

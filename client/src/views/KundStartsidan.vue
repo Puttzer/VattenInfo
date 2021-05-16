@@ -9,8 +9,8 @@
     <v-row class="d-flex justify-center ma-0 pa-0 mt-16">
       <v-col cols="5" class="d-flex justify-center ma-0 pa-0">
         <h2>
-          {{ this.user.userInfo.firstname.toUpperCase() }}
-          {{ this.user.userInfo.lastname.toUpperCase() }}
+          {{ this.user.userInfo.firstname }}
+          {{ this.user.userInfo.lastname }}
         </h2>
       </v-col>
       <v-col col="1">
