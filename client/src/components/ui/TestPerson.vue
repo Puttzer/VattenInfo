@@ -9,7 +9,7 @@
             </v-col>
             <v-row d-flex justify="center">
               <v-col cols="12" md="12">
-				  <h1>hej</h1>
+                <h1>hej</h1>
                 <h3>{{ this.user.statusMessage }}</h3>
               </v-col>
             </v-row>
@@ -57,7 +57,6 @@
                 placeholder="Password"
                 v-model="user.password"
                 label="Password"
-
                 outlined
                 append-icon="lock"
               ></v-text-field>
@@ -226,7 +225,7 @@ export default {
         adress: "",
         city: "",
         postnr: "",
-		houseNumber:""
+        houseNumber: "",
       },
     };
   },
@@ -241,7 +240,7 @@ export default {
         streetname: this.user.adress,
         city: this.user.city,
         postcode: this.user.postnr,
-		houseNumber: this.user.houseNumber
+        houseNumber: this.user.houseNumber,
       };
       console.log(regInfo);
       await this.$store.dispatch("user/createNewUser", regInfo);
