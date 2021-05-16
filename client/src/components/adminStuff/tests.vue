@@ -98,6 +98,7 @@ export default {
         image: "",
         category: "",
         id: "",
+        shortname: "",
       },
     };
   },
@@ -158,6 +159,7 @@ export default {
       this.test.description = test.description;
       this.test.id = test._id;
       this.test.image = test.image;
+      this.test.shortname = test.shortname;
 
       this.test.category = test.category;
     },

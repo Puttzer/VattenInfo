@@ -56,6 +56,7 @@
               </p>
             </div>
           </div>
+          <add-remove />
 
           <v-icon
             @click="deleteTestInCart(selectedTest._id)"
@@ -93,6 +94,7 @@
 import Vue from "vue";
 import { mapState } from "vuex";
 import addRemove from "../components/cart/AddRemoveCounter";
+
 export default {
   name: "KassaSidan",
   data() {
@@ -108,9 +110,9 @@ export default {
   },
   methods: {
     async generateOrder() {
-      if (this.user.userIsloggedIn || this.company.companyUserIsloggedIn) {
+      if (this.user.userIsloggedIn) {
         console.log(this.user.user._id);
-        const id = this.user.user._id;
+        const id = this.user.user._id || this.company.companyUser._id;
         const orderTests = this.tests.selectedTests;
         const orderAmount = this.tests.totalAmount;
         const payload = {
@@ -118,8 +120,24 @@ export default {
           orderAmount: orderAmount,
           id: id,
         };
+        console.log(payload);
         console.log("generating the order");
         await this.$store.dispatch("order/generateOrder", payload);
+        this.$store.commit("tests/DELETE_SELECTED_TESTS");
+        this.$router.push("/ordernumber");
+      } else if (this.company.companyUserIsloggedIn) {
+        console.log(this.company.companyUser._id);
+        const id = this.company.companyUser._id;
+        const orderTests = this.tests.selectedTests;
+        const orderAmount = this.tests.totalAmount;
+        const payload = {
+          orderTests: orderTests,
+          orderAmount: orderAmount,
+          id: id,
+        };
+        console.log(payload);
+        console.log("generating the order");
+        await this.$store.dispatch("order/generateCompanyOrder", payload);
         this.$store.commit("tests/DELETE_SELECTED_TESTS");
         this.$router.push("/ordernumber");
       } else {

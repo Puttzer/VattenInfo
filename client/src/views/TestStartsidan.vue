@@ -6,7 +6,7 @@
     <v-row class="d-flex justify-start white">
       <v-col cols="4" class="d-flex justify-start pa-0">
         <img
-          :src="`http://localhost:4000/${this.tests.test.image}`"
+          :src="`http://localhost:4000/${this.displayTest[0].image}`"
           alt="imagename"
           height="400px"
           width="300px"
@@ -16,32 +16,34 @@
       <v-col cols="5" class="d-flex flex-column justify-start">
         <v-row>
           <h3 class="green--text test-category">
-            {{ this.tests.test.category }}
+            {{ this.displayTest[0].category }}
           </h3>
         </v-row>
         <v-row>
-          <p class="caption">{{ this.tests.test.short_description }}</p>
+          <p class="caption">{{ this.displayTest[0].short_description }}</p>
         </v-row>
         <v-row>
           <h2 class="green--text test-name">
             <strong class="black--text headline"> Test Name</strong> :
-            {{ this.tests.test.testname }}
+            {{ this.displayTest[0].testname }}
           </h2>
         </v-row>
         <v-row>
           <h4 class="test-type">
             <strong class="title">Test type </strong>:{{
-              this.tests.test.testtype
+              this.displayTest[0].testtype
             }}
           </h4>
         </v-row>
         <v-row>
           <p class="">
-            <strong>Mer Information </strong>:{{ this.tests.test.description }}
+            <strong>Mer Information </strong>:{{
+              this.displayTest[0].description
+            }}
           </p>
         </v-row>
         <v-row>
-          <h3 class="bold">Pris :{{ this.tests.test.price }} Kr</h3>
+          <h3 class="bold">Pris :{{ this.displayTest[0].price }} Kr</h3>
         </v-row>
         <v-row>
           <!-- <div class="d-flex flex-row ma-2">
@@ -132,21 +134,25 @@ export default {
     filterPaketTest() {
       return this.tests.tests.filter(
         (test) =>
-          test.testtype === this.tests.test.testtype &&
-          test.category === this.tests.test.category
+          test.testtype === this.displayTest[0].testtype &&
+          test.category === this.displayTest[0].category
       );
     },
     filterRelatedTests() {
       const id = this.$route.params.id;
       return this.filterPaketTest.filter((test) => test._id !== id);
     },
+    displayTest() {
+      const id = this.$route.params.id;
+      return this.tests.tests.filter((test) => test._id === id);
+    },
   },
-  async mounted() {
-    window.scrollTo(0, 0);
+  //   async mounted() {
+  //     window.scrollTo(0, 0);
 
-    const id = this.$route.params.id;
-    await this.$store.dispatch("tests/getTestInfo", id);
-  },
+  //     const id = this.$route.params.id;
+  //     await this.$store.dispatch("tests/getTestInfo", id);
+  //   },
 
   methods: {
     // decreaseCount() {
@@ -165,6 +171,9 @@ export default {
         name: "TestStartsidan",
         params: { id: id, test },
       });
+      const newTestInfo = this.tests.tests.filter((test) => test._id === id);
+      console.log(newTestInfo);
+      this.$store.commit("tests/UPDATE_TEST", newTestInfo);
     },
     increaseThecounterValue() {
       const id = this.$route.params.id;
