@@ -38,6 +38,8 @@ import KassaSida from '../views/KassaSida.vue'
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
 import answer1 from '../components/guiden/answer1'
+import answer1a from '../components/guiden/answer1a'
+
 import answer2 from '../components/guiden/answer2'
 import answer3 from '../components/guiden/answer3'
 import answer4 from '../components/guiden/answer4'
@@ -248,6 +250,11 @@ const routes = [
         path: '/answer1',
         name: 'answer1',
         component: answer1,
+    },
+	{
+        path: '/answer1a',
+        name: 'answer1a',
+        component: answer1a,
     },
     {
         path: '/answer2',

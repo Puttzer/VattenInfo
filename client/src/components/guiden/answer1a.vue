@@ -30,28 +30,28 @@ export default {
       infos: [
         {
           title:
-            "Är det Norrtälje, Täby eller Vaxholm?",
+            "BasAnalys",
           id: 1,
           path: "/",
         },
         {
           title:
-            "Andra kommuner eller ej registrerad än?",
+            "Familjepaket?",
           id: 2,
           path: "/",
         },
-        // {
-        //   title:
-        //     "Är det vatten från brunn eller sjö som försörjer över 50 personer?",
-        //   id: 3,
-        //   path: "/",
-        // },
-        // {
-        //   title:
-        //     "Är det vatten från brunn eller sjö som används för verksamhet?",
-        //   id: 4,
-        //   path: "/",
-        // },
+        {
+          title:
+            "Storapaketet?",
+          id: 3,
+          path: "/",
+        },
+        {
+          title:
+            "Ackrediterad inklusive metaller och radon?",
+          id: 4,
+          path: "/",
+        },
       ],
     };
   },

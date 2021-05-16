@@ -1,41 +1,21 @@
 <template>
   <div class="container white">
     <v-col>
-      <v-row class="d-flex">
-        <v-col cols="10" class="d-flex justify-center align-center">
-          Vad vill du ta prov på?
-        </v-col>
-        <v-col cols="2">
-          <v-icon @click="moveToVattenguide()"> keyboard_backspace </v-icon>
-        </v-col>
-      </v-row>
+      <v-row class="d-flex justify-center green">Vad vill du ta prov på?</v-row>
       <v-row class="">
-        <v-col class="my-2">
-          <div
-            @click="hej1()"
+        <v-col
+          class="ma-0 pa-0"
+          v-for="(info, index) in infos"
+          :key="info.id"
+          :index="index"
+          cols="12"
+        >
+          <router-link
+            :to="info.path"
             class="answer d-flex justify-center btnColor white--text py-2 my-2"
           >
-            Är det vatten från egen brunn som bara försörjer ditt hushåll?
-          </div>
-          <div
-            @click="tillstand()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Är det vatten från brunn eller sjö som försörjer upp till 50
-            personer?
-          </div>
-          <div
-            @click="avlopp()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Är det vatten från brunn eller sjö som försörjer över 50 personer?
-          </div>
-          <div
-            @click="annat()"
-            class="answer d-flex justify-center btnColor white--text py-2 my-2"
-          >
-            Är det vatten från brunn eller sjö som används för verksamhet?
-          </div>
+            {{ info.title }}
+          </router-link>
         </v-col>
       </v-row>
     </v-col>
@@ -44,29 +24,43 @@
 
 <script>
 export default {
+  name: "VattenGuide",
   data() {
     return {
       infos: [
-        { title: "Dricksvatten", id: 1, path: "/answer1" },
         {
           title:
-            "Vatten för att söka tillstånd (om du till exempel ska bygga avlopp) eller bygglov?",
-          id: 2,
-          path: "/answer2",
+            "Är det vatten från egen brunn som bara försörjer ditt hushåll?",
+          id: 1,
+          path: "/answer1a",
         },
-        { title: "Avlopp", id: 3, path: "/answer3" },
-        { title: "Annat vatten", id: 4, path: "/answer4" },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som försörjer upp till 50 personer?",
+          id: 2,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som försörjer över 50 personer?",
+          id: 3,
+          path: "/",
+        },
+        {
+          title:
+            "Är det vatten från brunn eller sjö som används för verksamhet?",
+          id: 4,
+          path: "/",
+        },
       ],
     };
-  },
-  methods: {
-    moveToVattenguide() {
-      console.log(this.$router);
-      this.$router.push("/vattenguide");
-    },
   },
 };
 </script>
 
-<style>
+<style scoped>
+.answer {
+  cursor: pointer;
+  text-decoration: none;
+}
 </style>

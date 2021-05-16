@@ -1,5 +1,6 @@
-export default {
+export default {	
     state: {
+        statusMessage: "test",
         users: [],
         userIsloggedIn: false,
         showLoginModel: false,
@@ -18,6 +19,21 @@ export default {
 
     },
     actions: {
+        async createNewUser({ commit }, regInfo) {
+			console.log(regInfo);
+
+			// const token = localStorage.getItem('token')
+			const response = await fetch('http://localhost:4000/api/user/create', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(regInfo)
+			})
+			const data = await response.json();
+			console.log(data)
+			commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+		},
         async getUsers({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
@@ -120,6 +136,9 @@ export default {
 
     },
     mutations: {
+        	UPDATE_SUCCESS_MESSAGE(state, message) {
+			state.statusMessage = message
+		},
         UPDATE_USERS(state, value) {
             state.users = value
         },
@@ -176,10 +195,6 @@ export default {
             state.userInfo = { ...value }
             console.log(state.userInfo)
         },
-
-
-
-
-    },
+  },
     namespaced: true
 }
