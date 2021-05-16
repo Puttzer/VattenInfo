@@ -116,6 +116,7 @@ module.exports = function (router) {
             testtype: req.body.testtype,
             category: req.body.category,
             short_description: req.body.short_description,
+            shortname: req.body.shortname,
             description: req.body.description,
             price: req.body.price,
             image: req.file.path
