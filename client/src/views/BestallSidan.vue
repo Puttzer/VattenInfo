@@ -6,7 +6,9 @@
       </v-row>
       <v-row class="d-flex white ma-16 align-center filter justify-center">
         <v-col class="" cols="1">
-          <div  class="white--text d-flex flex-row justify-space-between btnColor">
+          <div
+            class="white--text d-flex flex-row justify-space-between btnColor"
+          >
             <p class="ma-1">Filter</p>
             <v-icon class="white--text ma-1">filter_alt</v-icon>
           </div>
@@ -106,7 +108,6 @@ export default {
   name: "BestallSidan",
   components: {
     // TestExpansion,
-
   },
   mounted() {
     this.$store.dispatch("tests/getTests");
@@ -141,8 +142,13 @@ export default {
     },
   },
   methods: {
-    moveToCart(id) {
-      console.log("move to cart", id);
+    moveToCart(id, value) {
+      this.$store.commit("tests/INCREASE_COUNT", id);
+      if (value) {
+        this.countStyckvisOne++;
+      } else {
+        this.countStyckvisOne--;
+      }
     },
     moveToIndividual(id, test) {
       console.log(id);
@@ -160,9 +166,8 @@ export default {
   min-height: 400px;
 }
 
-.filter{
+.filter {
   box-shadow: 2px 2px 5px #00000090;
-
 }
 
 .mainCard {

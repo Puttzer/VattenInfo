@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartsidan from '../views/KundStartSidan.vue'
+import KundStartSidan from '../views/KundStartsidan.vue'
 import KundOrderSidan from '../views/KundOrderSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
@@ -17,7 +17,7 @@ import PaymentInfo from '../components/CardDetails/PaymentInfo.vue'
 import LostLogin from '../views/LostLogin.vue'
 import BestallSidan from '../views/BestallSidan.vue'
 import InstruktionOchBlanketter from '../views/InstruktionOchBlanketter.vue'
-import OmOss from '../views/OmOss.vue'
+import OmLab from '../views/OmLab.vue'
 import HjalpMedDittVatten from '../views/HjalpMedDittVatten.vue'
 import EnsikltDricksVatten from '../views/EnsikltDricksVatten.vue'
 import AvloppsAnalyser from '../views/AvloppsAnalyser.vue'
@@ -153,8 +153,8 @@ const routes = [
     },
     {
         path: '/login/userpage',
-        name: 'KundStartsidan',
-        component: KundStartsidan
+        name: 'KundStartSidan',
+        component: KundStartSidan
     },
     {
         path: '/ordernumber',
@@ -166,8 +166,11 @@ const routes = [
         name: 'ForetagStartsida',
         component: ForetagStartsida
     },
+
+    // Old "omlab" now "tjanster" as of 2021-05-11 
+    // is it still needed? -Patrick
     {
-        path: '/omlab',
+        path: '/tjanster',
         name: 'LabbTjanster',
         component: LabbTjanster
     },
@@ -177,7 +180,7 @@ const routes = [
         component: BestallSidan
     },
     {
-        path: '/kassasida',
+        path: '/kassa',
         name: 'KassaSida',
         component: KassaSida
     },
@@ -186,10 +189,12 @@ const routes = [
         name: 'InstruktionOchBlanketter',
         component: InstruktionOchBlanketter
     },
+
+    // Current about page as of 2021-05-11
     {
-        path: '/about',
-        name: 'OmOss',
-        component: OmOss
+        path: '/omlab',
+        name: 'OmLab',
+        component: OmLab
     },
     {
         path: '/help',
@@ -233,8 +238,8 @@ const routes = [
     },
     {
         path: '/kundstart',
-        name: 'KundStartsidan',
-        component: KundStartsidan
+        name: 'KundStartSidan',
+        component: KundStartSidan
     },
     {
         path: '/vattenguide',

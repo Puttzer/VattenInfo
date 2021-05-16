@@ -9,11 +9,12 @@ import VueToastify from "vue-toastify";
 const toastifySettings = {
     position: 'top-right',
     theme: 'dark',
-    successDuration: 1000,
+    successDuration: 2000,
     backdrop: "rgba('129,212,250')",
     warningInfoDuration: 2000,
     singular: true,
-    iconEnabled: false
+    iconEnabled: false,
+    defaultTitle: 'VattenInfo'
 }
 
 Vue.use(VueToastify, toastifySettings);

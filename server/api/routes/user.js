@@ -63,16 +63,32 @@ module.exports = function (router) {
     })
 
 
-    router.get('/user/:id', isUserLoggedin.isUserLoggedIn, async function (req, res) {
-        console.log(req.params['id'])
-        await User.findById({ _id: req.params['id'] }).exec()
-            .then(docs => res.status(200)
-                .json(docs))
-            .catch(err => res.status(500)
-                .json({
-                    message: 'Error finding user',
-                    error: err
-                }))
+    router.get('/user/getUserInfo', isUserLoggedin.isUserLoggedIn, async function (req, res) {
+        // console.log(req.params['id'])
+        console.log(req.body)
+        const getUser = await User.findById({ _id: req.id }).exec()
+        console.log(getUser)
+
+        if (!getUser) {
+            res.status(404).json({
+                message: 'Error finding user'
+            })
+        } else {
+            res.status(200).json({
+                user: {
+                    email: getUser.email,
+                    _id: getUser._id,
+                    firstname: getUser.firstname,
+                    lastname: getUser.lastname,
+                    streetname: getUser.streetname,
+                    city: getUser.city,
+                    postcode: getUser.postcode,
+                    phonenumber: getUser.phonenumber
+                },
+                message: 'User info details'
+
+            })
+        }
     })
 
     router.post('/user/create', async function (req, res) {
@@ -132,7 +148,7 @@ module.exports = function (router) {
 
                 res.status(200)
                     .json({
-                        message: "Uer is deleted",
+                        message: "User is deleted",
                         user: docs
                     })
             })

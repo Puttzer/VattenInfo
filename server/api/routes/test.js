@@ -34,7 +34,7 @@ module.exports = function (router) {
             return
         } else {
 
-            const { testname, testtype, price, short_description, description, category } = req.body;
+            const { testname, testtype, price, short_description, description, category, shortname, slug } = req.body;
 
             // const imgPath = req.file.path.split('../client/public')[1]
             // console.log(imgPath)
@@ -47,6 +47,8 @@ module.exports = function (router) {
             test.description = description
             test.category = category
             test.price = price
+            test.shortname = shortname
+            test.slug = slug
             // test.image = `/uploads/${req.file.filename}`
             test.image = req.file.path
             let newTest = new Test(test)

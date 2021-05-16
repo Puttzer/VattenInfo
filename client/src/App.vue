@@ -7,7 +7,7 @@
     />
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
-    <!-- <Pathcomponent /> -->
+    <Pathcomponent />
     <v-main class="ma-0 pa-0 background body-main" flat>
       <router-view></router-view>
     </v-main>
@@ -20,7 +20,7 @@ import NavigationBar from "./components/ui/NavigationBar.vue";
 // import AdminStartsidan from "./views/AdminStartsidan.vue";
 
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
-// import Pathcomponent from "./components/Pathcomponent";
+import Pathcomponent from "./components/Pathcomponent";
 
 import Footer from "./components/ui/Footer";
 import { mapState } from "vuex";
@@ -33,7 +33,7 @@ export default {
     return {};
   },
   components: {
-    // Pathcomponent,
+    Pathcomponent,
     NavigationBar,
     // AdminStartsidan,
     // NavBarMobile,
@@ -55,9 +55,11 @@ export default {
     //   this.$router.push("/login/user");
     // }
     await this.$store.dispatch("tests/getTests");
+    console.log(localStorage.companyProfileToken);
     if (localStorage.userToken) {
       await this.$store.dispatch("user/validateUser");
-    } else if (localStorage.companyToken) {
+    } else if (localStorage.companyProfileToken) {
+      console.log("move to actions");
       await this.$store.dispatch("company/validateCompany");
     } else if (localStorage.token) {
       await this.$store.dispatch("admin/validateAdmin");
