@@ -68,7 +68,30 @@ export default {
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
 
-        }
+        },
+        async validateCompany({ commit }) {
+            console.log('validate company')
+            const token = localStorage.getItem('companyProfileToken')
+            const response = await fetch(`http://localhost:4000/api/company/validatetoken`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
+            commit('UPDATE_COMPANY_ID', data.id, { module: 'company' })
+            commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyLoggedin, { module: 'company' })
+            commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
+            commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
+
+        },
     },
     mutations: {
         UPDATE_COMPANYS(state, value) {
@@ -105,6 +128,9 @@ export default {
             state.companyUserIsloggedIn = false,
                 state.showCompanyDropDown = false
         },
+        COMPANY_DROPDOWNCOPMONENT_DISABLE(state) {
+            state.showCompanyDropDown = false
+        }
 
     },
     namespaced: true

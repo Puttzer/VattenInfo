@@ -55,9 +55,11 @@ export default {
     //   this.$router.push("/login/user");
     // }
     await this.$store.dispatch("tests/getTests");
+    console.log(localStorage.companyProfileToken);
     if (localStorage.userToken) {
       await this.$store.dispatch("user/validateUser");
-    } else if (localStorage.companyToken) {
+    } else if (localStorage.companyProfileToken) {
+      console.log("move to actions");
       await this.$store.dispatch("company/validateCompany");
     } else if (localStorage.token) {
       await this.$store.dispatch("admin/validateAdmin");

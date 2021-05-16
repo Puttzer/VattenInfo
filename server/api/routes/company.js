@@ -141,4 +141,14 @@ module.exports = function (router) {
                         error: err
                     }))
         })
+
+    router.post('/admin/validatetoken', isCompanyLoggedIn.isCompanyLoggedIn, (req, res) => {
+        res.status(200)
+        res.json({
+            message: 'token is valid',
+            id: req.id,
+            email: req.email,
+            companyLoggedin: true,
+        })
+    })
 }

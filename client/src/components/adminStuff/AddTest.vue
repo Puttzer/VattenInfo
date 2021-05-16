@@ -43,6 +43,13 @@
                   label="Test namm"
                   >Test Namn</v-text-field
                 >
+                <v-text-field
+                  v-model="shortname"
+                  dense
+                  outlined
+                  label="kort test namm"
+                  >Kort namm till test</v-text-field
+                >
                 <v-select
                   :items="type1"
                   v-model="category"
@@ -127,6 +134,7 @@ export default {
       price: "",
       image: "",
       id: "",
+      shortname: "",
     };
   },
   props: ["showAddtest", "addtestButton", "addsaveButton", "test"],
@@ -139,6 +147,7 @@ export default {
       this.price = this.test.price;
       this.image = this.test.image;
       this.id = this.test.id;
+      this.shortname = this.test.shortname;
     } else {
       this.testname = "";
       this.testtype = "";
@@ -146,6 +155,7 @@ export default {
       this.category = "";
       this.price = "";
       this.image = "";
+      this.shortname = "";
     }
   },
   methods: {
@@ -158,6 +168,7 @@ export default {
       formData.append("description", this.description);
       formData.append("price", this.price);
       formData.append("image", this.image);
+      formData.append("shortname", this.shortname);
 
       console.log(formData);
 
@@ -181,6 +192,7 @@ export default {
       formData.append("description", this.description);
       formData.append("price", this.price);
       formData.append("image", this.image);
+      formData.append("shortname", this.shortname);
       //   formData.append("_id", id);
 
       console.log(formData);

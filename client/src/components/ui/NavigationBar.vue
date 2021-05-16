@@ -71,7 +71,7 @@
             </v-col>
             <v-col>
               <div
-                v-show="this.user.userIsloggedIn === true"
+                v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
@@ -83,8 +83,9 @@
               <div
                 @click="ShowCompanyDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
-                v-show="this.company.companyUserIsloggedIn === true"
+                v-else
               >
+                <!-- v-else="this.company.companyUserIsloggedIn === true" -->
                 <v-icon color="blue" large>account_circle</v-icon>
 
                 <p class="ma-2 sub-title">
@@ -130,7 +131,9 @@
               <v-icon>keyboard_arrow_down</v-icon>
 
               <ul v-if="showServices">
-                <li class="text--white" @click="moveToEnskillt">enskilt dricks vatten</li>
+                <li class="text--white" @click="moveToEnskillt">
+                  enskilt dricks vatten
+                </li>
                 <li class="text--white" @click="moveToVerksam">
                   verksamhet & sämfallighet
                 </li>
@@ -206,6 +209,11 @@ export default {
   computed: {
     ...mapState(["user", "tests", "company"]),
   },
+  mounted() {
+    if (this.user.userIsloggedIn) {
+      this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE");
+    }
+  },
   methods: {
     moveToEnskillt() {
       this.$router.push("/analyskatalog/enskiltdricksvatten");
@@ -235,7 +243,10 @@ export default {
     },
     ShowUserDropDown() {
       console.log("user drop down");
-      this.$store.commit("user/USER_DROP_MENU");
+      if (this.user.userIsloggedIn) {
+        this.$store.commit("user/USER_DROP_MENU");
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE");
+      }
     },
     ShowCompanyDropDown() {
       console.log("company drop down");
