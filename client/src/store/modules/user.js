@@ -1,5 +1,6 @@
 export default {
     state: {
+        statusMessage: "test",
         users: [],
         userIsloggedIn: false,
         showLoginModel: false,
@@ -10,11 +11,27 @@ export default {
             email: '',
             _id: ''
         },
+        userInfo: {}
     },
     getters: {
 
     },
     actions: {
+        async createNewUser({ commit }, regInfo) {
+            console.log(regInfo);
+
+            // const token = localStorage.getItem('token')
+            const response = await fetch('http://localhost:4000/api/user/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(regInfo)
+            })
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+        },
         async getUsers({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
@@ -91,9 +108,35 @@ export default {
             commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
 
         },
+        async getUserInfo({ commit }, payload) {
+            console.log('get user info')
+            const token = localStorage.getItem('userToken')
+            const response = await fetch(`http://localhost:4000/api/user/getUserInfo`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                    body: JSON.stringify(payload)
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            // commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            // commit('UPDATE_USER_ID', data.id, { module: 'user' })
+            // commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            // commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+            commit('USER_INFO', data.user, { module: 'user' })
+        }
 
     },
     mutations: {
+        UPDATE_SUCCESS_MESSAGE(state, message) {
+            state.statusMessage = message
+        },
         UPDATE_USERS(state, value) {
             state.users = value
         },
@@ -145,11 +188,11 @@ export default {
         SEND_UPDATED_VALUE(state, value) {
             state.searchText = value
             console.log(state.searchText)
-        }
-
-
-
-
+        },
+        USER_INFO(state, value) {
+            state.userInfo = { ...value }
+            console.log(state.userInfo)
+        },
     },
     namespaced: true
 }

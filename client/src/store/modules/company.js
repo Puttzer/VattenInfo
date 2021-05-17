@@ -1,5 +1,6 @@
 export default {
     state: {
+        statusMessage: "test",
         companys: [],
         errorMessage: '',
         sucessMessage: '',
@@ -9,12 +10,26 @@ export default {
         companyUser: {
             email: '',
             _id: ''
-        }
+        },
+        companyInfo: {}
     },
     getters: {
 
     },
     actions: {
+        async registerCompanyUser({ commit }, companyRegInfo) {
+            const response = await fetch('http://localhost:4000/api/company/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(companyRegInfo)
+            })
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+        },
+
         async getCompanys({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
@@ -67,7 +82,52 @@ export default {
             commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
+        },
+        async validateCompany({ commit }) {
+            console.log('validate company')
+            const token = localStorage.getItem('companyProfileToken')
+            const response = await fetch(`http://localhost:4000/api/company/validatetoken`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            })
 
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
+            commit('UPDATE_COMPANY_ID', data.id, { module: 'company' })
+            commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyLoggedin, { module: 'company' })
+            commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
+            commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
+
+        },
+        async getCompanyInfo({ commit }, payload) {
+            console.log('get user info')
+            const token = localStorage.getItem('companyProfileToken')
+            const response = await fetch(`http://localhost:4000/api/company/getCompanyInfo`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                    body: JSON.stringify(payload)
+                }
+            })
+
+            const data = await response.json()
+            console.log(data)
+            // localStorage.setItem('userToken', data.Token)
+            // localStorage.setItem('userLoggedIn', data.userLoggedin)
+
+            // commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+            // commit('UPDATE_USER_ID', data.id, { module: 'user' })
+            // commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+            // commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+            commit('COMPANY_INFO', data.company, { module: 'user' })
         }
     },
     mutations: {
@@ -104,6 +164,13 @@ export default {
         COMPANY_LOGOUT(state) {
             state.companyUserIsloggedIn = false,
                 state.showCompanyDropDown = false
+        },
+        COMPANY_DROPDOWNCOPMONENT_DISABLE(state) {
+            state.showCompanyDropDown = false
+        },
+        COMPANY_INFO(state, value) {
+            state.companyInfo = { ...value }
+            console.log(state.companyInfo)
         },
 
     },

@@ -1,3 +1,4 @@
+import Vue from 'vue'
 export default {
     state: {
         tests: [],
@@ -119,13 +120,18 @@ export default {
         },
         DELETE_TEST(state, value) {
             console.log(state)
-            const remainingTests = state.tests.filter((test) => test._id != value)
+            const remainingTests = state.tests.filter((test) => {
+                test._id != value
+                Vue.$vToastify.success(`Succesfully ${test.testname} is Deleted`)
+            })
             state.tests = remainingTests
             // console.log(state.tests)
 
         },
         INSERT_TEST(state, value) {
-            return state.tests.push(value)
+            state.tests.push(value)
+            Vue.$vToastify.success(`Succesfully ${value.testname} is Inserted`)
+
         },
         EDIT_TEST(state, { updatedTestInfo, _id }) {
             console.log(_id, updatedTestInfo)
@@ -140,6 +146,7 @@ export default {
             findTest.image = updatedTestInfo.image
 
             state.tests.filter(test => test._id === _id).push(findTest)
+            Vue.$vToastify.success(`Succesfully ${findTest.testname} is Updated`)
 
         },
         UPDATE_TEST(state, value) {
@@ -161,6 +168,7 @@ export default {
                 // console.log(localTests);
                 localStorage.setItem('count', state.count)
                 localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
+                Vue.$vToastify.success(`${test.testname} is added to the cart`)
 
             } else {
                 return
@@ -178,17 +186,20 @@ export default {
         },
         DELETE_TEST_CART(state, id) {
             console.log('move to state')
+            const testInfo = state.selectedTests.find((test) => test._id === id)
             const remainingTests = state.selectedTests.filter((test) => test._id !== id)
             state.selectedTests = remainingTests
             state.count--
             localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
             localStorage.setItem('count', state.count)
             console.log(state.selectedTests)
+            Vue.$vToastify.success(`${testInfo.testname} is removed from the cart`)
         },
         DELETE_SELECTED_TESTS(state) {
             console.log('delete selected tests')
             state.selectedTests = [],
                 state.count = 0;
+            Vue.$vToastify.success(`Test Product is removed from the cart`)
 
         },
         UPDATE_PAGINATED_TESTS(state, value) {

@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartSidan from '../views/KundStartSidan.vue'
+import KundStartSidan from '../views/KundStartsidan.vue'
 import KundOrderSidan from '../views/KundOrderSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
@@ -34,10 +34,13 @@ import ScrollAnalys from "../views/ScrollAnalys.vue";
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
 import CompanyLoginHomePage from '../components/company/CompanyLoginHomePage.vue'
+import CompanyOrdersPage from '../components/company/CompanyOrdersPage.vue'
 import KassaSida from '../views/KassaSida.vue'
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
 import answer1 from '../components/guiden/answer1'
+import answer1a from '../components/guiden/answer1a'
+
 import answer2 from '../components/guiden/answer2'
 import answer3 from '../components/guiden/answer3'
 import answer4 from '../components/guiden/answer4'
@@ -78,9 +81,14 @@ const routes = [
 		component: AdminLogin
 	},
 	{
-		path: '/login/comapny',
+		path: '/login/companyinfopage',
 		name: 'CompanyLoginHomePage',
 		component: CompanyLoginHomePage
+	},
+	{
+		path: '/login/companyorderspage',
+		name: 'CompanyOrdersPage',
+		component: CompanyOrdersPage
 	},
 	{
 		path: '/test/scrolltest',
@@ -178,7 +186,7 @@ const routes = [
 		component: BestallSidan
 	},
 	{
-		path: '/kassasida',
+		path: '/kassa',
 		name: 'KassaSida',
 		component: KassaSida
 	},
@@ -248,6 +256,11 @@ const routes = [
 		path: '/answer1',
 		name: 'answer1',
 		component: answer1,
+	},
+	{
+		path: '/answer1a',
+		name: 'answer1a',
+		component: answer1a,
 	},
 	{
 		path: '/answer2',

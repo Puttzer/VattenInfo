@@ -86,7 +86,7 @@ module.exports = function (router) {
                 })
             return
         } else {
-            const { companyname, fullname, email, password, organizationnumber, phonenumber, alternatenumber } = req.body;
+            const { companyname, contactPerson, contactEmail, password, organizationnumber, phonenumber, altPhone, houseNumber, city, postcode, streetname } = req.body;
 
 
             const hashedpassword = await bcrypt.haschPassword(password)
@@ -94,12 +94,21 @@ module.exports = function (router) {
 
             let company = {}
             company.companyname = companyname
-            company.fullname = fullname
-            company.email = email
+            company.contactPerson = contactPerson
+            company.contactEmail = contactEmail
             company.password = hashedpassword
             company.organizationnumber = organizationnumber
             company.phonenumber = phonenumber,
-                company.alternatenumber = alternatenumber
+            company.altPhone = altPhone
+            company.city = city
+            company.houseNumber = houseNumber
+            company.streetname = streetname
+            company.postcode = postcode
+
+			
+
+
+
 
             let newCompany = new Company(company)
             console.log(newCompany)
@@ -141,4 +150,40 @@ module.exports = function (router) {
                         error: err
                     }))
         })
+
+    router.post('/admin/validatetoken', isCompanyLoggedIn.isCompanyLoggedIn, (req, res) => {
+        res.status(200)
+        res.json({
+            message: 'token is valid',
+            id: req.id,
+            email: req.email,
+            companyLoggedin: true,
+        })
+    })
+
+    router.get('/company/getCompanyInfo', isCompanyLoggedIn.isCompanyLoggedIn, async function (req, res) {
+        // console.log(req.params['id'])
+        console.log(req.body)
+        const getCompany = await Company.findById({ _id: req.id }).exec()
+        console.log(getCompany)
+
+        if (!getCompany) {
+            res.status(404).json({
+                message: 'Error finding user'
+            })
+        } else {
+            res.status(200).json({
+                company: {
+                    email: getCompany.email,
+                    companyname: getCompany.companyname,
+                    _id: getCompany._id,
+                    fullname: getCompany.fullname,
+                    organizationnumber: getCompany.organizationnumber,
+                    phonenumber: getCompany.phonenumber
+                },
+                message: 'Company info details'
+
+            })
+        }
+    })
 }

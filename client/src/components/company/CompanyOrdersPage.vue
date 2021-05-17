@@ -8,18 +8,18 @@
     <v-divider></v-divider>
     <v-row class="d-flex mx-16 mt-4">
       <v-col cols="10" class="mx-16">
-        <private-user />
+        <company-user />
       </v-col>
     </v-row>
   </v-main>
 </template>
 
 <script>
-import PrivateUser from "../components/privateperson/PrivateUser.vue";
+import CompanyUser from "./CompanyUser.vue";
 export default {
-  name: "PrivateAccount",
+  name: "CompanyOrdersPage",
   components: {
-    PrivateUser,
+    CompanyUser,
   },
   data() {
     return {};
