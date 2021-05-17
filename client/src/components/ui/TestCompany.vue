@@ -88,44 +88,6 @@
             ></v-text-field>
           </v-col>
         </v-row>
-
-        <v-row>
-          <v-col cols="12">
-            <v-row>
-              <v-col cols="6" md="6">
-                <v-text-field
-                  dense
-                  large
-                  text
-                  color="#051f38"
-                  class="mt-n4"
-                  placeholder="Password"
-                  v-model="company.password"
-                  label="Password"
-                  outlined
-                  append-icon="lock"
-                  type="PASSWORD"
-                ></v-text-field>
-              </v-col>
-
-              <v-col cols="6" md="6">
-                <v-text-field
-                  dense
-                  large
-                  text
-                  color="#051f38"
-                  class="mt-n4"
-                  placeholder="Repeat Password"
-                  v-model="company.repeatpassword"
-                  label="Repeat Password"
-                  outlined
-                  append-icon="lock"
-                ></v-text-field>
-              </v-col>
-            </v-row>
-          </v-col>
-        </v-row>
-
         <v-row>
           <v-col cols="12" md="6">
             <v-text-field
@@ -253,8 +215,6 @@ export default {
     return {
       company: {
         name: "",
-        password: "",
-        repeatPassword: "",
         contactPerson: "",
         contactEmail: "",
         password: "",

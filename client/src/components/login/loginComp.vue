@@ -121,11 +121,11 @@ export default {
       console.log("move to actions company", payload);
       await store.dispatch("company/loginCompany", payload);
 
-      if (this.company.companyUserIsloggedIn) {
-        this.$router.push("/login/company");
-      } else {
-        return;
-      }
+      //   if (this.company.companyUserIsloggedIn) {
+      //     this.$router.push("/login/company");
+      //   } else {
+      //     return;
+      //   }
     },
     switchButtonCompany() {
       (this.showLoginUser = false),

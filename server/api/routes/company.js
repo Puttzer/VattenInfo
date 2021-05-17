@@ -160,4 +160,30 @@ module.exports = function (router) {
             companyLoggedin: true,
         })
     })
+
+    router.get('/company/getCompanyInfo', isCompanyLoggedIn.isCompanyLoggedIn, async function (req, res) {
+        // console.log(req.params['id'])
+        console.log(req.body)
+        const getCompany = await Company.findById({ _id: req.id }).exec()
+        console.log(getCompany)
+
+        if (!getCompany) {
+            res.status(404).json({
+                message: 'Error finding user'
+            })
+        } else {
+            res.status(200).json({
+                company: {
+                    email: getCompany.email,
+                    companyname: getCompany.companyname,
+                    _id: getCompany._id,
+                    fullname: getCompany.fullname,
+                    organizationnumber: getCompany.organizationnumber,
+                    phonenumber: getCompany.phonenumber
+                },
+                message: 'Company info details'
+
+            })
+        }
+    })
 }

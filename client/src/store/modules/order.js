@@ -82,7 +82,23 @@ export default {
         },
         async getIndividualOrders({ commit }, userId) {
             const token = localStorage.getItem('userToken')
-            const response = await fetch(`http://localhost:4000/api/order/${userId}`, {
+            const response = await fetch(`http://localhost:4000/api/order/private/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': token,
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_INDIVIDUAL_ORDERS', data.orders, { module: 'order' })
+            // commit('UPDATE_ISLOGGEDIN', false, { module: 'admin' });
+
+
+        },
+        async getCompanyOrders({ commit }, companyId) {
+            const token = localStorage.getItem('companyProfileToken')
+            const response = await fetch(`http://localhost:4000/api/order/company/${companyId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

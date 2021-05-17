@@ -2,7 +2,7 @@
   <v-main class="someOtherName d-flex justify-center">
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToCompanyPage"
+      @click.prevent="moveToCompanyPage"
     >
       <v-icon medium class="mx-1" color="white">account_box</v-icon>
       <p>Mina Sidor</p>
@@ -10,7 +10,7 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToCompanyOrder"
+      @click.prevent="moveToCompanyOrder"
     >
       <v-icon medium class="mx-1" color="white">payments</v-icon>
       <p>Mina Beställningar</p>
@@ -19,7 +19,7 @@
 
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click="moveToCompanyLogout"
+      @click.prevent="moveToCompanyLogout"
     >
       <v-icon medium class="mx-1" color="white">logout</v-icon>
       <p>Logga Ut</p>
@@ -38,16 +38,22 @@ export default {
     ...mapState(["company"]),
   },
   methods: {
-    moveToCompanyPage() {
+    async moveToCompanyPage() {
       if (this.company.companyUserIsloggedIn) {
+        const payload = this.company.companyUser._id;
+        console.log("move to actions");
+        await this.$store.dispatch("company/getCompanyInfo", payload);
         this.$router.push("/login/companyinfopage");
       } else {
         return;
       }
     },
-    moveToCompanyOrder() {
-      if (this.company.companyserIsloggedIn) {
-        this.$router.push("/login/comapnyorderspage");
+    async moveToCompanyOrder() {
+      console.log("move to page");
+      if (this.company.companyUserIsloggedIn) {
+        const companyId = this.company.companyUser._id;
+        await this.$store.dispatch("order/getCompanyOrders", companyId);
+        this.$router.push("/login/companyorderspage");
       } else {
         return;
       }
