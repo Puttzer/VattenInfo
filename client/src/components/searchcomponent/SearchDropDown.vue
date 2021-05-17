@@ -19,8 +19,12 @@
         <h4>Nya Sökningar</h4>
       </v-col>
     </v-row>
-    <v-row v-for="test in this.filterPaketTestsearch" :key="test._id">
-      <v-col cols="1" class="ml-16">
+    <v-row
+      id="results"
+      v-for="test in this.filterPaketTestsearch"
+      :key="test._id"
+    >
+      <!-- <v-col cols="1" class="ml-16">
         <v-img
           cols="2"
           class="pink"
@@ -28,7 +32,7 @@
           width="100px"
           height="50px"
         ></v-img>
-      </v-col>
+      </v-col> -->
       <v-col cols="3">
         <p>{{ test.testname }}</p>
       </v-col>
@@ -46,7 +50,7 @@ export default {
   name: "SearchDropDown",
   data() {
     return {
-      searchVariables: ["Stora", "BAS", "Familj", "Styck Vis"],
+      searchVariables: ["Bas", "Familj", "Stora", "Styckprov"],
     };
   },
   computed: {
@@ -67,6 +71,11 @@ export default {
 </script>
 
 <style scoped>
+#results {
+  margin-left: 44px;
+  font-family: "Poppins", sans-serif;
+  /* font-weight: bold; */
+}
 .search-container {
   width: 47%;
 }
