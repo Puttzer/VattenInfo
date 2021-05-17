@@ -30,42 +30,19 @@
             </p>
           </div>
           <v-btn class="btnColor white--text">läs mer</v-btn>
-          <!-- <div class="social-media d-flex flex-row align-center mt-16">
-            <div class="facebook">
-              <v-icon size="52">mdi-facebook</v-icon>
-            </div>
-            <div class="instagram">
-              <v-icon size="42">mdi-instagram</v-icon>
-            </div>
-          </div>-->
         </div>
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <!-- <img class="orb" src="@/assets/redcircle.svg" alt="red orb" /> -->
-
-        <div class="heart">
-          <svg viewBox="0 0 500 500">
-            <path
-              id="curve"
-              fill="transparent"
-              d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
-            />
-            <text width="500">
-              <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
-            </text>
-          </svg>
-
+        <div class="fixed">
           <v-img
             class="image"
             src="@/assets/landing/OmtankeH20crop.png"
-            md="6"
             max-width="400"
           ></v-img>
         </div>
-      </v-col>
-      <!-- <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <svg viewBox="0 0 500 500" color="red">
+
+        <svg viewBox="0 0 500 500">
           <path
             id="curve"
             fill="transparent"
@@ -75,15 +52,7 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
-        <v-img
-          src="@/assets/landing/OmtankeH20.png"
-          md="6"
-          contain
-          max-height="500"
-          max-width="500"
-          class="image-position"
-        ></v-img>
-      </v-col> -->
+      </v-col>
     </v-row>
     <!-- landning fort -->
     <v-row class="mt-16">
@@ -204,25 +173,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.heart {
-  //   position: fixed;
-  top: 345px;
+.fixed {
+  position: fixed;
   right: 0;
-
-  svg {
-    position: absolute;
-    transform: rotate(319deg);
-    height: 900px;
-    position: absolute;
-    top: -131px;
-    right: -398px;
-  }
-
-  .image {
-    position: absolute;
-    right: 0;
-    top: 148px;
-  }
+  top: 148px;
+}
+.image {
+  position: relative;
+  right: 0;
+  top: 148px;
+}
+svg {
+  transform: rotate(319deg);
+  height: 900px;
+  position: absolute;
+  top: -131px;
+  right: -398px;
 }
 .container {
   width: 100vw;

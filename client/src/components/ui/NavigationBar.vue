@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column nav-container">
+  <div id="wholething" class="d-flex flex-column nav-container">
     <v-card class="d-flex flex-column" flat color="transparent">
       <div class="navbarTop">
         <v-row class="mb-0">
@@ -116,6 +116,8 @@
         class="ma-0 pa-0 cursor-pointer user-window"
       />
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
+
+      <!-- Closing the searchbar -->
       <v-row
         class="d-flex ml-n15 mt-2 justify-center"
         @click="closeSearchDropDown"
@@ -130,7 +132,9 @@
               <v-icon>keyboard_arrow_down</v-icon>
 
               <ul v-if="showServices">
-                <li class="text--white" @click="moveToEnskillt">enskilt dricks vatten</li>
+                <li class="text--white" @click="moveToEnskillt">
+                  enskilt dricks vatten
+                </li>
                 <li class="text--white" @click="moveToVerksam">
                   verksamhet & sämfallighet
                 </li>
@@ -388,6 +392,6 @@ export default {
   position: absolute;
   margin-top: -100px;
   z-index: 10;
-  background-color: rgb(206, 213, 224);
+  background-color: rgb(240, 240, 240);
 }
 </style>
