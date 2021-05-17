@@ -82,7 +82,8 @@ module.exports = function (router) {
                     streetname: getUser.streetname,
                     city: getUser.city,
                     postcode: getUser.postcode,
-                    phonenumber: getUser.phonenumber
+                    phonenumber: getUser.phonenumber,
+                    houseNumber: getUser.houseNumber
                 },
                 message: 'User info details'
 

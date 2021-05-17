@@ -14,6 +14,10 @@ let newOrder = new Schema({
     totalAmount: {
         type: String,
         required: true
+    },
+    orderStatus: {
+        type: String,
+        default: 'Pending'
     }
 
 }, { timestamps: true })

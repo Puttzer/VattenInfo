@@ -3,10 +3,10 @@
     <v-row class="d-flex flex-row">
       <h1>Tester</h1>
       <v-spacer></v-spacer>
-      <v-btn class="mr-12 mt-6" @click="loadTests">
+      <!-- <v-btn class="mr-12 mt-6" @click="loadTests">
         Load tests
         <br />Test
-      </v-btn>
+      </v-btn> -->
       <v-btn class="mr-12 mt-6" @click="showPopup">
         Lägg till
         <br />Test
