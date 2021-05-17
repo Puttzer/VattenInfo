@@ -253,8 +253,6 @@ export default {
     return {
       company: {
         name: "",
-        password: "",
-        repeatPassword: "",
         contactPerson: "",
         contactEmail: "",
         password: "",
