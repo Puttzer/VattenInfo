@@ -50,7 +50,7 @@
                       </p>
                       <p>LINK</p>
                     </div>
-                    <div class="linkcard d-flex flex-row">
+                    <div class="linkcard d-flex flex-row blue">
                       <h2>IMAGE</h2>
                       <h3>Sveriges Geologiska Undersökning</h3>
                       <p>
@@ -59,7 +59,7 @@
                       </p>
                       <p>LINK</p>
                     </div>
-                    <div class="linkcard d-flex flex-row">
+                    <div class="linkcard d-flex flex-row orange">
                       <h2>IMAGE</h2>
                       <h3>Vatteninfo</h3>
                       <p>
@@ -68,7 +68,7 @@
                       </p>
                       <p>LINK</p>
                     </div>
-                    <div class="linkcard d-flex flex-row">
+                    <div class="linkcard d-flex flex-row grey">
                       <h2>IMAGE</h2>
                       <h3>Gemva</h3>
                       <p>

@@ -30,19 +30,19 @@
             </p>
           </div>
           <v-btn class="btnColor white--text">läs mer</v-btn>
-          <!-- <div class="social-media d-flex flex-row align-center mt-16">
-            <div class="facebook">
-              <v-icon size="52">mdi-facebook</v-icon>
-            </div>
-            <div class="instagram">
-              <v-icon size="42">mdi-instagram</v-icon>
-            </div>
-          </div>-->
         </div>
       </v-col>
 
       <v-col cols="12" md="3" class="d-flex flex-row align-start">
-        <svg viewBox="0 0 500 500" color="red">
+        <div class="fixed">
+          <v-img
+            class="image"
+            src="@/assets/landing/OmtankeH20crop.png"
+            max-width="400"
+          ></v-img>
+        </div>
+
+        <svg viewBox="0 0 500 500">
           <path
             id="curve"
             fill="transparent"
@@ -52,14 +52,6 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
-        <v-img
-          src="@/assets/landing/OmtankeH20.png"
-          md="6"
-          contain
-          max-height="500"
-          max-width="500"
-          class="image-position"
-        ></v-img>
       </v-col>
     </v-row>
     <!-- landning fort -->
@@ -97,7 +89,7 @@
     <v-row class="d-flex justify-center px-2 mt-10" cols="8">
       <v-col class="d-flex flex-row justify-center justify-space-evenly">
         <v-card
-          class="d-flex flex-column justify-evenly align-center  white ma-1"
+          class="d-flex flex-column justify-evenly align-center white ma-1"
           v-for="test in this.displayTests"
           :key="test.id"
           v-bind:style="{ backgroundColor: test.color }"
@@ -128,7 +120,6 @@
 </template>
 
 <script>
-
 import { mapState } from "vuex";
 
 export default {
@@ -141,7 +132,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/baspaket",
           image: "FlaskaBas.png",
-        //   color: "#B3E5FC",
+          //   color: "#B3E5FC",
         },
         {
           id: 2,
@@ -149,7 +140,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/familjpaket",
           image: "FlaskorFamilj.png",
-        //   color: "#B2EBF2",
+          //   color: "#B2EBF2",
         },
         {
           id: 3,
@@ -157,7 +148,7 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/storapaket",
           image: "FlaskorStora.png",
-        //   color: "#B2DFDB",
+          //   color: "#B2DFDB",
         },
       ],
     };
@@ -181,7 +172,24 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.fixed {
+  position: fixed;
+  right: 0;
+  top: 148px;
+}
+.image {
+  position: relative;
+  right: 0;
+  top: 148px;
+}
+svg {
+  transform: rotate(319deg);
+  height: 900px;
+  position: absolute;
+  top: -131px;
+  right: -398px;
+}
 .container {
   width: 100vw;
   margin: 0;

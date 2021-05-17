@@ -75,6 +75,6 @@ export default {};
   background-color: white;
   max-height: 160px;
   //   height: 160px;
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
+  //   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
 }
 </style>§
