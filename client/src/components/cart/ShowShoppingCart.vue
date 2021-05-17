@@ -43,7 +43,7 @@
               >remove_circle</v-icon
             >
             <p class="mx-2">{{ selectTest.quantity }}</p>
-           
+
             <v-icon
               medium
               color="blue"
@@ -106,7 +106,12 @@ export default {
     },
     moveToKassaSida() {
       this.$store.commit("tests/CLOSE_CART_COMPONENT");
-      this.$router.push("/kassasida");
+      console.log(this.tests.selectedTests.length);
+      if (this.tests.selectedTests.length > 0) {
+        this.$router.push("/kassa");
+      } else {
+        return;
+      }
     },
     increaseQuantity(id) {
       this.$store.commit("tests/INCREASE_QUANTITY", id);

@@ -3,7 +3,7 @@
     <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
-		<addRemove/>
+        <addRemove />
       </v-col>
     </v-row>
 
@@ -56,6 +56,7 @@
               </p>
             </div>
           </div>
+          <add-remove />
 
           <v-icon
             @click="deleteTestInCart(selectedTest._id)"
@@ -90,27 +91,28 @@
 </template>
 
 <script>
+import Vue from "vue";
 import { mapState } from "vuex";
-import addRemove from '../components/cart/AddRemoveCounter'
+import addRemove from "../components/cart/AddRemoveCounter";
+
 export default {
   name: "KassaSidan",
   data() {
     return {
       displayErrorMessage: false,
-	  
     };
   },
   computed: {
     ...mapState(["tests", "order", "user", "company"]),
   },
-  components:{
-	 addRemove 
+  components: {
+    addRemove,
   },
   methods: {
     async generateOrder() {
-      if (this.user.userIsloggedIn || this.company.companyUserIsloggedIn) {
+      if (this.user.userIsloggedIn) {
         console.log(this.user.user._id);
-        const id = this.user.user._id;
+        const id = this.user.user._id || this.company.companyUser._id;
         const orderTests = this.tests.selectedTests;
         const orderAmount = this.tests.totalAmount;
         const payload = {
@@ -118,12 +120,29 @@ export default {
           orderAmount: orderAmount,
           id: id,
         };
+        console.log(payload);
         console.log("generating the order");
         await this.$store.dispatch("order/generateOrder", payload);
         this.$store.commit("tests/DELETE_SELECTED_TESTS");
         this.$router.push("/ordernumber");
+      } else if (this.company.companyUserIsloggedIn) {
+        console.log(this.company.companyUser._id);
+        const id = this.company.companyUser._id;
+        const orderTests = this.tests.selectedTests;
+        const orderAmount = this.tests.totalAmount;
+        const payload = {
+          orderTests: orderTests,
+          orderAmount: orderAmount,
+          id: id,
+        };
+        console.log(payload);
+        console.log("generating the order");
+        await this.$store.dispatch("order/generateCompanyOrder", payload);
+        this.$store.commit("tests/DELETE_SELECTED_TESTS");
+        this.$router.push("/ordernumber");
       } else {
         this.displayErrorMessage = true;
+        Vue.$vToastify.error("User must able to login to procced further");
         return;
       }
       //   if (this.order.orderGenerated) {

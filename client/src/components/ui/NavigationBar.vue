@@ -2,7 +2,7 @@
   <div class="d-flex flex-column nav-container">
     <v-card class="d-flex flex-column" flat color="transparent">
       <div class="navbarTop">
-        <v-row>
+        <v-row class="mb-0">
           <v-col cols="12" class="d-flex flex-row justify-space-around">
             <v-col cols="2" class="d-flex justify-end">
               <img
@@ -13,20 +13,32 @@
                 class="cursor-pointer"
               />
             </v-col>
-            <v-col cols="7" class="d-flex justify-end">
-              <v-col cols="10">
-                <v-text-field
-                  solo
-                  class="text"
-                  label="Sök efter tester och produkter"
-                  append-icon="search"
-                  dense
-                >
-                  <!-- <v-icon color="red" large class="cursor-pointer"
-                  >search</v-icon-->
+            <v-col cols="7" class="d-flex flex-column">
+              <v-row class="d-flex justify-end">
+                <v-col cols="10" class="d-flex justify-end">
+                  <v-text-field
+                    solo
+                    class="text"
+                    label="sök efter tester och produkter!"
+                    append-icon="search"
+                    dense
+                    v-model="search"
+                    @input="sendUpdatedText()"
                   >
-                </v-text-field>
-              </v-col>
+                    <!-- <v-icon color="red" large class="cursor-pointer"
+                  >search</v-icon @input="showSearchDropDown()"-->
+                    >
+                  </v-text-field>
+                </v-col>
+              </v-row>
+              <v-row class="d-flex justify-end ma-0 pa-0 green">
+                <v-col cols="10" class="ma-0 pa-0">
+                  <search-drop-down
+                    v-if="this.user.showSearchDropDown === true"
+                    class="search-dropdown ma-0 pa-0"
+                  />
+                </v-col>
+              </v-row>
             </v-col>
             <v-col
               class="mt-n2 d-flex flex-row align-start justify-end"
@@ -59,7 +71,7 @@
             </v-col>
             <v-col>
               <div
-                v-show="this.user.userIsloggedIn === true"
+                v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
@@ -71,8 +83,9 @@
               <div
                 @click="ShowCompanyDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
-                v-show="this.company.companyUserIsloggedIn === true"
+                v-else
               >
+                <!-- v-else="this.company.companyUserIsloggedIn === true" -->
                 <v-icon color="blue" large>account_circle</v-icon>
 
                 <p class="ma-2 sub-title">
@@ -104,7 +117,10 @@
         class="ma-0 pa-0 cursor-pointer user-window"
       />
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
-      <v-row class="d-flex ml-n15 mt-2 justify-center">
+      <v-row
+        class="d-flex ml-n15 mt-2 justify-center"
+        @click="closeSearchDropDown"
+      >
         <nav>
           <ul class="blue--text menu">
             <li
@@ -149,7 +165,6 @@
               <ul v-if="showAboutSection">
                 <li class="text--white">om oss</li>
                 <li class="text--white">kontakt</li>
-                <li class="text--white">wennnn</li>
               </ul>
             </li>
             <li
@@ -178,6 +193,7 @@ import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
 import CompanyDropDown from "../company/CompanyDropDown.vue";
 import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
+import SearchDropDown from "../../components/searchcomponent/SearchDropDown.vue";
 import { mapState } from "vuex";
 
 export default {
@@ -186,6 +202,7 @@ export default {
       showServices: false,
       showAboutSection: false,
       showOtherServices: false,
+      search: "",
     };
   },
   components: {
@@ -194,9 +211,15 @@ export default {
     UserDropDown,
     ShowShoppingCart,
     CompanyDropDown,
+    SearchDropDown,
   },
   computed: {
     ...mapState(["user", "tests", "company"]),
+  },
+  mounted() {
+    if (this.user.userIsloggedIn) {
+      this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE");
+    }
   },
   methods: {
     moveToEnskillt() {
@@ -223,14 +246,30 @@ export default {
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
+      //   this.$store.commit("user/SEARCH_DROP_DOWN_CLOSE");
     },
     ShowUserDropDown() {
       console.log("user drop down");
-      this.$store.commit("user/USER_DROP_MENU");
+      if (this.user.userIsloggedIn) {
+        this.$store.commit("user/USER_DROP_MENU");
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE");
+      }
     },
     ShowCompanyDropDown() {
       console.log("company drop down");
       this.$store.commit("company/COMPANY_DROP_MENU");
+    },
+    showSearchDropDown() {
+      this.$store.commit("user/SEARCH_DROP_DOWN_VISIBLE");
+    },
+    closeSearchDropDown() {
+      this.$store.commit("user/SEARCH_DROP_DOWN_CLOSE");
+    },
+    sendUpdatedText() {
+      const value = this.search;
+      console.log(value);
+      this.$store.commit("user/SEARCH_DROP_DOWN_VISIBLE");
+      this.$store.commit("user/SEND_UPDATED_VALUE", value);
     },
   },
 };
@@ -361,5 +400,12 @@ export default {
   background-color: none;
   background-color: rgba(0, 0, 0, 0.4);
   min-height: 5vh;
+}
+
+.search-dropdown {
+  position: absolute;
+  margin-top: -100px;
+  z-index: 10;
+  background-color: rgb(206, 213, 224);
 }
 </style>
