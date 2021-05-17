@@ -58,37 +58,39 @@
         </v-row>
 
         <v-row>
-          <v-col cols="12" md="12">
-            <v-text-field
-              dense
-              large
-              text
-              color="#051f38"
-              class="mt-n4"
-              placeholder="Password"
-              v-model="company.password"
-              label="Password"
-              outlined
-              append-icon="lock"
-              type="PASSWORD"
-            ></v-text-field>
-          </v-col>
-        </v-row>
+          <v-col cols="12">
+            <v-row>
+              <v-col cols="6" md="6">
+                <v-text-field
+                  dense
+                  large
+                  text
+                  color="#051f38"
+                  class="mt-n4"
+                  placeholder="Password"
+                  v-model="company.password"
+                  label="Password"
+                  outlined
+                  append-icon="lock"
+                  type="PASSWORD"
+                ></v-text-field>
+              </v-col>
 
-        <v-row>
-          <v-col cols="12" md="12">
-            <v-text-field
-              dense
-              large
-              text
-              color="#051f38"
-              class="mt-n4"
-              placeholder="Repeat Password"
-              v-model="company.repeatpassword"
-              label="Repeat Password"
-              outlined
-              append-icon="lock"
-            ></v-text-field>
+              <v-col cols="6" md="6">
+                <v-text-field
+                  dense
+                  large
+                  text
+                  color="#051f38"
+                  class="mt-n4"
+                  placeholder="Repeat Password"
+                  v-model="company.repeatpassword"
+                  label="Repeat Password"
+                  outlined
+                  append-icon="lock"
+                ></v-text-field>
+              </v-col>
+            </v-row>
           </v-col>
         </v-row>
 
@@ -115,7 +117,7 @@
               color="#051f38"
               class="mt-n4"
               placeholder="088888888"
-              v-model="company.AltPhone"
+              v-model="company.altPhone"
               label="Alternativ Telefon"
               outlined
               append-icon="contact_phone"
@@ -140,7 +142,7 @@
         </v-row>
 
         <v-row>
-          <v-col cols="12" md="12">
+          <v-col cols="10" md="10">
             <v-text-field
               dense
               large
@@ -149,6 +151,21 @@
               class="mt-n4"
               placeholder="Gatunamn"
               v-model="company.adress"
+              label="Adress"
+              outlined
+              append-icon="place"
+            ></v-text-field>
+          </v-col>
+
+          <v-col cols="2" md="2">
+            <v-text-field
+              dense
+              large
+              text
+              color="#051f38"
+              class="mt-n4"
+              placeholder="Gatunamn"
+              v-model="company.houseNumber"
               label="Adress"
               outlined
               append-icon="place"
@@ -179,7 +196,7 @@
               color="#051f38"
               class="mt-n4"
               placeholder="Postort"
-              v-model="company.ort"
+              v-model="company.city"
               label="Ort"
               outlined
               append-icon="location_city"
@@ -188,7 +205,9 @@
         </v-row>
         <v-row justify="end">
           <v-col cols="12" md="3">
-            <v-btn class="white--text btnColor"> Register </v-btn>
+            <v-btn @click="addCompanyUser" class="white--text btnColor">
+              Register
+            </v-btn>
           </v-col>
         </v-row>
       </form>
@@ -207,13 +226,32 @@ export default {
         password: "",
         repeatpassword: "",
         contactPhone: "",
-        AltPhone: "",
+        altPhone: "",
         organisationsnummer: "",
         adress: "",
         postnummer: "",
-        ort: "",
+        city: "",
       },
     };
+  },
+  methods: {
+    async addCompanyUser() {
+      let companyRegInfo = {
+        companyname: this.company.name,
+        contactPerson: this.company.contactPerson,
+        contactEmail: this.company.contactEmail,
+        password: this.company.password,
+        phonenumber: this.company.contactPhone,
+        altPhone: this.company.altPhone,
+        streetname: this.company.adress,
+        city: this.company.city,
+        postcode: this.company.postnummer,
+        houseNumber: this.company.houseNumber,
+        organizationnumber: this.company.organisationsnummer,
+      };
+      console.log(companyRegInfo);
+      await this.$store.dispatch("company/registerCompanyUser", companyRegInfo);
+    },
   },
 };
 </script>

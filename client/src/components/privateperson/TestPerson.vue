@@ -9,7 +9,7 @@
             </v-col>
             <v-row d-flex justify="center">
               <v-col cols="12" md="12">
-				  <h1>hej</h1>
+
                 <h3>{{ this.user.statusMessage }}</h3>
               </v-col>
             </v-row>
@@ -179,9 +179,9 @@
 
 <script>
 export default {
-  props: {
-    regInfo: Object,
-  },
+//   props: {
+//     regInfo: Object,
+//   },
   data() {
     return {
       user: {
