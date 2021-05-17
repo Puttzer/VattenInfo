@@ -8,7 +8,7 @@
       <div class="heightClass">
         <v-list>
           <v-list-item>
-            <v-list-item-content @click.stop="moveToTests">
+            <v-list-item-content @click.stop="moveToTests" class="listItem">
               <v-list-item-title>
                 <v-icon medium color="blue">science</v-icon>
                 Tester</v-list-item-title
@@ -16,7 +16,10 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
-            <v-list-item-content @click.stop="moveToPrivateCustomers">
+            <v-list-item-content
+              @click.stop="moveToPrivateCustomers"
+              class="listItem"
+            >
               <v-list-item-title>
                 <v-icon medium color="blue">person</v-icon>
                 Privatkund</v-list-item-title
@@ -24,7 +27,7 @@
             </v-list-item-content>
           </v-list-item>
           <v-list-item>
-            <v-list-item-content @click.stop="moveToForetag">
+            <v-list-item-content @click.stop="moveToForetag" class="listItem">
               <v-list-item-title>
                 <v-icon medium color="blue">business</v-icon>
                 Företagskund</v-list-item-title
@@ -40,6 +43,7 @@
               <v-list>
                 <v-list-item>
                   <v-list-item-content
+                    class="listItem"
                     @click.stop="moveToPrivateCustomersOrders"
                   >
                     <v-list-item-title>Privat</v-list-item-title>
@@ -47,7 +51,10 @@
                 </v-list-item>
 
                 <v-list-item>
-                  <v-list-item-content @click.stop="moveToCompanyOrders">
+                  <v-list-item-content
+                    @click.stop="moveToCompanyOrders"
+                    class="listItem"
+                  >
                     <v-list-item-title>Företag</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
@@ -104,7 +111,7 @@ export default {
   //   },
 
   computed: {
-    ...mapState(["admin"]),
+    ...mapState(["admin", "tests"]),
   },
   methods: {
     async logout() {
@@ -157,5 +164,13 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+}
+
+.listItem:hover {
+  /* text-decoration: underline wavy; */
+  /* font-weight: normal; */
+  cursor: pointer;
+  color: purple;
+  zoom: 120%;
 }
 </style>

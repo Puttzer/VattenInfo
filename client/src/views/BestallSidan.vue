@@ -1,16 +1,14 @@
 <template>
   <v-main>
     <v-flex>
-      <v-row class="justify-center mt-12">
+      <v-row class="justify-center mt-6">
         <h1>Vattentester</h1>
       </v-row>
       <v-row class="d-flex white ma-16 align-center filter justify-center">
         <v-col class="" cols="1">
-          <div
-            class="white--text d-flex flex-row justify-space-between btnColor"
-          >
+          <div class="white--text d-flex flex-row justify-center btnColor">
             <p class="ma-1">Filter</p>
-            <v-icon class="white--text ma-1">filter_alt</v-icon>
+            <!-- <v-icon class="white--text ma-1">filter_alt</v-icon> -->
           </div>
         </v-col>
         <v-col cols="3">
@@ -27,10 +25,14 @@
             label="select test type"
           ></v-select>
         </v-col>
+        <v-col cols="3" class="d-flex flex-row justify-center align-center">
+          <h4>Total available tests :</h4>
+          <p class="ma-1 pa-1">{{ this.filterCategory.length }}</p>
+        </v-col>
       </v-row>
       <v-row class="d-flex justify-center packet-height">
         <div
-          v-for="(test, index) in this.filterTesttype"
+          v-for="(test, index) in this.filterCategory"
           :key="index"
           width="50px"
           height="300px"
@@ -114,32 +116,37 @@ export default {
   },
   computed: {
     ...mapState(["tests"]),
-    filterTestName() {
-      return this.tests.tests.map((test) => {
-        let testtype = [];
-        testtype = test.testtype;
-        return testtype;
-      });
-    },
+    // filterTestName() {
+    //   return this.tests.tests.map((test) => {
+    //     let testtype = [];
+    //     testtype = test.testtype;
+    //     return testtype;
+    //   });
+    // },
     filterCategory() {
       console.log(this.category);
       if (this.category === "") {
         return this.tests.tests;
       } else {
-        return this.tests.tests.filter(
+        const filterTests = this.tests.tests.filter(
           (test) => test.category === this.category
         );
+        if (this.testtype === "") {
+          return filterTests;
+        } else {
+          return filterTests.filter((test) => test.testtype === this.testtype);
+        }
       }
     },
-    filterTesttype() {
-      if (this.testtype === "") {
-        return this.tests.tests;
-      } else {
-        return this.filterCategory.filter(
-          (test) => test.testtype === this.testtype
-        );
-      }
-    },
+    // filterTesttype() {
+    //   if (this.testtype === "") {
+    //     return this.tests.tests;
+    //   } else {
+    //     return this.filterCategory.filter(
+    //       (test) => test.testtype === this.testtype
+    //     );
+    //   }
+    // },
   },
   methods: {
     moveToCart(id, value) {
@@ -156,6 +163,9 @@ export default {
         name: "TestStartsidan",
         params: { id: id, test },
       });
+    },
+    displayTests() {
+      return this.filterTesttype(this.testtype);
     },
   },
 };

@@ -46,43 +46,8 @@
             </v-col>
           </v-row>
 
-          <v-row>
-            <v-col cols="12" md="12">
-              <v-text-field
-                dense
-                large
-                text
-                color="#051f38"
-                class="mt-n4"
-                placeholder="Password"
-                v-model="user.password"
-                label="Password"
-
-                outlined
-                append-icon="lock"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-
-          <v-row>
-            <v-col cols="12" md="12">
-              <v-text-field
-                dense
-                large
-                text
-                color="#051f38"
-                class="mt-n4"
-                placeholder="repeat password"
-                v-model="user.repeatpassword"
-                label="Repeat Password"
-                outlined
-                append-icon="lock"
-              ></v-text-field>
-            </v-col>
-          </v-row>
-
           <v-row justify="center">
-            <v-col cols="12" md="12">
+            <v-col cols="6" md="6">
               <v-text-field
                 dense
                 large
@@ -95,10 +60,7 @@
                 append-icon="lock"
               ></v-text-field>
             </v-col>
-          </v-row>
-
-          <v-row justify="center">
-            <v-col cols="12" md="12">
+            <v-col cols="6" md="6">
               <v-text-field
                 dense
                 large

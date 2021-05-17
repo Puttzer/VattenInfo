@@ -9,8 +9,7 @@
     <v-row class="d-flex justify-center ma-0 pa-0 mt-16">
       <v-col cols="5" class="d-flex justify-center ma-0 pa-0">
         <h2>
-          {{ this.user.userInfo.firstname }}
-          {{ this.user.userInfo.lastname }}
+          {{ this.user.userInfo.name }}
         </h2>
       </v-col>
       <v-col col="1">
@@ -30,7 +29,7 @@
             <h3>Firstname :</h3>
           </v-col>
           <v-col cols="8">
-            <p>{{ this.user.userInfo.firstname }}</p>
+            <p>{{ this.user.userInfo.name }}</p>
           </v-col>
         </v-row>
         <v-row>
@@ -46,7 +45,10 @@
             <h3>Address :</h3>
           </v-col>
           <v-col cols="8">
-            <p>{{ this.user.userInfo.streetname }}</p>
+            <p>
+              {{ this.user.userInfo.streetname }}
+              {{ this.user.userInfo.houseNumber }}
+            </p>
             <p>{{ this.user.userInfo.city }}</p>
             <p>{{ this.user.userInfo.postcode }}</p>
             <v-btn x-small class="btnColor">Bytt address</v-btn>

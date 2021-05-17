@@ -1,21 +1,21 @@
 <template>
   <div class="rowWidth ml-16">
-    <v-row class="my-4">
+    <v-row class="my-2">
       <h1>Private Customers Order Information</h1>
     </v-row>
     <v-row
       v-for="(order, index) in this.order.orders"
       :key="index"
       :_id="order._id"
-      class="d-flex flex-column"
+      class="d-flex flex-column mb-1 shadowCss"
     >
-      <v-list class="d-flex flex-row rounded-lg" height="80px">
+      <v-list class="d-flex flex-row rounded-lg" height="90px">
         <v-row class="d-flex">
           <v-col cols="3">
             <p class="font-weight-light text--disabled caption ml-2">
               OrderNumber
             </p>
-            <p id="userName" name="userName" class="ml-2">
+            <p id="userName" name="userName" class="ml-2 pointer">
               {{ order.orderNumber }}
             </p>
           </v-col>
@@ -89,5 +89,13 @@ export default {
   border-left: 5px solid rgb(133, 38, 9);
   background-color: rgb(151, 29, 20);
   width: 50%;
+}
+.pointer {
+  cursor: pointer;
+  color: blueviolet;
+  text-decoration: underline;
+}
+.shadowCss {
+  box-shadow: 0 1px rgb(62, 44, 129);
 }
 </style>
