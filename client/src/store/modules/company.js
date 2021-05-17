@@ -1,5 +1,6 @@
 export default {
     state: {
+        statusMessage: "test",
         companys: [],
         errorMessage: '',
         sucessMessage: '',
@@ -16,6 +17,19 @@ export default {
 
     },
     actions: {
+        async registerCompanyUser({ commit }, companyRegInfo) {
+            const response = await fetch('http://localhost:4000/api/company/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(companyRegInfo)
+            })
+            const data = await response.json();
+            console.log(data)
+            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+        },
+
         async getCompanys({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
@@ -68,7 +82,6 @@ export default {
             commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
-
         },
         async validateCompany({ commit }) {
             console.log('validate company')

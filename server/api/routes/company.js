@@ -86,7 +86,7 @@ module.exports = function (router) {
                 })
             return
         } else {
-            const { companyname, fullname, email, password, organizationnumber, phonenumber, alternatenumber } = req.body;
+            const { companyname, contactPerson, contactEmail, password, organizationnumber, phonenumber, altPhone, houseNumber, city, postcode, streetname } = req.body;
 
 
             const hashedpassword = await bcrypt.haschPassword(password)
@@ -94,12 +94,21 @@ module.exports = function (router) {
 
             let company = {}
             company.companyname = companyname
-            company.fullname = fullname
-            company.email = email
+            company.contactPerson = contactPerson
+            company.contactEmail = contactEmail
             company.password = hashedpassword
             company.organizationnumber = organizationnumber
             company.phonenumber = phonenumber,
-                company.alternatenumber = alternatenumber
+            company.altPhone = altPhone
+            company.city = city
+            company.houseNumber = houseNumber
+            company.streetname = streetname
+            company.postcode = postcode
+
+			
+
+
+
 
             let newCompany = new Company(company)
             console.log(newCompany)

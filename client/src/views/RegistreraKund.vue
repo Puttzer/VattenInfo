@@ -37,8 +37,8 @@
 
 <script>
 // import PersonRegister from "../components/ui/regForms/PersonRegister";
-import TestPerson from "../components/ui/TestPerson";
-import TestCompany from "../components/ui/TestCompany";
+import TestPerson from "../components/privateperson/TestPerson";
+import TestCompany from "../components/company/TestCompany";
 
 export default {
   data() {
