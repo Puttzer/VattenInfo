@@ -1,19 +1,19 @@
 <template>
-  <v-main class="ma-16 d-flex">
-    <v-row class="d-flex justify-center">
+  <v-main class="ma-8 d-flex ma-16">
+    <v-row class="d-flex justify-center mb-4">
       <h1>Information</h1>
     </v-row>
-    <v-row class="d-flex justify-start white">
-      <v-col cols="4" class="d-flex justify-start pa-0">
+    <v-row class="d-flex justify-center white" cols="8" width="80vw">
+      <v-col cols="4" class="d-flex justify-start ma-4">
         <img
           :src="`http://localhost:4000/${this.displayTest[0].image}`"
           alt="imagename"
           height="400px"
           width="300px"
-          class="justify-center"
+          class="justify-center rounded"
         />
       </v-col>
-      <v-col cols="5" class="d-flex flex-column justify-start">
+      <v-col cols="4" class="d-flex flex-column justify-start">
         <v-row>
           <h3 class="green--text test-category">
             {{ this.displayTest[0].category }}
@@ -35,12 +35,27 @@
             }}
           </h4>
         </v-row>
-        <v-row>
-          <p class="">
-            <strong>Mer Information </strong>:{{
-              this.displayTest[0].description
-            }}
+        <v-row class="d-flex">
+          <strong>Mer Information </strong>:
+          <p :class="[isActive ? '' : 'text-minimize']">
+            {{ this.displayTest[0].description }}
           </p>
+          <v-row class="d-flex justify-end ma-0 pa-0">
+            <v-btn
+              class="btnColor d-flex align-center justify-center"
+              x-small
+              @click="showText"
+              v-if="this.isActive === false"
+              >läs mer info...</v-btn
+            >
+            <v-btn
+              class="btnColor d-flex align-center justify-center"
+              x-small
+              @click="hideText"
+              v-else
+              >Hide</v-btn
+            >
+          </v-row>
         </v-row>
         <v-row>
           <h3 class="bold">Pris :{{ this.displayTest[0].price }} Kr</h3>
@@ -60,6 +75,53 @@
             ><v-icon class="mx-2">add_shopping_cart</v-icon> Köp</v-btn
           >
         </v-row>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center mt-6">
+      <v-col cols="4">
+        <h3>Ingår i analysen</h3>
+        <p class="text-min">{{ this.displayTest[0].description }}</p>
+      </v-col>
+      <v-col cols="4">
+        <h3>Provkitet innehåller:</h3>
+        <p>(Flaskor, blankett)</p>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center">
+      <v-col cols="10" class="d-flex flex-column justify-center pa-4">
+        <h2 class="ma-1">Så här går analysprocessen till:</h2>
+        <h3 class="ma-1">
+          När du har beställt din analys från vår hemsida händer följande:
+        </h3>
+        <p class="ma-1">
+          <span class="bold-Text">1) </span>
+          Vi skickar dig de flaskorna som behövs (eller så kan du hämta dem på
+          vår lokal på Kaserngatan 11 i Norrtälje). <br />
+          <span class="bold-Text">2) </span>
+          Du följer upp instruktionerna här nedan för att ta proverna. <br />
+          <span class="bold-Text">3) </span>
+          Du lämnar flaskorna med vatten i vår lokal på Kaserngatan 11.<br />
+          <span class="ml-4">
+            <span class="bold-Text">a) </span> Om flaskorna ska till det
+            ackrediterade laboratoriet så är inlämningstiden måndagar och
+            onsdagar 9.00 - 12.00 <br />
+          </span>
+          <span class="ml-4">
+            <span class="bold-Text">b) </span> Om flaskorna ska analyseras hos
+            oss (BAS, Familj och storpaket) så lämnar du dem hos oss måndag till
+            torsdag 10.00 till 16.00 <br />
+          </span>
+          <span class="bold-Text">4) </span>Vi eller det ackrediterade
+          laboratoriet analyserar ditt vatten enligt de standarder som styr
+          detta. <br />
+          <span class="bold-Text">5) </span> När analyserna är klara, skickar vi
+          dig provresultat per e-post efter en tid som beror på typen av
+          analysen.( I vårt laboratorie två veckor, i det ackrediterade minst
+          tre veckor) <br />
+          <span class="bold-Text">6) </span>Du kan även loga in på vår hemsida
+          och kontrollera att analysresultatet har publicerats under mina
+          analyser.
+        </p>
       </v-col>
     </v-row>
     <v-row>
@@ -127,7 +189,9 @@ import { mapState } from "vuex";
 export default {
   name: "TestStartsidan",
   data() {
-    return {};
+    return {
+      isActive: false,
+    };
   },
   computed: {
     ...mapState(["tests"]),
@@ -183,11 +247,31 @@ export default {
       console.log(id);
       this.$store.commit("tests/INCREASE_COUNT", id);
     },
+    showText() {
+      this.isActive = true;
+    },
+    hideText() {
+      this.isActive = false;
+    },
   },
 };
 </script>
 
 <style scoped>
+.text-min {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+.text-minimize {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
 .test-category {
   font-size: 32px;
   /* font-family: 'Poppins', sans-serif; */
@@ -205,5 +289,10 @@ export default {
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
   font-size: 24px;
+}
+.bold-Text {
+  font-size: 18px;
+  font-display: bold;
+  color: blue;
 }
 </style>

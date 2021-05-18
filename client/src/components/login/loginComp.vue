@@ -115,7 +115,7 @@ export default {
     },
     async loginCompany() {
       const payload = {
-        email: this.email,
+        contactEmail: this.email,
         password: this.password,
       };
       console.log("move to actions company", payload);
