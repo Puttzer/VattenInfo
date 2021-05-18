@@ -143,6 +143,7 @@ export default {
       this.testname = this.test.testname;
       this.testtype = this.test.testtype;
       this.description = this.test.description;
+      this.short_description = this.test.short_description;
       this.category = this.test.category;
       this.price = this.test.price;
       this.image = this.test.image;
@@ -156,6 +157,7 @@ export default {
       this.price = "";
       this.image = "";
       this.shortname = "";
+      this.short_description = "";
     }
   },
   methods: {

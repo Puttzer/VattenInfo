@@ -106,7 +106,7 @@
             <div class="d-flex flex-row">
               <v-btn
                 class="btnColor white--text ma-1"
-                @click="moveToIndividual(test._id, test)"
+                @click="moveToIndividual(test.slug, test)"
                 >Läs mer</v-btn
               >
               <!-- <v-btn
@@ -139,12 +139,12 @@ export default {
       );
     },
     filterRelatedTests() {
-      const id = this.$route.params.id;
-      return this.filterPaketTest.filter((test) => test._id !== id);
+      const slugId = this.$route.params.slug;
+      return this.filterPaketTest.filter((test) => test.slug !== slugId);
     },
     displayTest() {
-      const id = this.$route.params.id;
-      return this.tests.tests.filter((test) => test._id === id);
+      const slugId = this.$route.params.slug;
+      return this.tests.tests.filter((test) => test.slug === slugId);
     },
   },
   //   async mounted() {
@@ -165,18 +165,21 @@ export default {
     // increaseCount() {
     //   return this.testSampleCount++;
     // },
-    moveToIndividual(id, test) {
-      console.log(id);
+    moveToIndividual(slug, test) {
+      console.log(slug);
       this.$router.push({
         name: "TestStartsidan",
-        params: { id: id, test },
+        params: { slug: slug, test },
       });
-      const newTestInfo = this.tests.tests.filter((test) => test._id === id);
+      const newTestInfo = this.tests.tests.filter((test) => test.slug === slug);
       console.log(newTestInfo);
       this.$store.commit("tests/UPDATE_TEST", newTestInfo);
     },
     increaseThecounterValue() {
-      const id = this.$route.params.id;
+      const findTest = this.tests.tests.filter(
+        (test) => test.slug === this.$route.params.slug
+      );
+      const id = findTest[0]._id;
       console.log(id);
       this.$store.commit("tests/INCREASE_COUNT", id);
     },
