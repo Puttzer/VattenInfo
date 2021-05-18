@@ -1,6 +1,7 @@
+import Vue from 'vue'
 export default {
     state: {
-        statusMessage: "test",
+        statusMessage: "",
         companys: [],
         errorMessage: '',
         sucessMessage: '',
@@ -8,7 +9,7 @@ export default {
         showCompanyDropDown: false,
         companyUserIsloggedIn: false,
         companyUser: {
-            email: '',
+            contactEmail: '',
             _id: ''
         },
         companyInfo: {}
@@ -27,7 +28,7 @@ export default {
             })
             const data = await response.json();
             console.log(data)
-            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'company' })
         },
 
         async getCompanys({ commit }) {
@@ -77,7 +78,7 @@ export default {
             const data = await response.json()
             console.log(data)
             localStorage.setItem('companyProfileToken', data.Token)
-            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
+            commit('UPDATE_COMPANY_EMAIL', data.contactEmail, { module: 'company' })
             commit('UPDATE_COMPANY_ID', data._id, { module: 'company' })
             commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
@@ -99,7 +100,7 @@ export default {
             // localStorage.setItem('userToken', data.Token)
             // localStorage.setItem('userLoggedIn', data.userLoggedin)
 
-            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
+            commit('UPDATE_COMPANY_EMAIL', data.contactEmail, { module: 'company' })
             commit('UPDATE_COMPANY_ID', data.id, { module: 'company' })
             commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyLoggedin, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
@@ -141,10 +142,10 @@ export default {
         },
         UPDATE_SUCESS_MESSAGE(state, value) {
             state.sucessMessage = value
-            // this.$vToastify.success(state.sucessMessage);
+            Vue.$vToastify.success(value)
         },
         UPDATE_COMPANY_EMAIL(state, email) {
-            state.companyUser.email = email
+            state.companyUser.contactEmail = email
         },
         UPDATE_COMPANY_ID(state, id) {
             state.companyUser._id = id

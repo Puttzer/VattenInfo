@@ -89,7 +89,7 @@
                 <v-icon color="blue" large>account_circle</v-icon>
 
                 <p class="ma-2 sub-title">
-                  {{ this.company.companyUser.email }}
+                  {{ this.company.companyUser.contactEmail }}
                 </p>
               </div>
             </v-col>

@@ -18,7 +18,7 @@ const isCompanyLoggedIn = async (req, res, next) => {
                 next(new Error('Bad request'))
                 return
             }
-            req.email = dbUser.email
+            req.email = dbUser.contactEmail
             req.id = dbUser._id
             next()
         }

@@ -26,7 +26,7 @@
         </v-row>
         <v-row>
           <v-col cols="3">
-            <h3>Firstname :</h3>
+            <h3>person :</h3>
           </v-col>
           <v-col cols="8">
             <p>{{ this.company.companyInfo.fullname }}</p>
@@ -45,9 +45,9 @@
             <h3>Address :</h3>
           </v-col>
           <v-col cols="8">
-            <!-- <p>{{ this.company.companyInfo.organizationnumber }}</p> -->
-            <!-- <p>{{ this.company.companyInfo.city }}</p>
-            <p>{{ this.company.companyInfo.postcode }}</p> -->
+            <p>{{ this.company.companyInfo.organizationnumber }}</p>
+            <p>{{ this.company.companyInfo.city }}</p>
+            <p>{{ this.company.companyInfo.postcode }}</p>
             <v-btn x-small class="btnColor">Bytt address</v-btn>
           </v-col>
         </v-row>
