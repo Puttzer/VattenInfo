@@ -119,7 +119,8 @@ module.exports = function (router) {
             shortname: req.body.shortname,
             description: req.body.description,
             price: req.body.price,
-            image: req.file.path
+            image: req.file.path,
+            slug: req.body.slug,
 
         }
 

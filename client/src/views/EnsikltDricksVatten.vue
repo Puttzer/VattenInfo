@@ -75,7 +75,7 @@
               <v-btn
                 class="btnColor white--text ma-1"
                 medium
-                @click="moveToIndividual(test._id, test)"
+                @click="moveToIndividual(test.slug, test)"
                 >Läs mer</v-btn
               >
               <v-btn
@@ -130,7 +130,7 @@
                 <v-btn
                   x-small
                   class="btnColor white--text"
-                  @click="moveToIndividual(test._id, test)"
+                  @click="moveToIndividual(test.slug, test)"
                   >läs mer</v-btn
                 >
               </v-col>
@@ -236,7 +236,7 @@
             <div class="d-flex justify-center mb-2 mx-2 flex-row">
               <v-btn
                 class="btnColor white--text ma-1"
-                @click="moveToIndividual(test._id, test)"
+                @click="moveToIndividual(test.slug, test)"
                 >Läs mer</v-btn
               >
               <v-btn
@@ -275,7 +275,7 @@
             <v-btn
               x-small
               class="btnColor red justify-center white--text"
-              @click="moveToIndividual(test._id, test)"
+              @click="moveToIndividual(test.slug, test)"
               >äs mer</v-btn
             >
           </v-col>
@@ -362,11 +362,11 @@ export default {
         this.countStyckvisOne--;
       }
     },
-    moveToIndividual(id, test) {
-      console.log(id);
+    moveToIndividual(slug, test) {
+      console.log(slug);
       this.$router.push({
         name: "TestStartsidan",
-        params: { id: id, test },
+        params: { slug: slug, test },
       });
     },
     backToTheTop() {

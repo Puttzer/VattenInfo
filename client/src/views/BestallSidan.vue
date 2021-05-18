@@ -66,7 +66,7 @@
             <div class="d-flex flex-row justify-center">
               <v-btn
                 class="btnColor justify-center white--text ma-1"
-                @click="moveToIndividual(test._id, test)"
+                @click="moveToIndividual(test.slug, test)"
                 >Läs mer</v-btn
               >
               <v-btn
@@ -95,6 +95,7 @@ export default {
       "Ackrediterade analyser",
       "Enskilt dricksvatten",
       "avloppsvatten och badvatten",
+      "Samfällighet & Verksamhet",
     ],
     type2: [
       "",
@@ -157,11 +158,11 @@ export default {
         this.countStyckvisOne--;
       }
     },
-    moveToIndividual(id, test) {
-      console.log(id);
+    moveToIndividual(slug, test) {
+      console.log(slug);
       this.$router.push({
         name: "TestStartsidan",
-        params: { id: id, test },
+        params: { slug: slug, test },
       });
     },
     displayTests() {
