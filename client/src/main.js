@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
+
 import router from './router'
 import store from './store'
 
+import Vuelidate from 'vuelidate'
 import vuetify from './plugins/vuetify';
 import VueToastify from "vue-toastify";
 const toastifySettings = {
@@ -17,7 +19,10 @@ const toastifySettings = {
     defaultTitle: 'VattenInfo'
 }
 
+
+
 Vue.use(VueToastify, toastifySettings);
+Vue.use(Vuelidate)
 
 
 Vue.config.productionTip = false
@@ -26,5 +31,7 @@ new Vue({
     router,
     store,
     vuetify,
+
+	
     render: h => h(App)
 }).$mount('#app')
