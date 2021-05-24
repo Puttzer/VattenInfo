@@ -12,7 +12,7 @@ const isCompanyLoggedIn = async (req, res, next) => {
     verifyToken(token)
         .then(async ({ _id }) => {
             const dbUser = await Company.findOne({ _id: _id }).exec()
-            console.log(dbUser)
+            // console.log(dbUser)
             if (!dbUser) {
                 res.status(403)
                 next(new Error('Bad request'))
