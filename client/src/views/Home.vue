@@ -33,7 +33,7 @@
         </div>
       </v-col>
 
-      <v-col cols="12" md="3" class="d-flex flex-row align-start">
+      <v-col cols="12" md="3" class="d-flex flex-row align-start fixed">
         <div class="fixed">
           <v-img
             class="image"
@@ -179,7 +179,7 @@ export default {
   top: 148px;
 }
 .image {
-  position: relative;
+  position: absolute;
   right: 0;
   top: 148px;
 }

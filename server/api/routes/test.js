@@ -152,4 +152,9 @@ module.exports = function (router) {
                     error: err
                 }))
     })
+
+	router.post('/test/testanswer', AuthMiddleware.isAdminLoggedIn,(res,req)=>{
+		
+		
+	})
 }

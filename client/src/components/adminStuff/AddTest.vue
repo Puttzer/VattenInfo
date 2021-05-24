@@ -109,6 +109,12 @@
 </template>
 
 <script>
+import {
+  required,
+  numeric,
+  minLength,
+  maxLength,
+} from "vuelidate/lib/validators";
 export default {
   data() {
     return {
@@ -135,6 +141,29 @@ export default {
       image: "",
       id: "",
       shortname: "",
+
+      validations: {
+        testname: {
+          required,
+          Length: minLength(2),
+        },
+        category: {
+          required,
+          Length: minLength(2),
+        },
+        description: {
+          required,
+          Length: minLength(10),
+        },
+        price: {
+          numeric,
+          required,
+        },
+        shortname: {
+          Length: maxLength(2),
+          required,
+        },
+      },
     };
   },
   props: ["showAddtest", "addtestButton", "addsaveButton", "test"],
