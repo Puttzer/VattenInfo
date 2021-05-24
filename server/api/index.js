@@ -6,5 +6,6 @@ require('./routes/company')(router)
 require('./routes/test')(router)
 require('./routes/admin')(router)
 require('./routes/order')(router)
+require('./routes/stripe')(router)
 
 module.exports = router
