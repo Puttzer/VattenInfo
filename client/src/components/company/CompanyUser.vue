@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card flat>
+    <v-card flat class="mt-8 d-flex flex-column justify-center">
       <v-row class="bgColor">
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <v-row>
@@ -11,7 +11,7 @@
         </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <v-row>
-            <div class="text--black font-weight-bold ml-2">order date</div>
+            <div class="text--black font-weight-bold ml-2">Test name</div>
             <v-spacer></v-spacer>
             <span>|</span>
           </v-row>
@@ -26,44 +26,56 @@
         </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <div class="text--black font-weight-bold ml-2">No Of Tests</div>
+          <v-spacer></v-spacer>
+          <span>|</span>
         </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <div class="text--black font-weight-bold ml-2">Status</div>
         </v-col>
       </v-row>
+      <v-divider></v-divider>
       <v-row
-        class="bgColor1"
-        v-for="order in this.order.individualOrders"
-        :key="order._id"
+        class="bgColor1 d-flex flex-column"
+        v-for="(order, index) in this.filterOrderDetails"
+        :key="index"
       >
-        <v-col cols="12" md="2" class="text--black">
-          <v-row class="ml-1" justify="start">
-            <div>{{ order.orderNumber }}</div>
-          </v-row>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="12" md="2" class="text--black">
-          <div>{{ order.createdAt.split("T")[0] }}</div>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="12" md="2" class="text--black">
-          <div>{{ order.totalAmount }}</div>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="12" md="2" class="text--black">
-          <div class="text--black font-weight-bold ml-2">
-            {{ order.tests.length }}
-          </div>
-        </v-col>
-        <v-divider vertical></v-divider>
-        <v-col cols="12" md="2" class="text--black d-flex">
-          <div :class="`order ${order.status} colorstatus`" class="ma-4">
-            pending
-          </div>
-          <v-btn small class="btnColor ma-4">detail information</v-btn>
-        </v-col>
         <v-row>
-          <v-divider></v-divider>
+          <v-col cols="12" md="2" class="text--black">
+            <v-row class="ml-1" justify="start">
+              <div>{{ order.orderNr }}</div>
+            </v-row>
+          </v-col>
+          <v-divider vertical></v-divider>
+          <v-col cols="12" md="2" class="text--black">
+            <div>{{ order.orderProduct.testname }}</div>
+          </v-col>
+          <v-divider vertical></v-divider>
+          <v-col cols="12" md="2" class="text--black">
+            <div>{{ order.orderProduct.price }}</div>
+          </v-col>
+          <v-divider vertical></v-divider>
+          <v-col cols="12" md="2" class="text--black">
+            <div class="text--black font-weight-bold ml-2">
+              {{ order.orderProduct.quantity }}
+            </div>
+          </v-col>
+          <v-divider vertical></v-divider>
+          <v-col cols="12" md="2" class="text--black d-flex">
+            <div :class="`order ${order.status} colorstatus`" class="ma-4">
+              pending
+            </div>
+            <v-btn
+              small
+              class="btnColor ma-4"
+              @click="moveToIndividualOrderPage(order.orderProduct._id)"
+              >detail information</v-btn
+            >
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-divider></v-divider>
+          </v-col>
         </v-row>
       </v-row>
     </v-card>
@@ -73,7 +85,7 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "PrivateUser",
+  name: "CompanyUser",
   data() {
     return {
       orders: [
@@ -123,10 +135,28 @@ export default {
   },
   computed: {
     ...mapState(["company", "order"]),
+    filterOrderNumber() {
+      return this.order.individualOrders.map((order) => order.orderNumber);
+    },
+    filterOrderDetails() {
+      let orderList = [];
+      this.filterOrderNumber.forEach((test) => {
+        test.forEach((individualTest) => {
+          orderList.push(individualTest);
+        });
+      });
+
+      return orderList;
+    },
   },
   async mounted() {
     // const companyId = this.company.companyUser._id;
     // await this.$store.dispatch("order/getCompanyOrders", companyId);
+  },
+  methods: {
+    moveToIndividualOrderPage(id) {
+      console.log(id);
+    },
   },
 };
 </script>

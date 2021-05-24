@@ -386,6 +386,7 @@ export default {
 .packet-height {
   min-height: 400px;
 }
+
 /* p {
   margin: 0;
   padding: 0;
