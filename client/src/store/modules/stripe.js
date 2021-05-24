@@ -1,4 +1,5 @@
-import Stripe from 'stripe'
+// import Vue from 'vue'
+// import Stripe from 'stripe'
 export default {
     state: {
         publishableKey: ''
@@ -14,7 +15,8 @@ export default {
             const response = await fetch('http://localhost:4000/api/stripe/config', {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
                 }
             });
 
@@ -23,9 +25,11 @@ export default {
             commit('UPDATE_STRIPE_PUBLISHABLEKEY', data.stripe_config.publishableKey, { module: 'stripe' });
         },
 
-        async stripeCheckOut({ commit }, { payload, publishableKey }) {
+        async stripeCheckOut(_, { payload, publishableKey }) {
             console.log('inside actions', { payload, publishableKey })
-            const stripe = Stripe(`${this.publishableKey}`)
+
+            const stripe = window.Stripe(`${publishableKey}`)
+            // console.log(stripe.redirectToCheckout())
             // const response = await fetch('http://localhost:4000/api/create-checkout-session', {
             //     method: 'POST',
             //     body: JSON.stringify(payload),
@@ -56,9 +60,7 @@ export default {
                     return data.id;
                 })
                 .then(function (id) {
-                    const data = '';
-                    commit('UPDATE_STRIPE_PUBLISHABLEKEY', data, { module: 'stripe' })
-                    return stripe.redirectToCheckout({ sessionId: id });
+                    return stripe.redirectToCheckout({ sessionId: id })
                 })
                 .then(function (result) {
                     // If redirectToCheckout fails due to a browser or network
