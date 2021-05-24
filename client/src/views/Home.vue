@@ -46,7 +46,7 @@
           <path
             id="curve"
             fill="transparent"
-            d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97"
+            d="M73.2,148.6c4-6.1,65.5-96.8,178.6-30c111.3,1.2,170.8,90.3,175.1,97"
           />
           <text width="500">
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
@@ -187,7 +187,7 @@ svg {
   transform: rotate(319deg);
   height: 900px;
   position: absolute;
-  top: -131px;
+  top: -236px;
   right: -398px;
 }
 .container {
