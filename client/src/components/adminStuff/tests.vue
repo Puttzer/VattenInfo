@@ -3,10 +3,10 @@
     <v-row class="d-flex flex-row">
       <h1>Tester</h1>
       <v-spacer></v-spacer>
-      <v-btn class="mr-12 mt-6" @click="loadTests">
+      <!-- <v-btn class="mr-12 mt-6" @click="loadTests">
         Load tests
         <br />Test
-      </v-btn>
+      </v-btn> -->
       <v-btn class="mr-12 mt-6" @click="showPopup">
         Lägg till
         <br />Test
@@ -99,6 +99,7 @@ export default {
         category: "",
         id: "",
         shortname: "",
+        slug: "",
       },
     };
   },
@@ -160,7 +161,7 @@ export default {
       this.test.id = test._id;
       this.test.image = test.image;
       this.test.shortname = test.shortname;
-
+      this.test.slug = test.slug;
       this.test.category = test.category;
     },
   },

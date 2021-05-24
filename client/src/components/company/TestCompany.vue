@@ -74,7 +74,6 @@
             ></v-text-field>
           </v-col>
         </v-row>
-
         <v-row class="pa-0 ma-0" justify="center">
           <v-col class="pa-0 ma-0" cols="12" md="12">
             <div class="valid-error mb-5 pl-3"></div>
@@ -110,8 +109,7 @@
             ></v-text-field>
           </v-col>
         </v-row>
-
-        <v-row>
+       <v-row>
           <div class="valid-error mb-5 pl-3"></div>
           <v-col cols="12" md="6">
             <div class="valid-error mb-5 pl-3">
@@ -341,17 +339,17 @@ export default {
   methods: {
     async addCompanyUser() {
       let companyRegInfo = {
-        companyname: this.company.name,
-        contactPerson: this.company.contactPerson,
-        contactEmail: this.company.contactEmail,
-        password: this.company.password,
-        phonenumber: this.company.contactPhone,
-        altPhone: this.company.altPhone,
-        streetname: this.company.adress,
-        city: this.company.city,
-        postcode: this.company.postnummer,
-        houseNumber: this.company.houseNumber,
-        organizationnumber: this.company.organisationsnummer,
+        companyname: this.name,
+        contactPerson: this.contactPerson,
+        contactEmail: this.contactEmail,
+        password: this.password,
+        phonenumber: this.contactPhone,
+        altPhone: this.altPhone,
+        streetname: this.adress,
+        city: this.city,
+        postcode: this.postnummer,
+        houseNumber: this.houseNumber,
+        organizationnumber: this.organisationsnummer,
       };
       console.log(companyRegInfo);
       await this.$store.dispatch("company/registerCompanyUser", companyRegInfo);

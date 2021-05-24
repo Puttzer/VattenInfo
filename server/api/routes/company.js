@@ -17,13 +17,13 @@ module.exports = function (router) {
 
     router.post('/company/login', async function (req, res, next) {
         const reqCompany = {
-            email: req.body.email,
+            email: req.body.contactEmail,
             password: req.body.password
         }
         console.log(reqCompany)
 
         // check whether there is a user with email
-        const findCompany = await Company.findOne({ email: reqCompany.email }).exec()
+        const findCompany = await Company.findOne({ contactEmail: reqCompany.email }).exec()
         console.log(findCompany)
 
         if (!findCompany) {
@@ -34,7 +34,7 @@ module.exports = function (router) {
             return
         }
         //user exists and check the password is matched
-        if (findCompany.email = reqCompany.email) {
+        if (findCompany.contactEmail = reqCompany.email) {
 
             const isMatched = await bcrypt.verifyPassword(reqCompany.password, findCompany.password)
             console.log(isMatched)
@@ -42,7 +42,7 @@ module.exports = function (router) {
             //payload for jwt token
             const payload = {
                 _id: findCompany._id,
-                email: findCompany.email
+                contactEmail: findCompany.contactEmail
             }
             if (isMatched) {
                 // generate jwt token
@@ -50,7 +50,7 @@ module.exports = function (router) {
                 res.status(200)
                 res.json({
                     message: `Company is logged in as ${reqCompany.email}`,
-                    email: reqCompany.email,
+                    contactEmail: reqCompany.email,
                     _id: findCompany._id,
                     Token: token,
                     companyUserIsloggedIn: true
@@ -75,7 +75,7 @@ module.exports = function (router) {
     router.post('/company/register', async (req, res) => {
         console.log()
         const findCompany = await Company.findOne({
-            email: req.body.email
+            email: req.body.contactEmail
         }).exec()
         console.log(findCompany)
 
@@ -99,13 +99,13 @@ module.exports = function (router) {
             company.password = hashedpassword
             company.organizationnumber = organizationnumber
             company.phonenumber = phonenumber,
-            company.altPhone = altPhone
+                company.altPhone = altPhone
             company.city = city
             company.houseNumber = houseNumber
             company.streetname = streetname
             company.postcode = postcode
 
-			
+
 
 
 
@@ -156,7 +156,7 @@ module.exports = function (router) {
         res.json({
             message: 'token is valid',
             id: req.id,
-            email: req.email,
+            contactEmail: req.email,
             companyLoggedin: true,
         })
     })
@@ -174,10 +174,10 @@ module.exports = function (router) {
         } else {
             res.status(200).json({
                 company: {
-                    email: getCompany.email,
+                    email: getCompany.contactEmail,
                     companyname: getCompany.companyname,
                     _id: getCompany._id,
-                    fullname: getCompany.fullname,
+                    fullname: getCompany.contactPerson,
                     organizationnumber: getCompany.organizationnumber,
                     phonenumber: getCompany.phonenumber
                 },

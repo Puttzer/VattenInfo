@@ -59,7 +59,6 @@
               ></v-text-field>
             </v-col>
           </v-row>
-
           <v-row class="pa-0 ma-0">
             <v-col class="pa-0 ma-0" cols="12" md="6">
 
@@ -75,7 +74,6 @@
                 class="mt-n3 mr-3"
                 placeholder="Password"
                 v-model.trim="$v.password.$model"
-
                 label="Password"
                 outlined
                 append-icon="lock"
@@ -106,7 +104,6 @@
               ></v-text-field>
             </v-col>
           </v-row>
-
           <v-row class="pa-0 ma-0" justify="center">
             <v-col class="pa-0 ma-0" cols="12" md="6" sm="12">
               <div class="mb-5 pl-3">

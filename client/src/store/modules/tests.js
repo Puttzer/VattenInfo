@@ -120,11 +120,12 @@ export default {
         },
         DELETE_TEST(state, value) {
             console.log(state)
+            const findTest = state.tests.find(test => test._id === value)
             const remainingTests = state.tests.filter((test) => {
                 test._id != value
-                Vue.$vToastify.success(`Succesfully ${test.testname} is Deleted`)
             })
             state.tests = remainingTests
+            Vue.$vToastify.success(`Succesfully ${findTest.testname} is Deleted`)
             // console.log(state.tests)
 
         },

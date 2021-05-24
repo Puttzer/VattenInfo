@@ -36,7 +36,7 @@
             <v-btn
               class="btnColor white--text ma-1"
               medium
-              @click="moveToIndividual(test._id, test)"
+              @click="moveToIndividual(test.slug, test)"
               >Läs mer</v-btn
             >
             <v-btn
@@ -64,9 +64,29 @@ export default {
     filterSamfalligheterTests() {
       return this.tests.tests.filter(
         (test) =>
-          test.testtype === "Styck Prov" &&
+          test.testtype === "Packet pris" &&
           test.category === "Samfällighet & Verksamhet"
       );
+    },
+  },
+  methods: {
+    moveToIndividual(slug, test) {
+      console.log(slug);
+      this.$router.push({
+        name: "TestStartsidan",
+        params: { slug: slug, test },
+      });
+      const newTestInfo = this.tests.tests.filter((test) => test.slug === slug);
+      console.log(newTestInfo);
+      this.$store.commit("tests/UPDATE_TEST", newTestInfo);
+    },
+    increaseThecounterValue(id) {
+      //   const findTest = this.tests.tests.filter(
+      //     (test) => test.slug === this.$route.params.slug
+      //   );
+      //   const id = findTest[0]._id;
+      console.log(id);
+      this.$store.commit("tests/INCREASE_COUNT", id);
     },
   },
 };

@@ -16,7 +16,7 @@
               Användarnamn
             </p>
             <p id="userName" name="userName" class="ml-2">
-              {{ user.firstname }} {{ user.lastname }}
+              {{ user.name }}
             </p>
           </v-col>
           <v-col cols="3">

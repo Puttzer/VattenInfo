@@ -101,11 +101,26 @@ module.exports = function (router) {
     router.get('/admin/users', AuthMiddleware.isAdminLoggedIn, async function (req, res) {
 
         await User.find({}).exec()
-            .then(docs =>
+            .then(async (docs) => {
+                let listOfUsers = []
+                await docs.map((user) => {
+                    let newUser = {}
+
+                    newUser.name = user.name,
+                        newUser.email = user.email,
+                        newUser._id = user._id
+                    newUser.phonenumber = user.phonenumber
+                    newUser.isActive = user.isActive
+                    newUser.userRole = user.userRole
+
+                    return listOfUsers.push(newUser)
+                })
+                console.log(listOfUsers)
                 res.status(200).json({
                     message: 'List of all private users',
-                    users: docs
-                }))
+                    users: listOfUsers
+                })
+            })
             .catch(err => res.status(500)
                 .json({
                     message: 'Error finding user',
