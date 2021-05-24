@@ -3,7 +3,8 @@
     <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
-        <addRemove />
+
+        {{ this.stripe.publishableKey }}
       </v-col>
     </v-row>
 
@@ -95,6 +96,13 @@
       class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
     >
       <div class="">Summa : {{ this.totalPrice }} kr</div>
+
+      <div
+        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="paymentGateway()"
+      >
+        Till betalning
+      </div>
 
       <div
         class="payButton d-flex flex-row justify-center align-center btnColor white--text"
@@ -214,6 +222,23 @@ export default {
       } else {
         return;
       }
+    },
+    paymentGateway() {
+      const publishableKey = this.stripe.publishableKey;
+      const orderTests = this.tests.selectedTests;
+      const totalAmount = this.tests.totalAmount;
+      const id = this.user.user._id || this.company.companyUser._id;
+      const payload = {
+        orderTests: orderTests,
+        totalAmount: totalAmount,
+        id: id,
+      };
+
+      console.log("payment gateway move to actions");
+      this.$store.dispatch("stripe/stripeCheckOut", {
+        payload,
+        publishableKey,
+      });
     },
   },
 };
