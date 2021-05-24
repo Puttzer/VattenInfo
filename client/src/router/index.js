@@ -31,16 +31,25 @@ import PrivateCustomerOrders from '../components/adminStuff/PrivateCustomerOrder
 // import AllInfo from '../components/adminStuff/AllInfo.vue'
 import ScrollHome from "../views/ScrollHome.vue";
 import ScrollAnalys from "../views/ScrollAnalys.vue";
+
+//company and user routes
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
 import ForetagOrders from '../components/adminStuff/ForetagOrders.vue'
 import CompanyLoginHomePage from '../components/company/CompanyLoginHomePage.vue'
 import CompanyOrdersPage from '../components/company/CompanyOrdersPage.vue'
+
+//bestallning
 import KassaSida from '../views/KassaSida.vue'
+import PaymentError from '../views/PaymentError.vue'
+import PaymentSucess from '../views/PaymentSucess.vue'
+
+// om lab och labbTjanster
 import LabbTjanster from '../views/LabbTjanster.vue'
 import VattenGuide from '../views/VattenGuide.vue'
+
+// snabb guide analyser
 import answer1 from '../components/guiden/answer1'
 import answer1a from '../components/guiden/answer1a'
-
 import answer2 from '../components/guiden/answer2'
 import answer3 from '../components/guiden/answer3'
 import answer4 from '../components/guiden/answer4'
@@ -189,6 +198,16 @@ const routes = [
         path: '/kassa',
         name: 'KassaSida',
         component: KassaSida
+    },
+    {
+        path: '/paymentSucess',
+        name: 'PaymentSucess',
+        component: PaymentSucess
+    },
+    {
+        path: '/paymentCancel',
+        name: 'PaymentError',
+        component: PaymentError
     },
     {
         path: '/blanketter',
