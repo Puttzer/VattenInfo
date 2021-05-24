@@ -3,8 +3,6 @@
     <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="6">
         <h1>Varukorg</h1>
-
-        {{ this.stripe.publishableKey }}
       </v-col>
     </v-row>
 
@@ -142,9 +140,9 @@ export default {
       return totalAmount;
     },
   },
-  async created() {
-    await this.$store.dispatch("stripe/getStripePublishableKey");
-  },
+  //   async created() {
+  //     await this.$store.dispatch("stripe/getStripePublishableKey");
+  //   },
   components: {},
   methods: {
     async generateOrder() {

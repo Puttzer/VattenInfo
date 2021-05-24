@@ -1,6 +1,6 @@
 require('dotenv').config()
 const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
-const YOUR_DOMAIN = 'http://localhost:4000';
+const YOUR_DOMAIN = 'http://localhost:8080';
 
 const stripe_keys = {
     secret_key: process.env.STRIPE_SECRET_KEY,
@@ -32,7 +32,7 @@ module.exports = function (router) {
                             name: testsList[0].testname,
                             // images: [`${YOUR_DOMAIN}/${testsList[0].image}`],
                         },
-                        unit_amount: testsList[0].price,
+                        unit_amount: (testsList[0].price * 100),
                     },
                     quantity: testsList[0].quantity,
                 },

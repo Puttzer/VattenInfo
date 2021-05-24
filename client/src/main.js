@@ -2,9 +2,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 
-
+import Stripe from 'stripe'
 import router from './router'
 import store from './store'
+
 
 
 import Vuelidate from 'vuelidate'
@@ -35,7 +36,6 @@ new Vue({
     router,
     store,
     vuetify,
-
-
+    Stripe,
     render: h => h(App)
 }).$mount('#app')
