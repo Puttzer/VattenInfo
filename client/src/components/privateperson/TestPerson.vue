@@ -29,7 +29,7 @@
                 dense
                 class="mt-n3 sizeLabel"
                 v-model.trim="$v.name.$model"
-				@input="setName($event.target.value)"
+                @input="setName($event.target.value)"
                 append-icon="person"
                 label="Namn"
                 outlined
@@ -62,7 +62,6 @@
 
           <v-row class="pa-0 ma-0">
             <v-col class="pa-0 ma-0" cols="12" md="6">
-              <div :class="{ 'valid-error': $v.password.$error }"></div>
 
               <!-- <p v-if="!$v.passsword.required" class="error">obligatoriskt</p> -->
               <div class="">
@@ -76,7 +75,7 @@
                 class="mt-n3 mr-3"
                 placeholder="Password"
                 v-model.trim="$v.password.$model"
-                type="password"
+
                 label="Password"
                 outlined
                 append-icon="lock"
@@ -99,7 +98,7 @@
                 color="#051f38"
                 class="mt-n3 ml-3"
                 placeholder="repeat password"
-                v-model.trim="$v.repeatpassword.$model"
+                v-model.trim="$v.repeatPassword.$model"
                 type="password"
                 label="Repeat Password"
                 outlined
@@ -135,7 +134,7 @@
             </v-col>
 
             <v-col class="pa-0 ma-0" cols="12" md="6" sm="12">
-              <p  v-if="!$v.phone.numeric">has to be didges</p>
+              <p v-if="!$v.phone.numeric">has to be didges</p>
               <p v-if="!$v.phone.minLength">not enough didgets</p>
               <v-text-field
                 dense
@@ -198,7 +197,6 @@
               ></v-text-field>
             </v-col>
             <v-col class="bajs pa-0 ma-0" cols="12" md="3" sm="6">
-
               <p v-if="!$v.postnr.required">obligatoriskt</p>
               <p v-if="!$v.postnr.numeric">maste vara siffro§r</p>
               <v-text-field
@@ -235,7 +233,7 @@ import {
   //   alphaNum,
   numeric,
   minLength,
-//   maxLength,
+  //   maxLength,
 } from "vuelidate/lib/validators";
 
 export default {
@@ -267,7 +265,7 @@ export default {
       required,
       minLength: minLength(5),
     },
-    repeatpassword: {
+    repeatPassword: {
       sameAsPassword: sameAs("password"),
     },
     adress: {
@@ -314,10 +312,10 @@ export default {
       await this.$store.dispatch("user/createNewUser", regInfo);
     },
   },
-//    setName(value) {
-//       this.name = value
-//       this.$v.name.$touch()
-//     },
+  //    setName(value) {
+  //       this.name = value
+  //       this.$v.name.$touch()
+  //     },
 };
 </script>
 

@@ -36,6 +36,7 @@
           <v-col class="pa-0 ma-0" cols="12" md="12">
             <div class="valid-error mb-5 pl-3">
               <p v-if="!$v.contactPerson.required">ob</p>
+              <p v-if="!$v.contactPerson.minLength"></p>
             </div>
             <v-text-field
               dense
@@ -55,7 +56,9 @@
         <v-row class="pa-0 ma-0">
           <v-col class="pa-0 ma-0" cols="12" md="12">
             <div class="valid-error mb-5 pl-3">
+              <p v-if="!$v.contactEmail.email">ob</p>
               <p v-if="!$v.contactEmail.required">ob</p>
+              <p v-if="!$v.contactEmail.minLength">ob</p>
             </div>
             <v-text-field
               dense
@@ -81,7 +84,7 @@
               type="password"
               color="#051f38"
               placeholder="password"
-              v-model="password"
+              v-model.trim="$v.password.$model"
               label="password"
               outlined
               class=""
@@ -99,6 +102,7 @@
               type="password"
               color="#051f38"
               class="mt-n4"
+              v-model.trim="$v.repeatPassword.$model"
               placeholder="Repeat password"
               label="Repeat password"
               outlined
@@ -111,7 +115,8 @@
           <div class="valid-error mb-5 pl-3"></div>
           <v-col cols="12" md="6">
             <div class="valid-error mb-5 pl-3">
-              <p v-if="!$v.organisationsnummer.required">ob</p>
+              <p v-if="!$v.contactPhone.required">obligatorisk</p>
+              <p v-if="!$v.contactPhone.numeric">1kan vara bara siffor</p>
             </div>
             <v-text-field
               dense
@@ -120,7 +125,7 @@
               color="#051f38"
               class="mt-n4"
               placeholder="088888888"
-              v-model.trim="$v.phone.$model"
+              v-model.trim="$v.contactPhone.$model"
               label="Telefon"
               outlined
               append-icon="phone"
@@ -129,6 +134,7 @@
           <v-col cols="12" md="6">
             <div class="valid-error mb-5 pl-3">
               <p v-if="!$v.altPhone.required">ob</p>
+              <p v-if="!$v.organisationsnummer.numeric">kan vara bara siffor</p>
             </div>
             <v-text-field
               dense
@@ -206,8 +212,7 @@
           <v-col cols="6" md="6	">
             <div class="valid-error mb-5 pl-3">
               <p v-if="!$v.postnummer.required">ob</p>
-
-			</div>
+            </div>
             <v-text-field
               dense
               large
@@ -299,7 +304,7 @@ export default {
       required,
       minLength: minLength(9),
     },
-    repeatpassword: {
+    repeatPassword: {
       sameAsPassword: sameAs("password"),
     },
     adress: {
@@ -317,7 +322,7 @@ export default {
     city: {
       required,
     },
-    phone: {
+    contactPhone: {
       required,
       numeric,
     },
@@ -328,6 +333,8 @@ export default {
     organisationsnummer: {
       required,
       numeric,
+      minLength: minLength(10),
+      maxLength: maxLength(10),
     },
   },
 
