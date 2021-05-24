@@ -159,7 +159,6 @@ export default {
         },
         OPEN_LOGIN_COMP(state) {
             state.showLoginModel = true;
-
         },
         CLOSE_WINDOW(state) {
             state.showLoginModel = false;

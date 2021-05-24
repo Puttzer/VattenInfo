@@ -7,10 +7,13 @@
       </v-col>
     </v-row>
 
-    <v-row class="d-flex" v-if="this.displayErrorMessage === true">
+    <v-row class="d-flex">
       <v-col class="d-flex justify-center ml" cols="12">
         <h3 v-if="this.displayErrorMessage === true" class="red--text">
           User must login to procceed further!!!
+        </h3>
+        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
+          Cart must not be empty to procceed further!!!
         </h3>
       </v-col>
     </v-row>
@@ -23,6 +26,7 @@
     >
       <v-col
         class="d-flex container justify-center grey lighten-1 pa-0 mx-1 my-1"
+        cols="12"
       >
         <v-list
           class="d-flex justify-space-around pa-0 ma-0 flex-row"
@@ -55,8 +59,23 @@
                 {{ selectedTest.description }}
               </p>
             </div>
+            <div class="d-flex flex-row align-center justify-center">
+              <v-icon
+                medium
+                color="blue"
+                @click="decreaseQuantity(selectedTest._id)"
+                >remove_circle</v-icon
+              >
+              <p class="mx-2">{{ selectedTest.quantity }}</p>
+
+              <v-icon
+                medium
+                color="blue"
+                @click="increaseQuantity(selectedTest._id)"
+                >add_circle</v-icon
+              >
+            </div>
           </div>
-          <add-remove />
 
           <v-icon
             @click="deleteTestInCart(selectedTest._id)"
@@ -75,7 +94,7 @@
       cols="12"
       class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
     >
-      <div class="">Summa : {{ this.tests.totalAmount }} kr</div>
+      <div class="">Summa : {{ this.totalPrice }} kr</div>
 
       <div
         class="payButton d-flex flex-row justify-center align-center btnColor white--text"
@@ -93,21 +112,32 @@
 <script>
 import Vue from "vue";
 import { mapState } from "vuex";
-import addRemove from "../components/cart/AddRemoveCounter";
 
 export default {
   name: "KassaSidan",
   data() {
     return {
       displayErrorMessage: false,
+      displayErrorMessageEmptycart: false,
     };
   },
   computed: {
-    ...mapState(["tests", "order", "user", "company"]),
+    ...mapState(["tests", "order", "user", "company", "stripe"]),
+    totalPrice() {
+      let totalAmount = 0;
+      this.tests.selectedTests.forEach((test) => {
+        console.log(test.price);
+        totalAmount = totalAmount + parseInt(test.price) * test.quantity;
+      });
+      console.log(totalAmount);
+      this.$store.commit("tests/TOTAL_AMOUNT", totalAmount);
+      return totalAmount;
+    },
   },
-  components: {
-    addRemove,
+  async created() {
+    await this.$store.dispatch("stripe/getStripePublishableKey");
   },
+  components: {},
   methods: {
     async generateOrder() {
       if (this.user.userIsloggedIn) {
@@ -140,15 +170,41 @@ export default {
         await this.$store.dispatch("order/generateCompanyOrder", payload);
         this.$store.commit("tests/DELETE_SELECTED_TESTS");
         this.$router.push("/ordernumber");
+      } else if (this.tests.selectedTests.length < 1) {
+        this.displayErrorMessageEmptycart = true;
+        Vue.$vToastify.error(
+          "cart is empty must select a product to procced further"
+        );
+        return;
       } else {
         this.displayErrorMessage = true;
         Vue.$vToastify.error("User must able to login to procced further");
+        this.$store.commit("user/OPEN_LOGIN_COMP");
         return;
       }
       //   if (this.order.orderGenerated) {
       //     console.log("move to mutations");
       //   }
       //   setTimeout(function () {}, 2000);
+    },
+    increaseQuantity(id) {
+      this.$store.commit("tests/INCREASE_QUANTITY", id);
+    },
+    decreaseQuantity(id) {
+      this.$store.commit("tests/DECREASE_QUANTITY", id);
+      console.log(this.totalQuantity(id));
+      const testInformation = this.totalQuantity(id);
+      if (testInformation.quantity < 1) {
+        this.$store.commit("tests/DELETE_TEST_CART", id);
+      }
+      if (this.tests.selectedTests.length < 1) {
+        this.$store.commit("tests/CLOSE_CART_COMPONENT");
+        this.$router.push("/bestallanalys");
+      }
+    },
+    totalQuantity(id) {
+      const testInfo = this.tests.selectedTests.find((test) => test._id === id);
+      return testInfo;
     },
     deleteTestInCart(id) {
       console.log(id, " move to mutaions");
