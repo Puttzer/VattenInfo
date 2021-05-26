@@ -1,8 +1,8 @@
 <template>
-  <div id="wholething" class="d-flex flex-column nav-container">
+  <div id="wholething" class="d-flex flex-column nav-container white">
     <v-card class="d-flex flex-column" flat color="transparent">
       <div class="navbarTop">
-        <v-row class="mb-0">
+        <v-row class="mb-0 white">
           <v-col cols="12" class="d-flex flex-row justify-space-around">
             <v-col cols="2" class="d-flex justify-end">
               <img
@@ -13,8 +13,8 @@
                 class="cursor-pointer"
               />
             </v-col>
-            <v-col cols="7" class="d-flex flex-column">
-              <v-row class="d-flex justify-end">
+            <v-col cols="7" class="d-flex flex-row green">
+              <v-row class="d-flex flex-column justify-center align-center">
                 <v-col cols="10" class="d-flex justify-end">
                   <v-text-field
                     solo
@@ -30,8 +30,7 @@
                     >
                   </v-text-field>
                 </v-col>
-              </v-row>
-              <v-row class="d-flex justify-end ma-0 pa-0 green">
+         
                 <v-col cols="10" class="ma-0 pa-0">
                   <search-drop-down
                     v-if="this.user.showSearchDropDown === true"
@@ -45,6 +44,7 @@
               cols="1"
             >
               <cart-component class="cursor-pointer" />
+
             </v-col>
             <v-col
               cols="2"
@@ -55,7 +55,7 @@
             >
               <div
                 @click="showPopup"
-                class="d-flex flex-row align-center justify-start logga-in cursor-pointer"
+                class="d-flex flex-row align-center justify-start brown mt-6 logga-in cursor-pointer"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">Logga in</p>
@@ -69,14 +69,14 @@
                 class="placement"
               />
             </v-col>
-            <v-col>
+            <v-col class="pink">
               <div
                 v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
-                class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
+                class="d-flex flex-row align-center red justify-align logga-in cursor-pointer dropdownuser brown"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title">
+                <p class=" sub-title">
                   {{ this.user.user.email }}
                 </p>
               </div>
@@ -86,7 +86,7 @@
                 v-else
               >
                 <!-- v-else="this.company.companyUserIsloggedIn === true" -->
-                <v-icon color="blue" large>account_circle</v-icon>
+                <!-- <v-icon color="blue" large>account_circle</v-icon> -->
 
                 <p class="ma-2 sub-title">
                   {{ this.company.companyUser.contactEmail }}
@@ -102,12 +102,6 @@
         v-if="this.tests.showSelectedTests === true"
       />
 
-      <!-- <v-row class="d-flex justify-end mr-4">
-        <v-col cols="2" class="d-flex justify-end"> </v-col>
-      </v-row>
-      <v-row class="d-flex justify-end mr-4">
-        <v-col cols="2" class="d-flex justify-end"> </v-col>
-      </v-row> -->
       <UserDropDown
         v-if="this.user.showUserDropDown === true"
         class="ma-0 pa-0 cursor-pointer user-window"
@@ -120,71 +114,11 @@
 
       <!-- Closing the searchbar -->
       <v-row
-        class="d-flex ml-n15 mt-2 justify-center"
+        class="d-flex ml-n15 mt-2 justify-center pink"
         @click="closeSearchDropDown"
       >
-        <nav>
-          <ul class="blue--text menu">
-            <li
-              @mouseover="showServices = true"
-              @mouseleave="showServices = false"
-            >
-              Analyskatalog
-              <v-icon>keyboard_arrow_down</v-icon>
-
-              <ul v-if="showServices">
-                <li class="text--white" @click="moveToEnskillt">
-                  enskilt dricks vatten
-                </li>
-                <li class="text--white" @click="moveToVerksam">
-                  verksamhet & sämfallighet
-                </li>
-                <li class="text--white" @click="movteToBygglov">
-                  bygglov & tillstand
-                </li>
-                <li class="text--white" @click="moveToAnalysKatalog">
-                  analyskatalog
-                </li>
-                <li class="text--white">
-                  <a
-                    href="https://vatteninfo.com/Radgivning"
-                    class="d-flex flex-row justify-center webpage mt-3"
-                  >
-                    rådgivning
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li @click="moveToBestallanalys">Beställ analys</li>
-            <li
-              @mouseover="showAboutSection = true"
-              @mouseleave="showAboutSection = false"
-              @click="moveToLab()"
-            >
-              Om labbtjänster
-              <v-icon>keyboard_arrow_down</v-icon>
-
-              <ul v-if="showAboutSection">
-                <li class="text--white">om oss</li>
-                <li class="text--white">kontakt</li>
-              </ul>
-            </li>
-            <li
-              @mouseover="showOtherServices = true"
-              @mouseleave="showOtherServices = false"
-            >
-              Övriga tjänster
-              <!-- <v-icon>keyboard_arrow_down</v-icon> -->
-
-              <!-- <ul v-if="showOtherServices">
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-              </ul> -->
-            </li>
-          </ul>
-        </nav>
       </v-row>
+      <NavLinks />
     </v-card>
   </div>
 </template>
@@ -194,6 +128,8 @@ import CartComponent from "../cart/CartComponent.vue";
 import LoginComp from "../../components/login/loginComp.vue";
 import UserDropDown from "../privateperson/UserDropDown.vue";
 import CompanyDropDown from "../company/CompanyDropDown.vue";
+import NavLinks from "./NavLinks";
+
 import ShowShoppingCart from "../../components/cart/ShowShoppingCart.vue";
 import SearchDropDown from "../../components/searchcomponent/SearchDropDown.vue";
 import { mapState } from "vuex";
@@ -201,9 +137,6 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      showServices: false,
-      showAboutSection: false,
-      showOtherServices: false,
       search: "",
     };
   },
@@ -214,6 +147,7 @@ export default {
     ShowShoppingCart,
     CompanyDropDown,
     SearchDropDown,
+    NavLinks,
   },
   computed: {
     ...mapState(["user", "tests", "company"]),
@@ -224,28 +158,10 @@ export default {
     }
   },
   methods: {
-    moveToEnskillt() {
-      this.$router.push("/analyskatalog/enskiltdricksvatten");
-    },
-
-    moveToAnalysKatalog() {
-      this.$router.push("/analyskatalog");
-    },
     moveToHome() {
       this.$router.push("/");
     },
-    moveToBestallanalys() {
-      this.$router.push("/bestallanalys");
-    },
-    moveToVerksam() {
-      this.$router.push("/verksamhet");
-    },
-    moveToLab() {
-      this.$router.push("/omlab");
-    },
-    movteToBygglov() {
-      this.$router.push("/bygglov_tillstand");
-    },
+
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
       //   this.$store.commit("user/SEARCH_DROP_DOWN_CLOSE");
@@ -288,20 +204,22 @@ export default {
   cursor: pointer;
 }
 
-.menu {
+/* .menu {
   display: block;
   padding: 20px;
   text-decoration: none;
   list-style: none;
-}
+} */
 .user-window {
   position: absolute;
   right: 10px;
   top: 60px;
   min-height: 100px;
   min-width: 100px;
-  border-top: 5px solid blue;
-  background-color: rgb(27, 77, 92);
+  /* border-top: 5px solid blue; */
+  /* background-color: rgb(27, 77, 92); */
+  background-color: #c1d4d9;
+
   margin: 0;
   padding: 0;
   z-index: 10;
@@ -330,49 +248,6 @@ export default {
   padding: 0;
   z-index: 10;
 } */
-
-.menu li {
-  display: block;
-  float: left;
-  padding: 20px;
-  position: relative;
-  text-decoration: none;
-  min-width: 180px;
-  list-style: none;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-}
-.menu li ul {
-  position: absolute;
-  left: 0;
-  top: 55px;
-  /* border-top: 5px solid blue; */
-  /* background-color: rgb(21, 57, 68); */
-  background: #fff;
-  margin: 0;
-  padding: 0;
-  z-index: 2;
-}
-
-.menu li ul li {
-  display: inline;
-  margin: 5px;
-  padding: 0;
-  /* color: rgb(54, 85, 104); */
-  font-size: 14px;
-  /* color: white; */
-  font-weight: 600;
-  font-family: "Poppins", sans-serif;
-}
-
-.menu li:hover {
-  /* text-decoration: underline wavy; */
-  /* font-weight: normal; */
-  cursor: pointer;
-  background: rgb(221, 228, 230);
-}
 
 /* .logga{
 	position: absolute;

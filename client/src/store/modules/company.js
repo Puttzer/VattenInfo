@@ -1,6 +1,7 @@
 import Vue from 'vue'
 export default {
     state: {
+
         statusMessage: "",
         companys: [],
         errorMessage: '',
@@ -129,7 +130,11 @@ export default {
             // commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
             // commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
             commit('COMPANY_INFO', data.company, { module: 'user' })
-        }
+        },
+
+		showOnlyOneDropDown(){
+			console.log('hey ho!');
+		}
     },
     mutations: {
         UPDATE_COMPANYS(state, value) {

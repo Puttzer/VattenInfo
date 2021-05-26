@@ -1,11 +1,25 @@
 <template>
+  <!-- <div class="d-flex flex-column pa-2">
+    <div class="d-flex justify-center ma-2">
+      <v-icon medium class="ml-2" color="white">account_box</v-icon>
+      <p class="pa-0 ma-0">Mina Sidor</p>
+    </div>
+    <div class="d-flex flex-row justify-center align-center ma-2">
+      <v-icon medium class="ml-2" color="white">logout</v-icon>
+      <p class="pa-0 ma-0">Mina Beställningar</p>
+    </div>
+    <div class="d-flex justify-center ma-2">
+      <v-icon medium class="ml-2" color="white">logout</v-icon>
+      <p class="pa-0 ma-0">Logga Ut</p>
+    </div>
+  </div> -->
   <v-main class="someOtherName d-flex justify-center">
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
       @click.prevent="moveToCompanyPage"
     >
       <v-icon medium class="mx-1" color="white">account_box</v-icon>
-      <p>Mina Sidor</p>
+      <p>Mina  Sidor</p>
     </v-row>
     <v-divider></v-divider>
     <v-row
@@ -41,7 +55,7 @@ export default {
     async moveToCompanyPage() {
       if (this.company.companyUserIsloggedIn) {
         const payload = this.company.companyUser._id;
-        console.log("move to actions");
+        // console.log("move to actions");
         await this.$store.dispatch("company/getCompanyInfo", payload);
         this.$router.push("/login/companyinfopage");
       } else {
@@ -73,9 +87,12 @@ export default {
 <style scoped>
 .someOtherName {
   width: 15vw;
-  height: 18vh;
-  border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  /* height: 18vh; */
+  height: 20%;
+
+  border-top: 5px solid #000;
+  /* background-color: rgb(21, 57, 68); */
+
   /* overflow: visible; */
   color: white;
 }
