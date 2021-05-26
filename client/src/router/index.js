@@ -261,11 +261,11 @@ const routes = [
         name: 'PaymentInfo',
         component: PaymentInfo
     },
-    {
-        path: '/kundstart',
-        name: 'KundStartSidan',
-        component: KundStartSidan
-    },
+    // {
+    //     path: '/kundstart',
+    //     name: 'KundStartSidan',
+    //     component: KundStartSidan
+    // },
     {
         path: '/vattenguide',
         name: 'VattenGuide',
