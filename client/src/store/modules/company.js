@@ -101,9 +101,9 @@ export default {
             // localStorage.setItem('userToken', data.Token)
             // localStorage.setItem('userLoggedIn', data.userLoggedin)
 
-            commit('UPDATE_COMPANY_EMAIL', data.contactEmail, { module: 'company' })
+            commit('UPDATE_COMPANY_EMAIL', data.email, { module: 'company' })
             commit('UPDATE_COMPANY_ID', data.id, { module: 'company' })
-            commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyLoggedin, { module: 'company' })
+            commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyUserIsloggedIn, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
 

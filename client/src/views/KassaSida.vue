@@ -140,9 +140,9 @@ export default {
       return totalAmount;
     },
   },
-  //   async created() {
-  //     await this.$store.dispatch("stripe/getStripePublishableKey");
-  //   },
+  async created() {
+    await this.$store.dispatch("stripe/getStripePublishableKey");
+  },
   components: {},
   methods: {
     async generateOrder() {
@@ -224,10 +224,30 @@ export default {
     paymentGateway() {
       const publishableKey = this.stripe.publishableKey;
       const orderTests = this.tests.selectedTests;
+
+      let reformatedTests = orderTests.map((test) => {
+        const testData = {
+          price_data: {
+            currency: "sek",
+            product_data: {
+              name: "",
+            },
+            unit_amount: "",
+          },
+          quantity: "",
+        };
+        testData.price_data.unit_amount = test.price * 100;
+        testData.quantity = test.quantity;
+        testData.price_data.product_data.name = test.testname;
+        return testData;
+      });
+      console.log(reformatedTests);
       const totalAmount = this.tests.totalAmount;
-      const id = this.user.user._id || this.company.companyUser._id;
+      const id = this.user.userIsloggedIn
+        ? this.user.user._id
+        : this.company.companyUser._id;
       const payload = {
-        orderTests: orderTests,
+        orderTests: reformatedTests,
         totalAmount: totalAmount,
         id: id,
       };

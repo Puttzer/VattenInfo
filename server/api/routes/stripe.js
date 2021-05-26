@@ -20,23 +20,34 @@ module.exports = function (router) {
         console.log(req.body)
 
         const { orderTests } = req.body
+        console.log(orderTests)
 
-        const testsList = req.body.orderTests.map(test => test)
+        // let testsLists =[]
+        const testsList = req.body.orderTests.map(test =>
+            test
+            //     {
+            //     // price = test.price
+            //     // quantity = test.quantity
+            //     // testname = test.name
+            // }
+        )
+
+        // console.log(testsList)
+        // let cart_items = []
+        // const testArrayList = orderTests.map((test) => {
+        //     let data_object = {}
+        //     data_object.price_data.currency = 'sek'
+        //     data_object.price_data.product_data.name = test.testname
+        //     data_object.price_data.unit_amount = test.price
+        //     data_object.quantity = test.quantity
+        //     return data_object
+
+        // })
+        // console.log(testArrayList)
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
-            line_items: [
-                {
-                    price_data: {
-                        currency: 'sek',
-                        product_data: {
-                            name: testsList[0].testname,
-                            // images: [`${YOUR_DOMAIN}/${testsList[0].image}`],
-                        },
-                        unit_amount: (testsList[0].price * 100),
-                    },
-                    quantity: testsList[0].quantity,
-                },
-            ],
+
+            line_items: testsList,
             mode: 'payment',
             success_url: `${YOUR_DOMAIN}/paymentSucess`,
             cancel_url: `${YOUR_DOMAIN}/paymentCancel`,

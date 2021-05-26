@@ -40,9 +40,9 @@ export default {
     Footer,
     // test
   },
-  async created() {
-    await this.$store.dispatch("stripe/getStripePublishableKey");
-  },
+  //   async created() {
+  //     await this.$store.dispatch("stripe/getStripePublishableKey");
+  //   },
   computed: {
     ...mapState(["admin", "test", "user"]),
   },

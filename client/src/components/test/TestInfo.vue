@@ -1,5 +1,8 @@
 <template>
-  <h1>test info component</h1>
+  <div>
+    <p v-if="showErrorMessage === true">{{ errorDisplayMessage }}</p>
+    <p v-if="showSucessMessage === true">{{ sucessDisplayMessage }}</p>
+  </div>
 </template>
 
 <script>

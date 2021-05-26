@@ -39,9 +39,12 @@
                 </v-col>
               </v-row>
             </v-col>
+            <v-col
+              class="mt-n2 d-flex flex-row align-start justify-end"
+              cols="1"
+            >
+              <cart-component class="cursor-pointer" />
 
-            <v-col class="d-flex flex-row justify-center align-center" cols="1">
-              <cart-component />
             </v-col>
             <v-col
               cols="2"

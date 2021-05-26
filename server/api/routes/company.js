@@ -12,6 +12,8 @@ module.exports = function (router) {
         res.json({
             message: 'token is valid',
             email: req.email,
+            companyUserIsloggedIn: true
+
         })
     })
 
