@@ -44,7 +44,7 @@
               class="mt-n2 d-flex flex-row align-start justify-end"
               cols="1"
             >
-              <cart-component />
+              <cart-component class="cursor-pointer" />
             </v-col>
             <v-col
               cols="2"
