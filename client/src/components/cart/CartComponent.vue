@@ -4,7 +4,7 @@
       @click="showCartComponent"
       class="d-flex flex-row justify-center align-center testCase"
     >
-      <v-icon class="ma-1 pa-2" size="42" color="blue">shopping_basket</v-icon>
+      <v-icon class="d-flex flex-row justify-center align-center  ma-1 white pa-2" size="42" color="blue">shopping_basket</v-icon>
       <p
         class="countClass white--text ml-n6 d-flex justify-center align-center blue"
       >
@@ -58,7 +58,7 @@ export default {
   top: 30px;
 }
 
-.testCase {
-  /* position: relative; */
-}
+/* .testCase {
+  position: relative;
+} */
 </style>

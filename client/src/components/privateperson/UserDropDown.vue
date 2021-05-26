@@ -1,7 +1,7 @@
 <template>
   <v-main class="someOtherName d-flex justify-center">
     <v-row
-      class="ml-2 d-flex flex-row justify-space-around align-center"
+      class="ml-2 d-flex flex-row justify-space-around green align-center"
       @click="moveToUserPage"
     >
       <v-icon medium class="mx-1" color="white">account_box</v-icon>
@@ -68,9 +68,9 @@ export default {
 .someOtherName {
   width: 15vw;
   height: 18vh;
-  border-top: 5px solid blue;
-  background-color: rgb(21, 57, 68);
+  border-top: 3px solid blue;
+  background-color: #3e3e3e;
   /* overflow: visible; */
-  color: white;
+  color: red;
 }
 </style>

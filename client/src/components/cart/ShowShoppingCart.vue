@@ -10,7 +10,7 @@
         cols="12"
         class="containercart yellow d-flex justify-space-between flex-row"
       >
-        <p class="title blue-grey--text lighten-3">Varukorg</p>
+        <p class="title blue-grey--text d-flex justify-center lighten-3">Varukorg</p>
         <v-btn @click="closeCartComponent" text class="closeModal">
           <v-icon color="black">close</v-icon>
         </v-btn>
