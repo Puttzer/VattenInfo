@@ -13,7 +13,7 @@
                 class="cursor-pointer"
               />
             </v-col>
-            <v-col cols="7" class="d-flex flex-row green">
+            <v-col cols="7" class="d-flex flex-row ">
               <v-row class="d-flex flex-column justify-center align-center">
                 <v-col cols="10" class="d-flex justify-end">
                   <v-text-field
@@ -55,7 +55,7 @@
             >
               <div
                 @click="showPopup"
-                class="d-flex flex-row align-center justify-start brown mt-6 logga-in cursor-pointer"
+                class="d-flex flex-row align-center justify-start  mt-6 logga-in cursor-pointer"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">Logga in</p>
@@ -69,11 +69,11 @@
                 class="placement"
               />
             </v-col>
-            <v-col class="pink">
+            <v-col class="">
               <div
                 v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
-                class="d-flex flex-row align-center red justify-align logga-in cursor-pointer dropdownuser brown"
+                class="d-flex flex-row align-center red justify-align logga-in cursor-pointer dropdownuser "
               >
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class=" sub-title">
@@ -114,7 +114,7 @@
 
       <!-- Closing the searchbar -->
       <v-row
-        class="d-flex ml-n15 mt-2 justify-center pink"
+        class="d-flex ml-n15 mt-2 justify-center "
         @click="closeSearchDropDown"
       >
       </v-row>

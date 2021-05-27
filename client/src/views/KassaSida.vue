@@ -1,21 +1,6 @@
 <template>
-  <v-main class="green">
-    <!-- <div class="d-flex flex-row">
-      <v-col cols="6" class="deep-purple">
-        <div class="product-card white mx-2">
-          <v-col
-            v-for="(selectedTest, index) in this.tests.selectedTests"
-            :key="selectedTest._id"
-            :index="index"
-            class="d-flex flex-column align-center justify-center"
-            cols="8"
-          >
-          </v-col>
-        </div>
-      </v-col>
-      <v-col cols="6" class="amber">hej</v-col>
-    </div>
-  </v-main> -->
+
+
 
   <div class="d-flex justify-center align-center cyan flex-column">
     <v-row class="d-flex">

@@ -1,5 +1,5 @@
 <template>
-  <nav class="d-flex justify-center menu flex-row brown">
+  <nav class="d-flex justify-center menu flex-row ">
     <ul class="blue--text d-flex menu flex-row">
       <li @mouseover="showServices = true" @mouseleave="showServices = false">
         Analyskatalog
