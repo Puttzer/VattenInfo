@@ -1,6 +1,6 @@
 <template>
   <v-main class="green">
-    <div class="d-flex flex-row">
+    <!-- <div class="d-flex flex-row">
       <v-col cols="6" class="deep-purple">
         <div class="product-card white mx-2">
           <v-col
@@ -15,7 +15,270 @@
       </v-col>
       <v-col cols="6" class="amber">hej</v-col>
     </div>
-  </v-main>
+  </v-main> -->
+
+  <div class="d-flex justify-center align-center cyan flex-column">
+    <v-row class="d-flex">
+      <v-col class="d-flex justify-center ml" cols="6">
+        <h1>Varukorg</h1>
+      </v-col>
+    </v-row>
+
+    <!-- <v-row class="d-flex">
+      <v-col class="d-flex justify-center ml" cols="12">
+        <h3 v-if="this.displayErrorMessage === true" class="red--text">
+          User must login to procceed further!!!
+        </h3>
+        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
+          Cart must not be empty to procceed further!!!
+        </h3>
+      </v-col>
+    </v-row> -->
+    
+<v-row cols="12" class="black d-flex justify-center">
+      <v-col
+        v-for="(selectedTest, index) in this.tests.selectedTests"
+        :key="selectedTest._id"
+        :index="index"
+        class="d-flex flex-column align-center justify-center"
+        cols="8"
+      >
+        <!-- <v-list
+        class="d-flex justify-space-around pa-0 ma-0 flex-row"
+        cols="12"
+      > -->
+        <v-col class="d-flex flex-row justify-left white">
+          <v-img
+            cols="2"
+            class="product-image"
+            :src="`http://localhost:4000/${selectedTest.image}`"
+          ></v-img>
+          <!-- har -->
+          <v-col cols="9" class="d-flex testDetails flex-column">
+            <div class="d-flex justify-center align-center">
+              <p class="price font-weight-light mb-1 more-info">
+                {{ selectedTest.testname }}
+              </p>
+            </div>
+            <div class="d-flex justify-center align-center">
+              <p class="mb-0 price font-weight-light lighten-1 mb-2">
+                {{ selectedTest.price }} kr
+              </p>
+            </div>
+            <div class="d-flex flex-row align-center justify-center mb-2">
+              <v-icon
+                medium
+                color="blue"
+                @click="decreaseQuantity(selectedTest._id)"
+                >remove_circle</v-icon
+              >
+              <p class="quantity my-0 quantity-box px-3">
+                {{ selectedTest.quantity }}
+              </p>
+
+              <v-icon
+                medium
+                color="blue"
+                @click="increaseQuantity(selectedTest._id)"
+                >add_circle</v-icon
+              >
+            </div>
+            <div class="d-flex justify-center align-center">
+              <p class="mb-1 font-weight-light">
+                {{ selectedTest.testtype }}
+              </p>
+            </div>
+            <div class="d-flex flex-row justify-center align-center">
+              <p class="">{{ selectedTest.category }}</p>
+            </div>
+            <div class="">
+              <div class="del-me d-flex justify-center align-center">X</div>
+            </div>
+          </v-col>
+
+          <!-- 
+          <div class="pink">
+				<v-icon
+            @click="deleteTestInCart(selectedTest._id)"
+            class=""
+            size="22px"
+            color="red"
+            cols="2"
+            >delete</v-icon
+          </div>
+		-->
+        </v-col>
+
+        <!-- <v-row class="white d-flex flex-row justify-right align-center">
+        <v-icon
+          @click="deleteTestInCart(selectedTest._id)"
+          class=""
+          size="22px"
+          color="red"
+          cols="2"
+          >delete</v-icon
+        >
+      </v-row> -->
+        <!-- </v-list> -->
+
+        <!-- <v-divider></v-divider> -->
+      </v-col>
+    </v-row>
+
+	
+
+
+    <v-col class="d-flex white flex-row" cols="12">
+      <v-row class="d-flex flex-row align-center justify-center" cols="6">
+        <div class="d-flex flex-row align-center justify-center">
+          <div class="">
+            <form action="">
+              <v-row class="ma-0 pa-0">
+                <v-col class="pa-0 mb-0" cols="12" md="12" sm="12">
+                  <div :class="{ 'valid--error': $v.name.$error }"></div>
+                  <div class="bajs mb-5 pl-3">
+                    <p class="red--text" v-if="!$v.name.minLength">
+                      namnet är inte tillräckligt långt minst 5 bokstäver
+                    </p>
+                    <p class="red--text" v-if="!$v.name.required">ob</p>
+                  </div>
+                  <v-text-field
+                    color="#051f38"
+                    text
+                    dense
+                    class="mt-n3 sizeLabel"
+                    v-model.trim="$v.name.$model"
+                    @input="setName($event.target.value)"
+                    append-icon="person"
+                    label="Namn"
+                    outlined
+                    placeholder="Förnamn Efternamn"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-row class="ma-0 pa-0" justify="center">
+                <v-col class="pa-0 ma-0" cols="12" md="12" sm="12">
+                  <div :class="{ 'valid-error': $v.email.$error }"></div>
+                  <div class="bajs mb-5 pl-3">
+                    <p class="red--text" v-if="!$v.email.email">
+                      inte en gilltig mailadress
+                    </p>
+                    <p class="red--text" v-if="!$v.email.required">
+                      obligatorisk
+                    </p>
+                  </div>
+
+                  <v-text-field
+                    color="#051f38"
+                    text
+                    dense
+                    class="mt-n3"
+                    append-icon="email"
+                    v-model.trim="$v.email.$model"
+                    label="Email"
+                    outlined
+                    placeholder="dinepst@mail.com"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row class="pa-0 ma-0" justify="center">
+                <v-col class="pa-0 ma-0" cols="12" md="12" sm="6">
+                  <p class="red--text" v-if="!$v.adress.minLength">
+                    not enough didgets
+                  </p>
+                  <p class="red--text" v-if="!$v.adress.required">
+                    obligatoriskt
+                  </p>
+                  <v-text-field
+                    dense
+                    color="#051f38"
+                    class="mt-n3 mr-3"
+                    append-icon="place"
+                    text
+                    v-model.trim="$v.adress.$model"
+                    label="Adress"
+                    outlined
+                    placeholder="Adress"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+
+              <v-row class="pa-0 ma-0" justify="center ">
+                <v-col class="pa-0 ma-0" cols="12" md="8" sm="6">
+                  <p class="red--text" v-if="!$v.city.required">
+                    obligatoriskt
+                  </p>
+                  <v-text-field
+                    dense
+                    class="mt-n3 mr=3"
+                    append-icon="location_city"
+                    color="#051f38"
+                    text
+                    v-model.trim="$v.city.$model"
+                    label="Postort"
+                    outlined
+                    placeholder="Postort"
+                  ></v-text-field>
+                </v-col>
+                <v-col class="bajs pa-0 ma-0" cols="12" md="4" sm="6">
+                  <p
+                    class="d-flex justify-center red--text"
+                    v-if="!$v.postnr.required"
+                  >
+                    obligatoriskt
+                  </p>
+                  <p
+                    class="d-flex justify-center red--text"
+                    v-if="!$v.postnr.numeric"
+                  >
+                    maste vara siffror
+                  </p>
+                  <v-text-field
+                    dense
+                    class="mt-n3 ml-3"
+                    color="#051f38"
+                    text
+                    v-model.trim="$v.postnr.$model"
+                    label="Post nummer"
+                    outlined
+                    placeholder="19535"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+            </form>
+          </div>
+        </div>
+      </v-row>
+      <v-row class="d-flex flex-row align-center justify-center" cols="6">
+        <div class="white d-flex flex-row align-center justify-center">
+          <div class=""></div>
+        </div>
+      </v-row>
+    </v-col>
+
+    <v-col
+      cols="12"
+      class="mt-1 totalPrice d-flex flex-column justify-center align-center white"
+    >
+      <div class="d-flex flex-row justify-center">
+        Summa : {{ this.totalPrice }} kr
+      </div>
+
+      <div
+        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="paymentGateway()"
+      >
+        Till betalning
+      </div>
+      <!-- <div
+        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        @click="generateOrder()"
+      >
+        Bekräffta beställning
+      </div> -->
+    </v-col>
+  </div>
 </template>
 
 <script>
