@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "surge": "^0.23.0",
-    "vuelidate": "^0.7.6"
-  }
-}
