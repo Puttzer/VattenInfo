@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartSidan from '../views/KundStartSidan.vue'
+import KundStartsidan from '../views/KundStartsidan.vue'
 import KundOrderSidan from '../views/KundOrderSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
@@ -168,8 +168,8 @@ const routes = [
     },
     {
         path: '/login/userpage',
-        name: 'KundStartSidan',
-        component: KundStartSidan
+        name: 'KundStartsidan',
+        component: KundStartsidan
     },
     {
         path: '/ordernumber',
