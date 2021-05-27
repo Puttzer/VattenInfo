@@ -8,6 +8,7 @@
 
     <!-- <NavBarMobile class="d-xs-flex d-md-none" /> -->
     <Pathcomponent />
+    <v-divider class="grey lighten-1"></v-divider>
     <v-main class="ma-0 pa-0 background body-main" flat>
       <router-view></router-view>
     </v-main>

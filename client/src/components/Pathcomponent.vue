@@ -10,7 +10,8 @@
           class="background"
         >
           <p class="cursor-pointer background ma-1" @click="moveToRoute(route)">
-            /
+            <v-icon x-small class="ma-0 pa-0">arrow_forward_ios</v-icon>
+            <v-icon x-small class="ma-0 pa-0 ml-n2">arrow_forward_ios</v-icon>
             {{ route }}
           </p>
         </v-list>
