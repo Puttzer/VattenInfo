@@ -1,131 +1,66 @@
 <template>
-  <div class="d-flex flex-column">
-    <v-row class="d-flex">
-      <v-col class="d-flex justify-center ml" cols="6">
-        <h1>Varukorg</h1>
-      </v-col>
-    </v-row>
-
-    <v-row class="d-flex">
-      <v-col class="d-flex justify-center ml" cols="12">
-        <h3 v-if="this.displayErrorMessage === true" class="red--text">
-          User must login to procceed further!!!
-        </h3>
-        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
-          Cart must not be empty to procceed further!!!
-        </h3>
-      </v-col>
-    </v-row>
-    <v-row
-      v-for="(selectedTest, index) in this.tests.selectedTests"
-      :key="selectedTest._id"
-      :index="index"
-      class="my-1 mx-8"
-      cols="12"
-    >
-      <v-col
-        class="d-flex container justify-center grey lighten-1 pa-0 mx-1 my-1"
-        cols="12"
-      >
-        <v-list
-          class="d-flex justify-space-around pa-0 ma-0 flex-row"
-          cols="12"
-        >
-          <div class="d-flex flex-column">
-            <v-img
-              cols="2"
-              class="pink"
-              :src="`http://localhost:4000/${selectedTest.image}`"
-              width="150px"
-              height="150px"
-            ></v-img>
-
-            <div class="d-flex testDetails flex-column">
-              <p class="price grey--text font-weight-light mb-3">
-                {{ selectedTest.price }} kr
-              </p>
-              <p class="mb-0 font-weight-light">
-                {{ selectedTest.testname }}
-              </p>
-              <p class="mb-0 font-weight-light">{{ selectedTest.testtype }}</p>
-              <p>{{ selectedTest.category }}</p>
-            </div>
-          </div>
-
-          <div cols="4" lass="d-flex  flex-column">
-            <div class="justify-text desc d-flex flex-column">
-              <p class="text-justify my-2 py-3 mx-2 px-3">
-                {{ selectedTest.description }}
-              </p>
-            </div>
-            <div class="d-flex flex-row align-center justify-center">
-              <v-icon
-                medium
-                color="blue"
-                @click="decreaseQuantity(selectedTest._id)"
-                >remove_circle</v-icon
-              >
-              <p class="mx-2">{{ selectedTest.quantity }}</p>
-
-              <v-icon
-                medium
-                color="blue"
-                @click="increaseQuantity(selectedTest._id)"
-                >add_circle</v-icon
-              >
-            </div>
-          </div>
-
-          <v-icon
-            @click="deleteTestInCart(selectedTest._id)"
-            class="d-flex grey lighten-5 justify-center"
-            size="42px"
-            color="red"
-            cols="2"
-            >delete</v-icon
+  <v-main class="green">
+    <div class="d-flex flex-row">
+      <v-col cols="6" class="deep-purple">
+        <div class="product-card white mx-2">
+          <v-col
+            v-for="(selectedTest, index) in this.tests.selectedTests"
+            :key="selectedTest._id"
+            :index="index"
+            class="d-flex flex-column align-center justify-center"
+            cols="8"
           >
-        </v-list>
+          </v-col>
+        </div>
       </v-col>
-      <!-- <v-divider></v-divider> -->
-    </v-row>
-
-    <v-col
-      cols="12"
-      class="mt-1 totalPrice d-flex flex-row justify-space-around align-right"
-    >
-      <div class="">Summa : {{ this.totalPrice }} kr</div>
-
-      <div
-        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
-        @click="paymentGateway()"
-      >
-        Till betalning
-      </div>
-
-      <div
-        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
-        @click="generateOrder()"
-      >
-        Bekräffta beställning
-      </div>
-    </v-col>
-    <!-- 
-    {{ this.tests.selectedTests }}
-    {{ this.tests.totalAmount }} -->
-  </div>
+      <v-col cols="6" class="amber">hej</v-col>
+    </div>
+  </v-main>
 </template>
 
 <script>
 import Vue from "vue";
 import { mapState } from "vuex";
-
+import {
+  required,
+  //   sameAs,
+  email,
+  //   alphaNum,
+  numeric,
+  minLength,
+  //   maxLength,
+} from "vuelidate/lib/validators";
 export default {
   name: "KassaSidan",
   data() {
     return {
       displayErrorMessage: false,
       displayErrorMessageEmptycart: false,
+      name: "",
+      email: "",
+      adress: "",
+      city: "",
+      postnr: "",
     };
+  },
+  validations: {
+    name: {
+      required,
+      minLength: minLength(5),
+    },
+    email: {
+      required,
+      email,
+    },
+    adress: {
+      required,
+      minLength: minLength(2),
+    },
+    postnr: {
+      required,
+      numeric,
+    },
+    city: {},
   },
   computed: {
     ...mapState(["tests", "order", "user", "company", "stripe"]),
@@ -266,10 +201,39 @@ export default {
 .container {
   box-shadow: 2px 2px 5px #00000090;
 }
+
+.del-me {
+  height: 25px;
+  width: 25px;
+  color: #424242;
+  border-radius: 99rem;
+  background: #e0e0e0;
+}
+
+.del-me:hover {
+  background: tomato;
+  color: #fff;
+  cursor: pointer;
+}
+
+.quantity-box {
+  border: 1px solid teal;
+}
+
+.product-image {
+  width: 180px;
+}
+
+.more-info:hover {
+  color: teal;
+  text-decoration: underline solid 1px;
+  cursor: pointer;
+  font-weight: bold;
+}
 .payButton {
   height: 60px;
   width: 550px;
-  border-radius: 4px;
+  border-radius: 24px;
   font-size: 24px;
 }
 
@@ -285,5 +249,10 @@ export default {
 
 .totalPrice {
   font-size: 34px;
+}
+
+.product-card {
+  border-radius: 12px;
+  color: tomato;
 }
 </style>

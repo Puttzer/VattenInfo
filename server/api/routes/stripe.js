@@ -22,28 +22,8 @@ module.exports = function (router) {
         const { orderTests } = req.body
         console.log(orderTests)
 
-        // let testsLists =[]
-        const testsList = req.body.orderTests.map(test =>
-            test
-            //     {
-            //     // price = test.price
-            //     // quantity = test.quantity
-            //     // testname = test.name
-            // }
-        )
+        const testsList = req.body.orderTests.map(test => test)
 
-        // console.log(testsList)
-        // let cart_items = []
-        // const testArrayList = orderTests.map((test) => {
-        //     let data_object = {}
-        //     data_object.price_data.currency = 'sek'
-        //     data_object.price_data.product_data.name = test.testname
-        //     data_object.price_data.unit_amount = test.price
-        //     data_object.quantity = test.quantity
-        //     return data_object
-
-        // })
-        // console.log(testArrayList)
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
 

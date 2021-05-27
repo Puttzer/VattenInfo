@@ -12,7 +12,8 @@ let newTest = new Schema({
     short_description: { type: String, required: true },
     price: { type: String, required: true },
     image: { type: String, required: true },
-    quantity: { type: Number, default: 1 }
+    quantity: { type: Number, default: 1 },
+    productId: { type: String }
 })
 
 newTest.pre('save', function (next) {
