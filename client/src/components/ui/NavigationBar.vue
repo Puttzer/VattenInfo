@@ -69,7 +69,7 @@
                 class="placement"
               />
             </v-col>
-            <v-col class="">
+            <v-col class="		">
               <div
                 v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
@@ -114,7 +114,7 @@
 
       <!-- Closing the searchbar -->
       <v-row
-        class="d-flex ml-n15 mt-2 justify-center "
+        class="d-flex ml-n15 mt-2 justify-center"
         @click="closeSearchDropDown"
       >
       </v-row>
