@@ -129,14 +129,16 @@
             <li
               @mouseover="showServices = true"
               @mouseleave="showServices = false"
-              @click.self="moveToAnalysKatalog"
+              @click="moveToAnalysKatalog"
             >
-              Analyskatalog
+              Våra Analyser
               <v-icon>keyboard_arrow_down</v-icon>
+
+              <!-- LOOOKIE HERE! -->
 
               <ul v-if="showServices">
                 <li class="text--white" @click="moveToEnskillt">
-                  enskilt dricks vatten
+                  enskilt dricksvatten
                 </li>
                 <li class="text--white" @click="moveToVerksam">
                   verksamhet & sämfallighet
@@ -145,7 +147,7 @@
                   bygglov & tillstand
                 </li>
                 <li class="text--white" @click="moveToAvlopp">
-                  AvloppsAnalyser
+                  Avloppsanalyser
                 </li>
                 <li class="text--white">
                   <a
@@ -176,13 +178,15 @@
               @mouseleave="showOtherServices = false"
             >
               Övriga tjänster
-              <!-- <v-icon>keyboard_arrow_down</v-icon> -->
+              <v-icon>keyboard_arrow_down</v-icon>
 
-              <!-- <ul v-if="showOtherServices">
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-              </ul> -->
+              <ul v-if="showOtherServices">
+                <li class="text--white" @click="moveToEtikett">
+                  Etikett How To
+                </li>
+                <!-- <li class="text--white">lorem</li>
+                <li class="text--white">lorem</li> -->
+              </ul>
             </li>
           </ul>
         </nav>
@@ -229,7 +233,7 @@ export default {
       this.$router.push("/enskiltdricksvatten");
     },
     moveToAnalysKatalog() {
-      this.$router.push("/analyskatalog");
+      this.$router.push("/Vara_analyser");
     },
     moveToHome() {
       this.$router.push("/");
@@ -249,8 +253,11 @@ export default {
     moveToBygglov() {
       this.$router.push("/bygglov_tillstand");
     },
-    moveToContact() {
-      this.$router.push("/kontakt");
+    moveToAvlopp() {
+      this.$router.push("/avlopp_analyser");
+    },
+    moveToEtikett() {
+      this.$router.push("/EtikettHowTo");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
