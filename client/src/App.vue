@@ -45,7 +45,7 @@ export default {
   //     await this.$store.dispatch("stripe/getStripePublishableKey");
   //   },
   computed: {
-    ...mapState(["admin", "test", "user"]),
+    ...mapState(["admin", "test", "user", "stripe"]),
   },
   methods: {},
   async mounted() {
@@ -58,6 +58,7 @@ export default {
     //   await this.$store.commit("user/UPDATE_USER_ISLOGGEDIN", true);
     //   this.$router.push("/login/user");
     // }
+
     await this.$store.dispatch("tests/getTests");
     console.log(localStorage.companyProfileToken);
     if (localStorage.userToken) {
