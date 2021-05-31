@@ -1,12 +1,13 @@
 <template>
   <v-main class="">
-    <div class="d-flex flex-row">
-      <v-col cols="6" class="">
+    <div class="d-flex flex-row justify-center brown">
+      <v-col cols="6" max-height="100" class="black">
         <v-col
+          max-height="110px"
           v-for="(selectedTest, index) in this.tests.selectedTests"
           :key="selectedTest._id"
           :index="index"
-          class="product-card white my-1 d-flex flex-row"
+          class="product-card white my-1 d-flex flex-row  justify-center"
           cols="12"
         >
           <v-img
@@ -53,7 +54,7 @@
         <!-- testcatd ends here -->
       </v-col>
       <v-col cols="6" class="d-flex justify-center">
-        <v-col class="d-flex" cols="12" sm="6">
+        <v-col class="d-flex justify-center" cols="12" sm="6">
           <!-- <v-select
             :items="houseType"
             label="Outlined style"
@@ -61,10 +62,10 @@
             outlined
           ></v-select> -->
           <form action="">
-            <v-row class="ma-0 pa-0">
+            <v-row class="ma-0 pa-0 " > 
               <v-col class="pa-0 mb-0" cols="12" md="12" sm="12">
                 <div :class="{ 'valid--error': $v.name.$error }"></div>
-                <div class="bajs mb-5 pl-3">
+                <div class=" mb-5 pl-3">
                   <p class="red--text" v-if="!$v.name.minLength">
                     namnet är inte tillräckligt långt minst 5 bokstäver
                   </p>
@@ -85,7 +86,7 @@
               </v-col>
             </v-row>
 
-            <v-row class="ma-0 pa-0" justify="center">
+            <v-row class="ma-0 pa-0"  justify="center">
               <v-col class="pa-0 ma-0" cols="12" md="12" sm="12">
                 <div :class="{ 'valid-error': $v.email.$error }"></div>
                 <div class="bajs mb-5 pl-3">
@@ -172,11 +173,9 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" class="d-flex justify-center">
-                <v-col class=" d-flex flex-column justify-center">
+                <v-col class="d-flex flex-column justify-center">
                   <p class="d-flex justify-center">lägg till en adress</p>
-                  <v-icon class=" d-flex justify-center">
-                    add_circle
-                  </v-icon>
+                  <v-icon class="d-flex justify-center"> add_circle </v-icon>
                 </v-col>
               </v-col>
             </v-row>
