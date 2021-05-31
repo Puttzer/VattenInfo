@@ -3,7 +3,7 @@
     <!-- left on screen -->
 
     <!-- Right on screen -->
-    <v-container class="form">
+    <v-container class="form mt-16">
       <v-form>
         <v-row>
           <v-col cols="12" class="pt-16">
@@ -87,7 +87,7 @@
 
 <script>
 export default {
-  name: "ContactUs",
+  name: "KontaktSidan",
   data() {
     return {
       user: {

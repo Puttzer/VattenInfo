@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     moveToRoute(route) {
-      console.log(route);
+      // console.log(route);
       //   const routeParameter = route.split("");
       //   console.log(routeParameter);
       //   routeParameter[0] = routeParameter[0].toLowerCase();

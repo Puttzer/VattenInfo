@@ -1,5 +1,15 @@
 <template>
   <v-main class="">
+    <v-row class="d-flex">
+      <v-col class="d-flex justify-center ml" cols="12">
+        <h3 v-if="this.displayErrorMessage === true" class="red--text">
+          User must login to procceed further!!!
+        </h3>
+        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
+          Cart must not be empty to procceed further!!!
+        </h3>
+      </v-col>
+    </v-row>
     <div class="d-flex flex-row">
       <v-col cols="6" class="">
         <v-col
@@ -172,11 +182,9 @@
                 ></v-text-field>
               </v-col>
               <v-col cols="12" class="d-flex justify-center">
-                <v-col class=" d-flex flex-column justify-center">
+                <v-col class="d-flex flex-column justify-center">
                   <p class="d-flex justify-center">lägg till en adress</p>
-                  <v-icon class=" d-flex justify-center">
-                    add_circle
-                  </v-icon>
+                  <v-icon class="d-flex justify-center"> add_circle </v-icon>
                 </v-col>
               </v-col>
             </v-row>
@@ -268,60 +276,82 @@ export default {
       this.$store.commit("tests/TOTAL_AMOUNT", totalAmount);
       return totalAmount;
     },
+    isUserLoggedIn() {
+      return this.user.userIsloggedIn;
+    },
+    isCompanyLoggedIn() {
+      return this.company.companyUserIsloggedIn;
+    },
+  },
+  watch: {
+    isUserLoggedIn: function () {
+      if (this.isUserLoggedIn) {
+        this.displayErrorMessage = false;
+      } else {
+        this.displayErrorMessage = true;
+      }
+    },
+    isCompanyLoggedIn: function () {
+      if (this.isCompanyLoggedIn) {
+        this.displayErrorMessage = false;
+      } else {
+        this.displayErrorMessage = true;
+      }
+    },
   },
   async created() {
     await this.$store.dispatch("stripe/getStripePublishableKey");
   },
   components: {},
   methods: {
-    async generateOrder() {
-      if (this.user.userIsloggedIn) {
-        console.log(this.user.user._id);
-        const id = this.user.user._id || this.company.companyUser._id;
-        const orderTests = this.tests.selectedTests;
-        const orderAmount = this.tests.totalAmount;
-        const payload = {
-          orderTests: orderTests,
-          orderAmount: orderAmount,
-          id: id,
-        };
-        console.log(payload);
-        console.log("generating the order");
-        await this.$store.dispatch("order/generateOrder", payload);
-        this.$store.commit("tests/DELETE_SELECTED_TESTS");
-        this.$router.push("/ordernumber");
-      } else if (this.company.companyUserIsloggedIn) {
-        console.log(this.company.companyUser._id);
-        const id = this.company.companyUser._id;
-        const orderTests = this.tests.selectedTests;
-        const orderAmount = this.tests.totalAmount;
-        const payload = {
-          orderTests: orderTests,
-          orderAmount: orderAmount,
-          id: id,
-        };
-        console.log(payload);
-        console.log("generating the order");
-        await this.$store.dispatch("order/generateCompanyOrder", payload);
-        this.$store.commit("tests/DELETE_SELECTED_TESTS");
-        this.$router.push("/ordernumber");
-      } else if (this.tests.selectedTests.length < 1) {
-        this.displayErrorMessageEmptycart = true;
-        Vue.$vToastify.error(
-          "cart is empty must select a product to procced further"
-        );
-        return;
-      } else {
-        this.displayErrorMessage = true;
-        Vue.$vToastify.error("User must able to login to procced further");
-        this.$store.commit("user/OPEN_LOGIN_COMP");
-        return;
-      }
-      //   if (this.order.orderGenerated) {
-      //     console.log("move to mutations");
-      //   }
-      //   setTimeout(function () {}, 2000);
-    },
+    // async generateOrder() {
+    //   if (this.user.userIsloggedIn) {
+    //     console.log(this.user.user._id);
+    //     const id = this.user.user._id || this.company.companyUser._id;
+    //     const orderTests = this.tests.selectedTests;
+    //     const orderAmount = this.tests.totalAmount;
+    //     const payload = {
+    //       orderTests: orderTests,
+    //       orderAmount: orderAmount,
+    //       id: id,
+    //     };
+    //     console.log(payload);
+    //     console.log("generating the order");
+    //     await this.$store.dispatch("order/generateOrder", payload);
+    //     this.$store.commit("tests/DELETE_SELECTED_TESTS");
+    //     this.$router.push("/ordernumber");
+    //   } else if (this.company.companyUserIsloggedIn) {
+    //     console.log(this.company.companyUser._id);
+    //     const id = this.company.companyUser._id;
+    //     const orderTests = this.tests.selectedTests;
+    //     const orderAmount = this.tests.totalAmount;
+    //     const payload = {
+    //       orderTests: orderTests,
+    //       orderAmount: orderAmount,
+    //       id: id,
+    //     };
+    //     console.log(payload);
+    //     console.log("generating the order");
+    //     await this.$store.dispatch("order/generateCompanyOrder", payload);
+    //     this.$store.commit("tests/DELETE_SELECTED_TESTS");
+    //     this.$router.push("/ordernumber");
+    //   } else if (this.tests.selectedTests.length < 1) {
+    //     this.displayErrorMessageEmptycart = true;
+    //     Vue.$vToastify.error(
+    //       "cart is empty must select a product to procced further"
+    //     );
+    //     return;
+    //   } else {
+    //     this.displayErrorMessage = true;
+    //     Vue.$vToastify.error("User must able to login to procced further");
+    //     this.$store.commit("user/OPEN_LOGIN_COMP");
+    //     return;
+    //   }
+    //   //   if (this.order.orderGenerated) {
+    //   //     console.log("move to mutations");
+    //   //   }
+    //   //   setTimeout(function () {}, 2000);
+    // },
     increaseQuantity(id) {
       this.$store.commit("tests/INCREASE_QUANTITY", id);
     },
@@ -350,7 +380,10 @@ export default {
         return;
       }
     },
-    paymentGateway() {
+    async paymentGateway() {
+      let userId = this.user.user._id;
+      let companyId = this.company.companyUser._id;
+      console.log(userId, companyId);
       const publishableKey = this.stripe.publishableKey;
       const orderTests = this.tests.selectedTests;
 
@@ -372,20 +405,52 @@ export default {
       });
       console.log(reformatedTests);
       const totalAmount = this.tests.totalAmount;
-      const id = this.user.userIsloggedIn
-        ? this.user.user._id
-        : this.company.companyUser._id;
-      const payload = {
-        orderTests: reformatedTests,
-        totalAmount: totalAmount,
-        id: id,
-      };
 
-      console.log("payment gateway move to actions");
-      this.$store.dispatch("stripe/stripeCheckOut", {
-        payload,
-        publishableKey,
-      });
+      if (this.tests.selectedTests.length < 1) {
+        this.displayErrorMessageEmptycart = true;
+        Vue.$vToastify.error(
+          "cart is empty must select a product to procced further"
+        );
+        return;
+      }
+
+      if (this.user.userIsloggedIn) {
+        const payload = {
+          orderTests: reformatedTests,
+          totalAmount: totalAmount,
+          id: this.user.user._id,
+        };
+        const orderGeneratePayload = {
+          orderTests: orderTests,
+          totalAmount: totalAmount,
+          id: this.user.user._id,
+        };
+        console.log("payment gateway move to actions", payload, publishableKey);
+        await this.$store.dispatch("stripe/stripeCheckOut", {
+          payload,
+          publishableKey,
+          orderGeneratePayload,
+        });
+      } else if (this.company.companyUserIsloggedIn) {
+        const payload = {
+          orderTests: reformatedTests,
+          totalAmount: totalAmount,
+          id: this.company.companyUser._id,
+        };
+        const orderGeneratePayload = {
+          orderTests: orderTests,
+          totalAmount: totalAmount,
+          id: this.company.companyUser._id,
+        };
+        console.log("payment gateway move to actions", payload, publishableKey);
+        await this.$store.dispatch("stripe/stripeCheckOut", {
+          payload,
+          publishableKey,
+          orderGeneratePayload,
+        });
+      } else {
+        return;
+      }
     },
   },
 };

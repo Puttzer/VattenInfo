@@ -4,7 +4,12 @@
       @click="showCartComponent"
       class="d-flex flex-row justify-center align-center testCase"
     >
-      <v-icon class="d-flex flex-row justify-center align-center  ma-1 white pa-2" size="42" color="blue">shopping_basket</v-icon>
+      <v-icon
+        class="d-flex flex-row justify-center align-center ma-1 white pa-2"
+        size="42"
+        color="blue"
+        >shopping_basket</v-icon
+      >
       <p
         class="countClass white--text ml-n6 d-flex justify-center align-center blue"
       >
@@ -36,8 +41,12 @@ export default {
   },
   methods: {
     showCartComponent() {
-      console.log("show cart component");
-      this.$store.commit("tests/SHOW_CART_COMPONENT");
+      if (this.tests.count > 0) {
+        console.log(this.tests.selectedTests);
+        this.$store.commit("tests/SHOW_CART_COMPONENT");
+      } else {
+        return;
+      }
     },
   },
 };
