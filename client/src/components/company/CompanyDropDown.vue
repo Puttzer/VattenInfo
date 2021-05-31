@@ -14,20 +14,40 @@
     </div>
   </div> -->
   <v-main class="someOtherName d-flex justify-center">
+    <v-row>
+      <v-col class="d-flex flex-row-reverse mr-8">
+        <v-icon
+          @click="closeCompanyProfileOptions"
+          large
+          color="black"
+          class="listItem"
+          >close</v-icon
+        >
+      </v-col>
+    </v-row>
+    <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
       @click.prevent="moveToCompanyPage"
     >
-      <v-icon medium class="mx-1" color="white">account_box</v-icon>
-      <p>Mina  Sidor</p>
+      <v-col cols="3">
+        <v-icon medium class="mx-1" color="white">account_box</v-icon>
+      </v-col>
+      <v-col cols="9" class="listItem">
+        <p>Mina Sidor</p>
+      </v-col>
     </v-row>
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
       @click.prevent="moveToCompanyOrder"
     >
-      <v-icon medium class="mx-1" color="white">payments</v-icon>
-      <p>Mina Beställningar</p>
+      <v-col cols="3">
+        <v-icon medium class="mx-1" color="white">payments</v-icon>
+      </v-col>
+      <v-col cols="9" class="listItem">
+        <p>Mina Beställningar</p>
+      </v-col>
     </v-row>
     <v-divider></v-divider>
 
@@ -35,8 +55,12 @@
       class="ml-2 d-flex flex-row justify-space-around align-center"
       @click.prevent="moveToCompanyLogout"
     >
-      <v-icon medium class="mx-1" color="white">logout</v-icon>
-      <p>Logga Ut</p>
+      <v-col cols="3">
+        <v-icon medium class="mx-1" color="white">logout</v-icon>
+      </v-col>
+      <v-col cols="9" class="listItem">
+        <p>Logga Ut</p>
+      </v-col>
     </v-row>
   </v-main>
 </template>
@@ -80,20 +104,31 @@ export default {
         this.$router.push("/");
       }
     },
+    closeCompanyProfileOptions() {
+      this.$store.commit("company/COMPANY_DROP_DOWN_CHANGE", false);
+    },
   },
 };
 </script>
 
 <style scoped>
 .someOtherName {
-  width: 15vw;
+  width: 20vw;
   /* height: 18vh; */
-  height: 20%;
+  height: 100vh;
 
   border-top: 5px solid #000;
   /* background-color: rgb(21, 57, 68); */
 
   /* overflow: visible; */
   color: white;
+}
+
+.listItem:hover {
+  /* text-decoration: underline wavy; */
+  /* font-weight: normal; */
+  cursor: pointer;
+  color: rgb(12, 1, 12);
+  zoom: 120%;
 }
 </style>

@@ -227,12 +227,12 @@ const routes = [
         component: HjalpMedDittVatten
     },
     {
-        path: '/analyskatalog/enskiltdricksvatten/',
+        path: '/enskiltdricksvatten/',
         name: 'EnsikltDricksVatten',
         component: EnsikltDricksVatten
     },
     {
-        path: '/avlopp_analyser',
+        path: '/avlopp-analyser',
         name: 'AvloppsAnalyser',
         component: AvloppsAnalyser
     },
