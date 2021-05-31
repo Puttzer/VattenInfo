@@ -66,7 +66,7 @@ export default {
       this.$router.push("/omlab");
     },
     moveToEnskillt() {
-      this.$router.push("/analyskatalog/enskiltdricksvatten");
+      this.$router.push("/enskiltdricksvatten");
     },
     moveToVerksam() {
       this.$router.push("/verksamhet");
@@ -85,8 +85,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .menu {
   display: block;
   padding: 20px;

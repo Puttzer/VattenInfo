@@ -2,7 +2,7 @@
   <v-main class="ma-0 pa-0">
     <v-row class="d-flex flex-column justify-center align-center mt-6">
       <v-col
-        class="d-flex flex-column  justify-center align-center mt-2"
+        class="d-flex flex-column justify-center align-center mt-2"
         cols="8"
       >
         <h1 class="blue--text display-1">Våra analyser</h1>
@@ -22,13 +22,11 @@
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
         <div
-          class=" pointer d-flex flex-column justify-center align-center"
+          class="pointer d-flex flex-column justify-center align-center"
           @click="moveToEnsikltdricksvatten"
         >
           <img src="@/assets/kran.png" height="140px" width="214px" />
-          <div
-            class="lowertext  d-flex align-center flex-column justify-center"
-          >
+          <div class="lowertext d-flex align-center flex-column justify-center">
             <h3 class="blue--text">Enskilt dricksvatten</h3>
             <p class="text--secondary ma-3 text--secondary">
               För dig med egen brunn eller gemensam brunn<br />
@@ -39,14 +37,12 @@
       </v-col>
       <v-col cols="3" class="d-flex flex-column">
         <div
-          class=" pointer d-flex flex-column justify-center align-center"
+          class="pointer d-flex flex-column justify-center align-center"
           @click="moveToVerksamhet"
         >
           <img src="@/assets/Samfalligheter.png" height="140px" width="214px" />
 
-          <div
-            class="lowertext  d-flex align-center flex-column justify-center"
-          >
+          <div class="lowertext d-flex align-center flex-column justify-center">
             <h3 class="blue--text">Verksamhet & samfällighet</h3>
             <p class="text--secondary ma-3">
               Ackrediterade analyser för er med en registrerad anlägging
@@ -61,9 +57,7 @@
         <img src="@/assets/wave.png" height="125px" width="100px"
       /></v-col>
       <v-col cols="5" class="d-flex flex-column justify-center align-center">
-        <div
-          class=" pointer d-flex flex-column justify-center align-center"
-        >
+        <div class="pointer d-flex flex-column justify-center align-center">
           <img
             @click="moveToBygglovTillstand"
             src="@/assets/Avtal.png"
@@ -71,9 +65,7 @@
             width="214px"
             class=""
           />
-          <div
-            class="lowertext  d-flex align-center flex-column justify-center"
-          >
+          <div class="lowertext d-flex align-center flex-column justify-center">
             <h3 class="blue--text">Bygglov & tillstånd</h3>
             <p class="text--secondary ma-3">
               För dig som ska söka tillstånd för att bygga <br />
@@ -83,18 +75,14 @@
         </div>
       </v-col>
       <v-col cols="2" class="d-flex flex-column">
-        <div
-          class=" pointer d-flex flex-column justify-center align-center"
-        >
+        <div class="pointer d-flex flex-column justify-center align-center">
           <img
             @click="moveToAvloppAnalyser"
             src="@/assets/analys.png"
             height="140px"
             width="214px"
           />
-          <div
-            class="lowertext  d-flex align-center flex-column justify-center"
-          >
+          <div class="lowertext d-flex align-center flex-column justify-center">
             <h3 class="blue--text">Avloppanalyser</h3>
             <p class="text--secondary ma-3">
               För dig som behöver provta ditt avloppsvatten.
@@ -162,7 +150,7 @@
 export default {
   methods: {
     moveToEnsikltdricksvatten() {
-      this.$router.push("/analyskatalog/enskiltdricksvatten");
+      this.$router.push("/enskiltdricksvatten");
     },
     moveToAvloppAnalyser() {
       this.$router.push("/avlopp_analyser");

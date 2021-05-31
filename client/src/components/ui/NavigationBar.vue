@@ -129,7 +129,7 @@
             <li
               @mouseover="showServices = true"
               @mouseleave="showServices = false"
-              @click="moveToAnalysKatalog"
+              @click.self="moveToAnalysKatalog"
             >
               Våra Analyser
               <v-icon>keyboard_arrow_down</v-icon>

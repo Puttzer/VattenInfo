@@ -224,7 +224,7 @@ const routes = [
 		component: HjalpMedDittVatten
 	},
 	{
-		path: '/analyskatalog/enskiltdricksvatten/',
+		path: '/enskiltdricksvatten/',
 		name: 'EnsikltDricksVatten',
 		component: EnsikltDricksVatten
 	},
