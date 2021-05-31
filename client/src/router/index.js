@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartsidan from '../views/KundStartsidan.vue'
+import KundStartSidan from '../views/KundStartsidan.vue'
 import KundOrderSidan from '../views/KundOrderSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
@@ -54,270 +54,267 @@ import answer2 from '../components/guiden/answer2'
 import answer3 from '../components/guiden/answer3'
 import answer4 from '../components/guiden/answer4'
 
+import EtikettHowTo from '../views/EtikettHowTo.vue'
 
 
 Vue.use(VueRouter)
 
 const routes = [
-    {
-        path: '/',
-        name: 'Home',
-        component: Home
-    },
-    {
-        path: '/login',
-        name: 'Login',
-        component: Login
-    },
-    {
-        path: '/lostlogin',
-        name: 'LostLogin',
-        component: LostLogin
-    },
-    {
-        path: '/analyskatalog',
-        name: 'AnalysKatalog',
-        component: AnalysKatalog
-    },
-    {
-        path: '/login/user',
-        name: 'PrivateAccount',
-        component: KundBestallsidan
-    },
-    {
-        path: '/login/admin',
-        name: 'AdminLogin',
-        component: AdminLogin
-    },
-    {
-        path: '/login/companyinfopage',
-        name: 'CompanyLoginHomePage',
-        component: CompanyLoginHomePage
-    },
-    {
-        path: '/login/companyorderspage',
-        name: 'CompanyOrdersPage',
-        component: CompanyOrdersPage
-    },
-    {
-        path: '/test/scrolltest',
-        name: 'ScrollHome',
-        component: ScrollHome
-    },
-    {
-        path: '/test/ScrollAnalys',
-        name: 'ScrollAnalys',
-        component: ScrollAnalys
-    },
-    {
-        path: '/test/:slug',
-        name: 'TestStartsidan',
-        component: TestStartsidan
-    },
-    // {
-    //     path: '/adminpage',
-    //     name: 'AdminStartsidan',
-    //     component: AdminStartsidan,
-    //     beforeEnter: (to, from, next) => {
-    //         console.log(store.state.admin.isLoggedIn)
-    //         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-    //             next()
-    //         } else {
-    //             next('/')
-    //         }
-    //     }
-    // },
-    {
-        path: '/adminpage',
-        // You could also have named views at the top
-        component: AdminStartsidan,
-        beforeEnter: (to, from, next) => {
-            console.log(store.state.admin.isLoggedIn)
-            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-                next()
-            } else {
-                next('/')
-            }
-        },
-        children: [
+	{
+		path: '/',
+		name: 'Home',
+		component: Home
+	},
+	{
+		path: '/login',
+		name: 'Login',
+		component: Login
+	},
+	{
+		path: '/lostlogin',
+		name: 'LostLogin',
+		component: LostLogin
+	},
+	{
+		path: '/Vara_analyser',
+		name: 'AnalysKatalog',
+		component: AnalysKatalog
+	},
+	{
+		path: '/EtikettHowTo',
+		name: 'EtikettHowTo',
+		component: EtikettHowTo
+	},
+	{
+		path: '/login/user',
+		name: 'PrivateAccount',
+		component: KundBestallsidan
+	},
+	{
+		path: '/login/admin',
+		name: 'AdminLogin',
+		component: AdminLogin
+	},
+	{
+		path: '/login/companyinfopage',
+		name: 'CompanyLoginHomePage',
+		component: CompanyLoginHomePage
+	},
+	{
+		path: '/login/companyorderspage',
+		name: 'CompanyOrdersPage',
+		component: CompanyOrdersPage
+	},
+	{
+		path: '/test/scrolltest',
+		name: 'ScrollHome',
+		component: ScrollHome
+	},
+	{
+		path: '/test/ScrollAnalys',
+		name: 'ScrollAnalys',
+		component: ScrollAnalys
+	},
+	{
+		path: '/test/:slug',
+		name: 'TestStartsidan',
+		component: TestStartsidan
+	},
+	// {
+	//     path: '/adminpage',
+	//     name: 'AdminStartsidan',
+	//     component: AdminStartsidan,
+	//     beforeEnter: (to, from, next) => {
+	//         console.log(store.state.admin.isLoggedIn)
+	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+	//             next()
+	//         } else {
+	//             next('/')
+	//         }
+	//     }
+	// },
+	{
+		path: '/adminpage',
+		// You could also have named views at the top
+		component: AdminStartsidan,
+		beforeEnter: (to, from, next) => {
+			console.log(store.state.admin.isLoggedIn)
+			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		},
+		children: [
 
-            {
-                path: 'tests',
-                component: Tests
-            }, {
-                path: 'privatecustomer',
-                component: PrivateCustomer
+			{
+				path: 'tests',
+				component: Tests
+			}, {
+				path: 'privatecustomer',
+				component: PrivateCustomer
 
-            },
-            {
-                path: 'ForetagCustomer',
-                component: ForetagCustomer
+			},
+			{
+				path: 'ForetagCustomer',
+				component: ForetagCustomer
 
-            },
-            {
-                path: 'Foretagorders',
-                component: ForetagOrders
+			},
+			{
+				path: 'Foretagorders',
+				component: ForetagOrders
 
-            },
-            {
-                path: 'privatecustomerorders',
-                component: PrivateCustomerOrders
+			},
+			{
+				path: 'privatecustomerorders',
+				component: PrivateCustomerOrders
 
-            },
-        ]
-    },
-    {
-        path: '/login/userpage',
-        name: 'KundStartsidan',
-        component: KundStartsidan
-    },
-    {
-        path: '/ordernumber',
-        name: 'KundOrderSidan',
-        component: KundOrderSidan
-    },
-    {
-        path: '/foretag',
-        name: 'ForetagStartsida',
-        component: ForetagStartsida
-    },
+			},
+		]
+	},
+	{
+		path: '/login/userpage',
+		name: 'KundStartSidan',
+		component: KundStartSidan
+	},
+	{
+		path: '/ordernumber',
+		name: 'KundOrderSidan',
+		component: KundOrderSidan
+	},
+	{
+		path: '/foretag',
+		name: 'ForetagStartsida',
+		component: ForetagStartsida
+	},
 
-    // Old "omlab" now "tjanster" as of 2021-05-11 
-    // is it still needed? -Patrick
-    {
-        path: '/tjanster',
-        name: 'LabbTjanster',
-        component: LabbTjanster
-    },
-    {
-        path: '/bestallanalys',
-        name: 'BestallSidan',
-        component: BestallSidan
-    },
-    {
-        path: '/kassa',
-        name: 'KassaSida',
-        component: KassaSida
-    },
-    {
-        path: '/paymentSucess',
-        name: 'PaymentSucess',
-        component: PaymentSucess
-    },
-    {
-        path: '/paymentCancel',
-        name: 'PaymentError',
-        component: PaymentError
-    },
-    {
-        path: '/blanketter',
-        name: 'InstruktionOchBlanketter',
-        component: InstruktionOchBlanketter
-    },
 
-    // Current about page as of 2021-05-11
-    {
-        path: '/omlab',
-        name: 'OmLab',
-        component: OmLab
-    },
-    {
-        path: '/help',
-        name: 'HjalpMedDittVatten',
-        component: HjalpMedDittVatten
-    },
-    {
-        path: '/enskiltdricksvatten/',
-        name: 'EnsikltDricksVatten',
-        component: EnsikltDricksVatten
-    },
-    {
-        path: '/avlopp-analyser',
-        name: 'AvloppsAnalyser',
-        component: AvloppsAnalyser
-    },
-    {
-        path: '/bygglov_tillstand',
-        name: 'BygglovTillstand',
-        component: BygglovTillstand
-    },
-    {
-        path: '/verksamhet',
-        name: 'VerksamhetSamfallighet',
-        component: VerksamhetSamfallighet
-    },
-    {
-        path: '/kontakt',
-        name: 'KontaktSidan',
-        component: KontaktSidan
-    },
-    {
-        path: '/registrera',
-        name: 'RegistreraKund',
-        component: RegistreraKund
-    },
-    {
-        path: '/payment',
-        name: 'PaymentInfo',
-        component: PaymentInfo
-    },
-    // {
-    //     path: '/kundstart',
-    //     name: 'KundStartSidan',
-    //     component: KundStartSidan
-    // },
-    {
-        path: '/vattenguide',
-        name: 'VattenGuide',
-        component: VattenGuide,
-    },
-    {
-        path: '/answer1',
-        name: 'answer1',
-        component: answer1,
-    },
-    {
-        path: '/answer1a',
-        name: 'answer1a',
-        component: answer1a,
-    },
-    {
-        path: '/answer2',
-        name: 'answer2',
-        component: answer2,
-    }, {
-        path: '/answer3',
-        name: 'answer3',
-        component: answer3,
-    }, {
-        path: '/answer4',
-        name: 'answer4',
-        component: answer4,
-    },
-    {
-        path: '/*',
-        alias: '/'
-    },
+	{
+		path: '/tjanster',
+		name: 'LabbTjanster',
+		component: LabbTjanster
+	},
+	{ path: '/paymentSucess', name: 'PaymentSucess', component: PaymentSucess },
+	{ path: '/paymentCancel', name: 'PaymentError', component: PaymentError },
+	{
+		path: '/bestallanalys',
+		name: 'BestallSidan',
+		component: BestallSidan
+	},
+	{
+		path: '/kassa',
+		name: 'KassaSida',
+		component: KassaSida
+	},
+	{
+		path: '/blanketter',
+		name: 'InstruktionOchBlanketter',
+		component: InstruktionOchBlanketter
+	},
+
+
+	{
+		path: '/omlab',
+		name: 'OmLab',
+		component: OmLab
+	},
+	{
+		path: '/help',
+		name: 'HjalpMedDittVatten',
+		component: HjalpMedDittVatten
+	},
+	{
+		path: '/analyskatalog/enskiltdricksvatten/',
+		name: 'EnsikltDricksVatten',
+		component: EnsikltDricksVatten
+	},
+	{
+		path: '/avlopp_analyser',
+		name: 'AvloppsAnalyser',
+		component: AvloppsAnalyser
+	},
+	{
+		path: '/bygglov_tillstand',
+		name: 'BygglovTillstand',
+		component: BygglovTillstand
+	},
+	{
+		path: '/verksamhet',
+		name: 'VerksamhetSamfallighet',
+		component: VerksamhetSamfallighet
+	},
+	{
+		path: '/kontakt',
+		name: 'KontaktSidan',
+		component: KontaktSidan
+	},
+	{
+		path: '/registrera',
+		name: 'RegistreraKund',
+		component: RegistreraKund
+	},
+	{
+		path: '/payment',
+		name: 'PaymentInfo',
+		component: PaymentInfo
+	},
+	{
+		path: '/kundstart',
+		name: 'KundStartSidan',
+		component: KundStartSidan
+	},
+	{
+		path: '/vattenguide',
+		name: 'VattenGuide',
+		component: VattenGuide,
+	},
+	{
+		path: '/answer1',
+		name: 'answer1',
+		component: answer1,
+	},
+	{
+		path: '/answer1a',
+		name: 'answer1a',
+		component: answer1a,
+	},
+	{
+		path: '/answer2',
+		name: 'answer2',
+		component: answer2,
+	}, {
+		path: '/answer3',
+		name: 'answer3',
+		component: answer3,
+	}, {
+		path: '/answer4',
+		name: 'answer4',
+		component: answer4,
+	},
+	{
+		path: '/*',
+		alias: '/'
+	},
 ]
 
 const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes,
-    scrollBehavior(_, _2, savedPosition) {
-        // console.log(to, from, savedPosition)
-        if (savedPosition) {
-            return savedPosition
-        } else {
-            return { x: 0, y: 0 }
-        }
-    }
+	mode: 'history',
+	base: process.env.BASE_URL,
+	routes,
+	scrollBehavior(_, _2, savedPosition) {
+		// console.log(to, from, savedPosition)
+		if (savedPosition) {
+			return savedPosition
+		} else {
+			return { x: 0, y: 0 }
+		}
+	}
 })
 
 router.beforeEach(function (to, from, next) {
-    console.log('global route')
-    console.log(to, from)
-    next()
+	console.log('global route')
+	console.log(to, from)
+	next()
 })
 
 export default router

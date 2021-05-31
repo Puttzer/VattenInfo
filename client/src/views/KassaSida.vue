@@ -1,25 +1,26 @@
 <template>
   <v-main class="">
-    <div class="d-flex flex-row justify-center brown">
-      <v-col cols="6" max-height="100" class="black">
-    <v-row class="d-flex">
-      <v-col class="d-flex justify-center ml" cols="12">
-        <h3 v-if="this.displayErrorMessage === true" class="red--text">
-          User must login to procceed further!!!
-        </h3>
-        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
-          Cart must not be empty to procceed further!!!
-        </h3>
-      </v-col>
-    </v-row>
     <div class="d-flex flex-row">
+      <v-row class="d-flex">
+        <v-col class="d-flex justify-center ml" cols="12">
+          <h3 v-if="this.displayErrorMessage === true" class="red--text">
+            User must login to procceed further!!!
+          </h3>
+          <h3
+            v-if="this.displayErrorMessageEmptycart === true"
+            class="red--text"
+          >
+            Cart must not be empty to procceed further!!!
+          </h3>
+        </v-col>
+      </v-row>
       <v-col cols="6" class="">
         <v-col
           max-height="110px"
           v-for="(selectedTest, index) in this.tests.selectedTests"
           :key="selectedTest._id"
           :index="index"
-          class="product-card white my-1 d-flex flex-row  justify-center"
+          class="product-card white my-1 d-flex flex-row justify-center"
           cols="12"
         >
           <v-img
@@ -74,10 +75,10 @@
             outlined
           ></v-select> -->
           <form action="">
-            <v-row class="ma-0 pa-0 " > 
+            <v-row class="ma-0 pa-0">
               <v-col class="pa-0 mb-0" cols="12" md="12" sm="12">
                 <div :class="{ 'valid--error': $v.name.$error }"></div>
-                <div class=" mb-5 pl-3">
+                <div class="mb-5 pl-3">
                   <p class="red--text" v-if="!$v.name.minLength">
                     namnet är inte tillräckligt långt minst 5 bokstäver
                   </p>
@@ -98,7 +99,7 @@
               </v-col>
             </v-row>
 
-            <v-row class="ma-0 pa-0"  justify="center">
+            <v-row class="ma-0 pa-0" justify="center">
               <v-col class="pa-0 ma-0" cols="12" md="12" sm="12">
                 <div :class="{ 'valid-error': $v.email.$error }"></div>
                 <div class="bajs mb-5 pl-3">
@@ -514,7 +515,6 @@ export default {
 }
 
 .product-card {
-  /* border-radius: 12px; */
 }
 
 .product-image {
