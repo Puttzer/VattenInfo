@@ -253,9 +253,6 @@ export default {
     moveToBygglov() {
       this.$router.push("/bygglov_tillstand");
     },
-    moveToAvlopp() {
-      this.$router.push("/avlopp_analyser");
-    },
     moveToEtikett() {
       this.$router.push("/EtikettHowTo");
     },

@@ -5,7 +5,7 @@ import store from '../store'
 
 import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
-import KundStartsidan from '../views/KundStartsidan.vue'
+import KundStartSidan from '../views/KundStartsidan.vue'
 import KundOrderSidan from '../views/KundOrderSidan.vue'
 import KundBestallsidan from '../views/KundBestallsidan.vue'
 import ForetagStartsida from '../views/ForetagStartsida'
@@ -194,6 +194,8 @@ const routes = [
 		name: 'LabbTjanster',
 		component: LabbTjanster
 	},
+	{ path: '/paymentSucess', name: 'PaymentSucess', component: PaymentSucess },
+	{ path: '/paymentCancel', name: 'PaymentError', component: PaymentError },
 	{
 		path: '/bestallanalys',
 		name: 'BestallSidan',
