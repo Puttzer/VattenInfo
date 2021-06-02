@@ -262,7 +262,7 @@ text {
 }
 .image-position {
   position: absolute;
-  z-index: 0;
+  //   z-index: 0;
 }
 
 .provInfo {

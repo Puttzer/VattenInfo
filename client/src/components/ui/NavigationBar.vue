@@ -61,7 +61,7 @@
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title">Logga in</p>
+                <p class="ma-2 sub-title loginhaha">Logga in</p>
               </div>
               <transition name="bounce">
                 <LoginComp
@@ -461,5 +461,8 @@ export default {
 .username {
   font-size: 12px;
   font-weight: lighter;
+}
+.loginhaha {
+  z-index: 100;
 }
 </style>
