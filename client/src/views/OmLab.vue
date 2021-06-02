@@ -42,40 +42,68 @@
                 <v-row class="d-flex flex-row red">
                   <v-col class="d-flex flex-column">
                     <div class="linkcard d-flex flex-row green">
-                      <h2>IMAGE</h2>
+                      <img
+                        class="lvmIMG"
+                        src="../assets/aboutpage/LVM.png"
+                        alt=""
+                      />
                       <h3>Livsmedelsverket</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
-                      <p>LINK</p>
+                      <a
+                        href="https://www.livsmedelsverket.se/sok?q=enskilt+vatten"
+                      >
+                        Enskilt vatten ||
+                      </a>
+
+                      <a
+                        href="https://kontrollwiki.livsmedelsverket.se/artikel/337/dricksvatten"
+                      >
+                        Dricksvatten för företag och samfälligheter
+                      </a>
                     </div>
                     <div class="linkcard d-flex flex-row blue">
-                      <h2>IMAGE</h2>
+                      <img
+                        class="sguIMG"
+                        src="../assets/aboutpage/sgu.png"
+                        alt=""
+                      />
                       <h3>Sveriges Geologiska Undersökning</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
-                      <p>LINK</p>
+                      <a href="https://www.sgu.se/"> https://www.sgu.se/ </a>
                     </div>
                     <div class="linkcard d-flex flex-row orange">
-                      <h2>IMAGE</h2>
+                      <img
+                        class="vatteninfoIMG"
+                        src="../assets/aboutpage/vatteninfo.png"
+                        alt=""
+                      />
                       <h3>Vatteninfo</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
-                      <p>LINK</p>
+                      <a href="https://vatteninfo.com/">
+                        https://vatteninfo.com/
+                      </a>
                     </div>
                     <div class="linkcard d-flex flex-row grey">
-                      <h2>IMAGE</h2>
+                      <img
+                        class="gemvaIMG"
+                        src="../assets/aboutpage/gemvaimg.png"
+                        alt=""
+                      />
                       <h3>Gemva</h3>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Sed iaculis lacus sed congue pellentesque. Praesent.
                       </p>
-                      <p>LINK</p>
+                      <a href="https://gemva.se/"> https://gemva.se/ </a>
                     </div>
                   </v-col>
                 </v-row>
@@ -125,6 +153,17 @@ export default {};
   //   max-width: 907px;
   left: 200px;
 }
+.gemvaIMG {
+  width: 180px;
+  height: 128px;
+  background-color: white;
+}
+.vatteninfoIMG {
+  width: 180px;
+  height: 128px;
+  background-color: white;
+}
+
 .linkcard {
   h2 {
     font-size: 36px;

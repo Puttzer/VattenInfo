@@ -40,7 +40,7 @@
         </div>
       </v-col>
 
-      <!-- <v-col cols="12" md="3" class="d-flex flex-row align-start fixed">
+      <v-col cols="12" md="3" class="d-flex flex-row align-start fixed">
         <div class="fixed">
           <v-img
             class="image"
@@ -59,7 +59,7 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
-      </v-col> -->
+      </v-col>
     </v-row>
     <!-- landning fort -->
     <v-row class="mt-16">
