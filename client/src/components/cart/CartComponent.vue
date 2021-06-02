@@ -2,7 +2,7 @@
   <div class="d-flex flex-row justify-center align-center testCase">
     <div
       @click="showCartComponent"
-      class="d-flex flex-row justify-center align-center testCase"
+      class="d-flex flex-row justify-center align-center testCase zdex"
     >
       <v-icon
         class="d-flex flex-row justify-center align-center ma-1 white pa-2"
@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 .countClass {
-  z-index: 2;
+  z-index: 1;
   border-radius: 99rem;
   width: 25px;
   height: 25px;
@@ -65,6 +65,9 @@ export default {
 .user-window {
   position: fixed;
   top: 30px;
+}
+.zdex {
+  /* z-index: 99999; */
 }
 
 /* .testCase {
