@@ -191,10 +191,10 @@ export default {
   top: 148px;
 }
 svg {
-  transform: rotate(319deg);
+  transform: rotate(324deg);
   height: 900px;
   position: absolute;
-  top: -236px;
+  top: -136px;
   right: -398px;
 }
 .container {
