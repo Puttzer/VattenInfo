@@ -76,7 +76,7 @@ const routes = [
 		component: LostLogin
 	},
 	{
-		path: '/analyskatalog',
+		path: '/Vara_analyser',
 		name: 'AnalysKatalog',
 		component: AnalysKatalog
 	},

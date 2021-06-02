@@ -78,7 +78,7 @@ export default {
       this.$router.push("/bygglov_tillstand");
     },
     moveToAnalysKatalog() {
-      this.$router.push("/analyskatalog");
+      this.$router.push("/Vara_analyser");
     },
   },
 };

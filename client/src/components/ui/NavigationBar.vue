@@ -246,13 +246,16 @@ export default {
       this.$router.push("/verksamhet");
     },
     moveToAvlopp() {
-      this.$router.push("/avlopp-analyser");
+      this.$router.push("/avlopp_analyser");
     },
     moveToLab() {
       this.$router.push("/omlab");
     },
     moveToBygglov() {
       this.$router.push("/bygglov_tillstand");
+    },
+    moveToContact() {
+      this.$router.push("/kontakt");
     },
     moveToEtikett() {
       this.$router.push("/EtikettHowTo");
