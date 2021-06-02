@@ -1,5 +1,5 @@
 <template>
-  <nav class="d-flex justify-center menu flex-row ">
+  <nav class="d-flex justify-center menu flex-row">
     <ul class="blue--text d-flex menu flex-row">
       <li @mouseover="showServices = true" @mouseleave="showServices = false">
         Analyskatalog
@@ -66,7 +66,7 @@ export default {
       this.$router.push("/omlab");
     },
     moveToEnskillt() {
-      this.$router.push("/analyskatalog/enskiltdricksvatten");
+      this.$router.push("/enskiltdricksvatten");
     },
     moveToVerksam() {
       this.$router.push("/verksamhet");
@@ -85,8 +85,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .menu {
   display: block;
   padding: 20px;

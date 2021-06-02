@@ -73,14 +73,14 @@
                 />
               </transition>
             </v-col>
-            <v-col >
+            <v-col>
               <div
                 v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title brown ">
+                <p class="ma-2 sub-title brown">
                   {{ this.user.user.email }}
                 </p>
               </div>
