@@ -1,5 +1,10 @@
 <template>
   <div class="container background">
+    <v-row class="d-flex justify-center">
+      <v-col cols="12">
+        {{ this.user.errorMessage }}
+      </v-col>
+    </v-row>
     <v-row class="d-flex justify-center mt-4">
       <v-col cols="6" class="d-flex justify-center">
         <h2 v-show="isAPerson" class="blue--text">Skappa Privat kund Konto</h2>
@@ -39,6 +44,7 @@
 // import PersonRegister from "../components/ui/regForms/PersonRegister";
 import TestPerson from "../components/privateperson/TestPerson";
 import TestCompany from "../components/company/TestCompany";
+import { mapState } from "vuex";
 
 export default {
   data() {
@@ -50,6 +56,9 @@ export default {
   components: {
     TestCompany,
     TestPerson,
+  },
+  computed: {
+    ...mapState(["user"]),
   },
 };
 </script>

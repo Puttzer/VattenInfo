@@ -124,9 +124,9 @@ module.exports = function (router) {
             console.log(newUser)
             try {
                 await newUser.save()
-                res.status(200).json({ message: 'user is inserted', _id: newUser._id })
+                res.status(200).json({ message: 'user is inserted', _id: newUser._id, name: newUser.name })
             } catch (e) {
-                res.status(500).json('unable to insert the newuser')
+                res.status(500).json({ message: 'unable to insert the newuser' })
             }
         }
     })
