@@ -33,10 +33,8 @@
           height="50px"
         ></v-img>
       </v-col>
-      <v-col cols="3">
+      <v-col cols="7" class="response d-flex justify-space-between flex-row">
         <p>{{ test.testname }}</p>
-      </v-col>
-      <v-col cols="3">
         <!-- <v-btn x-small>Läs Mer</v-btn> -->
         <v-btn id="testbtnstuff" x-small>köp</v-btn>
       </v-col>
@@ -70,9 +68,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 #testbtnstuff {
-  margin-left: 400px;
+  margin-left: 140px;
 }
 #results {
   margin-left: -40px;

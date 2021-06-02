@@ -63,35 +63,36 @@
                 <v-icon color="blue" large>account_circle</v-icon>
                 <p class="ma-2 sub-title">Logga in</p>
               </div>
-
-              <LoginComp
-                v-show="
-                  this.user.showLoginModel === true ||
-                  this.company.showLoginModel === true
-                "
-                class="placement"
-              />
+              <transition name="bounce">
+                <LoginComp
+                  v-show="
+                    this.user.showLoginModel === true ||
+                    this.company.showLoginModel === true
+                  "
+                  class="placement"
+                />
+              </transition>
             </v-col>
-            <v-col>
+            <v-col >
               <div
                 v-if="this.user.userIsloggedIn === true"
                 @click="ShowUserDropDown()"
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title">
+                <p class="ma-2 sub-title brown ">
                   {{ this.user.user.email }}
                 </p>
               </div>
               <div
                 @click="ShowCompanyDropDown()"
-                class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
+                class="d-flex flex-row align-center justify-center logga-in cursor-pointer dropdownuser"
                 v-else
               >
                 <!-- v-else="this.company.companyUserIsloggedIn === true" -->
                 <v-icon color="blue" large>account_circle</v-icon>
 
-                <p class="ma-2 sub-title">
+                <p class="username d-flex justify-center align-center">
                   {{ this.company.companyUser.contactEmail }}
                 </p>
               </div>
@@ -107,16 +108,16 @@
         />
       </transition>
 
-      <transition name="fade">
+      <transition name="slide-fade">
         <UserDropDown
           v-if="this.user.showUserDropDown === true"
-          class="ma-0 pa-0 cursor-pointer user-window"
+          class="ma-0 pa-0 user-window"
         />
       </transition>
-      <transition name="fade">
+      <transition name="slide-fade">
         <CompanyDropDown
           v-if="this.company.showCompanyDropDown === true"
-          class="ma-0 pa-0 cursor-pointer user-window"
+          class="ma-0 pa-0 user-window"
         />
       </transition>
       <!-- <v-icon @click="drawer = !drawer" size="34" color="blue">mdi-menu</v-icon> -->
@@ -129,14 +130,16 @@
             <li
               @mouseover="showServices = true"
               @mouseleave="showServices = false"
-              @click.self="moveToAnalysKatalog"
+              @click="moveToAnalysKatalog"
             >
-              Analyskatalog
+              Våra Analyser
               <v-icon>keyboard_arrow_down</v-icon>
+
+              <!-- LOOOKIE HERE! -->
 
               <ul v-if="showServices">
                 <li class="text--white" @click="moveToEnskillt">
-                  enskilt dricks vatten
+                  enskilt dricksvatten
                 </li>
                 <li class="text--white" @click="moveToVerksam">
                   verksamhet & sämfallighet
@@ -145,7 +148,7 @@
                   bygglov & tillstand
                 </li>
                 <li class="text--white" @click="moveToAvlopp">
-                  AvloppsAnalyser
+                  Avloppsanalyser
                 </li>
                 <li class="text--white">
                   <a
@@ -176,13 +179,15 @@
               @mouseleave="showOtherServices = false"
             >
               Övriga tjänster
-              <!-- <v-icon>keyboard_arrow_down</v-icon> -->
+              <v-icon>keyboard_arrow_down</v-icon>
 
-              <!-- <ul v-if="showOtherServices">
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-                <li class="text--white">lorem</li>
-              </ul> -->
+              <ul v-if="showOtherServices">
+                <li class="text--white" @click="moveToEtikett">
+                  Etikett How To
+                </li>
+                <!-- <li class="text--white">lorem</li>
+                <li class="text--white">lorem</li> -->
+              </ul>
             </li>
           </ul>
         </nav>
@@ -229,7 +234,7 @@ export default {
       this.$router.push("/enskiltdricksvatten");
     },
     moveToAnalysKatalog() {
-      this.$router.push("/analyskatalog");
+      this.$router.push("/Vara_analyser");
     },
     moveToHome() {
       this.$router.push("/");
@@ -249,8 +254,8 @@ export default {
     moveToBygglov() {
       this.$router.push("/bygglov_tillstand");
     },
-    moveToContact() {
-      this.$router.push("/kontakt");
+    moveToEtikett() {
+      this.$router.push("/EtikettHowTo");
     },
     showPopup() {
       this.$store.commit("user/OPEN_LOGIN_COMP");
@@ -306,8 +311,11 @@ export default {
   top: 0px;
   min-height: 100px;
   min-width: 100px;
-  border-top: 5px solid blue;
-  background-color: rgb(27, 77, 92);
+  /* border-top: 5px solid blue; */
+  /* background-color: rgb(27, 77, 92); */
+  background: #f3f3f3;
+  color: #444;
+  cursor: pointer;
   margin: 0;
   padding: 0;
   z-index: 10;
@@ -414,5 +422,41 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.7s ease;
+}
+.slide-fade-leave-active {
+  /* transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1); */
+  transition: all 0.7s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(150px);
+  /* opacity: 0; */
+}
+
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  /* 50% {
+    transform: scale(1.5);
+  } */
+  100% {
+    transform: scale(1);
+  }
+}
+
+.username {
+  font-size: 12px;
+  font-weight: lighter;
 }
 </style>
