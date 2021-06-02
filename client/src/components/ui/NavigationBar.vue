@@ -333,6 +333,7 @@ export default {
   font-size: 14px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+  z-index: 10;
 }
 /* .dropdownuser UserDropDown {
   position: absolute;

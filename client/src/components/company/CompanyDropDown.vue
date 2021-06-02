@@ -31,7 +31,7 @@
       @click.prevent="moveToCompanyPage"
     >
       <v-col cols="3">
-       <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Sidor</p>
@@ -73,7 +73,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["company"]),
+    ...mapState(["company", "user"]),
   },
   methods: {
     async moveToCompanyPage() {
@@ -101,6 +101,8 @@ export default {
       this.$store.commit("company/COMPANY_LOGOUT");
       localStorage.removeItem("companyProfileToken");
       if (!this.company.companyUserIsloggedIn) {
+        this.$store.commit("company/UPDATE_CLOSE_WINDOW", false);
+        this.$store.commit("user/CLOSE_WINDOW");
         this.$router.push("/");
       }
     },

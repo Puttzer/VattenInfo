@@ -198,8 +198,9 @@ export default {
             state.showUserDropDown = value
         },
         USER_LOGOUT(state) {
-            state.userIsloggedIn = false,
-                state.showUserDropDown = false
+            state.userIsloggedIn = false
+            state.showUserDropDown = false
+            state.showLoginModel = false
         },
         SEARCH_DROP_DOWN_VISIBLE(state) {
             state.showSearchDropDown = true
