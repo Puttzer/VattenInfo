@@ -60,93 +60,74 @@ import EtikettHowTo from '../views/EtikettHowTo.vue'
 Vue.use(VueRouter)
 
 const routes = [
-	{
-		path: '/',
-		name: 'Home',
-		component: Home
-	},
-	{
-		path: '/login',
-		name: 'Login',
-		component: Login
-	},
-	{
-		path: '/lostlogin',
-		name: 'LostLogin',
-		component: LostLogin
-	},
-	{
-		path: '/Vara_analyser',
-		name: 'AnalysKatalog',
-		component: AnalysKatalog
-	},
-	{
-		path: '/EtikettHowTo',
-		name: 'EtikettHowTo',
-		component: EtikettHowTo
-	},
-	{
-		path: '/login/user',
-		name: 'PrivateAccount',
-		component: KundBestallsidan
-	},
-	{
-		path: '/login/admin',
-		name: 'AdminLogin',
-		component: AdminLogin
-	},
-	{
-		path: '/login/companyinfopage',
-		name: 'CompanyLoginHomePage',
-		component: CompanyLoginHomePage
-	},
-	{
-		path: '/login/companyorderspage',
-		name: 'CompanyOrdersPage',
-		component: CompanyOrdersPage
-	},
-	{
-		path: '/test/scrolltest',
-		name: 'ScrollHome',
-		component: ScrollHome
-	},
-	{
-		path: '/test/ScrollAnalys',
-		name: 'ScrollAnalys',
-		component: ScrollAnalys
-	},
-	{
-		path: '/test/:slug',
-		name: 'TestStartsidan',
-		component: TestStartsidan
-	},
-	// {
-	//     path: '/adminpage',
-	//     name: 'AdminStartsidan',
-	//     component: AdminStartsidan,
-	//     beforeEnter: (to, from, next) => {
-	//         console.log(store.state.admin.isLoggedIn)
-	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-	//             next()
-	//         } else {
-	//             next('/')
-	//         }
-	//     }
-	// },
-	{
-		path: '/adminpage',
-		// You could also have named views at the top
-		component: AdminStartsidan,
-		beforeEnter: (to, from, next) => {
-			console.log(store.state.admin.isLoggedIn)
-			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-				next()
-			} else {
-				next('/')
-			}
-		},
-		children: [
-
+    {
+        path: '/',
+        name: 'Home',
+        component: Home
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
+    },
+    {
+        path: '/lostlogin',
+        name: 'LostLogin',
+        component: LostLogin
+    },
+    {
+        path: '/analyskatalog',
+        name: 'AnalysKatalog',
+        component: AnalysKatalog
+    },
+    {
+        path: '/login/user',
+        name: 'PrivateAccount',
+        component: KundBestallsidan
+    },
+    {
+        path: '/login/admin',
+        name: 'AdminLogin',
+        component: AdminLogin
+    },
+    {
+        path: '/login/companyinfopage',
+        name: 'CompanyLoginHomePage',
+        component: CompanyLoginHomePage
+    },
+    {
+        path: '/login/companyorderspage',
+        name: 'CompanyOrdersPage',
+        component: CompanyOrdersPage
+    },
+    {
+        path: '/test/scrolltest',
+        name: 'ScrollHome',
+        component: ScrollHome
+    },
+    {
+        path: '/test/ScrollAnalys',
+        name: 'ScrollAnalys',
+        component: ScrollAnalys
+    },
+    {
+        path: '/test/:slug',
+        name: 'TestStartsidan',
+        component: TestStartsidan
+    },
+    {
+        path: '/adminpage',
+        // You could also have named views at the top
+        component: AdminStartsidan,
+        beforeEnter: (to, from, next) => {
+            // console.log(store.state.admin.isLoggedIn)
+            if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
+                next()
+            } else {
+                next('/')
+            }
+        },
+        children: [
 			{
 				path: 'tests',
 				component: Tests
@@ -312,9 +293,10 @@ const router = new VueRouter({
 })
 
 router.beforeEach(function (to, from, next) {
-	console.log('global route')
-	console.log(to, from)
-	next()
+    // console.log('global route')
+    // console.log(to, from)
+    next()
+
 })
 
 export default router

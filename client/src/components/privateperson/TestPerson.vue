@@ -61,7 +61,6 @@
           </v-row>
           <v-row class="pa-0 ma-0">
             <v-col class="pa-0 ma-0" cols="12" md="6">
-
               <!-- <p v-if="!$v.passsword.required" class="error">obligatoriskt</p> -->
               <div class="">
                 <!-- <p>ditt passord måste ha minst 9tecken</p> -->
@@ -74,6 +73,7 @@
                 class="mt-n3 mr-3"
                 placeholder="Password"
                 v-model.trim="$v.password.$model"
+                type="password"
                 label="Password"
                 outlined
                 append-icon="lock"
@@ -107,12 +107,12 @@
           <v-row class="pa-0 ma-0" justify="center">
             <v-col class="pa-0 ma-0" cols="12" md="6" sm="12">
               <div class="mb-5 pl-3">
-                <p class="bajs mb-5 pl-3" v-if="!$v.phone.numeric">
+                <!-- <p class="bajs mb-5 pl-3" v-if="!$v.phone.numeric">
                   has to be didges
                 </p>
                 <p class="bajs mb-5 pl-3" v-if="!$v.phone.minLength">
                   not enough didgets
-                </p>
+                </p> -->
                 <p class="bajs mb-5 pl-3" v-if="!$v.phone.required">
                   obligatoriskt
                 </p>
@@ -123,7 +123,7 @@
                 color="#051f38"
                 append-icon="phone"
                 text
-                v-model.trim="$v.phone.$model"
+                v-model="$v.phone.$model"
                 label="Phone"
                 outlined
                 placeholder="0855555555"
@@ -131,15 +131,15 @@
             </v-col>
 
             <v-col class="pa-0 ma-0" cols="12" md="6" sm="12">
-              <p v-if="!$v.phone.numeric">has to be didges</p>
-              <p v-if="!$v.phone.minLength">not enough didgets</p>
+              <p v-if="!$v.altPhone.numeric">has to be didges</p>
+              <p v-if="!$v.altPhone.minLength">not enough didgets</p>
               <v-text-field
                 dense
                 class="mt-8 ml-3"
                 append-icon="contact_phone"
                 color="#051f38"
                 text
-                v-model.trim="$v.altPhone.$model"
+                v-model="$v.altPhone.$model"
                 label="Alternativt Telefonnummer"
                 outlined
                 placeholder="0855555555"
@@ -239,7 +239,7 @@ export default {
       name: "",
       email: "",
       password: "",
-      repeatpassword: "",
+      repeatPassword: "",
       phone: "",
       altPhone: "",
       adress: "",
@@ -298,7 +298,7 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-        phonenumber: this.this.phone,
+        phonenumber: this.phone,
         altPhone: this.altPhone,
         streetname: this.adress,
         city: this.city,
@@ -307,6 +307,7 @@ export default {
       };
       console.log(regInfo);
       await this.$store.dispatch("user/createNewUser", regInfo);
+      this.$router.push("/");
     },
   },
   //    setName(value) {

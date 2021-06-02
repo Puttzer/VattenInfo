@@ -453,6 +453,9 @@ export default {
           orderGeneratePayload,
         });
       } else {
+        this.displayErrorMessage = true;
+        Vue.$vToastify.error("User must able to login to procced further");
+        this.$store.commit("user/OPEN_LOGIN_COMP");
         return;
       }
     },

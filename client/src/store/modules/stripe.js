@@ -23,7 +23,7 @@ export default {
     },
     actions: {
         async getStripePublishableKey({ commit }) {
-            const response = await fetch('http://localhost:4000/api/stripe/config', {
+            const response = await fetch('http://localhost:4000/api/config', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ export default {
             console.log('inside actions', { payload, publishableKey, orderGeneratePayload })
 
             const stripe = window.Stripe(`${publishableKey}`)
-            fetch("http://localhost:4000/api/create-checkout-session", {
+            fetch('http://localhost:4000/api/create-checkout-session', {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: {
@@ -50,14 +50,24 @@ export default {
                 .then(async function (response) {
                     const data = await response.json();
                     console.log(data)
-                    sessionStorage.setItem('session_stripe_id', `${data.id}`);
+                    window.localStorage.setItem('session_stripe_id', `${data.id}`);
                     commit('UPDATE_STRIPE_SESSION_ID', data.id, { module: 'stripe' });
+                    console.log('local storage ', window.localStorage)
                     return data.id;
                 })
                 .then(function (id) {
-                    console.log(stripe, id)
+                    window.localStorage.clear();
+                    console.log('stripe object', stripe)
                     // dispatch('order/generateCompanyOrder', orderGeneratePayload, { root: true })
                     stripe.redirectToCheckout({ sessionId: id })
+
+                    console.log('the stripe ID IS COMPLETED AND REDIRECT', id);
+
+                    // save id in localStorage
+                    // use id from lS
+                    // delete immedieatley.
+
+
                     // await stripe.confirmCardPayment(`${publishableKey}`)
                     //     .then(function (result) {
                     //         if (result.error) {
@@ -71,6 +81,8 @@ export default {
                     //             commit('UPDATE_STRIPE_PAYMENT_ID', result.paymentIntent.id, { module: 'stripe' });
                     //         }
                     //     })
+
+
                 })
                 .then(function (result) {
                     console.log(result)
