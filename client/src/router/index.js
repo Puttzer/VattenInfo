@@ -76,7 +76,7 @@ const routes = [
 		component: LostLogin
 	},
 	{
-		path: '/Vara_analyser',
+		path: '/analyskatalog',
 		name: 'AnalysKatalog',
 		component: AnalysKatalog
 	},
@@ -120,25 +120,12 @@ const routes = [
 		name: 'TestStartsidan',
 		component: TestStartsidan
 	},
-	// {
-	//     path: '/adminpage',
-	//     name: 'AdminStartsidan',
-	//     component: AdminStartsidan,
-	//     beforeEnter: (to, from, next) => {
-	//         console.log(store.state.admin.isLoggedIn)
-	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-	//             next()
-	//         } else {
-	//             next('/')
-	//         }
-	//     }
-	// },
 	{
 		path: '/adminpage',
 		// You could also have named views at the top
 		component: AdminStartsidan,
 		beforeEnter: (to, from, next) => {
-			console.log(store.state.admin.isLoggedIn)
+			// console.log(store.state.admin.isLoggedIn)
 			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
 				next()
 			} else {
@@ -146,7 +133,6 @@ const routes = [
 			}
 		},
 		children: [
-
 			{
 				path: 'tests',
 				component: Tests
@@ -312,9 +298,10 @@ const router = new VueRouter({
 })
 
 router.beforeEach(function (to, from, next) {
-	console.log('global route')
-	console.log(to, from)
+	// console.log('global route')
+	// console.log(to, from)
 	next()
+
 })
 
 export default router

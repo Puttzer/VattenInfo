@@ -31,7 +31,7 @@
       @click.prevent="moveToCompanyPage"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">account_box</v-icon>
+       <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Sidor</p>
@@ -43,7 +43,7 @@
       @click.prevent="moveToCompanyOrder"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">payments</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">payments</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Beställningar</p>
@@ -56,7 +56,7 @@
       @click.prevent="moveToCompanyLogout"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">logout</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">logout</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Logga Ut</p>
@@ -117,7 +117,7 @@ export default {
   /* height: 18vh; */
   height: 100vh;
 
-  border-top: 5px solid #000;
+  /* border-top: 5px solid #000; */
   /* background-color: rgb(21, 57, 68); */
 
   /* overflow: visible; */
@@ -129,6 +129,7 @@ export default {
   /* font-weight: normal; */
   cursor: pointer;
   color: rgb(12, 1, 12);
-  zoom: 120%;
+  /* zoom: 120%; */
+  font-weight: bold;
 }
 </style>

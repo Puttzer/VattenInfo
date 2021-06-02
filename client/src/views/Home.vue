@@ -1,5 +1,12 @@
 <template>
   <div class="background container mt-12">
+    <v-row class="ma-1 pa-0 d-flex justify-center">
+      <v-col cols="12" class="blue--text d-flex justify-center">
+        <h3>
+          {{ this.user.statusMessage }}
+        </h3>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col
         height="200px"
@@ -157,7 +164,7 @@ export default {
     this.$store.dispatch("tests/getTests");
   },
   computed: {
-    ...mapState(["tests"]),
+    ...mapState(["tests", "user"]),
   },
   methods: {
     moveToIndividual(id, test) {

@@ -1,5 +1,6 @@
+
 <template>
-  <v-main class="someOtherName d-flex justify-center">
+  <v-main class="menu d-flex justify-center">
     <v-row>
       <v-col class="d-flex flex-row-reverse mr-8">
         <v-icon @click="closeUseroptions" large color="black" class="listItem"
@@ -90,14 +91,16 @@ export default {
 </script>
 
 <style scoped>
-.someOtherName {
+.menu {
   position: absolute;
   width: 20vw;
   height: 100vh;
   font-weight: 600;
   font-size: 18px;
-  border-top: 3px solid blue;
-  background-color: #3e3e3e;
+
+  /* background-color: #3e3e3e; */
+  background-color: #f3f3f3;
+
   /* overflow: visible; */
   color: white;
 }
@@ -107,6 +110,6 @@ export default {
   /* font-weight: normal; */
   cursor: pointer;
   color: rgb(12, 1, 12);
-  zoom: 120%;
+  /* zoom: 120%; */
 }
 </style>
