@@ -120,7 +120,9 @@
     </v-row>
     <v-row class="d-flex justify-center mt-12">
       <v-col cols="10" class="d-flex justify-center align-center">
-        <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
+        <v-btn color="btnColor" class="white--text" @click="moveToEnskillt"
+          >FLER PROVER</v-btn
+        >
       </v-col>
     </v-row>
   </div>
@@ -174,6 +176,9 @@ export default {
         params: { id: id, test },
       });
       console.log("hit");
+    },
+    moveToEnskillt() {
+      this.$router.push("/enskiltdricksvatten");
     },
   },
 };
