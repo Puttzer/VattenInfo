@@ -36,7 +36,9 @@
               vatten, livsmedelsklassat vatten samt avlopp
             </p>
           </div>
-          <v-btn class="btnColor white--text">läs mer</v-btn>
+          <v-btn class="btnColor white--text" @click="moveToAnalysKatalog"
+            >läs mer</v-btn
+          >
         </div>
       </v-col>
 
@@ -177,8 +179,13 @@ export default {
       });
       console.log("hit");
     },
+    // FLER PROVER
     moveToEnskillt() {
       this.$router.push("/enskiltdricksvatten");
+    },
+    // LÄS MER
+    moveToAnalysKatalog() {
+      this.$router.push("/Vara_analyser");
     },
   },
 };
