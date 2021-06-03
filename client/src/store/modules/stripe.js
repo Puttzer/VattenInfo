@@ -51,9 +51,9 @@ export default {
                     const data = await response.json();
                     console.log(data)
                     window.localStorage.setItem('session_stripe_id', `${data.id}`);
-                    commit('UPDATE_STRIPE_SESSION_ID', data.id, { module: 'stripe' });
+                    commit('UPDATE_STRIPE_SESSION_ID', data.sessionId, { module: 'stripe' });
                     console.log('local storage ', window.localStorage)
-                    return data.id;
+                    return data.sessionId;
                 })
                 .then(function (id) {
                     window.localStorage.clear();
