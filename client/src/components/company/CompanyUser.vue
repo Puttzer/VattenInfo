@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card flat class="mt-8 d-flex flex-column justify-center">
-      <v-row class="bgColor">
+      <v-row class="btnColor">
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <v-row>
             <div class="text--black font-weight-bold ml-3">order Number</div>
@@ -65,8 +65,9 @@
               pending
             </div>
             <v-btn
+			
               small
-              class="btnColor ma-4"
+              class="btnColor white--text ma-4"
               @click="moveToIndividualOrderPage(order.orderProduct._id)"
               >detail information</v-btn
             >

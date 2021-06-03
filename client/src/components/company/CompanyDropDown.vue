@@ -28,7 +28,7 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyPage"
+      @click="moveToCompanyPage"
     >
       <v-col cols="3">
         <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
@@ -40,7 +40,7 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyOrder"
+      @click="moveToCompanyOrder"
     >
       <v-col cols="3">
         <v-icon medium class="mx-1" color="btnColor">payments</v-icon>
@@ -53,7 +53,7 @@
 
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyLogout"
+      @click="moveToCompanyLogout"
     >
       <v-col cols="3">
         <v-icon medium class="mx-1" color="btnColor">logout</v-icon>
@@ -81,6 +81,7 @@ export default {
         const payload = this.company.companyUser._id;
         // console.log("move to actions");
         await this.$store.dispatch("company/getCompanyInfo", payload);
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE", false);
         this.$router.push("/login/companyinfopage");
       } else {
         return;
@@ -91,6 +92,7 @@ export default {
       if (this.company.companyUserIsloggedIn) {
         const companyId = this.company.companyUser._id;
         await this.$store.dispatch("order/getCompanyOrders", companyId);
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE", false);
         this.$router.push("/login/companyorderspage");
       } else {
         return;

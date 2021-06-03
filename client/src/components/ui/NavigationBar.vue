@@ -34,11 +34,11 @@
                   </v-text-field>
                 </v-col>
               </v-row>
-              <v-row class="d-flex justify-end ma-0 pa-0 green">
+              <v-row class="d-flex justify-end ma-0 pa-0">
                 <v-col cols="10" class="ma-0 pa-0">
                   <search-drop-down
                     v-if="this.user.showSearchDropDown === true"
-                    class="search-dropdown ma-0 pa-0"
+                    class="search-dropdown green	 ma-0 pa-0"
                   />
                 </v-col>
               </v-row>
@@ -80,7 +80,7 @@
                 class="d-flex flex-row align-center justify-start logga-in cursor-pointer dropdownuser"
               >
                 <v-icon color="blue" large>account_circle</v-icon>
-                <p class="ma-2 sub-title brown">
+                <p class="ma-2 sub-title ">
                   {{ this.user.user.email }}
                 </p>
               </div>

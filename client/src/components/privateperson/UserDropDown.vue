@@ -14,7 +14,7 @@
       @click="moveToUserPage"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">account_box</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Sidor</p>
@@ -26,7 +26,7 @@
       @click="moveToUserOrder"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">payments</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">payments</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Beställningar</p>
@@ -39,7 +39,7 @@
       @click="moveToLogout"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">logout</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">logout</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Logga Ut</p>
