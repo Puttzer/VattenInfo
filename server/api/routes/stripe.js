@@ -53,7 +53,7 @@ module.exports = function (router) {
     });
 
 
-    router.post('/stripe/createintent', async (req, res) => {
+    router.post('/stripe/createproduct', async (req, res) => {
 
         // we need to create a user intially with email
 
@@ -116,26 +116,39 @@ module.exports = function (router) {
     router.post('/create-checkout-session', async (req, res) => {
         console.log(req.body)
 
-        const { orderTests } = req.body
+        const { orderTests, email, _id, } = req.body
         console.log(orderTests)
 
         const testsList = req.body.orderTests.map(test => test)
 
-        let newTestData = []
-        testsList.map(async (test) => {
-            const product = await stripe.products.create({
-                name: req.body
-            })
-        })
+        console.log('line items list', testsList)
+        console.log('line items list', testsList[0].price)
+        console.log('price_1Iy19QGN3SPsO03O0KEpiSXU')
+        try {
 
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
 
-            line_items: testsList,
-            mode: 'payment',
-            success_url: `${YOUR_DOMAIN}/paymentSucess`,
-            cancel_url: `${YOUR_DOMAIN}/paymentCancel`,
-        });
-        res.json({ id: session.id });
+                // line_items: {
+                //     price: testsList[0].price,
+                //     // For metered billing, do not pass quantity
+                //     quantity: testsList[0].quantity,
+                // },
+                line_items: testsList,
+                mode: 'payment',
+                success_url: `${YOUR_DOMAIN}/paymentSucess?session_id={CHECKOUT_SESSION_ID}`,
+                cancel_url: `${YOUR_DOMAIN}/paymentCancel`,
+            });
+            res.json({ sessionId: session.id });
+        } catch (error) {
+            res.status(400);
+            return res.send({
+                error: {
+                    message: error.message,
+                }
+            });
+
+        }
+
     });
 }
