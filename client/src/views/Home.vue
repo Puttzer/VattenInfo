@@ -28,15 +28,17 @@
           <div class="labb blue--text ma-2">VATTENINFO LABBTJÄNSTER</div>
           <div class="rubrik ma-0 pa-0">
             <p class="green--text ma-0 pa-0">kvalitetssäkra</p>
-            <p class="blue--text mt-0 pt-0">ditt vatten.</p>
+            <p class="green--text mt-0 pt-0">ditt vatten.</p>
           </div>
           <div class="bread">
-            <p class="body-2">
+            <p>
               Vi erbjuder mikrobiologiska och kemiska analyser för enskilt
               vatten, livsmedelsklassat vatten samt avlopp
             </p>
           </div>
-          <v-btn class="btnColor white--text">läs mer</v-btn>
+          <v-btn class="btnColor white--text" @click="moveToAnalysKatalog"
+            >läs mer</v-btn
+          >
         </div>
       </v-col>
 
@@ -77,13 +79,13 @@
       <v-col cols="8" class="d-flex flex-column justify-center">
         <v-row class="d-flex justify-center align-center">
           <h1
-            class="blue--text font-weight-class text-uppercase d-flex justify-start"
+            class="care blue--text font-weight-class text-uppercase d-flex justify-start"
           >
             Ta hand om vattnet så <br />tar vattnet hand om dig
           </h1>
         </v-row>
         <v-row class="d-flex justify-center align-center ml-8 mt-4" cols="12">
-          <p class="d-flex justify-center align-center ml-16">
+          <p class="care-bread d-flex justify-center align-center ml-16">
             Lorem ipsum dolor, sit amet consectetur elit. Aspernatur doloremque
             voluptatem <br />
             dignissimos soluta incidunt non velit recusandae quia amet
@@ -120,7 +122,9 @@
     </v-row>
     <v-row class="d-flex justify-center mt-12">
       <v-col cols="10" class="d-flex justify-center align-center">
-        <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
+        <v-btn color="btnColor" class="white--text" @click="moveToEnskillt"
+          >FLER PROVER</v-btn
+        >
       </v-col>
     </v-row>
   </div>
@@ -175,6 +179,14 @@ export default {
       });
       console.log("hit");
     },
+    // FLER PROVER
+    moveToEnskillt() {
+      this.$router.push("/enskiltdricksvatten");
+    },
+    // LÄS MER
+    moveToAnalysKatalog() {
+      this.$router.push("/Vara_analyser");
+    },
   },
 };
 </script>
@@ -191,10 +203,10 @@ export default {
   top: 148px;
 }
 svg {
-  transform: rotate(319deg);
+  transform: rotate(324deg);
   height: 900px;
   position: absolute;
-  top: -236px;
+  top: -136px;
   right: -398px;
 }
 .container {
@@ -206,7 +218,7 @@ svg {
   letter-spacing: 5px;
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
-  font-size: 14px;
+  font-size: 24px;
 }
 
 /*  text starts here */
@@ -219,11 +231,20 @@ svg {
 }
 
 .bread {
-  /* letter-spacing: 3px; */
   font-family: "Poppins", sans-serif;
-  font-weight: lighter;
-  font-size: 9px;
-  width: 300px;
+  font-size: 16px;
+  width: 400px;
+  font-weight: bold;
+}
+.care {
+  font-size: 34px;
+  font-family: "Poppins", sans-serif;
+}
+.care-bread {
+  font-family: "Poppins", sans-serif;
+  width: 570px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 /* text  ends here here */
