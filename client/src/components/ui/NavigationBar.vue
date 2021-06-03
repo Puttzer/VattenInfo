@@ -38,7 +38,7 @@
                 <v-col cols="10" class="ma-0 pa-0">
                   <search-drop-down
                     v-if="this.user.showSearchDropDown === true"
-                    class="search-dropdown green	 ma-0 pa-0"
+                    class="search-dropdown ma-0 pa-0"
                   />
                 </v-col>
               </v-row>
