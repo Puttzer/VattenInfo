@@ -83,6 +83,7 @@ export default {
             commit('UPDATE_COMPANY_ID', data._id, { module: 'company' })
             commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
+            commit('user/UPDATE_CLOSE_WINDOW', false, { root: true })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
         },
         async validateCompany({ commit }) {
@@ -105,6 +106,7 @@ export default {
             commit('UPDATE_COMPANY_ID', data.id, { module: 'company' })
             commit('UPDATE_COMPANY_ISLOGGEDIN', data.companyUserIsloggedIn, { module: 'company' })
             commit('UPDATE_CLOSE_WINDOW', false, { module: 'company' })
+            commit('user/UPDATE_CLOSE_WINDOW', false, { root: true })
             commit('COMPANY_DROP_DOWN_CHANGE', false, { module: 'company' })
 
         },
@@ -132,9 +134,9 @@ export default {
             commit('COMPANY_INFO', data.company, { module: 'user' })
         },
 
-		showOnlyOneDropDown(){
-			console.log('hey ho!');
-		}
+        showOnlyOneDropDown() {
+            console.log('hey ho!');
+        }
     },
     mutations: {
         UPDATE_COMPANYS(state, value) {
@@ -168,8 +170,9 @@ export default {
             state.showCompanyDropDown = value
         },
         COMPANY_LOGOUT(state) {
-            state.companyUserIsloggedIn = false,
-                state.showCompanyDropDown = false
+            state.companyUserIsloggedIn = false
+            state.showCompanyDropDown = false
+            state.showLoginModel = false
         },
         COMPANY_DROPDOWNCOPMONENT_DISABLE(state) {
             state.showCompanyDropDown = false

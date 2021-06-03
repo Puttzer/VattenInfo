@@ -13,7 +13,8 @@ let newTest = new Schema({
     price: { type: String, required: true },
     image: { type: String, required: true },
     quantity: { type: Number, default: 1 },
-    productId: { type: String }
+    productId: { type: String },
+    priceId: { type: String }
 })
 
 newTest.pre('save', function (next) {

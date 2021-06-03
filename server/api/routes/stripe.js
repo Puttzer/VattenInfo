@@ -1,5 +1,4 @@
-
-const Product = require('../../models/test')
+const Test = require('../../models/test')
 require('dotenv').config()
 const stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`);
 const YOUR_DOMAIN = 'http://localhost:8080';
@@ -52,6 +51,68 @@ module.exports = function (router) {
         console.log('after loop', updatedProductList)
         res.json({ products: updatedProductList })
     });
+
+
+    router.post('/stripe/createintent', async (req, res) => {
+
+        // we need to create a user intially with email
+
+        const { test, email } = req.body
+        // stage 2: we need to create a product in the stripe
+        const product = await stripe.products.create({
+            name: test.testname,
+            description: test.description
+        })
+        if (!product) {
+            res.status(500).json({
+                message: 'unable to insert product in stripe'
+            })
+        }
+
+        const productID = product.id
+
+        // stage 2: we need to create a price tag for the product
+
+        const productWithPrice = await stripe.prices.create({
+            product: productID,
+            unit_amount: parseInt(test.price) * 100,
+            currency: 'sek',
+            metadata: {
+                _id: test._id,
+                slug: test.slug
+            }
+        })
+
+        // console.log('Generated product with price details from stripe', productWithPrice)
+
+        if (!productWithPrice) {
+            res.status(500).json({
+                message: 'unable to insert price for the product in stripe'
+            })
+        }
+
+        // assigning the priceID and ProductID from the stripe to mongodbObject
+        let newTestSample = test
+        newTestSample.productId = productWithPrice.product
+        newTestSample.priceId = productWithPrice.id
+
+        let qry = { _id: test._id }
+        let doc = newTestSample
+        console.log('updated test details', doc)
+        await Test.findByIdAndUpdate(qry, doc, function (err, newResp) {
+            if (err) return console.log(err)
+            console.log(newResp)
+            res.status(200).json({
+                message: 'test details has been updated',
+                updatedTest: {
+                    _id: req.params.id,
+                    updatedTestInfo: doc
+                }
+
+            })
+        })
+    })
+
     router.post('/create-checkout-session', async (req, res) => {
         console.log(req.body)
 
