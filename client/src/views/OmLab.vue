@@ -55,13 +55,13 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column"
-                          ><a
+                          ><a class="linkcol"
                             href="https://www.livsmedelsverket.se/sok?q=enskilt+vatten"
                           >
                             Enskilt vatten
                           </a>
 
-                          <a
+                          <a class="linkcol"
                             href="https://kontrollwiki.livsmedelsverket.se/artikel/337/dricksvatten"
                           >
                             Dricksvatten för företag och samfälligheter
@@ -83,7 +83,7 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column"
-                          ><a href="https://www.sgu.se/">
+                          ><a  class="linkcol" href="https://www.sgu.se/">
                             https://www.sgu.se/
                           </a></v-col
                         ></v-col
@@ -103,7 +103,7 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column"
-                          ><a href="https://vatteninfo.com/">
+                          ><a class="linkcol" href="https://vatteninfo.com/">
                             https://vatteninfo.com/
                           </a></v-col
                         ></v-col
@@ -123,7 +123,7 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column">
-                          <a href="https://gemva.se/">
+                          <a class="linkcol" href="https://gemva.se/">
                             https://gemva.se/
                           </a></v-col
                         ></v-col
@@ -197,4 +197,5 @@ export default {};
     width: 599px;
   }
 }
+ .linkcol{color: #449A63;}
 </style>
