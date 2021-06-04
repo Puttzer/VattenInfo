@@ -39,71 +39,95 @@
               <h1 class="lowertitle text-center">Nyttiga Länkar</h1>
 
               <div class="links">
-                <v-row class="d-flex flex-row red">
+                <v-row class="d-flex flex-row ">
                   <v-col class="d-flex flex-column">
-                    <div class="linkcard d-flex flex-row green">
+                    <div class="linkcard d-flex flex-row ">
                       <img
                         class="lvmIMG"
                         src="../assets/aboutpage/LVM.png"
                         alt=""
                       />
-                      <h3>Livsmedelsverket</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed iaculis lacus sed congue pellentesque. Praesent.
-                      </p>
-                      <a
-                        href="https://www.livsmedelsverket.se/sok?q=enskilt+vatten"
-                      >
-                        Enskilt vatten ||
-                      </a>
+                      <v-col class="d-flex flex-column"
+                        ><h3>Livsmedelsverket</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed iaculis lacus sed congue pellentesque.
+                          Praesent.
+                        </p>
+                        <v-col class="d-flex flex-column"
+                          ><a
+                            href="https://www.livsmedelsverket.se/sok?q=enskilt+vatten"
+                          >
+                            Enskilt vatten
+                          </a>
 
-                      <a
-                        href="https://kontrollwiki.livsmedelsverket.se/artikel/337/dricksvatten"
+                          <a
+                            href="https://kontrollwiki.livsmedelsverket.se/artikel/337/dricksvatten"
+                          >
+                            Dricksvatten för företag och samfälligheter
+                          </a></v-col
+                        ></v-col
                       >
-                        Dricksvatten för företag och samfälligheter
-                      </a>
                     </div>
-                    <div class="linkcard d-flex flex-row blue">
+                    <div class="linkcard d-flex flex-row ">
                       <img
                         class="sguIMG"
                         src="../assets/aboutpage/sgu.png"
                         alt=""
                       />
-                      <h3>Sveriges Geologiska Undersökning</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed iaculis lacus sed congue pellentesque. Praesent.
-                      </p>
-                      <a href="https://www.sgu.se/"> https://www.sgu.se/ </a>
+                      <v-col class="d-flex flex-column"
+                        ><h3>Sveriges Geologiska Undersökning</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed iaculis lacus sed congue pellentesque.
+                          Praesent.
+                        </p>
+                        <v-col class="d-flex flex-column"
+                          ><a href="https://www.sgu.se/">
+                            https://www.sgu.se/
+                          </a></v-col
+                        ></v-col
+                      >
                     </div>
-                    <div class="linkcard d-flex flex-row orange">
+                    <div class="linkcard d-flex flex-row ">
                       <img
                         class="vatteninfoIMG"
                         src="../assets/aboutpage/vatteninfo.png"
                         alt=""
                       />
-                      <h3>Vatteninfo</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed iaculis lacus sed congue pellentesque. Praesent.
-                      </p>
-                      <a href="https://vatteninfo.com/">
-                        https://vatteninfo.com/
-                      </a>
+                      <v-col class="d-flex flex-column"
+                        ><h3>Vatteninfo</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed iaculis lacus sed congue pellentesque.
+                          Praesent.
+                        </p>
+                        <v-col class="d-flex flex-column"
+                          ><a href="https://vatteninfo.com/">
+                            https://vatteninfo.com/
+                          </a></v-col
+                        ></v-col
+                      >
                     </div>
-                    <div class="linkcard d-flex flex-row grey">
+                    <div class="linkcard d-flex flex-row ">
                       <img
                         class="gemvaIMG"
                         src="../assets/aboutpage/gemvaimg.png"
                         alt=""
                       />
-                      <h3>Gemva</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Sed iaculis lacus sed congue pellentesque. Praesent.
-                      </p>
-                      <a href="https://gemva.se/"> https://gemva.se/ </a>
+                      <v-col class="d-flex flex-column"
+                        ><h3>Gemva</h3>
+                        <p>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Sed iaculis lacus sed congue pellentesque.
+                          Praesent.
+                        </p>
+                        <v-col class="d-flex flex-column">
+                          <a href="https://gemva.se/">
+                            https://gemva.se/
+                          </a></v-col
+                        ></v-col
+                      >
                     </div>
                   </v-col>
                 </v-row>
@@ -120,7 +144,7 @@
 export default {};
 </script>
 
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .uppertext {
   font-family: "Poppins", sans-serif;
 }
