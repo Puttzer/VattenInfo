@@ -5,6 +5,7 @@
         <h2 class="heading-2">Payment Sucessfull</h2>
       </v-col>
     </v-row>
+    {{ this.stripe.responseData }}
 
     <v-row class="d-flex justify-center">
       <v-col cols="6" class="d-flex justify-center blue lighten-5">
@@ -43,7 +44,6 @@
         </v-row>
       </v-col>
     </v-row>
-    {{ stripe.paymentId }}
   </v-main>
 </template>
 
@@ -55,6 +55,9 @@ export default {
     ...mapState(["user", "order", "company", "tests", "stripe"]),
   },
   async mounted() {
+    const routePath = window.location.href;
+    console.log("path of the Rote", routePath);
+    await this.$store.dispatch("stripe/getOrderInfo");
     // const orderTests = this.tests.selectedTests;
     // const totalAmount = this.tests.totalAmount;
     // const id = this.user.userIsloggedIn

@@ -3,8 +3,9 @@
 export default {
     state: {
         publishableKey: null,
-        ST_SESSION_ID_TOK: null,
+        sessionId: null,
         paymentId: '',
+        responseData: {}
     },
     mutations: {
         UPDATE_STRIPE_PUBLISHABLEKEY(state, value) {
@@ -12,16 +13,37 @@ export default {
             console.log(state.publishableKey)
         },
         UPDATE_STRIPE_SESSION_ID(state, value) {
-            state.ST_SESSION_ID_TOK = value
+            state.sessionId = value
 
             console.log(state.publishableKey)
         },
         UPDATE_STRIPE_PAYMENT_ID(state, value) {
             state.paymentId = value
 
+        },
+        UPDATE_RESPONSE(state, value) {
+            state.responseData = value
         }
     },
     actions: {
+
+        async getOrderInfo({ commit }) {
+
+            console.log('display session value', sessionStorage.getItem('session_stripe_id'))
+            const sessionId = sessionStorage.getItem('session_stripe_id')
+            console.log('parameter', sessionId)
+            const response = await fetch(`http://localhost:4000/api/checkout-session?sessionId=${sessionId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            });
+            const data = await response.json();
+            console.log(data)
+
+            commit('UPDATE_RESPONSE', data, { module: 'stripe' });
+        },
         async getStripePublishableKey({ commit }) {
             const response = await fetch('http://localhost:4000/api/config', {
                 method: 'GET',
@@ -36,8 +58,8 @@ export default {
             commit('UPDATE_STRIPE_PUBLISHABLEKEY', data.stripe_config.publishableKey, { module: 'stripe' });
         },
 
-        async stripeCheckOut({ commit }, { payload, publishableKey, orderGeneratePayload }) {
-            console.log('inside actions', { payload, publishableKey, orderGeneratePayload })
+        async stripeCheckOut({ commit }, { payload, publishableKey }) {
+            console.log('inside actions', { payload, publishableKey })
 
             const stripe = window.Stripe(`${publishableKey}`)
             fetch('http://localhost:4000/api/create-checkout-session', {
@@ -56,7 +78,7 @@ export default {
                     return data.sessionId;
                 })
                 .then(function (id) {
-                    window.localStorage.clear();
+                    // window.localStorage.clear();
                     console.log('stripe object', stripe)
                     // dispatch('order/generateCompanyOrder', orderGeneratePayload, { root: true })
                     stripe.redirectToCheckout({ sessionId: id })
