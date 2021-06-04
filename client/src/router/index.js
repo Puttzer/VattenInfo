@@ -29,8 +29,7 @@ import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import PrivateCustomerOrders from '../components/adminStuff/PrivateCustomerOrders.vue'
 // import AllInfo from '../components/adminStuff/AllInfo.vue'
-import ScrollHome from "../views/ScrollHome.vue";
-import ScrollAnalys from "../views/ScrollAnalys.vue";
+
 
 //company and user routes
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
@@ -105,16 +104,7 @@ const routes = [
 		name: 'CompanyOrdersPage',
 		component: CompanyOrdersPage
 	},
-	{
-		path: '/test/scrolltest',
-		name: 'ScrollHome',
-		component: ScrollHome
-	},
-	{
-		path: '/test/ScrollAnalys',
-		name: 'ScrollAnalys',
-		component: ScrollAnalys
-	},
+	
 	{
 		path: '/test/:slug',
 		name: 'TestStartsidan',
