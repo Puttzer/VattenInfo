@@ -22,6 +22,14 @@ module.exports = function (router) {
         })
     })
 
+    // Fetch the Checkout Session to display the JSON result on the success page
+    router.get('/checkout-session', async (req, res) => {
+        const { sessionId } = req.query;
+        console.log('check sessionId', sessionId)
+        const session = await stripe.checkout.sessions.retrieve(sessionId);
+        res.send(session);
+    });
+
     router.post('/stripe/products', async (req, res) => {
         let productsList = req.body.orderTests
         console.log(productsList)
@@ -53,7 +61,7 @@ module.exports = function (router) {
     });
 
 
-    router.post('/stripe/createproduct', async (req, res) => {
+    router.post('/createproduct', async (req, res) => {
 
         // we need to create a user intially with email
 
@@ -114,26 +122,15 @@ module.exports = function (router) {
     })
 
     router.post('/create-checkout-session', async (req, res) => {
-        console.log(req.body)
 
         const { orderTests, email, _id, } = req.body
-        console.log(orderTests)
 
         const testsList = req.body.orderTests.map(test => test)
 
-        console.log('line items list', testsList)
-        console.log('line items list', testsList[0].price)
-        console.log('price_1Iy19QGN3SPsO03O0KEpiSXU')
         try {
 
             const session = await stripe.checkout.sessions.create({
                 payment_method_types: ['card'],
-
-                // line_items: {
-                //     price: testsList[0].price,
-                //     // For metered billing, do not pass quantity
-                //     quantity: testsList[0].quantity,
-                // },
                 line_items: testsList,
                 mode: 'payment',
                 success_url: `${YOUR_DOMAIN}/paymentSucess?session_id={CHECKOUT_SESSION_ID}`,
@@ -150,5 +147,57 @@ module.exports = function (router) {
 
         }
 
+    });
+
+    router.post("/webhook", async (req, res) => {
+        let data;
+        let eventType;
+        // Check if webhook signing is configured.
+        const webhookSecret = process.env.WEB_HOOK_SECRET
+        if (webhookSecret) {
+            // Retrieve the event by verifying the signature using the raw body and secret.
+            let event;
+            let signature = req.headers["stripe-signature"];
+
+            try {
+                event = stripe.webhooks.constructEvent(
+                    req.body,
+                    signature,
+                    webhookSecret
+                );
+            } catch (err) {
+                console.log(`⚠️  Webhook signature verification failed.`);
+                return res.sendStatus(400);
+            }
+            // Extract the object from the event.
+            data = event.data;
+            eventType = event.type;
+        } else {
+            // Webhook signing is recommended, but if the secret is not configured in `config.js`,
+            // retrieve the event data directly from the request body.
+            data = req.body.data;
+            eventType = req.body.type;
+        }
+
+        switch (eventType) {
+            case 'checkout.session.completed':
+                // Payment is successful and the subscription is created.
+                // You should provision the subscription and save the customer ID to your database.
+                break;
+            case 'invoice.paid':
+                // Continue to provision the subscription as payments continue to be made.
+                // Store the status in your database and check when a user accesses your service.
+                // This approach helps you avoid hitting rate limits.
+                break;
+            case 'invoice.payment_failed':
+                // The payment failed or the customer does not have a valid payment method.
+                // The subscription becomes past_due. Notify your customer and send them to the
+                // customer portal to update their payment information.
+                break;
+            default:
+            // Unhandled event type
+        }
+
+        res.sendStatus(200);
     });
 }
