@@ -150,9 +150,7 @@ export default {};
 }
 .lowertext {
   font-family: "Poppins", sans-serif;
-  //   Commented out to reflect what sent to Joel
-  //   background-color: white;
-  //   box-shadow: 2px 2px 5px #00000090;
+ 
 }
 .headtitle {
   font-size: 36px;
