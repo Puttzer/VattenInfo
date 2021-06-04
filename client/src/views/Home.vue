@@ -108,7 +108,6 @@
             height="120px"
             width="70px"
           />
-          <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
           <div
             class="provInfo d-flex flex-column pt-6 ma-3 align-center btnColor rounded-2"
           >
@@ -143,7 +142,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/baspaket",
           image: "FlaskaBas.png",
-          //   color: "#B3E5FC",
         },
         {
           id: 2,
@@ -151,7 +149,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/familjpaket",
           image: "FlaskorFamilj.png",
-          //   color: "#B2EBF2",
         },
         {
           id: 3,
@@ -159,7 +156,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/storapaket",
           image: "FlaskorStora.png",
-          //   color: "#B2DFDB",
         },
       ],
     };
@@ -225,7 +221,6 @@ svg {
 .rubrik {
   text-transform: uppercase;
   font-size: 42px;
-  /* font-family: 'Poppins', sans-serif; */
   font-family: "Roboto", sans-serif;
   font-weight: bold;
 }
@@ -247,25 +242,18 @@ svg {
   font-weight: bold;
 }
 
-/* text  ends here here */
+/* bread text ends here here */
 
 /* curved text starts here */
-
-/* .logo {
-  
-  background: url("../assets/landing/OmtankeH20.png");
-} */
 path {
   fill: transparent;
 }
-
 text {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   fill: #449a63;
 }
-
 /* curved text ends here */
 
 /* landingfort starts here */
@@ -276,14 +264,10 @@ text {
 }
 
 .bread-fort {
-  /* width: 300px; */
-  /* text-align: center; */
   font-weight: 300;
-  /* width: 200px; */
 }
 .image-position {
   position: absolute;
-  //   z-index: 0;
 }
 
 .provInfo {
@@ -298,6 +282,5 @@ text {
   border-radius: 4px;
   cursor: pointer;
 }
-
 /* landingfort ends here */
 </style>
