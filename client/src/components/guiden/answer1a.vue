@@ -1,7 +1,7 @@
 <template>
   <div class="container white">
     <v-col>
-      <v-row class="d-flex justify-center green">Vad vill du ta prov på?</v-row>
+      <v-row class="d-flex justify-center white--text green">Välj paket?</v-row>
       <v-row class="">
         <v-col
           class="ma-0 pa-0"
@@ -32,25 +32,25 @@ export default {
           title:
             "BasAnalys",
           id: 1,
-          path: "/",
+          path: "/test/Bas_Enskilt_Dricksvatten",
         },
         {
           title:
             "Familjepaket?",
           id: 2,
-          path: "/",
+          path: "/test/Familj_Enskilt_Dricksvatten",
         },
         {
           title:
             "Storapaketet?",
           id: 3,
-          path: "/",
+          path: "/test/Stora_Enskilt_Dricksvatten",
         },
         {
           title:
             "Ackrediterad inklusive metaller och radon?",
           id: 4,
-          path: "/",
+          path: "/answer1b",
         },
       ],
     };
