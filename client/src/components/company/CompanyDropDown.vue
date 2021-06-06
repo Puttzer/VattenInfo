@@ -28,10 +28,10 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyPage"
+      @click="moveToCompanyPage"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">account_box</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Sidor</p>
@@ -40,10 +40,10 @@
     <v-divider></v-divider>
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyOrder"
+      @click="moveToCompanyOrder"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">payments</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">payments</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Beställningar</p>
@@ -53,10 +53,10 @@
 
     <v-row
       class="ml-2 d-flex flex-row justify-space-around align-center"
-      @click.prevent="moveToCompanyLogout"
+      @click="moveToCompanyLogout"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="white">logout</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">logout</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Logga Ut</p>
@@ -73,7 +73,7 @@ export default {
     return {};
   },
   computed: {
-    ...mapState(["company"]),
+    ...mapState(["company", "user"]),
   },
   methods: {
     async moveToCompanyPage() {
@@ -81,6 +81,7 @@ export default {
         const payload = this.company.companyUser._id;
         // console.log("move to actions");
         await this.$store.dispatch("company/getCompanyInfo", payload);
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE", false);
         this.$router.push("/login/companyinfopage");
       } else {
         return;
@@ -91,6 +92,7 @@ export default {
       if (this.company.companyUserIsloggedIn) {
         const companyId = this.company.companyUser._id;
         await this.$store.dispatch("order/getCompanyOrders", companyId);
+        this.$store.commit("company/COMPANY_DROPDOWNCOPMONENT_DISABLE", false);
         this.$router.push("/login/companyorderspage");
       } else {
         return;
@@ -101,6 +103,8 @@ export default {
       this.$store.commit("company/COMPANY_LOGOUT");
       localStorage.removeItem("companyProfileToken");
       if (!this.company.companyUserIsloggedIn) {
+        this.$store.commit("company/UPDATE_CLOSE_WINDOW", false);
+        this.$store.commit("user/CLOSE_WINDOW");
         this.$router.push("/");
       }
     },
@@ -117,7 +121,7 @@ export default {
   /* height: 18vh; */
   height: 100vh;
 
-  border-top: 5px solid #000;
+  /* border-top: 5px solid #000; */
   /* background-color: rgb(21, 57, 68); */
 
   /* overflow: visible; */
@@ -129,6 +133,7 @@ export default {
   /* font-weight: normal; */
   cursor: pointer;
   color: rgb(12, 1, 12);
-  zoom: 120%;
+  /* zoom: 120%; */
+  font-weight: bold;
 }
 </style>

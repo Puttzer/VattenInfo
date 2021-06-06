@@ -1,19 +1,16 @@
 <template>
   <v-main class="">
+    <v-row class="d-flex">
+      <v-col class="d-flex justify-center ml" cols="12">
+        <h3 v-if="this.displayErrorMessage === true" class="red--text">
+          User must login to procceed further!!!
+        </h3>
+        <h3 v-if="this.displayErrorMessageEmptycart === true" class="red--text">
+          Cart must not be empty to procceed further!!!
+        </h3>
+      </v-col>
+    </v-row>
     <div class="d-flex flex-row">
-      <v-row class="d-flex">
-        <v-col class="d-flex justify-center ml" cols="12">
-          <h3 v-if="this.displayErrorMessage === true" class="red--text">
-            User must login to procceed further!!!
-          </h3>
-          <h3
-            v-if="this.displayErrorMessageEmptycart === true"
-            class="red--text"
-          >
-            Cart must not be empty to procceed further!!!
-          </h3>
-        </v-col>
-      </v-row>
       <v-col cols="6" class="">
         <v-col
           max-height="110px"
@@ -356,6 +353,28 @@ export default {
     //   //   }
     //   //   setTimeout(function () {}, 2000);
     // },
+    // let reformatedTests = orderTests.map((test) => {
+    //   const testData = {
+    //     price_data: {
+    //       currency: "sek",
+    //       product_data: {
+    //         name: "",
+    //       },
+    //       unit_amount: "",
+    //     },
+    //     quantity: "",
+    //   };
+    //   testData.price_data.unit_amount = test.price * 100;
+    //   testData.quantity = test.quantity;
+    //   testData.price_data.product_data.name = test.testname;
+    //   return testData;
+    // });
+    // console.log(reformatedTests);
+    // const orderGeneratePayload = {
+    //   orderTests: orderTests,
+    //   totalAmount: totalAmount,
+    //   id: this.user.user._id,
+    // };
     increaseQuantity(id) {
       this.$store.commit("tests/INCREASE_QUANTITY", id);
     },
@@ -385,30 +404,22 @@ export default {
       }
     },
     async paymentGateway() {
-      let userId = this.user.user._id;
-      let companyId = this.company.companyUser._id;
-      console.log(userId, companyId);
+      // let userId = this.user.user._id;
+      // let companyId = this.company.companyUser._id;
       const publishableKey = this.stripe.publishableKey;
       const orderTests = this.tests.selectedTests;
+      const totalAmount = this.tests.totalAmount;
 
       let reformatedTests = orderTests.map((test) => {
         const testData = {
-          price_data: {
-            currency: "sek",
-            product_data: {
-              name: "",
-            },
-            unit_amount: "",
-          },
+          price: "",
           quantity: "",
         };
-        testData.price_data.unit_amount = test.price * 100;
+        testData.price = test.priceId;
+        // testData.productId = test.productId;
         testData.quantity = test.quantity;
-        testData.price_data.product_data.name = test.testname;
         return testData;
       });
-      console.log(reformatedTests);
-      const totalAmount = this.tests.totalAmount;
 
       if (this.tests.selectedTests.length < 1) {
         this.displayErrorMessageEmptycart = true;
@@ -419,40 +430,36 @@ export default {
       }
 
       if (this.user.userIsloggedIn) {
+        const email = this.user.user.email;
         const payload = {
           orderTests: reformatedTests,
           totalAmount: totalAmount,
           id: this.user.user._id,
-        };
-        const orderGeneratePayload = {
-          orderTests: orderTests,
-          totalAmount: totalAmount,
-          id: this.user.user._id,
+          email: email,
         };
         console.log("payment gateway move to actions", payload, publishableKey);
         await this.$store.dispatch("stripe/stripeCheckOut", {
           payload,
           publishableKey,
-          orderGeneratePayload,
         });
       } else if (this.company.companyUserIsloggedIn) {
+        const email = this.company.companyUser.contactEmail;
         const payload = {
           orderTests: reformatedTests,
           totalAmount: totalAmount,
           id: this.company.companyUser._id,
+          email: email,
         };
-        const orderGeneratePayload = {
-          orderTests: orderTests,
-          totalAmount: totalAmount,
-          id: this.company.companyUser._id,
-        };
+
         console.log("payment gateway move to actions", payload, publishableKey);
         await this.$store.dispatch("stripe/stripeCheckOut", {
           payload,
           publishableKey,
-          orderGeneratePayload,
         });
       } else {
+        this.displayErrorMessage = true;
+        Vue.$vToastify.error("User must able to login to procced further");
+        this.$store.commit("user/OPEN_LOGIN_COMP");
         return;
       }
     },

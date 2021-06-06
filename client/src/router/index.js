@@ -29,8 +29,7 @@ import Tests from '../components/adminStuff/tests.vue'
 import PrivateCustomer from '../components/adminStuff/PrivateCustomer.vue'
 import PrivateCustomerOrders from '../components/adminStuff/PrivateCustomerOrders.vue'
 // import AllInfo from '../components/adminStuff/AllInfo.vue'
-import ScrollHome from "../views/ScrollHome.vue";
-import ScrollAnalys from "../views/ScrollAnalys.vue";
+
 
 //company and user routes
 import ForetagCustomer from '../components/adminStuff/ForetagCustomer.vue'
@@ -105,40 +104,18 @@ const routes = [
 		name: 'CompanyOrdersPage',
 		component: CompanyOrdersPage
 	},
-	{
-		path: '/test/scrolltest',
-		name: 'ScrollHome',
-		component: ScrollHome
-	},
-	{
-		path: '/test/ScrollAnalys',
-		name: 'ScrollAnalys',
-		component: ScrollAnalys
-	},
+	
 	{
 		path: '/test/:slug',
 		name: 'TestStartsidan',
 		component: TestStartsidan
 	},
-	// {
-	//     path: '/adminpage',
-	//     name: 'AdminStartsidan',
-	//     component: AdminStartsidan,
-	//     beforeEnter: (to, from, next) => {
-	//         console.log(store.state.admin.isLoggedIn)
-	//         if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
-	//             next()
-	//         } else {
-	//             next('/')
-	//         }
-	//     }
-	// },
 	{
 		path: '/adminpage',
 		// You could also have named views at the top
 		component: AdminStartsidan,
 		beforeEnter: (to, from, next) => {
-			console.log(store.state.admin.isLoggedIn)
+			// console.log(store.state.admin.isLoggedIn)
 			if (store.state.admin.isAdmin && store.state.admin.isLoggedIn) {
 				next()
 			} else {
@@ -146,7 +123,6 @@ const routes = [
 			}
 		},
 		children: [
-
 			{
 				path: 'tests',
 				component: Tests
@@ -224,7 +200,7 @@ const routes = [
 		component: HjalpMedDittVatten
 	},
 	{
-		path: '/analyskatalog/enskiltdricksvatten/',
+		path: '/enskiltdricksvatten/',
 		name: 'EnsikltDricksVatten',
 		component: EnsikltDricksVatten
 	},
@@ -312,9 +288,10 @@ const router = new VueRouter({
 })
 
 router.beforeEach(function (to, from, next) {
-	console.log('global route')
-	console.log(to, from)
+	// console.log('global route')
+	// console.log(to, from)
 	next()
+
 })
 
 export default router

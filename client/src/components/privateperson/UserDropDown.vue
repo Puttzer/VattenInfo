@@ -1,5 +1,6 @@
+
 <template>
-  <v-main class="someOtherName d-flex justify-center">
+  <v-main class="menu d-flex justify-center">
     <v-row>
       <v-col class="d-flex flex-row-reverse mr-8">
         <v-icon @click="closeUseroptions" large color="black" class="listItem"
@@ -13,7 +14,7 @@
       @click="moveToUserPage"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">account_box</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">account_box</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Sidor</p>
@@ -25,7 +26,7 @@
       @click="moveToUserOrder"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">payments</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">payments</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Mina Beställningar</p>
@@ -38,7 +39,7 @@
       @click="moveToLogout"
     >
       <v-col cols="3">
-        <v-icon medium class="mx-1" color="orange">logout</v-icon>
+        <v-icon medium class="mx-1" color="btnColor">logout</v-icon>
       </v-col>
       <v-col cols="9" class="listItem">
         <p>Logga Ut</p>
@@ -90,14 +91,16 @@ export default {
 </script>
 
 <style scoped>
-.someOtherName {
+.menu {
   position: absolute;
   width: 20vw;
   height: 100vh;
   font-weight: 600;
   font-size: 18px;
-  border-top: 3px solid blue;
-  background-color: #3e3e3e;
+
+  /* background-color: #3e3e3e; */
+  background-color: #f3f3f3;
+
   /* overflow: visible; */
   color: white;
 }
@@ -107,6 +110,6 @@ export default {
   /* font-weight: normal; */
   cursor: pointer;
   color: rgb(12, 1, 12);
-  zoom: 120%;
+  /* zoom: 120%; */
 }
 </style>

@@ -21,7 +21,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "AvloppsAnalyser",
+};
 </script>
 
 <style>

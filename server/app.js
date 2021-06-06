@@ -17,10 +17,17 @@ const api = require('./api')
 const connectDB = require('./DB/Connection')
 
 //middlewares
-app.use(express.json())
+app.use(express.json({
+    verify: function (req, res, buf) {
+        if (req.originalUrl.startsWith('/webhook')) {
+            req.rawBody = buf.toString();
+        }
+    },
+}))
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(express.static('static'))
+app.use(express.static(process.env.STATIC_DIR));
 // app.use('../../client/public/uploads', express.static('uploads'))
 app.use('/uploads', express.static('uploads'));
 

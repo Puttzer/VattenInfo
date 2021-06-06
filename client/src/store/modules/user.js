@@ -1,6 +1,8 @@
+import Vue from 'vue'
 export default {
     state: {
-        statusMessage: "test",
+        statusMessage: "",
+        errorMessage: '',
         users: [],
         userIsloggedIn: false,
         showLoginModel: false,
@@ -30,7 +32,12 @@ export default {
             })
             const data = await response.json();
             console.log(data)
-            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'user' })
+            if (response.status === 200) {
+
+                commit('UPDATE_SUCCESS_MESSAGE', { message: data.message, name: data.name }, { module: 'user' })
+            } else {
+                commit('UPDATE_ERROR_MESSAGE', { message: data.message }, { module: 'user' })
+            }
         },
         async getUsers({ commit }) {
             console.log('move to dispatch')
@@ -79,11 +86,19 @@ export default {
             console.log(data)
             localStorage.setItem('userToken', data.Token)
 
-            commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
-            commit('UPDATE_USER_ID', data._id, { module: 'user' })
-            commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
-            commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
-            commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
+
+            if (response.status === 200) {
+
+                commit('UPDATE_SUCCESS_MESSAGE', { message: data.message, name: data.name }, { module: 'user' })
+                commit('UPDATE_USER_EMAIL', data.email, { module: 'user' })
+                commit('UPDATE_USER_ID', data._id, { module: 'user' })
+                commit('UPDATE_USER_ISLOGGEDIN', data.userLoggedin, { module: 'user' })
+                commit('UPDATE_CLOSE_WINDOW', false, { module: 'user' })
+                commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
+            } else {
+                commit('UPDATE_ERROR_MESSAGE', { message: data.message }, { module: 'user' })
+            }
+
 
         },
         async validateUser({ commit }) {
@@ -134,8 +149,16 @@ export default {
 
     },
     mutations: {
-        UPDATE_SUCCESS_MESSAGE(state, message) {
-            state.statusMessage = message
+        UPDATE_SUCCESS_MESSAGE(state, value) {
+            state.statusMessage = value.message
+            Vue.$vToastify.success(`New account is created ${value.name} `)
+            setTimeout(() => {
+                state.statusMessage = ""
+            }, 4000)
+        },
+        UPDATE_ERROR_MESSAGE(state, value) {
+            state.errorMessage = value.message
+            Vue.$vToastify.error('Account creation', `${value}`)
         },
         UPDATE_USERS(state, value) {
             state.users = value
@@ -175,8 +198,9 @@ export default {
             state.showUserDropDown = value
         },
         USER_LOGOUT(state) {
-            state.userIsloggedIn = false,
-                state.showUserDropDown = false
+            state.userIsloggedIn = false
+            state.showUserDropDown = false
+            state.showLoginModel = false
         },
         SEARCH_DROP_DOWN_VISIBLE(state) {
             state.showSearchDropDown = true

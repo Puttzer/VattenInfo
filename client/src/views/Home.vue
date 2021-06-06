@@ -1,5 +1,12 @@
 <template>
   <div class="background container mt-12">
+    <v-row class="ma-1 pa-0 d-flex justify-center">
+      <v-col cols="12" class="blue--text d-flex justify-center">
+        <h3>
+          {{ this.user.statusMessage }}
+        </h3>
+      </v-col>
+    </v-row>
     <v-row>
       <v-col
         height="200px"
@@ -21,19 +28,21 @@
           <div class="labb blue--text ma-2">VATTENINFO LABBTJÄNSTER</div>
           <div class="rubrik ma-0 pa-0">
             <p class="green--text ma-0 pa-0">kvalitetssäkra</p>
-            <p class="blue--text mt-0 pt-0">ditt vatten.</p>
+            <p class="green--text mt-0 pt-0">ditt vatten.</p>
           </div>
           <div class="bread">
-            <p class="body-2">
+            <p>
               Vi erbjuder mikrobiologiska och kemiska analyser för enskilt
               vatten, livsmedelsklassat vatten samt avlopp
             </p>
           </div>
-          <v-btn class="btnColor white--text">läs mer</v-btn>
+          <v-btn class="btnColor white--text" @click="moveToAnalysKatalog"
+            >läs mer</v-btn
+          >
         </div>
       </v-col>
 
-      <!-- <v-col cols="12" md="3" class="d-flex flex-row align-start fixed">
+      <v-col cols="12" md="3" class="d-flex flex-row align-start fixed">
         <div class="fixed">
           <v-img
             class="image"
@@ -52,7 +61,7 @@
             <textPath xlink:href="#curve">bli mer vattenmedveten</textPath>
           </text>
         </svg>
-      </v-col> -->
+      </v-col>
     </v-row>
     <!-- landning fort -->
     <v-row class="mt-16">
@@ -70,13 +79,13 @@
       <v-col cols="8" class="d-flex flex-column justify-center">
         <v-row class="d-flex justify-center align-center">
           <h1
-            class="blue--text font-weight-class text-uppercase d-flex justify-start"
+            class="care blue--text font-weight-class text-uppercase d-flex justify-start"
           >
             Ta hand om vattnet så <br />tar vattnet hand om dig
           </h1>
         </v-row>
         <v-row class="d-flex justify-center align-center ml-8 mt-4" cols="12">
-          <p class="d-flex justify-center align-center ml-16">
+          <p class="care-bread d-flex justify-center align-center ml-16">
             Lorem ipsum dolor, sit amet consectetur elit. Aspernatur doloremque
             voluptatem <br />
             dignissimos soluta incidunt non velit recusandae quia amet
@@ -99,7 +108,6 @@
             height="120px"
             width="70px"
           />
-          <!-- <v-icon size="84">mdi-bottle-tonic-outline</v-icon> -->
           <div
             class="provInfo d-flex flex-column pt-6 ma-3 align-center btnColor rounded-2"
           >
@@ -113,7 +121,9 @@
     </v-row>
     <v-row class="d-flex justify-center mt-12">
       <v-col cols="10" class="d-flex justify-center align-center">
-        <v-btn color="btnColor" class="white--text">FLER PROVER</v-btn>
+        <v-btn color="btnColor" class="white--text" @click="moveToEnskillt"
+          >FLER PROVER</v-btn
+        >
       </v-col>
     </v-row>
   </div>
@@ -132,7 +142,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/baspaket",
           image: "FlaskaBas.png",
-          //   color: "#B3E5FC",
         },
         {
           id: 2,
@@ -140,7 +149,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/familjpaket",
           image: "FlaskorFamilj.png",
-          //   color: "#B2EBF2",
         },
         {
           id: 3,
@@ -148,7 +156,6 @@ export default {
           description: "Lorem ipsum dolor sit amet consectetur, adipisicing.",
           path: "/storapaket",
           image: "FlaskorStora.png",
-          //   color: "#B2DFDB",
         },
       ],
     };
@@ -157,7 +164,7 @@ export default {
     this.$store.dispatch("tests/getTests");
   },
   computed: {
-    ...mapState(["tests"]),
+    ...mapState(["tests", "user"]),
   },
   methods: {
     moveToIndividual(id, test) {
@@ -167,6 +174,14 @@ export default {
         params: { id: id, test },
       });
       console.log("hit");
+    },
+    // FLER PROVER
+    moveToEnskillt() {
+      this.$router.push("/enskiltdricksvatten");
+    },
+    // LÄS MER
+    moveToAnalysKatalog() {
+      this.$router.push("/Vara_analyser");
     },
   },
 };
@@ -184,10 +199,10 @@ export default {
   top: 148px;
 }
 svg {
-  transform: rotate(319deg);
+  transform: rotate(324deg);
   height: 900px;
   position: absolute;
-  top: -236px;
+  top: -136px;
   right: -398px;
 }
 .container {
@@ -199,45 +214,46 @@ svg {
   letter-spacing: 5px;
   font-family: "Poppins", sans-serif;
   font-weight: lighter;
-  font-size: 14px;
+  font-size: 24px;
 }
 
 /*  text starts here */
 .rubrik {
   text-transform: uppercase;
   font-size: 42px;
-  /* font-family: 'Poppins', sans-serif; */
   font-family: "Roboto", sans-serif;
   font-weight: bold;
 }
 
 .bread {
-  /* letter-spacing: 3px; */
   font-family: "Poppins", sans-serif;
-  font-weight: lighter;
-  font-size: 9px;
-  width: 300px;
+  font-size: 16px;
+  width: 400px;
+  font-weight: bold;
+}
+.care {
+  font-size: 34px;
+  font-family: "Poppins", sans-serif;
+}
+.care-bread {
+  font-family: "Poppins", sans-serif;
+  width: 570px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-/* text  ends here here */
+/* bread text ends here here */
 
 /* curved text starts here */
-
-/* .logo {
-  
-  background: url("../assets/landing/OmtankeH20.png");
-} */
 path {
   fill: transparent;
 }
-
 text {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   fill: #449a63;
 }
-
 /* curved text ends here */
 
 /* landingfort starts here */
@@ -248,14 +264,10 @@ text {
 }
 
 .bread-fort {
-  /* width: 300px; */
-  /* text-align: center; */
   font-weight: 300;
-  /* width: 200px; */
 }
 .image-position {
   position: absolute;
-  z-index: 0;
 }
 
 .provInfo {
@@ -270,6 +282,5 @@ text {
   border-radius: 4px;
   cursor: pointer;
 }
-
 /* landingfort ends here */
 </style>
