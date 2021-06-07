@@ -85,6 +85,7 @@ export default {
             const data = await response.json()
             console.log(data)
             localStorage.setItem('companyProfileToken', data.Token)
+            localStorage.setItem('COMPANY_ASSIGN_ID', data._id)
             commit('UPDATE_COMPANY_EMAIL', data.contactEmail, { module: 'company' })
             commit('UPDATE_COMPANY_ID', data._id, { module: 'company' })
             commit('UPDATE_COMPANY_ISLOGGEDIN', true, { module: 'company' })

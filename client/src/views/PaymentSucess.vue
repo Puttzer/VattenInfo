@@ -62,6 +62,7 @@ export default {
     const routePath = window.location.href;
     console.log("path of the Rote", routePath);
     await this.$store.dispatch("stripe/getOrderInfo");
+
     // const orderTests = this.tests.selectedTests;
     // const totalAmount = this.tests.totalAmount;
     // const id = this.user.userIsloggedIn

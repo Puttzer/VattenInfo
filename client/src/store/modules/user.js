@@ -85,6 +85,7 @@ export default {
             const data = await response.json()
             console.log(data)
             localStorage.setItem('userToken', data.Token)
+            localStorage.setItem('USER_ASSIGN_ID', data._id)
 
 
             if (response.status === 200) {
