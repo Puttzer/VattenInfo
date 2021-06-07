@@ -27,7 +27,19 @@ module.exports = function (router) {
         const { sessionId } = req.query;
         console.log('check sessionId', sessionId)
         const session = await stripe.checkout.sessions.retrieve(sessionId);
-        res.send(session);
+
+        const getLineItems = await stripe.checkout.sessions.listLineItems(`${sessionId}`,
+            { limit: 5 }
+            // function (err, lineItems) {
+            //     // asynchronously called
+            //     console.log(lineItems)
+            // }
+        );
+        console.log('line items list', getLineItems)
+        res.send({
+            session: session,
+            lineitems: getLineItems
+        });
     });
 
     router.post('/stripe/products', async (req, res) => {
@@ -123,7 +135,22 @@ module.exports = function (router) {
 
     router.post('/create-checkout-session', async (req, res) => {
 
-        const { orderTests, email, _id, } = req.body
+        const { orderTests, email, id } = req.body
+
+        // const getCustomer = await stripe.customers.retrieve(customerId)
+
+        // console.log('get info regarding customer is available', getCustomer.email)
+
+        // if (getCustomer.email != email) {
+        // }
+        // const newCustomer = await stripe.customers.create({
+        //     email: email,
+        //     metadata: {
+        //         _id: id,
+        //         userRole: userRole
+        //     }
+        // })
+        // console.log(newCustomer)
 
         const testsList = req.body.orderTests.map(test => test)
 
@@ -180,16 +207,27 @@ module.exports = function (router) {
         }
 
         switch (eventType) {
+            case 'customer.created':
+                console.log(customer)
+
+
+
             case 'checkout.session.completed':
+
+                console.log('chekout session is completed')
                 // Payment is successful and the subscription is created.
                 // You should provision the subscription and save the customer ID to your database.
                 break;
             case 'invoice.paid':
+
+                console.log('payment is recieved')
                 // Continue to provision the subscription as payments continue to be made.
                 // Store the status in your database and check when a user accesses your service.
                 // This approach helps you avoid hitting rate limits.
                 break;
             case 'invoice.payment_failed':
+
+                console.log('payment is failed')
                 // The payment failed or the customer does not have a valid payment method.
                 // The subscription becomes past_due. Notify your customer and send them to the
                 // customer portal to update their payment information.

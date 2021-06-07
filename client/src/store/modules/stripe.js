@@ -29,8 +29,8 @@ export default {
 
         async getOrderInfo({ commit }) {
 
-            console.log('display session value', sessionStorage.getItem('session_stripe_id'))
-            const sessionId = sessionStorage.getItem('session_stripe_id')
+            console.log('display session value', localStorage.getItem('session_stripe_id'))
+            const sessionId = window.localStorage.getItem('session_stripe_id')
             console.log('parameter', sessionId)
             const response = await fetch(`http://localhost:4000/api/checkout-session?sessionId=${sessionId}`, {
                 method: 'GET',
@@ -40,7 +40,7 @@ export default {
                 }
             });
             const data = await response.json();
-            console.log(data)
+            console.log('json parse data', data)
 
             commit('UPDATE_RESPONSE', data, { module: 'stripe' });
         },
@@ -72,7 +72,7 @@ export default {
                 .then(async function (response) {
                     const data = await response.json();
                     console.log(data)
-                    window.localStorage.setItem('session_stripe_id', `${data.id}`);
+                    window.localStorage.setItem('session_stripe_id', `${data.sessionId}`);
                     commit('UPDATE_STRIPE_SESSION_ID', data.sessionId, { module: 'stripe' });
                     console.log('local storage ', window.localStorage)
                     return data.sessionId;
