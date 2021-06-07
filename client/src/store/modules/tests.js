@@ -184,6 +184,7 @@ export default {
         },
         TOTAL_AMOUNT(state, total) {
             state.totalAmount = total
+            localStorage.setItem('total_amount', state.totalAmount)
         },
         DELETE_TEST_CART(state, id) {
             console.log('move to state')

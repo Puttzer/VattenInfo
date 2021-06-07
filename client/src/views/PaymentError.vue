@@ -1,5 +1,8 @@
 <template>
   <v-main class="mt-12">
+    <v-row>
+      <Spinner loading="true" color="blue" />
+    </v-row>
     <v-row class="d-flex justify-center">
       <v-col class="d-flex justify-center" cols="12">
         <h3 class="heading-3 red--text">Payment Error</h3>
@@ -53,8 +56,12 @@
 </template>
 
 <script>
+import Spinner from "../components/ui/Spinner.vue";
 export default {
   name: "PaymentError",
+  components: {
+    Spinner,
+  },
   methods: {
     moveToHome() {
       this.$router.push("/");

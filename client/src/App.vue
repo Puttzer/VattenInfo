@@ -50,7 +50,7 @@ export default {
   methods: {},
   async mounted() {
     this.$vToastify.info("Välkommen till VattenInfo Lab");
-    console.log(this.$vToastify.getSettings());
+    // console.log(this.$vToastify.getSettings());
     // if (localStorage.userToken && localStorage.userLoggedin) {
     //   console.log(localStorage.userToken);
     //   console.log(localStorage.userLoggedin);
