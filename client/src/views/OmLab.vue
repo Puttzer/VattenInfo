@@ -39,9 +39,9 @@
               <h1 class="lowertitle text-center">Nyttiga Länkar</h1>
 
               <div class="links">
-                <v-row class="d-flex flex-row ">
+                <v-row class="d-flex flex-row">
                   <v-col class="d-flex flex-column">
-                    <div class="linkcard d-flex flex-row ">
+                    <div class="linkcard d-flex flex-row">
                       <img
                         class="lvmIMG"
                         src="../assets/aboutpage/LVM.png"
@@ -55,13 +55,15 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column"
-                          ><a class="linkcol"
+                          ><a
+                            class="linkcol"
                             href="https://www.livsmedelsverket.se/sok?q=enskilt+vatten"
                           >
                             Enskilt vatten
                           </a>
 
-                          <a class="linkcol"
+                          <a
+                            class="linkcol"
                             href="https://kontrollwiki.livsmedelsverket.se/artikel/337/dricksvatten"
                           >
                             Dricksvatten för företag och samfälligheter
@@ -69,9 +71,9 @@
                         ></v-col
                       >
                     </div>
-                    <div class="linkcard d-flex flex-row ">
+                    <div class="linkcard d-flex flex-row">
                       <img
-                        class="sguIMG"
+                        class="sguIMG ma-1"
                         src="../assets/aboutpage/sgu.png"
                         alt=""
                       />
@@ -83,15 +85,15 @@
                           Praesent.
                         </p>
                         <v-col class="d-flex flex-column"
-                          ><a  class="linkcol" href="https://www.sgu.se/">
+                          ><a class="linkcol" href="https://www.sgu.se/">
                             https://www.sgu.se/
                           </a></v-col
                         ></v-col
                       >
                     </div>
-                    <div class="linkcard d-flex flex-row ">
+                    <div class="linkcard d-flex flex-row">
                       <img
-                        class="vatteninfoIMG"
+                        class="vatteninfoIMG ma-1"
                         src="../assets/aboutpage/vatteninfo.png"
                         alt=""
                       />
@@ -109,9 +111,9 @@
                         ></v-col
                       >
                     </div>
-                    <div class="linkcard d-flex flex-row ">
+                    <div class="linkcard d-flex flex-row">
                       <img
-                        class="gemvaIMG"
+                        class="gemvaIMG ma-1"
                         src="../assets/aboutpage/gemvaimg.png"
                         alt=""
                       />
@@ -150,7 +152,6 @@ export default {};
 }
 .lowertext {
   font-family: "Poppins", sans-serif;
- 
 }
 .headtitle {
   font-size: 36px;
@@ -195,5 +196,7 @@ export default {};
     width: 599px;
   }
 }
- .linkcol{color: #449A63;}
+.linkcol {
+  color: #449a63;
+}
 </style>

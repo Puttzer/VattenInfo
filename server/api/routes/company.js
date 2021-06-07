@@ -75,9 +75,9 @@ module.exports = function (router) {
     })
 
     router.post('/company/register', async (req, res) => {
-        console.log()
+        console.log('request body object', req.body)
         const findCompany = await Company.findOne({
-            email: req.body.contactEmail
+            contactEmail: req.body.contactEmail
         }).exec()
         console.log(findCompany)
 
