@@ -73,7 +73,7 @@ export default {};
 .footer {
   z-index: 1;
   background-color: white;
-  max-height: 160px;
+  //   max-height: 160px;
   //   height: 160px;
   //   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.35);
 }

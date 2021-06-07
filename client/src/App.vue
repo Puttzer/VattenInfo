@@ -49,7 +49,7 @@ export default {
   },
   methods: {},
   async mounted() {
-    this.$vToastify.info("Välkommen VattenInfo Lab");
+    this.$vToastify.info("Välkommen till VattenInfo Lab");
     console.log(this.$vToastify.getSettings());
     // if (localStorage.userToken && localStorage.userLoggedin) {
     //   console.log(localStorage.userToken);
