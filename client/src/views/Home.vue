@@ -164,7 +164,7 @@ export default {
     this.$store.dispatch("tests/getTests");
   },
   computed: {
-    ...mapState(["tests", "user"]),
+    ...mapState(["tests", "user", "company"]),
   },
   methods: {
     moveToIndividual(id, test) {

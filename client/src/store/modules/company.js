@@ -5,7 +5,7 @@ export default {
         statusMessage: "",
         companys: [],
         errorMessage: '',
-        sucessMessage: '',
+        companySucessMessage: '',
         showLoginModel: false,
         showCompanyDropDown: false,
         companyUserIsloggedIn: false,
@@ -29,7 +29,13 @@ export default {
             })
             const data = await response.json();
             console.log(data)
-            commit('UPDATE_SUCCESS_MESSAGE', data.message, { module: 'company' })
+            if (response.status === 200) {
+
+                commit('UPDATE_COMPANY_SUCCESS_MESSAGE', data.message, { module: 'company' })
+                commit('user/UPDATE_SUCCESS_MESSAGE', data.message, { root: true })
+            } else {
+                commit('UPDATE_ERROR_MESSAGE', { message: data.message }, { root: true })
+            }
         },
 
         async getCompanys({ commit }) {
@@ -147,9 +153,12 @@ export default {
             console.log(remainingUsers)
             state.companys = remainingUsers
         },
-        UPDATE_SUCESS_MESSAGE(state, value) {
-            state.sucessMessage = value
+        UPDATE_COMPANY_SUCCESS_MESSAGE(state, value) {
+            state.companySucessMessage = value
             Vue.$vToastify.success(value)
+            setTimeout(() => {
+                state.companySucessMessage = ""
+            }, 4000)
         },
         UPDATE_COMPANY_EMAIL(state, email) {
             state.companyUser.contactEmail = email
