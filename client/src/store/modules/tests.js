@@ -125,13 +125,13 @@ export default {
                 test._id != value
             })
             state.tests = remainingTests
-            Vue.$vToastify.success(`Succesfully ${findTest.testname} is Deleted`)
+            Vue.$vToastify.success(`Användaren ${findTest.testname} är bortatagen`)
             // console.log(state.tests)
 
         },
         INSERT_TEST(state, value) {
             state.tests.push(value)
-            Vue.$vToastify.success(`Succesfully ${value.testname} is Inserted`)
+            Vue.$vToastify.success(`användaren  ${value.testname} är  tillagd i datbasen`)
 
         },
         EDIT_TEST(state, { updatedTestInfo, _id }) {
@@ -147,7 +147,7 @@ export default {
             findTest.image = updatedTestInfo.image
 
             state.tests.filter(test => test._id === _id).push(findTest)
-            Vue.$vToastify.success(`Succesfully ${findTest.testname} is Updated`)
+            Vue.$vToastify.success(` ${findTest.testname} är uppdaterad`)
 
         },
         UPDATE_TEST(state, value) {
@@ -169,7 +169,7 @@ export default {
                 // console.log(localTests);
                 localStorage.setItem('count', state.count)
                 localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
-                Vue.$vToastify.success(`${test.testname} is added to the cart`)
+                Vue.$vToastify.success(`${test.testname} ärnu placerad i kundvageen`)
 
             } else {
                 return
@@ -200,7 +200,7 @@ export default {
             console.log('delete selected tests')
             state.selectedTests = [],
                 state.count = 0;
-            Vue.$vToastify.success(`Test Product is removed from the cart`)
+            Vue.$vToastify.success(` Produkten är borttagen från kundvagen `)
 
         },
         UPDATE_PAGINATED_TESTS(state, value) {
