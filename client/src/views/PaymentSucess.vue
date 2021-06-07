@@ -53,6 +53,10 @@ export default {
   name: "PaymentSucess",
   computed: {
     ...mapState(["user", "order", "company", "tests", "stripe"]),
+    // convertJsonData() {
+    //   console.log(JSON.parse(this.stripe.responseData));
+    //   return JSON.parse(this.stripe.responseData);
+    // },
   },
   async mounted() {
     const routePath = window.location.href;

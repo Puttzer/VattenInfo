@@ -436,6 +436,7 @@ export default {
           totalAmount: totalAmount,
           id: this.user.user._id,
           email: email,
+          userRole: "Private person",
         };
         console.log("payment gateway move to actions", payload, publishableKey);
         await this.$store.dispatch("stripe/stripeCheckOut", {
@@ -449,6 +450,8 @@ export default {
           totalAmount: totalAmount,
           id: this.company.companyUser._id,
           email: email,
+          userRole: "Company",
+          customerId: "cus_JcJwY1kh3EeupV",
         };
 
         console.log("payment gateway move to actions", payload, publishableKey);
