@@ -28,7 +28,7 @@
       </v-row>
       <v-row class="d-flex justify-center mt-6">
         <v-col cols="11" class="d-flex flex-column justify-center">
-          <h2 class="d-flex justify-center text--black">
+          <h2 class="d-flex justify-center text--black ensiklt-heading">
             Analyser i lokalt laboratorium
           </h2>
           <p class="bread font-weight-light blue--text">
@@ -110,7 +110,17 @@
                 class="d-flex align-center justify-center ma-0 pa-0"
               >
                 <p
-                  class="amber white--text testbox d-flex align-center mr-2 ma-0 pa-0 justify-center"
+                  class="
+                    amber
+                    white--text
+                    testbox
+                    d-flex
+                    align-center
+                    mr-2
+                    ma-0
+                    pa-0
+                    justify-center
+                  "
                 >
                   {{ test.short_description }}
                 </p>
@@ -145,7 +155,9 @@
 
         <div class="">
           <v-row class="blue--text d-flex justify-center my-4">
-            <h3>Analyser styckvis, prisklass 2 <br />250 kr/st</h3>
+            <h3 class="h3-heading">
+              Analyser styckvis, prisklass 2 <br />250 kr/st
+            </h3>
           </v-row>
           <v-col cols="" class="d-flex flex-column justify-center">
             <div
@@ -155,7 +167,17 @@
             >
               <v-col cols="" class="d-flex white align-center justify-center">
                 <p
-                  class="btnColor white--text testbox d-flex align-center mr-2 ma-0 pa-0 justify-center"
+                  class="
+                    btnColor
+                    white--text
+                    testbox
+                    d-flex
+                    align-center
+                    mr-2
+                    ma-0
+                    pa-0
+                    justify-center
+                  "
                 >
                   {{ test.short_description }}
                 </p>
@@ -261,7 +283,16 @@
         >
           <v-col cols="2" class="d-flex align-center ma-0 pa-0 justify-start">
             <p
-              class="green white--text ma-0 pa-0 testbox d-flex align-center justify-center"
+              class="
+                green
+                white--text
+                ma-0
+                pa-0
+                testbox
+                d-flex
+                align-center
+                justify-center
+              "
             >
               {{ test.short_description }}
             </p>

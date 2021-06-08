@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EnsikltDricksVatten.vue should have a custom title and match snapshot 1`] = `
+<v-main class="container">
+  <v-flex>
+    <v-row d-flex="" justify="center">
+      <h2 class="ensiklt-heading">
+        Analyser för dig med egen brunn eller gemensam brunn för upp till 50
+        personer
+      </h2>
+    </v-row>
+    <v-row class="d-flex justify-center font-weight-bold blue--text mt-6">
+      <v-col cols="11" class="d-flex justify-center">
+        <p class="bread">
+          Här hittar du analyser för dig med enskilt vatten (vatten för privat
+          dricksvattenförsörjning för färre än 50 personer eller med ett flöde
+          på mindre än 10 kubikmeter).<br>
+          Om du har anlagt en ny brunn så rekommenderas att prova vatten efter
+          någon månads användning. I andra fall rekommenderar Livsmedelsverket
+          att du testar ditt eget vatten minst vart tredje år.<br>
+          Är det fler än två fastigheter som är anslutna till samma brunn, om
+          vattnet kommer från en sjö eller passerar en avsaltningsanläggning
+          bör vattnet testas minst en gång per år.<br> <span> OBS! </span> Vatten som försörjer fler än 50 personer eller
+          har ett flöde på minst 10 m3 är dricksvatten enligt
+          Livsmedelslagstiftningen. Klicka här för att komma till
+          ackrediterade analyser för registrerade anläggningar.
+        </p>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center mt-6">
+      <v-col cols="11" class="d-flex flex-column justify-center">
+        <h2 class="d-flex justify-center text--black">
+          Analyser i lokalt laboratorium
+        </h2>
+        <p class="bread font-weight-light blue--text">
+          Det lokala laboratoriet analyserar enligt akrediterade metoder, men
+          är inte ackrediterat. Därför är det lämpligt för enskilt vatten.
+          Vårt lokala laboratorie erbjuder snabbare svarstider och
+          direktkoppling till rådgivning.
+        </p>
+      </v-col>
+    </v-row>
+    <v-row class="d-flex justify-center packet-height"></v-row>
+    <v-divider></v-divider>
+    <v-col cols="12" class="d-flex justify-center flex-row">
+      <div>
+        <v-row class="blue--text d-flex justify-center">
+          <h3>Analyser styckvis, prisklass 1 <br>200 kr/st</h3>
+        </v-row>
+        <v-col cols="12" class="d-flex flex-column justify-center"></v-col>
+      </div>
+      <div>
+        <v-row class="blue--text d-flex justify-center my-4">
+          <h3>Analyser styckvis, prisklass 2 <br>250 kr/st</h3>
+        </v-row>
+        <v-col cols="" class="d-flex flex-column justify-center"></v-col>
+      </div>
+    </v-col>
+    <v-divider></v-divider>
+    <v-row class="d-flex justify-center mt-6">
+      <v-col cols="10">
+        <h1 class="d-flex justify-center text--black">
+          Ackrediterade analyser för enskilt dricksvatten
+        </h1>
+        <h2 class="bread font-weight-light blue--text">
+          Analyser för dig som önskar få en bedömning från ett ackrediterat
+          laboratorium eller analysera specifika parametrar så som metaller,
+          samt räkna bakterier.
+        </h2>
+      </v-col>
+    </v-row>
+    <v-col class="d-flex justify-center packet-height"></v-col>
+    <v-divider></v-divider>
+    <v-row class="blue--text d-flex justify-center my-4">
+      <h3>Ackrediterade analyser styckvis</h3>
+    </v-row>
+    <v-col class="d-flex flex-column justify-center"></v-col>
+    <v-col class="d-flex align-center justify-center">
+      <v-btn icon="" large="">
+        <v-icon>arrow_upward</v-icon>
+      </v-btn>
+    </v-col>
+  </v-flex>
+</v-main>
+`;
