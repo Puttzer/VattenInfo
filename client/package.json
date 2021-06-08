@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "jest": "^27.0.4",
     "register-service-worker": "^1.7.1",
     "stripe": "^8.149.0",
     "surge": "^0.23.0",
