@@ -78,6 +78,7 @@ module.exports = function (router) {
             getOrderNr = newOrderNr
             let orderDetails = {}
             orderDetails.orderNr = newOrderNr
+            orderDetails.orderStatus = 'pending'
             orderDetails.orderProduct = { ...test }
 
             return ordersList.push(orderDetails)

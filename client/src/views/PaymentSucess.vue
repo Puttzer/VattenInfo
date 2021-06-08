@@ -5,7 +5,24 @@
         <h2 class="heading-2">Payment Sucessfull</h2>
       </v-col>
     </v-row>
-    {{ this.stripe.responseData }}
+    <v-row>
+      <v-col>
+        <v-row>
+          <h4>Customer email:</h4>
+          <p>{{ this.stripe.responseData.session.customer_details.email }}</p>
+        </v-row>
+      </v-col>
+      <v-col>
+        <v-row>
+          <h3>NO of products ordered :</h3>
+          <p>{{ this.stripe.responseData.lineitems.data.length }}</p>
+        </v-row>
+        <v-row>
+          <h4>Total Amount :</h4>
+          <p>{{ this.stripe.responseData.session.amount_total / 100 }} SEK</p>
+        </v-row>
+      </v-col>
+    </v-row>
 
     <v-row class="d-flex justify-center">
       <v-col cols="6" class="d-flex justify-center blue lighten-5">

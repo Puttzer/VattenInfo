@@ -183,6 +183,7 @@ export default {
             state.companyUserIsloggedIn = false
             state.showCompanyDropDown = false
             state.showLoginModel = false
+            localStorage.removeItem('COMPANY_ASSIGN_ID')
         },
         COMPANY_DROPDOWNCOPMONENT_DISABLE(state) {
             state.showCompanyDropDown = false

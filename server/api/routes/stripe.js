@@ -11,13 +11,13 @@ module.exports = function (router) {
 
     router.get('/config', async function (req, res, next) {
         const stripe_publishable_key = stripe_keys.publishable_key
-        const price = await stripe.prices.retrieve(process.env.PRICE);
-        console.log(price)
+        // const price = await stripe.prices.retrieve(process.env.PRICE);
+        // console.log(price)
         res.json({
             stripe_config: {
                 publishableKey: stripe_publishable_key,
-                unitAmount: price.unit_amount,
-                currency: price.currency,
+                // unitAmount: price.unit_amount,
+                // currency: price.currency,
             }
         })
     })
@@ -25,7 +25,7 @@ module.exports = function (router) {
     // Fetch the Checkout Session to display the JSON result on the success page
     router.get('/checkout-session', async (req, res) => {
         const { sessionId } = req.query;
-        console.log('check sessionId', sessionId)
+        // console.log('check sessionId', sessionId)
         const session = await stripe.checkout.sessions.retrieve(sessionId);
 
         const getLineItems = await stripe.checkout.sessions.listLineItems(`${sessionId}`,
@@ -35,7 +35,7 @@ module.exports = function (router) {
             //     console.log(lineItems)
             // }
         );
-        console.log('line items list', getLineItems)
+        // console.log('line items list', getLineItems)
         res.send({
             session: session,
             lineitems: getLineItems
@@ -44,11 +44,11 @@ module.exports = function (router) {
 
     router.post('/stripe/products', async (req, res) => {
         let productsList = req.body.orderTests
-        console.log(productsList)
+        // console.log(productsList)
 
         let updatedProductList = []
         await productsList.map(async (test) => {
-            console.log('price', parseInt(`${test.price}`) * 100)
+            // console.log('price', parseInt(`${test.price}`) * 100)
 
             let product = await stripe.prices.create({
                 product_data: {
@@ -62,18 +62,18 @@ module.exports = function (router) {
                 }
             });
 
-            console.log('product', product)
+            // console.log('product', product)
             updatedProductList.push(product)
-            console.log('new products', updatedProductList)
+            // console.log('new products', updatedProductList)
             return updatedProductList
         }
         )
-        console.log('after loop', updatedProductList)
+        // console.log('after loop', updatedProductList)
         res.json({ products: updatedProductList })
     });
 
 
-    router.post('/createproduct', async (req, res) => {
+    router.post('/stripe/createproduct', async (req, res) => {
 
         // we need to create a user intially with email
 
@@ -81,7 +81,7 @@ module.exports = function (router) {
         // stage 2: we need to create a product in the stripe
         const product = await stripe.products.create({
             name: test.testname,
-            description: test.description
+            description: test.short_description
         })
         if (!product) {
             res.status(500).json({
@@ -118,10 +118,10 @@ module.exports = function (router) {
 
         let qry = { _id: test._id }
         let doc = newTestSample
-        console.log('updated test details', doc)
+        // console.log('updated test details', doc)
         await Test.findByIdAndUpdate(qry, doc, function (err, newResp) {
             if (err) return console.log(err)
-            console.log(newResp)
+            // console.log(newResp)
             res.status(200).json({
                 message: 'test details has been updated',
                 updatedTest: {
