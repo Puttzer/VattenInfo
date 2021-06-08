@@ -2,6 +2,13 @@
   <div>
     <v-card flat class="mt-8 d-flex flex-column justify-center">
       <v-row class="btnColor">
+        <v-col cols="12" md="1" class="text--black font-weight-bold">
+          <v-row>
+            <div class="text--black font-weight-bold ml-3">S.No</div>
+            <v-spacer></v-spacer>
+            <span>|</span>
+          </v-row>
+        </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <v-row>
             <div class="text--black font-weight-bold ml-3">order Number</div>
@@ -25,9 +32,11 @@
           </v-row>
         </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
-          <div class="text--black font-weight-bold ml-2">No Of Tests</div>
-          <v-spacer></v-spacer>
-          <span>|</span>
+          <v-row>
+            <div class="text--black font-weight-bold ml-2">No Of Tests</div>
+            <v-spacer></v-spacer>
+            <span>|</span>
+          </v-row>
         </v-col>
         <v-col cols="12" md="2" class="text--black font-weight-bold">
           <div class="text--black font-weight-bold ml-2">Status</div>
@@ -40,6 +49,12 @@
         :key="index"
       >
         <v-row>
+          <v-col cols="12" md="1" class="text--black">
+            <v-row class="ml-1" justify="start">
+              <h5 class="serial-number">{{ index + 1 }}</h5>
+            </v-row>
+          </v-col>
+          <v-divider vertical></v-divider>
           <v-col cols="12" md="2" class="text--black">
             <v-row class="ml-1" justify="start">
               <div>{{ order.orderNr }}</div>
@@ -61,11 +76,10 @@
           </v-col>
           <v-divider vertical></v-divider>
           <v-col cols="12" md="2" class="text--black d-flex">
-            <div :class="`order ${order.status} colorstatus`" class="ma-4">
-              pending
+            <div :class="`order ${order.orderStatus} colorstatus`" class="ma-4">
+              {{ order.orderStatus }}
             </div>
             <v-btn
-			
               small
               class="btnColor white--text ma-4"
               @click="moveToIndividualOrderPage(order.orderProduct._id)"
@@ -196,4 +210,13 @@ export default {
   border-radius: 10px;
   width: 50%;
 }
+
+/* body {
+  counter-reset: section; /* Set a counter named 'section', and its initial value is 0. 
+}
+
+h5::before {
+  counter-increment: section; /* Increment the value of section counter by 1 
+  content: "Section " counter(section) ": ";
+} */
 </style>

@@ -89,24 +89,48 @@ const routes = [
 	{
 		path: '/login/user',
 		name: 'PrivateAccount',
-		component: KundBestallsidan
+		component: KundBestallsidan,
+		beforeEnter: (to, from, next) => {
+			// console.log(store.state.admin.isLoggedIn)
+			if (store.state.user.userIsloggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		}
 	},
 	{
 		path: '/login/admin',
 		name: 'AdminLogin',
-		component: AdminLogin
+		component: AdminLogin,
 	},
 	{
 		path: '/login/companyinfopage',
 		name: 'CompanyLoginHomePage',
-		component: CompanyLoginHomePage
+		component: CompanyLoginHomePage,
+		beforeEnter: (to, from, next) => {
+			// console.log(store.state.admin.isLoggedIn)
+			if (store.state.company.companyUserIsloggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		}
 	},
 	{
 		path: '/login/companyorderspage',
 		name: 'CompanyOrdersPage',
-		component: CompanyOrdersPage
+		component: CompanyOrdersPage,
+		beforeEnter: (to, from, next) => {
+			// console.log(store.state.admin.isLoggedIn)
+			if (store.state.company.companyUserIsloggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		}
 	},
-	
+
 	{
 		path: '/test/:slug',
 		name: 'TestStartsidan',
@@ -153,7 +177,15 @@ const routes = [
 	{
 		path: '/login/userpage',
 		name: 'KundStartSidan',
-		component: KundStartSidan
+		component: KundStartSidan,
+		beforeEnter: (to, from, next) => {
+			// console.log(store.state.admin.isLoggedIn)
+			if (store.state.user.userIsloggedIn) {
+				next()
+			} else {
+				next('/')
+			}
+		}
 	},
 	{
 		path: '/ordernumber',
@@ -172,8 +204,24 @@ const routes = [
 		name: 'LabbTjanster',
 		component: LabbTjanster
 	},
-	{ path: '/paymentSucess', name: 'PaymentSucess', component: PaymentSucess },
-	{ path: '/paymentCancel', name: 'PaymentError', component: PaymentError },
+	{
+		path: '/paymentSucess',
+		name: 'PaymentSucess',
+		component: PaymentSucess,
+		beforeEnter: (to, from, next) => {
+			// console.log(store.state.admin.isLoggedIn)
+			if (localStorage.session_stripe_id) {
+				next()
+			} else {
+				next('/')
+			}
+		}
+	},
+	{
+		path: '/paymentCancel'
+		, name: 'PaymentError'
+		, component: PaymentError
+	},
 	{
 		path: '/bestallanalys',
 		name: 'BestallSidan',
