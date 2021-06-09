@@ -228,7 +228,7 @@
           v-for="(test, index) in this.filterAckrediteradePaketTester"
           :key="index"
           width="280px"
-          height="200px"
+          height="410px"
           class="ma-4"
         >
           <v-list
@@ -262,7 +262,7 @@
                 >Läs mer</v-btn
               >
               <v-btn
-                class="btnColor white--text ma-1"
+                class="btnColor white--text ma-1 move-button"
                 @click="increaseThecounterValue(test._id)"
                 >köp</v-btn
               >
@@ -274,7 +274,7 @@
       <v-row class="blue--text d-flex justify-center my-4">
         <h3>Ackrediterade analyser styckvis</h3>
       </v-row>
-      <v-col class="d-flex flex-column justify-center">
+      <v-col class="d-flex flex-column justify-center" cols="4">
         <div
           v-for="(test, index) in this.filterAckrediteradeIndividuelStyckvis"
           :key="index"
@@ -297,20 +297,20 @@
               {{ test.short_description }}
             </p>
           </v-col>
-          <v-col class="d-flex align-center justify-center ma-0 pa-0" cols="1">
+          <v-col class="d-flex align-center justify-center ma-0 pa-0" cols="5">
             <p class="justify-center d-flex align-center">
               {{ test.testname }}
             </p>
           </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
+          <v-col class="d-flex align-center justify-center" cols="3">
             <v-btn
               x-small
               class="btnColor red justify-center white--text"
               @click="moveToIndividual(test.slug, test)"
-              >äs mer</v-btn
+              >Läs mer</v-btn
             >
           </v-col>
-          <v-col class="d-flex align-center justify-center" cols="1">
+          <v-col class="d-flex align-center justify-center" cols="2">
             <v-btn icon small @click="increaseThecounterValue(test._id)">
               <v-icon>add_shopping_cart</v-icon>
             </v-btn>
