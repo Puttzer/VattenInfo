@@ -9,8 +9,7 @@
           <v-col cols="12" class="pt-16">
             <h1 class="black--text mt-3">Kontakta oss</h1>
             <p>
-              Skriv gärna ett mail till oss om du har några frågor eller
-              problem!
+              Skriv gärna ett mail till oss om du har några frågor eller problem
             </p>
           </v-col>
 
@@ -20,7 +19,7 @@
               color="#449a63"
               text
               class="mt-3"
-              v-model="user.subject"
+              v-model="subject"
               append-icon="comment"
               label="Ämne"
               outlined
@@ -30,7 +29,7 @@
               color="#449a63"
               text
               class="mess mt-3"
-              v-model="user.message"
+              v-model="message"
               append-icon="comment"
               label="Meddelande"
               outlined
@@ -48,7 +47,7 @@
               dense
               color="blue"
               text
-              v-model="user.fullName"
+              v-model="fullname"
               append-icon="person"
               label="Förnamn och Efternamn"
               persistent-hint
@@ -60,7 +59,7 @@
               color="blue"
               text
               class="mt-3"
-              v-model="user.email"
+              v-model="email"
               append-icon="mail"
               label="Email"
               hint=" Exempel: ditt@mail.se"
@@ -74,7 +73,9 @@
               class="d-flex mt-12 justify-end algin-end"
             >
               <v-btn
-                class="font-weight-light btnColor white--text font-weight-bold"
+                @click="postMessage()"
+                class="font-weight-light btnColor post-button white--text font-weight-bold"
+				name="post-button"
                 >skicka</v-btn
               >
             </v-card>
@@ -90,13 +91,29 @@ export default {
   name: "KontaktSidan",
   data() {
     return {
-      user: {
-        email: "",
-        repeatEmail: "",
-        firstName: "",
-        lastName: "",
-      },
+      subject: "",
+      fullname: "",
+      email: "",
+      message: "",
     };
+  },
+  methods: {
+    postMessage() {
+      let messageInfo = {
+        subject: this.subject,
+        fullname: this.fullname,
+        email: this.email,
+        message: this.message,
+      };
+
+      console.log(messageInfo);
+    //   return messageInfo;
+
+      this.subject = "";
+      this.email = "";
+      this.message = "";
+      this.fullname = "";
+    },
   },
 };
 </script>
