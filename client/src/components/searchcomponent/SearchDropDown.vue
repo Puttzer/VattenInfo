@@ -23,22 +23,30 @@
       id="results"
       v-for="test in this.filterPaketTestsearch"
       :key="test._id"
-      class="test-results ma-0 pa-0	"
+      class="test-results ma-0 pa-0"
     >
-      <v-col cols="1" class="ml-16 ">
-        <v-img
-          cols="2"
-          class="pink"
-          :src="`http://localhost:4000/${test.image}`"
-          width="100px"
-          height="50px"
-        ></v-img>
+      <v-col
+        cols="6"
+        class="d-flex flex-row ma-0"
+        @click="moveToIndividual(test.slug, test)"
+      >
+        <v-col cols="2" class="ma-0 pa-0 d-flex flex-row">
+          <v-img
+            cols="2"
+            class="pink ml-16"
+            :src="`http://localhost:4000/${test.image}`"
+            width="70px"
+            height="50px"
+          ></v-img>
+        </v-col>
+        <v-col cols="8 d-flex justify-center align-center">
+          <h4>{{ test.testname }}</h4>
+        </v-col>
       </v-col>
       <v-col
-        cols="7"
-        class="response d-flex align-center justify-space-between flex-row"
+        cols="3"
+        class="response d-flex align-center justify-center flex-row"
       >
-        <h4>{{ test.testname }}</h4>
         <!-- <v-btn x-small>Läs Mer</v-btn> -->
         <v-btn @click="buyMe(test._id)" class="search-bar-buttonr" x-small
           >köp</v-btn
@@ -58,13 +66,14 @@ export default {
     };
   },
   methods: {
-    buyMe(id,value) {
+    buyMe(id) {
       this.$store.commit("tests/INCREASE_COUNT", id);
-      if (value) {
-        this.countStyckvisOne++;
-      } else {
-        this.countStyckvisOne--;
-      }
+    },
+    moveToIndividual(slug, test) {
+      this.$router.push({
+        name: "TestStartsidan",
+        params: { slug: slug, test },
+      });
     },
   },
   computed: {

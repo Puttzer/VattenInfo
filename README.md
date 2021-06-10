@@ -12,7 +12,7 @@ git clone https://github.com/krishnamohanparuchuri/vatten_info_project
 
 Move to /client folder
 
-**3. Follow the frontend instructions on how to run**
+**1. Follow the frontend instructions on how to run**
 
 For example, if you want to run the Vue app server:
 
@@ -40,13 +40,14 @@ Example `.env` file:
 
 you are going to get a link for the .env variables, copy those variables in the `.env` file
 [link to .env](https://gist.github.com/krishnamohanparuchuri/dfc5528b9597d7885bf28e63d993f664)
+
 ```sh
 PORT =''
 STRIPE_PUBLISHABLE_KEY=<replace-with-your-publishable-key>
 STRIPE_SECRET_KEY=<replace-with-your-secret-key>
 ```
 
-**3. Follow the server instructions on how to run**
+**2. Follow the server instructions on how to run**
 
 For example, if you want to run the Node server:
 
@@ -55,10 +56,17 @@ npm install
 npm start
 ```
 
+you can start the server on http://localhost:4000
+
 **3. Follow these instructions to process payment using stripe**
 
 You need to enter all the specified files in the stripe checkout page
 
-No authentication (default U.S. card): 4242 4242 4242 4242.
-expiry date : chosse any date from now
-ccv : any 3 digit number
+- No authentication (default U.S. card): 4242 4242 4242 4242.
+- expiry date : chosse any date from now
+- ccv : any 3 digit number
+
+## links for the presenation repo
+
+Here u can find the repo link for the presentation
+[link to the repo](https://github.com/krishnamohanparuchuri/grupp_presentation)

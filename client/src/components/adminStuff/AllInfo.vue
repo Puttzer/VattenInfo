@@ -1,31 +1,43 @@
 <template>
-  <v-main>
+  <v-main class="ma-0 pa-0">
     <v-row class="d-flex justify-center">
       <v-col cols="4">
-        <v-card height="300px">
+        <v-card
+          height="300px"
+          class="blue lighten-1 d-flex justify-center align-center flex-column"
+        >
           <h1>Tests Info</h1>
-          <p>total Tests: {{ this.tests.tests.length }}</p>
+          <p>Total Tests: {{ this.tests.tests.length }}</p>
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-card height="300px">
+        <v-card
+          height="300px"
+          class="blue lighten-3 d-flex justify-center align-center flex-column"
+        >
           <h1>Order Infomation</h1>
-          <p>total orders: {{ this.order.orders.length }}</p>
+          <p>Total orders: {{ this.order.orders.length }}</p>
         </v-card>
       </v-col>
     </v-row>
 
     <v-row class="d-flex justify-center">
       <v-col cols="4">
-        <v-card height="300px">
+        <v-card
+          height="300px"
+          class="blue lighten-3 d-flex justify-center align-center flex-column"
+        >
           <h1>Private Users</h1>
-          <p>total Private Users: {{ this.user.users.length }}</p>
+          <p>Total Private Users: {{ this.user.users.length }}</p>
         </v-card>
       </v-col>
       <v-col cols="4">
-        <v-card height="300px">
+        <v-card
+          height="300px"
+          class="blue lighten-1 d-flex justify-center align-center flex-column"
+        >
           <h1>Company Users</h1>
-          <p>total Company Users: {{ this.company.companys.length }}</p>
+          <p>Total Company Users: {{ this.company.companys.length }}</p>
         </v-card>
       </v-col>
     </v-row>
