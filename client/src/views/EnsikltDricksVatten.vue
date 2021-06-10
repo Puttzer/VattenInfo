@@ -311,7 +311,12 @@
             >
           </v-col>
           <v-col class="d-flex align-center justify-center" cols="2">
-            <v-btn icon small @click="increaseThecounterValue(test._id)">
+            <v-btn
+              icon
+              small
+              @click="increaseThecounterValue(test._id)"
+              name="add-button"
+            >
               <v-icon>add_shopping_cart</v-icon>
             </v-btn>
           </v-col>

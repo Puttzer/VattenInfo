@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
 
+
 // Components
 import EnsikltDricksVatten from '../../src/views/EnsikltDricksVatten'
 
@@ -20,8 +21,21 @@ describe('EnsikltDricksVatten.vue', () => {
     beforeEach(() => {
         vuetify = new Vuetify()
         state = {
-            tests: [],
-
+            count: 0,
+            tests: [{
+                "quantity": 1,
+                "_id": "60a3eb54a5a44363b4ad3737",
+                "testname": "ALUMINIUM",
+                "testtype": "Styck Prov",
+                "short_description": "AL",
+                "description": "Aluminium kan i grundvatten indikera aluminiumutlösning från marken på grund av surt vatten (pH <5,5). Kan medföra slambildning i ledningar och installationer.\nHalter över 0,50 mg/l bedöms som tjänligt med teknisk anmärkning.",
+                "category": "Ackrediterade analyser",
+                "price": "350",
+                "shortname": "aluminium ackrediterade analyser",
+                "slug": "Aluminium_Ackrediterade_Analyser",
+                "image": "uploads\\water5.jpg",
+                "__v": 0
+            },]
         }
         mutations = {
             increaseThecounterValue: jest.fn()
@@ -76,10 +90,20 @@ describe('EnsikltDricksVatten.vue', () => {
         expect(title.text()).toBe(resultTitle)
     })
     it('calls store action "moduleActionClick" when button is clicked', () => {
-        const wrapper = shallowMount(EnsikltDricksVatten, { store, localVue, vuetify })
-        const button = wrapper.find('v-btn.move-button')
+        const wrapper = shallowMount(EnsikltDricksVatten, { store, localVue, vuetify, mutations, state })
+        const increaseThecounterValue = jest.fn()
+        const button = wrapper.find('.v-btn')
+        expect(increaseThecounterValue.value).toHaveBeenCalled(0)
         button.trigger('click')
-        expect(mutations.increaseThecounterValue).toHaveBeenCalled()
+        expect(increaseThecounterValue.value).toHaveBeenCalled(1)
     })
+
+    // it('check how many v-btn are available', () => {
+    //     const wrapper = shallowMount(EnsikltDricksVatten, { store, localVue, vuetify, mutations, state })
+    //    const increaseThecounterValue = jest.fn()
+    //     const button = wrapper.find('v-btn')
+    //     console.log(button)
+    //     expect(button.name()).toBe('v-btn')
+    // })
 
 })
