@@ -11,18 +11,23 @@
       class="d-flex flex-column"
     >
       <v-list class="d-flex flex-row rounded-lg" height="80px">
-          <v-row class="d-flex">
-          <v-col cols="3">
+        <v-row class="d-flex">
+          <v-col cols="1" class="d-flex justify-center align-center">
+            <p>
+              {{ index + 1 }}
+            </p>
+          </v-col>
+          <v-col cols="2" class="d-flex justify-center flex-column">
             <p class="font-weight-light text--disabled caption ml-2">
               Användarnamn
             </p>
             <p id="userName" name="userName" class="ml-2">
-              {{ company.fullname }}
+              {{ company.contactPerson }}
             </p>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="2">
             <p class="font-weight-light text--disabled caption">E-post</p>
-            <p id="userEmail" name="userEmail">{{ company.email }}</p>
+            <p id="userEmail" name="userEmail">{{ company.contactEmail }}</p>
           </v-col>
           <v-col cols="2">
             <p class="font-weight-light text--disabled caption">
@@ -40,12 +45,10 @@
               {{ company.phonenumber }}
             </p>
           </v-col>
-          <v-col cols="1">
-            <p class="font-weight-light text--disabled caption">
-              alternatenumber
-            </p>
+          <v-col cols="2">
+            <p class="font-weight-light text--disabled caption">företag namm</p>
             <p>
-              {{ company.alternatenumber }}
+              {{ company.companyname }}
             </p>
           </v-col>
           <v-col cols="1" class="d-flex justify-center align-center">
