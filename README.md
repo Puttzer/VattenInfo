@@ -38,7 +38,7 @@ example:
 
 Example `.env` file:
 
-you are going to get a link for the .env variables from MAX, copy those variables in the `.env` file
+you are going to get a link for the .env variables, copy those variables in the `.env` file
 [link to .env](https://gist.github.com/krishnamohanparuchuri/dfc5528b9597d7885bf28e63d993f664)
 ```sh
 PORT =''
