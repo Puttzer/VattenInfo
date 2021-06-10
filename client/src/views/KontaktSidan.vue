@@ -23,6 +23,8 @@
               append-icon="comment"
               label="Ämne"
               outlined
+              data-test="subjectText"
+
             ></v-text-field>
             <v-textarea
               dense
@@ -35,6 +37,8 @@
               outlined
               no-resize
               height="200px"
+              data-test="commentText"
+
             >
               <template>
                 <div></div>
@@ -53,6 +57,7 @@
               persistent-hint
               outlined
               class="mt-3"
+              data-test="nameText"
             ></v-text-field>
             <v-text-field
               dense
@@ -65,6 +70,7 @@
               hint=" Exempel: ditt@mail.se"
               persistent-hint
               outlined
+              data-test="mailText"
             ></v-text-field>
             <v-card
               md="4"
@@ -75,7 +81,7 @@
               <v-btn
                 @click="postMessage()"
                 class="font-weight-light btnColor post-button white--text font-weight-bold"
-				name="post-button"
+                name="post-button"
                 >skicka</v-btn
               >
             </v-card>
@@ -107,7 +113,6 @@ export default {
       };
 
       console.log(messageInfo);
-    //   return messageInfo;
 
       this.subject = "";
       this.email = "";
