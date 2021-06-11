@@ -24,7 +24,6 @@
               label="Ämne"
               outlined
               data-test="subjectText"
-
             ></v-text-field>
             <v-textarea
               dense
@@ -38,7 +37,6 @@
               no-resize
               height="200px"
               data-test="commentText"
-
             >
               <template>
                 <div></div>
@@ -80,6 +78,7 @@
             >
               <v-btn
                 @click="postMessage()"
+				data-test="saveButton"
                 class="font-weight-light btnColor post-button white--text font-weight-bold"
                 name="post-button"
                 >skicka</v-btn
