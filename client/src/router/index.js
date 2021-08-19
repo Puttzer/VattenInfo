@@ -238,6 +238,7 @@ const routes = [
 		component: InstruktionOchBlanketter
 	},
 
+	//commenting to get latest branch lmao
 
 	{
 		path: '/omlab',
