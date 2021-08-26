@@ -20,6 +20,8 @@
 import NavigationBar from "./components/ui/NavigationBar.vue";
 // import AdminStartsidan from "./views/AdminStartsidan.vue";
 
+//Added comment test. 26/8
+
 // import NavBarMobile from "./components/ui/NavBarMobile.vue";
 import Pathcomponent from "./components/Pathcomponent";
 
