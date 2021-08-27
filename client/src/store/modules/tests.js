@@ -125,7 +125,7 @@ export default {
                 test._id != value
             })
             state.tests = remainingTests
-            Vue.$vToastify.success(`Användaren ${findTest.testname} är bortatagen`)
+            Vue.$vToastify.success(` ${findTest.testname} är bortatagen`)
             // console.log(state.tests)
 
         },
@@ -195,7 +195,7 @@ export default {
             localStorage.setItem('selectedTests', JSON.stringify(state.selectedTests))
             localStorage.setItem('count', state.count)
             console.log(state.selectedTests)
-            Vue.$vToastify.success(`${testInfo.testname} is removed from the cart`)
+            Vue.$vToastify.success(`${testInfo.testname} Produkten är borttagen från kundvage`)
         },
         DELETE_SELECTED_TESTS(state) {
             console.log('delete selected tests')

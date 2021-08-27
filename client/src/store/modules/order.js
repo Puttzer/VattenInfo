@@ -136,7 +136,7 @@ export default {
         // after geeting response from server, token has to be stored in localstorage
         UPDATE_ORDERNUMBER(state, number) {
             state.orderNumber = number
-            Vue.$vToastify.success("Succesfully order is generated");
+            Vue.$vToastify.success("Order");
         },
         UPDATE_ORDER_GENERATE(state, value) {
             console.log(value)

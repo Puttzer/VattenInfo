@@ -152,14 +152,14 @@ export default {
     mutations: {
         UPDATE_SUCCESS_MESSAGE(state, value) {
             state.statusMessage = value.message
-            Vue.$vToastify.success(`New account is created ${value.name} `)
+            Vue.$vToastify.success(` ${value.name}  är skapad`)
             setTimeout(() => {
                 state.statusMessage = ""
             }, 4000)
         },
         UPDATE_ERROR_MESSAGE(state, value) {
             state.errorMessage = value.message
-            Vue.$vToastify.error('Account creation', `${value}`)
+            Vue.$vToastify.error('Konto skapades', `${value}`)
         },
         UPDATE_USERS(state, value) {
             state.users = value
