@@ -12,7 +12,7 @@ export default {
     actions: {
         async login(ctx, userDetails) {
             console.log(userDetails)
-            const response = await fetch('http://localhost:4000/api/admin/login', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/admin/login`, {
                 method: 'POST',
                 body: JSON.stringify(userDetails),
                 headers: {
@@ -41,7 +41,7 @@ export default {
 
         async validateAdmin({ commit }) {
             const token = localStorage.getItem('token')
-            const response = await fetch(`http://localhost:4000/api/admin/validatetoken`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/admin/validatetoken`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

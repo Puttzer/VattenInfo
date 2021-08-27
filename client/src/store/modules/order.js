@@ -14,7 +14,7 @@ export default {
         async generatePrivateOrder({ commit }, payload) {
             const token = localStorage.getItem('userToken')
             console.log(payload)
-            const response = await fetch(`http://localhost:4000/api/order/private/generate`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/order/private/generate`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -45,7 +45,7 @@ export default {
             console.log(userToken, payload)
             if (companyToken) {
 
-                const response = await fetch(`http://localhost:4000/api/order/company/generate`, {
+                const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/order/company/generate`, {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
@@ -64,7 +64,7 @@ export default {
                 // commit('USER_DROP_DOWN_CHANGE', false, { module: 'user' })
             } else if (userToken) {
 
-                const response = await fetch(`http://localhost:4000/api/order/private/generate`, {
+                const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/order/private/generate`, {
                     method: 'POST',
                     body: JSON.stringify(payload),
                     headers: {
@@ -85,7 +85,7 @@ export default {
         },
         async getOrders({ commit }) {
             const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/orders', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/orders`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default {
         },
         async getIndividualOrders({ commit }, userId) {
             const token = localStorage.getItem('userToken')
-            const response = await fetch(`http://localhost:4000/api/order/private/${userId}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/order/private/${userId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -117,7 +117,7 @@ export default {
         },
         async getCompanyOrders({ commit }, companyId) {
             const token = localStorage.getItem('companyProfileToken')
-            const response = await fetch(`http://localhost:4000/api/order/company/${companyId}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/order/company/${companyId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

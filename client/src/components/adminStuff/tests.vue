@@ -36,7 +36,7 @@
             <v-list class="d-flex flex-column justify-center" id="testList">
               <v-img
                 id="testImage"
-                :src="`http://localhost:4000/${test.image}`"
+                :src="`${backendurl}/${test.image}`"
                 height="150px"
                 width="250px"
               ></v-img>
@@ -85,6 +85,7 @@ import AddTest from "./AddTest.vue";
 export default {
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       showAddTest: false,
       addtestButton: false,
       addsaveButton: false,
