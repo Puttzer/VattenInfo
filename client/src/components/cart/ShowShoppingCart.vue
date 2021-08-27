@@ -29,7 +29,7 @@
         >
           <v-list class="d-flex justify-space-around flex-row align-center">
             <img
-              :src="`http://localhost:4000/${selectTest.image}`"
+              :src="`${backendurl}/${selectTest.image}`"
               width="65px"
               height="65px"
             />
@@ -72,7 +72,14 @@
         <v-col cols="12">
           <div
             @click="moveToKassaSida"
-            class="btnColor shopme d-flex align-center justify-center white--text"
+            class="
+              btnColor
+              shopme
+              d-flex
+              align-center
+              justify-center
+              white--text
+            "
           >
             Gå till kassan
           </div>
@@ -88,6 +95,7 @@ export default {
   name: "ShowShoppingCart",
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       quantity: 0,
     };
   },

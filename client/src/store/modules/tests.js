@@ -19,7 +19,7 @@ export default {
         async createNewTest({ commit }, formData) {
             console.log(formData)
             const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/test/create', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/test/create`, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -36,7 +36,7 @@ export default {
             console.log(formData)
             console.log(id)
             const token = localStorage.getItem('token')
-            const response = await fetch(`http://localhost:4000/api/test/update/${id}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/test/update/${id}`, {
                 method: 'PUT',
                 body: formData,
                 headers: {
@@ -50,7 +50,7 @@ export default {
         },
         async getTestInfo({ commit }, id) {
 
-            const response = await fetch(`http://localhost:4000/api/test/${id}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/test/${id}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export default {
         },
         async getTests({ commit }) {
             const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/tests', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/tests`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default {
             const token = localStorage.getItem('token')
             const page = pageNumber;
             const limit = 10;
-            const response = await fetch(`http://localhost:4000/api/paginated/tests?page=${page}&limit=${limit}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/paginated/tests?page=${page}&limit=${limit}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default {
         },
         async deleteTest({ commit }, _id) {
             const token = localStorage.getItem('token')
-            const response = await fetch(`http://localhost:4000/api/test/${_id}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/test/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',

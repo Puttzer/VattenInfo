@@ -34,7 +34,7 @@
           <v-img
             cols="2"
             class="pink ml-16"
-            :src="`http://localhost:4000/${test.image}`"
+            :src="`${backendurl}/${test.image}`"
             width="70px"
             height="50px"
           ></v-img>
@@ -62,6 +62,7 @@ export default {
   name: "SearchDropDown",
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       searchVariables: ["Bas", "Familj", "Stora", "Styckprov"],
     };
   },
