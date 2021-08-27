@@ -131,7 +131,7 @@ export default {
         },
         INSERT_TEST(state, value) {
             state.tests.push(value)
-            Vue.$vToastify.success(`användaren  ${value.testname} är  tillagd i datbasen`)
+            Vue.$vToastify.success(`  ${value.testname} är  nu tillagd`)
 
         },
         EDIT_TEST(state, { updatedTestInfo, _id }) {
