@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+	"production": "serve -s dist -p 80"
   },
   "dependencies": {
     "axios": "^0.21.1",
