@@ -6,7 +6,7 @@
     <v-row class="d-flex justify-center white" cols="8" width="80vw">
       <v-col cols="4" class="d-flex justify-start ma-4">
         <img
-          :src="`http://localhost:4000/${this.displayTest[0].image}`"
+          :src="`${process.env.VUE_APP_BACKEND_URL}/${this.displayTest[0].image}`"
           alt="imagename"
           height="400px"
           width="300px"
@@ -144,7 +144,7 @@
           >
             <v-img
               id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
+              :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"

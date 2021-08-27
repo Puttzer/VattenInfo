@@ -32,7 +32,7 @@ export default {
             console.log('display session value', localStorage.getItem('session_stripe_id'))
             const sessionId = window.localStorage.getItem('session_stripe_id')
             console.log('parameter', sessionId)
-            const response = await fetch(`http://localhost:4000/api/checkout-session?sessionId=${sessionId}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/checkout-session?sessionId=${sessionId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ export default {
 
         },
         async getStripePublishableKey({ commit }) {
-            const response = await fetch('http://localhost:4000/api/config', {
+            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/config', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default {
             console.log('inside actions', { payload, publishableKey })
 
             const stripe = window.Stripe(`${publishableKey}`)
-            fetch('http://localhost:4000/api/create-checkout-session', {
+            fetch('${process.env.VUE_APP_BACKEND_URL}/api/create-checkout-session', {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: {

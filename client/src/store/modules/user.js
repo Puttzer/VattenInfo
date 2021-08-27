@@ -23,7 +23,7 @@ export default {
             console.log(regInfo);
 
             // const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/user/create', {
+            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/user/create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export default {
         async getUsers({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
-            const response = await fetch('http://localhost:4000/api/admin/users', {
+            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/admin/users', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export default {
         async deleteUser({ commit }, id) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
-            const response = await fetch(`http://localhost:4000/api/user/${id}`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/user/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ export default {
         async loginUser({ commit }, payload) {
             console.log(payload)
 
-            const response = await fetch(`http://localhost:4000/api/user/login`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/user/login`, {
                 method: 'POST',
                 body: JSON.stringify(payload),
                 headers: {
@@ -104,7 +104,7 @@ export default {
         },
         async validateUser({ commit }) {
             const token = localStorage.getItem('userToken')
-            const response = await fetch(`http://localhost:4000/api/user/validatetoken`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/user/validatetoken`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ export default {
         async getUserInfo({ commit }, payload) {
             console.log('get user info')
             const token = localStorage.getItem('userToken')
-            const response = await fetch(`http://localhost:4000/api/user/getUserInfo`, {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/user/getUserInfo`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

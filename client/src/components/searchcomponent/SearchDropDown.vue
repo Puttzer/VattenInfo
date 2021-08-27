@@ -34,7 +34,7 @@
           <v-img
             cols="2"
             class="pink ml-16"
-            :src="`http://localhost:4000/${test.image}`"
+            :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
             width="70px"
             height="50px"
           ></v-img>

@@ -53,7 +53,7 @@
           >
             <v-img
               id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
+              :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
@@ -237,7 +237,7 @@
           >
             <v-img
               id="testImage"
-              :src="`http://localhost:4000/${test.image}`"
+              :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"

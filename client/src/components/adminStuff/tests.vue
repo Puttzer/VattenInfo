@@ -36,7 +36,7 @@
             <v-list class="d-flex flex-column justify-center" id="testList">
               <v-img
                 id="testImage"
-                :src="`http://localhost:4000/${test.image}`"
+                :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
                 height="150px"
                 width="250px"
               ></v-img>

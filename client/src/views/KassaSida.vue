@@ -24,7 +24,7 @@
             max-height="100"
             max-width="100"
             class="product-image"
-            :src="`http://localhost:4000/${selectedTest.image}`"
+            :src="`${process.env.VUE_APP_BACKEND_URL}/${selectedTest.image}`"
           ></v-img>
 
           <v-col cols="8" class="d-flex flex-column">
@@ -198,14 +198,30 @@
     </v-col>
     <v-col
       cols="12"
-      class="mt-1 totalPrice d-flex flex-column justify-center align-center white"
+      class="
+        mt-1
+        totalPrice
+        d-flex
+        flex-column
+        justify-center
+        align-center
+        white
+      "
     >
       <div class="d-flex flex-row justify-center">
         Summa : {{ this.totalPrice }} kr
       </div>
 
       <div
-        class="payButton d-flex flex-row justify-center align-center btnColor white--text"
+        class="
+          payButton
+          d-flex
+          flex-row
+          justify-center
+          align-center
+          btnColor
+          white--text
+        "
         @click="paymentGateway()"
       >
         Till betalning
