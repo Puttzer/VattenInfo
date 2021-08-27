@@ -20,7 +20,7 @@ export default {
     },
     actions: {
         async registerCompanyUser({ commit }, companyRegInfo) {
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/company/register', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/company/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default {
         async getCompanys({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/admin/companys', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/admin/companys`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -85,7 +85,7 @@ export default {
         },
         async getOrders({ commit }) {
             const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/orders', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/orders`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

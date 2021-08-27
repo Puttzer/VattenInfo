@@ -23,7 +23,7 @@ export default {
             console.log(regInfo);
 
             // const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/user/create', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/user/create`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export default {
         async getUsers({ commit }) {
             console.log('move to dispatch')
             const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/admin/users', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/admin/users`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

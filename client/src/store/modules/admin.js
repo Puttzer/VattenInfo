@@ -12,7 +12,7 @@ export default {
     actions: {
         async login(ctx, userDetails) {
             console.log(userDetails)
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/admin/login', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/admin/login`, {
                 method: 'POST',
                 body: JSON.stringify(userDetails),
                 headers: {

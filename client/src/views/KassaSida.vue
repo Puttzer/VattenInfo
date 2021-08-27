@@ -24,7 +24,7 @@
             max-height="100"
             max-width="100"
             class="product-image"
-            :src="`${process.env.VUE_APP_BACKEND_URL}/${selectedTest.image}`"
+            :src="`${backendurl}/${selectedTest.image}`"
           ></v-img>
 
           <v-col cols="8" class="d-flex flex-column">
@@ -252,6 +252,7 @@ export default {
   name: "KassaSidan",
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       displayErrorMessage: false,
       displayErrorMessageEmptycart: false,
       name: "",
@@ -540,8 +541,8 @@ export default {
   font-size: 34px;
 }
 
-.product-card {
-}
+/* .product-card {
+} */
 
 .product-image {
   border-radius: 12.5px;

@@ -65,7 +65,7 @@ export default {
 
         },
         async getStripePublishableKey({ commit }) {
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/config', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/config`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ export default {
             console.log('inside actions', { payload, publishableKey })
 
             const stripe = window.Stripe(`${publishableKey}`)
-            fetch('${process.env.VUE_APP_BACKEND_URL}/api/create-checkout-session', {
+            fetch(`${process.env.VUE_APP_BACKEND_URL}/api/create-checkout-session`, {
                 method: "POST",
                 body: JSON.stringify(payload),
                 headers: {

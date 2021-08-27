@@ -29,7 +29,7 @@
         >
           <v-list class="d-flex justify-space-around flex-row align-center">
             <img
-              :src="`${process.env.VUE_APP_BACKEND_URL}/${selectTest.image}`"
+              :src="`${backendurl}/${selectTest.image}`"
               width="65px"
               height="65px"
             />
@@ -95,6 +95,7 @@ export default {
   name: "ShowShoppingCart",
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       quantity: 0,
     };
   },

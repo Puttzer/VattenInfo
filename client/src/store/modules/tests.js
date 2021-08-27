@@ -19,7 +19,7 @@ export default {
         async createNewTest({ commit }, formData) {
             console.log(formData)
             const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/test/create', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/test/create`, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -63,7 +63,7 @@ export default {
         },
         async getTests({ commit }) {
             const token = localStorage.getItem('token')
-            const response = await fetch('${process.env.VUE_APP_BACKEND_URL}/api/tests', {
+            const response = await fetch(`${process.env.VUE_APP_BACKEND_URL}/api/tests`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -14,7 +14,7 @@
         >
           <v-img
             id="testImage"
-            :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
+            :src="`${backendurl}/${test.image}`"
             height="150px"
             width="300px"
             name="testimage"
@@ -57,7 +57,7 @@ import { mapState } from "vuex";
 export default {
   name: "SamfalligheterTest",
   data() {
-    return {};
+    return { backendurl: process.env.VUE_APP_BACKEND_URL };
   },
   computed: {
     ...mapState(["tests"]),

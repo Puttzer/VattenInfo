@@ -53,7 +53,7 @@
           >
             <v-img
               id="testImage"
-              :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
+              :src="`${backendurl}/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
@@ -237,7 +237,7 @@
           >
             <v-img
               id="testImage"
-              :src="`${process.env.VUE_APP_BACKEND_URL}/${test.image}`"
+              :src="`${backendurl}/${test.image}`"
               height="150px"
               width="300px"
               name="testimage"
@@ -337,6 +337,7 @@ export default {
   name: "EnsikltDricksVatten",
   data() {
     return {
+      backendurl: process.env.VUE_APP_BACKEND_URL,
       isChecked: false,
       //   clicked: false,
       countStyckvisOne: 0,
